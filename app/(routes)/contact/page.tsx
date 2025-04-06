@@ -72,7 +72,7 @@ export default function ContactPage() {
                       href="mailto:info@singularityrobotics.org"
                       className="inline-flex items-center text-purple-400 hover:text-purple-300 font-medium"
                     >
-                      info@singularityrobotics.org
+                      admin@singularityfrc.com
                     </Link>
                   </div>
                 </div>

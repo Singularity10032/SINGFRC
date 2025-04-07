@@ -16,6 +16,7 @@ import {
   ExternalLink,
   Star,
   Instagram,
+  FileText,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -332,6 +333,119 @@ export default function Home() {
                         </Button>
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                {/* Event 3 - FRC World Competition */}
+                <div className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-purple-900/20 to-black/40 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="relative p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+                    <div className="flex-shrink-0 w-full md:w-auto">
+                      <div className="bg-purple-900/40 rounded-lg p-4 text-center md:w-32">
+                        <div className="text-2xl font-bold text-white">16-19</div>
+                        <div className="text-sm text-purple-300">APR 2025</div>
+                      </div>
+                    </div>
+
+                    <div className="flex-grow space-y-4">
+                      <div>
+                        <h3 className="text-xl font-bold text-white mb-1">FRC World Competition</h3>
+                        <div className="flex items-center text-purple-300 text-sm">
+                          <MapPin className="w-4 h-4 mr-1" />
+                          <span>Houston, TX</span>
+                        </div>
+                      </div>
+
+                      <p className="text-purple-200/80">
+                        Join us at the prestigious FRC World Competition where top teams from around the globe compete
+                        for the championship title. This is the ultimate showcase of innovation, teamwork, and robotics
+                        excellence.
+                      </p>
+
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-purple-300 text-sm">
+                          <Clock className="w-4 h-4 mr-1" />
+                          <span>All Day</span>
+                        </div>
+
+                        <Button
+                          size="sm"
+                          className="bg-purple-600 hover:bg-purple-700 text-white transition-colors"
+                          asChild
+                        >
+                          <Link
+                            href="https://www.firstinspires.org/robotics/frc/world-championship"
+                            className="inline-flex items-center"
+                          >
+                            Learn More
+                            <ExternalLink className="ml-1 h-3 w-3" />
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Magazine Section */}
+        <section className="relative py-24 bg-gradient-to-b from-[#0a0118] to-[#120426]">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+
+          <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
+                  <FileText className="w-3.5 h-3.5 mr-2" />
+                  Latest Publication
+                </div>
+                <h2 className="text-4xl font-bold text-white mb-4">Our Magazine</h2>
+                <div className="h-px w-24 mx-auto bg-gradient-to-r from-purple-500 to-fuchsia-500 my-6" />
+                <p className="max-w-2xl mx-auto text-lg text-purple-200/90">
+                  Check out the latest edition of our magazine featuring team updates, technical articles, and more.
+                </p>
+              </div>
+
+              <div className="bg-purple-900/10 border border-purple-500/20 rounded-xl p-8 backdrop-blur-sm">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  <div className="md:w-1/2">
+                    <div className="relative aspect-[3/4] w-full max-w-sm mx-auto rounded-lg overflow-hidden border border-purple-500/30 shadow-lg shadow-purple-500/10">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+                        <Image
+                          src="/images/magazine.png"
+                          alt="Singularity Magazine Cover"
+                          width={450}
+                          height={600}
+                          className="object-cover w-full h-full"
+                        />
+                      <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
+                        <div className="inline-block bg-purple-600/80 px-3 py-1 rounded-md text-sm font-medium text-white mb-2">
+                          Spring 2025
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="md:w-1/2 text-center md:text-left space-y-6">
+                    <h3 className="text-2xl font-bold text-white">Singularity Magazine</h3>
+                    <p className="text-purple-200/90">
+                      Our  magazine showcases our journey, technical insights, and the impact of our work. Learn about our latest projects and discover the stories
+                      behind our robotics adventures.
+                    </p>
+                    <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white group" asChild>
+                      <a
+                        href="https://drive.google.com/file/d/18jJDoVbJ-xooOVVvO45xL3Z5-DBTUDlx/view"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center"
+                      >
+                        Read Latest Edition
+                        <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </a>
+                    </Button>
                   </div>
                 </div>
               </div>

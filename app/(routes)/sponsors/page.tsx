@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Navbar } from "@/components/navbar"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Mail, HandHeart } from "lucide-react"
+import { ExternalLink, Mail, HandHeart, FileText } from "lucide-react"
 
 const sponsors = [
   {
@@ -59,8 +59,16 @@ export default function SponsorsPage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,58,180,0.15)_0%,rgba(0,0,0,0)_70%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(147,51,234,0.15)_0%,rgba(0,0,0,0)_50%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.15)_0%,rgba(0,0,0,0)_50%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+              <div className="absolute -top-40 -left-40 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl animate-blob" />
+              <div className="absolute top-40 -right-40 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
+              <div className="absolute bottom-40 left-1/3 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl animate-blob animation-delay-4000" />
+            </div>
+          </div>
 
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
@@ -74,9 +82,12 @@ export default function SponsorsPage() {
                   Possible
                 </span>
               </h1>
-              <p className="text-lg text-purple-200/90 mb-8">
+              <p className="text-lg text-purple-200/90 mb-4">
                 Team 10032 is grateful for the support of these organizations that enable us to inspire and educate the
                 next generation of innovators through competitive robotics.
+              </p>
+              <p className="text-lg text-purple-200/90 mb-8">
+                Our team is 501(c)(3) verified hence all donations and sponsorships are tax-exempt.
               </p>
               <div className="h-px w-24 mx-auto bg-gradient-to-r from-purple-500 to-fuchsia-500 my-6" />
             </div>
@@ -218,10 +229,21 @@ export default function SponsorsPage() {
                       innovators, engineers, and leaders. Your contribution makes a direct impact on our students and
                       community.
                     </p>
-                    <div className="flex justify-center">
+                    <div className="flex flex-col sm:flex-row justify-center gap-4">
                       <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white group" asChild>
                         <Link
-                          href="mailto:admin@singularityfrc.com"
+                          href="https://drive.google.com/file/d/1uociI0i--A39BuKz6Tw6ar2x0Tsqh1uR/view"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center"
+                        >
+                          <FileText className="mr-2 h-4 w-4" />
+                          Download Sponsorship Packet
+                        </Link>
+                      </Button>
+                      <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white group" asChild>
+                        <Link
+                          href="mailto:sponsors@singularityrobotics.org"
                           className="inline-flex items-center justify-center"
                           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                         >

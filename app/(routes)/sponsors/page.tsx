@@ -221,7 +221,7 @@ export default function SponsorsPage() {
                     <div className="flex justify-center">
                       <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white group" asChild>
                         <Link
-                          href="mailto:sponsors@singularityrobotics.org"
+                          href="mailto:admin@singularityfrc.com"
                           className="inline-flex items-center justify-center"
                           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                         >

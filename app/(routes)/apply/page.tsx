@@ -64,7 +64,7 @@ const faqs = [
       "During build season (January-March), we meet everyday including weekends. Outside of build season, we typically meet 3-4 times per week.",
   },
   {
-    question: "Are there any fees to join the team?",
+    question: "Are there any costs to join the team?",
     answer: "Yes, there is a team fee to cover basic expenses.",
   },
   {

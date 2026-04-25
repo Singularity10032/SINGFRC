@@ -12,22 +12,23 @@ const teamMembers: TeamMember[] = [
   // Captains & Leads
   { name: 'Aadhitya Senthilkumar', position: 'Mechanical Captain', image: '/images/diddy.jpg' },
   { name: 'Kavin Ravi', position: 'Mech Captain', image: '/images/kavin.jpg' },
-  { name: 'Shiven Velagapudi', position: 'Programming Captain', image: '/images/placeholder.jpg' },
+  { name: 'Shiven Velagapudi', position: 'Programming Captain', image: '/images/shivenvelagapudi.jpg' },
+  { name: 'Raghav Ramprasad', position: 'Business Captain', image: '/images/raghavramprasad,jpg'}
   { name: 'Sachin Rajan', position: 'Business Captain', image: '/images/sachin.jpg' },
-  { name: 'Nirbhay Challa', position: 'Scouting Captain', image: '/images/placeholder.jpg' },
+  { name: 'Nirbhay Challa', position: 'Scouting Captain', image: '/images/nirbhaychalla.jpg' },
   { name: 'Sanjana Rajaram', position: 'CAD Captain', image: '/images/placeholder.jpg' },
-  { name: 'Shaurya Singh', position: 'Outreach Lead', image: '/images/placeholder.jpg' },
-  { name: 'Shreyansh Panigrahi', position: 'Programming Lead', image: '/images/placeholder.jpg' },
-  { name: 'Mohan Chillara', position: 'Business & Mech Lead', image: '/images/placeholder.jpg' },
+  { name: 'Shaurya Singh', position: 'Outreach Lead', image: '/images/raja singh.jpg' },
+  { name: 'Shreyansh Panigrahi', position: 'Programming Lead', image: '/images/shreysway.jpg' },
+  { name: 'Mohan Chillara', position: 'Business & Mech Lead', image: '/images/mochilly.jpg' },
 
   // Seniors
   { name: 'Arnau Ariga', position: 'Senior', image: '/images/placeholder.jpg' },
   { name: 'Linda Zhang', position: 'Senior', image: '/images/placeholder.jpg' },
-  { name: 'Amrith Ponneth', position: 'Senior', image: '/images/placeholder.jpg' },
+  { name: 'Amrith Ponneth', position: 'Senior', image: '/images/mrit.jpg' },
   { name: 'Chaitu Polavarapu', position: 'Senior', image: '/images/placeholder.jpg' },
   { name: 'Chetan Kapavarapu', position: 'Senior', image: '/images/placeholder.jpg' },
-  { name: 'Dhruva', position: 'Senior', image: '/images/placeholder.jpg' },
-  { name: 'Eshwar', position: 'Senior', image: '/images/placeholder.jpg' },
+  { name: 'Dhruva Venkatraman', position: 'Senior', image: '/images/dhruvavenkatram.jpg' },
+  { name: 'Eshwar Mahadevan', position: 'Senior', image: '/images/placeholder.jpg' },
   { name: 'Gabriel Bell', position: 'Senior', image: '/images/placeholder.jpg' },
   { name: 'Kavin Dasari', position: 'Senior', image: '/images/placeholder.jpg' },
   { name: 'Rishi Alluri', position: 'Senior', image: '/images/placeholder.jpg' },
@@ -38,10 +39,10 @@ const teamMembers: TeamMember[] = [
   { name: 'Dheemanth Suddekunte', position: 'Junior', image: '/images/placeholder.jpg' },
   { name: 'Ishaant Majumdar', position: 'Junior', image: '/images/placeholder.jpg' },
   { name: 'Ishan Pachnada', position: 'Junior', image: '/images/placeholder.jpg' },
-  { name: 'Shreya Samba', position: 'Junior', image: '/images/placeholder.jpg' },
+  { name: 'Shreya Samba', position: 'Junior', image: '/images/samba.jpg' },
 
   // Sophomores
-  { name: 'Aahan Kumbham', position: 'Sophomore', image: '/images/placeholder.jpg' },
+  { name: 'Aahan Kumbham', position: 'Sophomore', image: '/images/kumbham.jpg' },
   { name: 'Aryaman Jalota', position: 'Sophomore', image: '/images/placeholder.jpg' },
 
   // Freshmen

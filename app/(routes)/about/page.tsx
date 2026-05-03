@@ -330,57 +330,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,58,180,0.2)_0%,rgba(0,0,0,0)_70%)]" />
-
-          <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-5xl mx-auto">
-              <div className="relative overflow-hidden rounded-3xl">
-                <div className="absolute inset-0">
-                  <OptimizedImage
-                    src="/placeholder.svg?height=600&width=1200"
-                    alt="Robotics Team"
-                    width={1200}
-                    height={600}
-                    className="object-cover w-full h-full"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-black/90" />
-                </div>
-
-                <div className="relative py-20 px-6 md:px-12 lg:px-16">
-                  <div className="max-w-2xl mx-auto text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Join Our Journey</h2>
-                    <p className="text-lg text-purple-200/90 mb-10">
-                      Whether you're interested in joining our team, becoming a sponsor, or learning more about our
-                      work, we'd love to connect with you.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                      <Button
-                        size="lg"
-                        className="w-full sm:w-auto bg-purple-600 hover:bg-purple-800 text-white"
-                        asChild
-                      >
-                        <Link href="/apply" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-                          Join Our Team
-                        </Link>
-                      </Button>
-                      <Button
-                        size="lg"
-                        className="w-full sm:w-auto bg-purple-600 hover:bg-purple-800 text-white"
-                        asChild
-                      >
-                        <Link href="/sponsors" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-                          Support Us
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       {/* Footer */}

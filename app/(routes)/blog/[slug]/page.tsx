@@ -167,7 +167,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <footer className="border-t border-purple-900/20 bg-[#0a0118]">
         <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-sm text-purple-400">© 2024 Singularity Robotics. All rights reserved.</p>
+            <p className="text-sm text-purple-400">© 2026 Singularity Robotics. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -18,7 +18,7 @@ import {
 } from "lucide-react"
 
 const APPLICATION_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeylzkcg0XHUWUvzJF2WngwyzJFQEDlY1_w9RB4gpYZ92-tgQ/closedform"
+  "https://docs.google.com/forms/d/e/1FAIpQLSdxXEqo61gHjgszNQ6uFRoVZRYrkYnlj9LC4Ldm68heYH7dAQ/viewform?usp=dialog"
 
 const eligibilityCriteria = [
   "Currently enrolled in high school (grades 9-12)",

@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/navbar"
 import {
@@ -9,8 +10,6 @@ import {
   ChevronRight,
   Sparkles,
   ArrowRight,
-  Clock,
-  MapPin,
   Code,
   Lightbulb,
   ExternalLink,
@@ -20,12 +19,37 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { blogPosts } from "@/lib/blog-data" // Import from the shared data file
 import { OptimizedImage } from "@/components/optimized-image"
 
+const teamGallery = [
+  {
+    src: "/images/teampicture.webp",
+    alt: "Singularity Robotics team during the 2024-2025 preseason",
+    caption: "24'-25' Preseason",
+  },
+  {
+    src: "/images/fort-worth-2025-2026.png",
+    alt: "Singularity Robotics team at Fort Worth",
+    caption: "Fort Worth - 25'/26'",
+  },
+  {
+    src: "/images/dripping-springs-2025-2026.png",
+    alt: "Singularity Robotics team at Dripping Springs",
+    caption: "Dripping Springs - 25'/26'",
+  },
+]
+
 export default function Home() {
-  // Get the 3 most recent blog posts
-  const recentBlogPosts = blogPosts.slice(0, 3)
+  const [activeGalleryIndex, setActiveGalleryIndex] = useState(0)
+  const activeGalleryPhoto = teamGallery[activeGalleryIndex]
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveGalleryIndex((currentIndex) => (currentIndex + 1) % teamGallery.length)
+    }, 5000)
+
+    return () => window.clearInterval(interval)
+  }, [])
 
   return (
     <div className="flex min-h-screen flex-col bg-[#0a0118] text-purple-100">
@@ -198,11 +222,11 @@ export default function Home() {
                 <div className="relative rounded-2xl overflow-hidden border border-purple-500/20">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-black/40 z-10" />
                   <OptimizedImage
-                    src="/images/teampicture.webp"
-                    alt="Singularity Robotics Team"
+                    src={activeGalleryPhoto.src}
+                    alt={activeGalleryPhoto.alt}
                     width={1200}
                     height={800}
-                    className="object-cover w-full"
+                    className="aspect-[3/2] object-cover w-full transition-opacity duration-500"
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent z-20">
                     <div className="flex items-center space-x-2 mb-2">
@@ -210,6 +234,20 @@ export default function Home() {
                       <span className="text-sm font-medium text-green-400">Active Since 2024</span>
                     </div>
                     <h3 className="text-xl font-bold text-white">Team 10032</h3>
+                    <p className="mt-1 text-sm text-purple-100/90">{activeGalleryPhoto.caption}</p>
+                    <div className="mt-4 flex justify-center gap-2">
+                      {teamGallery.map((photo, index) => (
+                        <button
+                          key={photo.src}
+                          type="button"
+                          aria-label={`Show ${photo.caption}`}
+                          className={`h-2.5 rounded-full transition-all ${
+                            index === activeGalleryIndex ? "w-8 bg-purple-300" : "w-2.5 bg-white/40 hover:bg-white/70"
+                          }`}
+                          onClick={() => setActiveGalleryIndex(index)}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -217,7 +255,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Upcoming Events - Professional Calendar */}
+        {/* Upcoming Events */}
         <section className="relative py-24 bg-gradient-to-b from-[#120426] to-[#0a0118]">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
@@ -230,162 +268,17 @@ export default function Home() {
                 </div>
                 <h2 className="text-4xl font-bold text-white mb-4">Upcoming Events</h2>
                 <div className="h-px w-24 mx-auto bg-gradient-to-r from-purple-500 to-fuchsia-500 my-6" />
-                <p className="max-w-2xl mx-auto text-lg text-purple-200/90">
-                  Join us at these upcoming competitions and community events to see our team in action.
-                </p>
               </div>
 
-              <div className="space-y-6">
-                {/* Event 1 */}
-                <div className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-purple-900/20 to-black/40 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  <div className="relative p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-                    <div className="flex-shrink-0 w-full md:w-auto">
-                      <div className="bg-purple-900/40 rounded-lg p-4 text-center md:w-32">
-                        <div className="text-2xl font-bold text-white">21-22</div>
-                        <div className="text-sm text-purple-300">MAR 2025</div>
-                      </div>
-                    </div>
-
-                    <div className="flex-grow space-y-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-white mb-1">FRC District Competition</h3>
-                        <div className="flex items-center text-purple-300 text-sm">
-                          <MapPin className="w-4 h-4 mr-1" />
-                          <span>Fort Worth, TX</span>
-                        </div>
-                      </div>
-
-                      <p className="text-purple-200/80">
-                        Our team will be competing in the Fort Worth District FIRST Robotics Competition, showcasing our
-                        latest robot design and competing against top teams from the region.
-                      </p>
-
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-purple-300 text-sm">
-                          <Clock className="w-4 h-4 mr-1" />
-                          <span>9:00 AM - 6:00 PM</span>
-                        </div>
-
-                        <Button
-                          size="sm"
-                          className="bg-purple-600 hover:bg-purple-700 text-white transition-colors"
-                          asChild
-                        >
-                          <Link
-                            href="http://frc-events.firstinspires.org/2025/TXFOR"
-                            className="inline-flex items-center"
-                          >
-                            Learn More
-                            <ExternalLink className="ml-1 h-3 w-3" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
+              <div className="relative overflow-hidden rounded-xl bg-purple-900/10 border border-purple-500/20 p-8 text-center backdrop-blur-sm">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-400/60 to-transparent" />
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-500/20">
+                  <Calendar className="h-6 w-6 text-purple-300" />
                 </div>
-
-                {/* Event 2 */}
-                <div className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-purple-900/20 to-black/40 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  <div className="relative p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-                    <div className="flex-shrink-0 w-full md:w-auto">
-                      <div className="bg-purple-900/40 rounded-lg p-4 text-center md:w-32">
-                        <div className="text-2xl font-bold text-white">2-5</div>
-                        <div className="text-sm text-purple-300">APR 2025</div>
-                      </div>
-                    </div>
-
-                    <div className="flex-grow space-y-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-white mb-1">FIRST Championship</h3>
-                        <div className="flex items-center text-purple-300 text-sm">
-                          <MapPin className="w-4 h-4 mr-1" />
-                          <span>Houston, TX</span>
-                        </div>
-                      </div>
-
-                      <p className="text-purple-200/80">
-                        The ultimate FIRST Robotics event of the season, bringing together top teams from around the
-                        world to compete in this prestigious championship.
-                      </p>
-
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-purple-300 text-sm">
-                          <Clock className="w-4 h-4 mr-1" />
-                          <span>All Day</span>
-                        </div>
-
-                        <Button
-                          size="sm"
-                          className="bg-purple-600 hover:bg-purple-700 text-white transition-colors"
-                          asChild
-                        >
-                          <Link
-                            href="https://frc-events.firstinspires.org/2025/TXCMP"
-                            className="inline-flex items-center"
-                          >
-                            Learn More
-                            <ExternalLink className="ml-1 h-3 w-3" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Event 3 - FRC World Competition */}
-                <div className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-purple-900/20 to-black/40 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  <div className="relative p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-                    <div className="flex-shrink-0 w-full md:w-auto">
-                      <div className="bg-purple-900/40 rounded-lg p-4 text-center md:w-32">
-                        <div className="text-2xl font-bold text-white">16-19</div>
-                        <div className="text-sm text-purple-300">APR 2025</div>
-                      </div>
-                    </div>
-
-                    <div className="flex-grow space-y-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-white mb-1">FRC World Competition</h3>
-                        <div className="flex items-center text-purple-300 text-sm">
-                          <MapPin className="w-4 h-4 mr-1" />
-                          <span>Houston, TX</span>
-                        </div>
-                      </div>
-
-                      <p className="text-purple-200/80">
-                        Join us at the prestigious FRC World Competition where top teams from around the globe compete
-                        for the championship title. This is the ultimate showcase of innovation, teamwork, and robotics
-                        excellence.
-                      </p>
-
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-purple-300 text-sm">
-                          <Clock className="w-4 h-4 mr-1" />
-                          <span>All Day</span>
-                        </div>
-
-                        <Button
-                          size="sm"
-                          className="bg-purple-600 hover:bg-purple-700 text-white transition-colors"
-                          asChild
-                        >
-                          <Link
-                            href="https://www.firstinspires.org/robotics/frc/world-championship"
-                            className="inline-flex items-center"
-                          >
-                            Learn More
-                            <ExternalLink className="ml-1 h-3 w-3" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <h3 className="text-2xl font-bold text-white">Coming Soon! Biocore</h3>
+                <p className="mx-auto mt-3 max-w-2xl text-purple-200/90">
+                  New season information and event details will be shared here soon.
+                </p>
               </div>
             </div>
           </div>
@@ -415,7 +308,7 @@ export default function Home() {
                     <div className="relative aspect-[3/4] w-full max-w-sm mx-auto rounded-lg overflow-hidden border border-purple-500/30 shadow-lg shadow-purple-500/10">
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
                         <Image
-                          src="/images/magazine.png"
+                          src="/images/horizon-magazine-2026.png"
                           alt="Singularity Magazine Cover"
                           width={450}
                           height={600}
@@ -423,7 +316,7 @@ export default function Home() {
                         />
                       <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
                         <div className="inline-block bg-purple-600/80 px-3 py-1 rounded-md text-sm font-medium text-white mb-2">
-                          Spring 2025
+                          Spring 2026
                         </div>
                       </div>
                     </div>
@@ -437,7 +330,7 @@ export default function Home() {
                     </p>
                     <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white group" asChild>
                       <a
-                        href="https://drive.google.com/file/d/18jJDoVbJ-xooOVVvO45xL3Z5-DBTUDlx/view"
+                        href="https://drive.google.com/file/d/1WTiEvd9SGteosK9-qp3lGhZLep4yNeCR/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center"

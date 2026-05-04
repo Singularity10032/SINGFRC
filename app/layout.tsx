@@ -13,7 +13,10 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Singularity Robotics",
   description: "Inspiring innovation through STEM education and competitive robotics",
-    generator: 'v0.dev'
+  generator: "v0.dev",
+  appleWebApp: {
+    title: "Singularity",
+  },
 }
 
 export default function RootLayout({
@@ -27,7 +30,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'

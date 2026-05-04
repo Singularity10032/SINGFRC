@@ -272,13 +272,26 @@ export default function Home() {
 
               <div className="relative overflow-hidden rounded-xl bg-purple-900/10 border border-purple-500/20 p-8 text-center backdrop-blur-sm">
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-400/60 to-transparent" />
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-500/20">
-                  <Calendar className="h-6 w-6 text-purple-300" />
+                <div className="grid gap-8 md:grid-cols-[1.1fr,0.9fr] md:items-center md:text-left">
+                  <div>
+                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-500/20 md:mx-0">
+                      <Calendar className="h-6 w-6 text-purple-300" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">Coming Soon! Biocore</h3>
+                    <p className="mx-auto mt-3 max-w-2xl text-purple-200/90 md:mx-0">
+                      New season information and event details will be shared here soon.
+                    </p>
+                  </div>
+                  <div className="relative overflow-hidden rounded-lg border border-purple-500/20 bg-[#0a0118]/80">
+                    <Image
+                      src="/images/biocore.jpeg"
+                      alt="FIRST Robotics Competition Biocore season teaser"
+                      width={900}
+                      height={520}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-white">Coming Soon! Biocore</h3>
-                <p className="mx-auto mt-3 max-w-2xl text-purple-200/90">
-                  New season information and event details will be shared here soon.
-                </p>
               </div>
             </div>
           </div>
@@ -325,7 +338,7 @@ export default function Home() {
                   <div className="md:w-1/2 text-center md:text-left space-y-6">
                     <h3 className="text-2xl font-bold text-white">Singularity Magazine</h3>
                     <p className="text-purple-200/90">
-                      Our  magazine showcases our journey, technical insights, and the impact of our work. Learn about our latest projects and discover the stories
+                    Our magazine showcases our journey, technical insights, and the impact of our work. Learn about our latest community stories and discover the stories
                       behind our robotics adventures.
                     </p>
                     <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white group" asChild>
@@ -368,7 +381,7 @@ export default function Home() {
                 <div className="text-center space-y-6">
                   <p className="text-purple-200/90">
                     To connect with a broader audience and share our journey, we maintain active social media profiles.
-                    Our Instagram and TikTok accounts, @singularityfrc, provide regular updates on our projects, events,
+                    Our Instagram and TikTok accounts, @singularityfrc, provide regular updates on our community work, events,
                     and team milestones. Through these platforms, we aim to inspire and engage with fellow robotics
                     enthusiasts, students, and supporters worldwide.
                   </p>
@@ -407,8 +420,8 @@ export default function Home() {
                       </a>
                     </Button>
                     <Button className="bg-purple-600 hover:bg-purple-800 text-white" asChild>
-                      <Link href="/contact" className="inline-flex items-center">
-                        Contact Us
+                      <Link href="/sponsors" className="inline-flex items-center">
+                        Sponsor Us
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </Link>
                     </Button>
@@ -419,57 +432,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,58,180,0.2)_0%,rgba(0,0,0,0)_70%)]" />
-
-          <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-5xl mx-auto">
-              <div className="relative overflow-hidden rounded-3xl">
-                <div className="absolute inset-0">
-                  <Image
-                    src="/placeholder.svg?height=600&width=1200"
-                    alt="Robotics Team"
-                    width={1200}
-                    height={600}
-                    className="object-cover w-full h-full"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-black/90" />
-                </div>
-
-                <div className="relative py-20 px-6 md:px-12 lg:px-16">
-                  <div className="max-w-2xl mx-auto text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Join Our Journey</h2>
-                    <p className="text-lg text-purple-200/90 mb-10">
-                      Whether you're interested in joining our team, becoming a sponsor, or learning more about our
-                      work, we'd love to connect with you.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                      <Button
-                        size="lg"
-                        className="w-full sm:w-auto bg-purple-600 hover:bg-purple-800 text-white"
-                        asChild
-                      >
-                        <Link href="/apply" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-                          Join Our Team
-                        </Link>
-                      </Button>
-                      <Button
-                        size="lg"
-                        className="w-full sm:w-auto bg-purple-600 hover:bg-purple-800 text-white"
-                        asChild
-                      >
-                        <Link href="/sponsors" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-                          Support Us
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       {/* Footer */}

@@ -293,11 +293,11 @@ export default function ApplyPage() {
                 <p className="text-purple-200/90 mb-4">Have more questions? Feel free to reach out to us!</p>
                 <Button className="bg-purple-600 hover:bg-purple-700 text-white" asChild>
                   <Link
-                    href="mailto:info@singularityrobotics.org"
+                    href="mailto:admin@singularityfrc.com"
                     className="inline-flex items-center"
                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   >
-                    Contact Us
+                    Email Us
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </Button>

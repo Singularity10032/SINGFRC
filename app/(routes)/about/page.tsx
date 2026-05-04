@@ -279,7 +279,7 @@ export default function AboutPage() {
                 <div className="text-center space-y-6">
                   <p className="text-purple-200/90">
                     To connect with a broader audience and share our journey, we maintain active social media profiles.
-                    Our Instagram and TikTok accounts, @singularityfrc, provide regular updates on our projects, events,
+                    Our Instagram and TikTok accounts, @singularityfrc, provide regular updates on our community work, events,
                     and team milestones. Through these platforms, we aim to inspire and engage with fellow robotics
                     enthusiasts, students, and supporters worldwide.
                   </p>
@@ -318,8 +318,8 @@ export default function AboutPage() {
                       </a>
                     </Button>
                     <Button className="bg-purple-600 hover:bg-purple-800 text-white" asChild>
-                      <Link href="/contact" className="inline-flex items-center">
-                        Contact Us
+                      <Link href="/sponsors" className="inline-flex items-center">
+                        Sponsor Us
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </Link>
                     </Button>

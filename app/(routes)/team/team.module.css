@@ -372,15 +372,17 @@
 }
 
 .dualStarPrimary {
-  top: 6px;
-  left: 15px;
+  top: 50%;
+  left: 7px;
   color: var(--badge-secondary-dark);
+  transform: translateY(-50%);
 }
 
 .dualStarSecondary {
-  right: 15px;
-  bottom: 6px;
+  top: 50%;
+  right: 7px;
   color: var(--badge-primary-dark);
+  transform: translateY(-50%);
 }
 
 .memberCloud {

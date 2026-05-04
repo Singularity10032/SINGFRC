@@ -4,9 +4,9 @@ import Link from "next/link"
 import Image from "next/image"
 import { Navbar } from "@/components/navbar"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Mail, HandHeart, FileText } from "lucide-react"
+import { ExternalLink, Mail, HandHeart, FileText, MapPin, Phone } from "lucide-react"
 
-const sponsors = [
+const pastSponsors = [
   {
     name: "FIRST Robotics",
     logo: "/images/sponsors/frclogo.png",
@@ -74,7 +74,7 @@ export default function SponsorsPage() {
             <div className="max-w-3xl mx-auto text-center">
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
                 <HandHeart className="w-3.5 h-3.5 mr-2" />
-                Our Valued Partners
+                Partner With Us
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 The Organizations That Make Our Work{" "}
@@ -83,8 +83,8 @@ export default function SponsorsPage() {
                 </span>
               </h1>
               <p className="text-lg text-purple-200/90 mb-4">
-                Team 10032 is grateful for the support of these organizations that enable us to inspire and educate the
-                next generation of innovators through competitive robotics.
+                Team 10032 is grateful for the organizations and families that help us inspire the next generation of
+                innovators through competitive robotics.
               </p>
               <p className="text-lg text-purple-200/90 mb-8">
                 Our team is 501(c)(3) verified hence all donations and sponsorships are tax-exempt.
@@ -94,13 +94,62 @@ export default function SponsorsPage() {
           </div>
         </section>
 
-        {/* Sponsors Ticker Section */}
+        {/* Contact Information Section */}
+        <section className="relative py-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-5xl">
+              <div className="mb-10 text-center">
+                <h2 className="mb-4 text-3xl font-bold text-white">Contact Our Team</h2>
+                <p className="mx-auto max-w-2xl text-lg text-purple-200/90">
+                  Reach out about sponsorships, visits, and team opportunities.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+                <div className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-purple-900/20 to-black/40 border border-purple-500/20 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:border-purple-500/40">
+                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/20">
+                    <Mail className="h-6 w-6 text-purple-400" />
+                  </div>
+                  <h3 className="mb-2 text-xl font-bold text-white">Email Us</h3>
+                  <p className="mb-4 text-purple-200/80">For sponsorships, general questions, and partnership ideas.</p>
+                  <Link href="mailto:admin@singularityfrc.com" className="font-medium text-purple-400 hover:text-purple-300">
+                    admin@singularityfrc.com
+                  </Link>
+                </div>
+
+                <div className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-purple-900/20 to-black/40 border border-purple-500/20 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:border-purple-500/40">
+                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/20">
+                    <Phone className="h-6 w-6 text-purple-400" />
+                  </div>
+                  <h3 className="mb-2 text-xl font-bold text-white">Call Us</h3>
+                  <p className="mb-4 text-purple-200/80">For direct sponsorship or event coordination.</p>
+                  <Link href="tel:+14697680663" className="font-medium text-purple-400 hover:text-purple-300">
+                    +1-469-768-0663
+                  </Link>
+                </div>
+
+                <div className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-purple-900/20 to-black/40 border border-purple-500/20 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:border-purple-500/40">
+                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/20">
+                    <MapPin className="h-6 w-6 text-purple-400" />
+                  </div>
+                  <h3 className="mb-2 text-xl font-bold text-white">Visit Us</h3>
+                  <p className="mb-4 text-purple-200/80">Our team is based at the following location.</p>
+                  <address className="not-italic font-medium text-purple-400">
+                    191 Southern Hills Dr
+                  </address>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Past Sponsors Ticker Section */}
         <section className="relative py-8 bg-gradient-to-b from-[#0a0118] to-[#120426] overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
           <div className="relative max-w-full mx-auto">
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-white">Our Sponsors</h2>
+              <h2 className="text-2xl font-bold text-white">Past Sponsors</h2>
             </div>
 
             {/* Ticker container with overflow hidden */}
@@ -108,7 +157,7 @@ export default function SponsorsPage() {
               {/* Inner container that moves */}
               <div className="flex sponsors-ticker">
                 {/* First set of sponsors */}
-                {sponsors.map((sponsor, index) => (
+                {pastSponsors.map((sponsor, index) => (
                   <div
                     key={`sponsor-1-${index}`}
                     className="flex flex-col items-center justify-center mx-10 min-w-[220px]"
@@ -127,7 +176,7 @@ export default function SponsorsPage() {
                 ))}
 
                 {/* Duplicate set for seamless looping */}
-                {sponsors.map((sponsor, index) => (
+                {pastSponsors.map((sponsor, index) => (
                   <div
                     key={`sponsor-2-${index}`}
                     className="flex flex-col items-center justify-center mx-10 min-w-[220px]"
@@ -149,19 +198,19 @@ export default function SponsorsPage() {
           </div>
         </section>
 
-        {/* Sponsors Grid Section */}
+        {/* Past Sponsors Grid Section */}
         <section className="relative py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-10">
-                <h2 className="text-3xl font-bold text-white mb-4">Our Sponsors in Detail</h2>
+                <h2 className="text-3xl font-bold text-white mb-4">Past Sponsors in Detail</h2>
                 <p className="text-lg text-purple-200/90 max-w-2xl mx-auto">
-                  Learn more about the organizations that support our mission and help us achieve our goals.
+                  These organizations have supported our mission and helped us build a stronger foundation.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {sponsors.map((sponsor, index) => (
+                {pastSponsors.map((sponsor) => (
                   <div
                     key={sponsor.name}
                     className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-purple-900/20 to-black/40 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300"
@@ -243,12 +292,12 @@ export default function SponsorsPage() {
                       </Button>
                       <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white group" asChild>
                         <Link
-                          href="mailto:sponsors@singularityrobotics.org"
+                          href="mailto:admin@singularityfrc.com"
                           className="inline-flex items-center justify-center"
                           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                         >
                           <Mail className="mr-2 h-4 w-4" />
-                          Contact Us
+                          Email Us
                         </Link>
                       </Button>
                     </div>

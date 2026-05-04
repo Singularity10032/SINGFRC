@@ -15,7 +15,6 @@ const navItems = [
   { title: "Community", href: "/community" },
   { title: "Sponsors", href: "/sponsors" },
   { title: "Apply", href: "/apply" },
-  { title: "Blog", href: "/blog" },
 ]
 
 export function Navbar() {

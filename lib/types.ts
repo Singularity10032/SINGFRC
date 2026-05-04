@@ -1,20 +1,4 @@
-// Shared types for the project
-
-export interface BlogPost {
-  id: string
-  title: string
-  excerpt: string
-  date: string
-  readTime: string
-  category: string
-  featuredImage: string
-  additionalImages?: {
-    src: string
-    alt: string
-    caption: string
-  }[]
-  content: string
-}
+// Shared types for the site
 
 export interface Project {
   id: string

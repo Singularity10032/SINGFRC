@@ -223,10 +223,7 @@ export default function Team() {
                   <div className={`${styles.starBadge} ${badgeClass}`}>
                     <span role="img" aria-label={getRoleLabel(roles)}>
                       {isDualRole ? (
-                        <>
-                          <span className={styles.dualStarPrimary}>{roleStars[roles[0]]}</span>
-                          <span className={styles.dualStarSecondary}>{roleStars[roles[1]]}</span>
-                        </>
+                        <span className={styles.dualStar}>{"\u2726"}</span>
                       ) : (
                         roleStars[roles[0]]
                       )}

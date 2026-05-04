@@ -9,8 +9,9 @@ export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.id }))
 }
 
-export default function CommunityStoryPage({ params }: { params: { slug: string } }) {
-  const project = projects.find((item) => item.id === params.slug)
+export default async function CommunityStoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const project = projects.find((item) => item.id === slug)
 
   if (!project) {
     notFound()

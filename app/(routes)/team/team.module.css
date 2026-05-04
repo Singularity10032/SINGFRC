@@ -358,31 +358,22 @@
   height: 100%;
 }
 
-.dualStarPrimary,
-.dualStarSecondary {
+.dualStar {
   position: absolute;
   display: grid;
   place-items: center;
-  width: 18px;
-  height: 18px;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  font-size: 0.82rem;
+  color: #ffffff;
+  font-size: 1.05rem;
   line-height: 1;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.44);
-}
-
-.dualStarPrimary {
-  top: 50%;
-  left: 7px;
-  color: var(--badge-secondary-dark);
-  transform: translateY(-50%);
-}
-
-.dualStarSecondary {
-  top: 50%;
-  right: 7px;
-  color: var(--badge-primary-dark);
-  transform: translateY(-50%);
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.7),
+    0 1px 5px rgba(0, 0, 0, 0.44);
+  transform: translate(-50%, -50%);
 }
 
 .memberCloud {

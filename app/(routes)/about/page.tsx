@@ -125,22 +125,36 @@ export default function AboutPage() {
                 </div>
                 <h2 className="text-3xl font-bold text-white mb-4">A Story of Perseverance</h2>
                 <div className="h-px w-24 mx-auto bg-gradient-to-r from-purple-500 to-fuchsia-500 my-6" />
-                <p className="max-w-2xl mx-auto text-lg text-purple-200/90">
-                  From rejection to innovation, our founding story is one of determination and resilience.
-                </p>
               </div>
 
               <div className="bg-purple-900/10 border border-purple-500/20 rounded-xl p-8 backdrop-blur-sm">
                 <div className="space-y-6 text-purple-200/90">
                   <p>
-                    Singularity Robotics was founded out of perseverance. Many of our founding members faced rejection
-                    from existing robotics teams, but rather than giving up, we came together to create our own team,
-                    one that is built on determination, inclusivity, and a drive to succeed.
+                    Founded by very own FIRST alumni, Singularity Robotics was created with a vision to be a more
+                    inclusive, easy going, and fun FRC experience. Our past members took problems and issues that they
+                    had with past teams, and strived to fix it at Singularity.
                   </p>
                   <p>
-                    Despite the challenges of starting from scratch, we have grown into a thriving community that
-                    supports one another and continues to push the team forward. We also take pride in being a
-                    completely student-led team, proving that dedication and teamwork can drive success at every level.
+                    Singularity is now a upcoming <strong className="text-white">2 year team</strong> that is
+                    completely student led, which means no adult mentors help the team besides for legal and
+                    transportation purposes. In 2 years, Singularity has built a truly impressive awards cabinet!
+                  </p>
+                  <p>
+                    In Singularity's inaugural season, Singularity won the{" "}
+                    <strong className="text-white">Rookie All Star Award</strong> at the{" "}
+                    <strong className="text-white">Manor District Event</strong> and the{" "}
+                    <strong className="text-white">First in Texas District Event</strong>, qualifying them to the{" "}
+                    <strong className="text-white">Worlds Championship</strong>. In Singularity's second year, they were{" "}
+                    <strong className="text-white">Champions of the Fort Worth District Event</strong>, winning them
+                    their first blue banner. At the Dripping Springs District Event, they won the{" "}
+                    <strong className="text-white">Sustainability Award sponsored by Dow</strong>. Finally, at the First
+                    in Texas District Championship, they{" "}
+                    <strong className="text-white">qualified to the playoffs in the Mercury Division</strong>, and won
+                    the <strong className="text-white">Rising All Star Award</strong>.
+                  </p>
+                  <p>
+                    Singularity is now hoping to go 3 for 3 as they did in their second year, and qualify for Worlds as
+                    they did in their inaugural season.
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">

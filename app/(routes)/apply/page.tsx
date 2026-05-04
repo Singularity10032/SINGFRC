@@ -5,15 +5,11 @@ import Image from "next/image"
 import { Navbar } from "@/components/navbar"
 import { Button } from "@/components/ui/button"
 import {
-  ArrowRight,
-  ExternalLink,
   Calendar,
   CheckCircle2,
-  Clock,
   FileText,
   Users,
   Lightbulb,
-  HelpCircle,
   ChevronRight,
 } from "lucide-react"
 
@@ -23,8 +19,9 @@ const APPLICATION_FORM_URL =
 const eligibilityCriteria = [
   "Currently enrolled in high school (grades 9-12)",
   "Interest in robotics, engineering, programming, or business/marketing",
-  "Commitment to attend team meetings and events",
+  "HIGH Commitment to attend team meetings and events",
   "Willingness to learn and work collaboratively",
+  "Willing to pay team fees and dues on time",
   "Underclassmen are highly encouraged to join!",
 ]
 
@@ -49,28 +46,6 @@ const applicationSteps = [
     title: "Decision & Onboarding",
     description: "Accepted members will receive an invitation to join the team and begin the onboarding process.",
     icon: CheckCircle2,
-  },
-]
-
-const faqs = [
-  {
-    question: "Do I need prior robotics experience?",
-    answer:
-      "No prior experience is required! We welcome students of all skill levels and provide training in all aspects of robotics.",
-  },
-  {
-    question: "How much time commitment is expected?",
-    answer:
-      "During build season (January-March), we meet everyday including weekends. Outside of build season, we typically meet 3-4 times per week.",
-  },
-  {
-    question: "Are there any fees required to join the team?",
-    answer: "Yes, there is a team fee to cover basic expenses.",
-  },
-  {
-    question: "What roles are available on the team?",
-    answer:
-      "We have roles in mechanical engineering, electrical engineering, programming, CAD design, business, marketing, outreach, and more!",
   },
 ]
 
@@ -234,25 +209,12 @@ export default function ApplyPage() {
                     <div className="flex items-start">
                       <Calendar className="w-5 h-5 text-purple-400 mt-1 mr-3 flex-shrink-0" />
                       <div>
-                        <h3 className="text-lg font-semibold text-white mb-2">Important Dates</h3>
-                        <ul className="space-y-2 text-purple-200/90">
-                          <li className="flex items-center">
-                            <span className="w-3 h-3 rounded-full bg-purple-500/40 mr-2"></span>
-                            <span>Application Opens: May 1, 2025</span>
-                          </li>
-                          <li className="flex items-center">
-                            <span className="w-3 h-3 rounded-full bg-purple-500/40 mr-2"></span>
-                            <span>Application Deadline: August 1, 2025</span>
-                          </li>
-                          <li className="flex items-center">
-                            <span className="w-3 h-3 rounded-full bg-purple-500/40 mr-2"></span>
-                            <span>Interviews: August 1-10, 2025</span>
-                          </li>
-                          <li className="flex items-center">
-                            <span className="w-3 h-3 rounded-full bg-purple-500/40 mr-2"></span>
-                            <span>Team Announcements: September 5, 2025</span>
-                          </li>
-                        </ul>
+                        <h3 className="text-lg font-semibold text-white mb-2">Rolling Applications</h3>
+                        <p className="text-purple-200/90">
+                          Applications are rolling, the first results of people who get accepted will come out{" "}
+                          <strong className="text-white">June 1st</strong>! Don't be discouraged if you don't make it,
+                          as we have multiple rounds of acceptance!
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -262,104 +224,6 @@ export default function ApplyPage() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="relative py-24 bg-gradient-to-b from-[#120426] to-[#0a0118]">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-
-          <div className="container relative mx-auto px-6 sm:px-8 lg:px-12">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
-                  <HelpCircle className="w-3.5 h-3.5 mr-2" />
-                  Common Questions
-                </div>
-                <h2 className="text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
-                <div className="h-px w-24 mx-auto bg-gradient-to-r from-purple-500 to-fuchsia-500 my-6" />
-              </div>
-
-              <div className="grid gap-6">
-                {faqs.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="bg-purple-900/10 border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 transition-all duration-300"
-                  >
-                    <h3 className="text-xl font-bold text-white mb-3">{faq.question}</h3>
-                    <p className="text-purple-200/90">{faq.answer}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-12 text-center">
-                <p className="text-purple-200/90 mb-4">Have more questions? Feel free to reach out to us!</p>
-                <Button className="bg-purple-600 hover:bg-purple-700 text-white" asChild>
-                  <Link
-                    href="mailto:admin@singularityfrc.com"
-                    className="inline-flex items-center"
-                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                  >
-                    Email Us
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Final CTA Section */}
-        <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,58,180,0.2)_0%,rgba(0,0,0,0)_70%)]" />
-
-          <div className="container relative mx-auto px-6 sm:px-8 lg:px-12">
-            <div className="max-w-5xl mx-auto">
-              <div className="relative overflow-hidden rounded-3xl">
-                <div className="absolute inset-0">
-                  <Image
-                    src="/placeholder.svg?height=600&width=1200"
-                    alt="Robotics Team Working"
-                    width={1200}
-                    height={600}
-                    className="object-cover w-full h-full"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-black/90" />
-                </div>
-
-                <div className="relative py-20 px-6 md:px-12 lg:px-16">
-                  <div className="max-w-2xl mx-auto text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                      Ready to Join Singularity Robotics?
-                    </h2>
-                    <p className="text-lg text-purple-200/90 mb-10">
-                      Take the first step toward an incredible journey of innovation, teamwork, and robotics excellence.
-                      Apply today to become part of our award-winning team!
-                    </p>
-
-                    <Button
-                      size="lg"
-                      className="w-full sm:w-auto bg-purple-600 hover:bg-purple-700 text-white border-2 border-purple-600 hover:border-purple-700 transform hover:scale-105 transition-all hover:shadow-[0_0_20px_rgba(147,51,234,0.3)] px-8 py-6 text-lg"
-                      asChild
-                    >
-                      <a
-                        href={APPLICATION_FORM_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2"
-                      >
-                        Apply Now
-                        <ExternalLink className="ml-2 h-5 w-5" />
-                      </a>
-                    </Button>
-
-                    <p className="mt-6 text-sm text-purple-300">
-                      <Clock className="inline-block w-4 h-4 mr-1 mb-1" />
-                      Application Deadline: July 1, 2025
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       {/* Footer */}

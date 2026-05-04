@@ -51,6 +51,44 @@ const pastSponsors = [
   },
 ]
 
+const currentSponsors = [
+  {
+    name: "NASA",
+    logo: "/images/sponsors/nasalogo.png",
+    description:
+      "NASA supports STEM pathways that inspire students to explore engineering, discovery, and real-world problem solving.",
+    website: "https://www.nasa.gov/",
+  },
+  {
+    name: "Raytheon",
+    logo: "/images/sponsors/raytheonlogo.svg",
+    description:
+      "Raytheon is an RTX business focused on advanced defense technology, engineering, and mission-driven innovation.",
+    website: "https://www.raytheon.com/en",
+  },
+  {
+    name: "Texas Instruments",
+    logo: "/images/sponsors/texasinstrumentslogo.svg",
+    description:
+      "Texas Instruments is a Dallas-based semiconductor company helping power electronics education and modern engineering.",
+    website: "https://www.ti.com/",
+  },
+  {
+    name: "Gene Haas Foundation",
+    logo: "/images/sponsors/genehaasfoundationlogo.png",
+    description:
+      "The Gene Haas Foundation supports manufacturing education and helps students gain access to hands-on STEM opportunities.",
+    website: "https://ghaasfoundation.org/",
+  },
+  {
+    name: "Bioworld",
+    logo: "/images/sponsors/bioworldlogo.svg",
+    description:
+      "Bioworld is a global brand growth platform creating licensed merchandise programs across retail and consumer channels.",
+    website: "https://www.bioworldmerch.com/",
+  },
+]
+
 export default function SponsorsPage() {
   return (
     <div className="flex min-h-screen flex-col bg-[#0a0118] text-purple-100">
@@ -143,6 +181,56 @@ export default function SponsorsPage() {
           </div>
         </section>
 
+        {/* Current Sponsors Grid Section */}
+        <section className="relative py-16 bg-gradient-to-b from-[#0a0118] to-[#120426]">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl">
+              <div className="mb-10 text-center">
+                <h2 className="mb-4 text-3xl font-bold text-white">Current Sponsors in Detail</h2>
+                <p className="mx-auto max-w-2xl text-lg text-purple-200/90">
+                  These partners are helping Singularity Robotics grow through the current season.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {currentSponsors.map((sponsor) => (
+                  <div
+                    key={sponsor.name}
+                    className="group relative overflow-hidden rounded-xl border border-purple-500/20 bg-gradient-to-b from-purple-900/20 to-black/40 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/40"
+                  >
+                    <div className="absolute right-0 top-0 h-32 w-32 -translate-y-1/2 translate-x-1/2 rounded-full bg-purple-600/10 blur-2xl opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="space-y-6 p-6">
+                      <div className="relative flex h-28 items-center justify-center overflow-hidden rounded-lg bg-[#0a0118]/80 p-4">
+                        <Image
+                          src={sponsor.logo}
+                          alt={`${sponsor.name} logo`}
+                          width={240}
+                          height={120}
+                          className="h-auto max-h-20 w-auto max-w-[220px] object-contain"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="mb-2 text-xl font-bold text-white">{sponsor.name}</h3>
+                        <p className="mb-4 text-sm text-purple-200/80">{sponsor.description}</p>
+                      </div>
+                      <Link
+                        href={sponsor.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-sm font-medium text-purple-400 hover:text-purple-300"
+                      >
+                        Visit Website
+                        <ExternalLink className="ml-1 h-3 w-3" />
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Past Sponsors Ticker Section */}
         <section className="relative py-8 bg-gradient-to-b from-[#0a0118] to-[#120426] overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
@@ -191,60 +279,6 @@ export default function SponsorsPage() {
                       />
                     </div>
                     <span className="text-base font-medium text-purple-200 whitespace-nowrap">{sponsor.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Past Sponsors Grid Section */}
-        <section className="relative py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-10">
-                <h2 className="text-3xl font-bold text-white mb-4">Past Sponsors in Detail</h2>
-                <p className="text-lg text-purple-200/90 max-w-2xl mx-auto">
-                  These organizations have supported our mission and helped us build a stronger foundation.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {pastSponsors.map((sponsor) => (
-                  <div
-                    key={sponsor.name}
-                    className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-purple-900/20 to-black/40 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300"
-                  >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
-
-                    <div className="p-6 space-y-6">
-                      <div className="relative h-28 flex items-center justify-center p-4 bg-[#0a0118]/80 rounded-lg overflow-hidden">
-                        <Image
-                          src={sponsor.logo || "/placeholder.svg"}
-                          alt={`${sponsor.name} logo`}
-                          width={240}
-                          height={120}
-                          className="max-h-20 max-w-[220px] w-auto h-auto object-contain"
-                        />
-                      </div>
-
-                      <div>
-                        <h3 className="text-xl font-bold text-white mb-2">{sponsor.name}</h3>
-                        <p className="text-purple-200/80 text-sm mb-4">{sponsor.description}</p>
-                      </div>
-
-                      <div className="space-y-3">
-                        <Link
-                          href={sponsor.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center text-purple-400 hover:text-purple-300 text-sm font-medium group/link"
-                        >
-                          Visit Website
-                          <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover/link:translate-x-1" />
-                        </Link>
-                      </div>
-                    </div>
                   </div>
                 ))}
               </div>

@@ -9,6 +9,7 @@ type LeadershipMember = {
   name: string;
   position: string;
   roleKind: RoleKind;
+  roleKinds?: [RoleKind, RoleKind];
 };
 
 type TeamMember = {
@@ -42,6 +43,30 @@ const roleBadgeClass: Record<RoleKind, string> = {
   business: styles.businessBadge,
 };
 
+const dualRoleBadgeClass: Record<string, string> = {
+  "mechanical-programming": styles.mechanicalProgrammingBadge,
+  "mechanical-business": styles.mechanicalBusinessBadge,
+  "programming-business": styles.programmingBusinessBadge,
+};
+
+const roleOrder: RoleKind[] = ["mechanical", "programming", "business"];
+
+function getMemberRoles(member: LeadershipMember) {
+  return member.roleKinds ?? [member.roleKind];
+}
+
+function getDualRoleKey(roles: RoleKind[]) {
+  return [...roles].sort((first, second) => roleOrder.indexOf(first) - roleOrder.indexOf(second)).join("-");
+}
+
+function getRoleLabel(roles: RoleKind[]) {
+  return roles.map((role) => roleLabels[role]).join(" and ");
+}
+
+function isCaptain(member: LeadershipMember) {
+  return member.position.toLowerCase().includes("captain");
+}
+
 const seasons: Season[] = [
   {
     id: "2025-2026",
@@ -57,7 +82,12 @@ const seasons: Season[] = [
       { name: "Sachin Rajan", position: "Driver", roleKind: "mechanical" },
       { name: "Shaurya Singh", position: "Outreach Lead", roleKind: "business" },
       { name: "Shreyansh Panigrahi", position: "Programming Lead", roleKind: "programming" },
-      { name: "Mohan Chillara", position: "Business and Mech Lead", roleKind: "business" },
+      {
+        name: "Mohan Chillara",
+        position: "Business and Mech Lead",
+        roleKind: "business",
+        roleKinds: ["business", "mechanical"],
+      },
     ],
     members: [
       { name: "Arnau Ariga", year: "Senior" },
@@ -189,19 +219,41 @@ export default function Team() {
           </div>
 
           <div className={styles.leadershipGrid}>
-            {activeSeason.leadership.map((member) => (
-              <article key={`${activeSeason.id}-${member.name}-${member.position}`} className={styles.leaderCard}>
-                <div className={`${styles.starBadge} ${roleBadgeClass[member.roleKind]}`}>
-                  <span role="img" aria-label={roleLabels[member.roleKind]}>
-                    {roleStars[member.roleKind]}
-                  </span>
-                </div>
-                <div>
-                  <h3>{member.name}</h3>
-                  <p>{member.position}</p>
-                </div>
-              </article>
-            ))}
+            {activeSeason.leadership.map((member) => {
+              const roles = getMemberRoles(member);
+              const isDualRole = roles.length === 2;
+              const captain = isCaptain(member);
+              const badgeClass = isDualRole
+                ? `${styles.dualBadge} ${dualRoleBadgeClass[getDualRoleKey(roles)]}`
+                : roleBadgeClass[roles[0]];
+
+              return (
+                <article
+                  key={`${activeSeason.id}-${member.name}-${member.position}`}
+                  className={`${styles.leaderCard} ${captain ? styles.captainCard : ""}`}
+                >
+                  <div className={`${styles.starBadge} ${badgeClass}`}>
+                    <span role="img" aria-label={getRoleLabel(roles)}>
+                      {isDualRole ? (
+                        <>
+                          <span className={styles.dualStarPrimary}>{roleStars[roles[0]]}</span>
+                          <span className={styles.dualStarSecondary}>{roleStars[roles[1]]}</span>
+                        </>
+                      ) : (
+                        roleStars[roles[0]]
+                      )}
+                    </span>
+                  </div>
+                  <div>
+                    <div className={styles.leaderNameRow}>
+                      <h3>{member.name}</h3>
+                      {captain ? <span className={styles.captainTag}>Captain</span> : null}
+                    </div>
+                    <p>{member.position}</p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </section>
 

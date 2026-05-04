@@ -185,6 +185,8 @@
 }
 
 .leaderCard {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -206,12 +208,49 @@
   transform: translateY(-4px);
 }
 
+.captainCard {
+  border-color: rgba(192, 132, 252, 0.42);
+  background:
+    linear-gradient(135deg, rgba(124, 58, 237, 0.16), rgba(255, 255, 255, 0.07) 46%),
+    rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 16px 42px rgba(109, 40, 217, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.captainCard::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  content: "";
+  background: linear-gradient(to bottom, #a78bfa, #c026d3 55%, #38bdf8);
+  opacity: 0.9;
+}
+
+.captainCard:hover {
+  border-color: rgba(216, 180, 254, 0.62);
+  box-shadow:
+    0 22px 54px rgba(109, 40, 217, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.leaderNameRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
 .leaderCard h3 {
   margin: 0 0 5px;
   color: #ffffff;
   font-size: 1rem;
   font-weight: 850;
   line-height: 1.25;
+}
+
+.leaderNameRow h3 {
+  margin-bottom: 0;
 }
 
 .leaderCard p {
@@ -221,7 +260,24 @@
   line-height: 1.35;
 }
 
+.captainTag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 3px 8px;
+  border: 1px solid rgba(216, 180, 254, 0.26);
+  border-radius: 999px;
+  background: rgba(88, 28, 135, 0.48);
+  color: #ede9fe;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 .starBadge {
+  position: relative;
   display: grid;
   place-items: center;
   flex: 0 0 48px;
@@ -248,6 +304,83 @@
 .businessBadge {
   background: radial-gradient(circle at 35% 25%, #fae8ff, #c026d3 58%, #701a75);
   color: #fdf4ff;
+}
+
+.dualBadge {
+  --badge-primary: #f59e0b;
+  --badge-primary-dark: #78350f;
+  --badge-secondary: #06b6d4;
+  --badge-secondary-dark: #155e75;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 50% 25%, var(--badge-secondary) 0 15%, transparent 16%),
+    radial-gradient(circle at 50% 75%, var(--badge-primary) 0 15%, transparent 16%),
+    radial-gradient(circle at 50% 25%, var(--badge-primary) 0 35%, transparent 36%),
+    radial-gradient(circle at 50% 75%, var(--badge-secondary) 0 35%, transparent 36%),
+    linear-gradient(90deg, var(--badge-primary) 0 50%, var(--badge-secondary) 50% 100%);
+}
+
+.mechanicalProgrammingBadge {
+  --badge-primary: #f59e0b;
+  --badge-primary-dark: #78350f;
+  --badge-secondary: #06b6d4;
+  --badge-secondary-dark: #155e75;
+}
+
+.mechanicalBusinessBadge {
+  --badge-primary: #f59e0b;
+  --badge-primary-dark: #78350f;
+  --badge-secondary: #c026d3;
+  --badge-secondary-dark: #701a75;
+}
+
+.programmingBusinessBadge {
+  --badge-primary: #06b6d4;
+  --badge-primary-dark: #155e75;
+  --badge-secondary: #c026d3;
+  --badge-secondary-dark: #701a75;
+}
+
+.dualBadge::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  content: "";
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 42%);
+  pointer-events: none;
+}
+
+.dualBadge > span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dualStarPrimary,
+.dualStarSecondary {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 0.82rem;
+  line-height: 1;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.44);
+}
+
+.dualStarPrimary {
+  top: 6px;
+  left: 15px;
+  color: var(--badge-secondary-dark);
+}
+
+.dualStarSecondary {
+  right: 15px;
+  bottom: 6px;
+  color: var(--badge-primary-dark);
 }
 
 .memberCloud {

@@ -55,7 +55,12 @@ export function Navbar() {
                   <NavigationMenuItem key={item.title}>
                     <Link
                       href={item.href}
-                      className="relative px-4 py-2 text-sm text-purple-100/90 hover:text-purple-400 transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-purple-500 after:transition-all after:duration-300"
+                      className={cn(
+                        "relative px-4 py-2 text-sm transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-purple-500 after:transition-all after:duration-300",
+                        item.title === "Apply"
+                          ? "rounded-full bg-purple-600 text-white hover:bg-purple-500"
+                          : "text-purple-100/90 hover:text-purple-400",
+                      )}
                       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     >
                       {item.title}
@@ -93,7 +98,12 @@ export function Navbar() {
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="block px-3 py-4 text-base font-medium text-purple-100/90 hover:text-purple-400 border-b border-purple-900/20 transition-colors"
+                  className={cn(
+                    "block px-3 py-4 text-base font-medium border-b border-purple-900/20 transition-colors",
+                    item.title === "Apply"
+                      ? "rounded-2xl bg-purple-600 text-white hover:bg-purple-500"
+                      : "text-purple-100/90 hover:text-purple-400",
+                  )}
                   onClick={() => {
                     setMobileMenuOpen(false)
                     window.scrollTo({ top: 0, behavior: "smooth" })

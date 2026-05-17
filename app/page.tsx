@@ -26,21 +26,25 @@ const teamGallery = [
     src: "/images/eoy-2025-2026.jpg",
     alt: "Singularity Robotics team at the end of the 2025-2026 season",
     caption: "EOY 25'/26'",
+    imageClassName: "aspect-[4/3] w-full object-cover transition-opacity duration-500",
   },
   {
     src: "/images/dripping-springs-2025-2026.png",
     alt: "Singularity Robotics team at Dripping Springs",
     caption: "Dripping Springs - 25'/26'",
+    imageClassName: "aspect-[3/2] w-full object-cover transition-opacity duration-500",
   },
   {
     src: "/images/fort-worth-2025-2026.png",
     alt: "Singularity Robotics team at Fort Worth",
     caption: "Fort Worth - 25'/26'",
+    imageClassName: "aspect-[3/2] w-full object-cover transition-opacity duration-500",
   },
   {
     src: "/images/teampicture.webp",
     alt: "Singularity Robotics team during the 2024-2025 preseason",
     caption: "24'-25' Preseason",
+    imageClassName: "aspect-[3/2] w-full object-cover transition-opacity duration-500",
   },
 ]
 
@@ -227,7 +231,7 @@ export default function Home() {
                       alt={activeGalleryPhoto.alt}
                       width={1200}
                       height={800}
-                      className="aspect-[3/2] w-full object-cover transition-opacity duration-500"
+                      className={activeGalleryPhoto.imageClassName}
                     />
                   </div>
                   <button

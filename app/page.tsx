@@ -227,7 +227,7 @@ export default function Home() {
                       alt={activeGalleryPhoto.alt}
                       width={1200}
                       height={800}
-                      className="aspect-[4/3] w-full bg-black/40 object-contain transition-opacity duration-500"
+                      className="aspect-[3/2] w-full object-cover transition-opacity duration-500"
                     />
                   </div>
                   <button

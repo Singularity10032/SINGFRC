@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/navbar"
 import {
@@ -50,14 +50,6 @@ export default function Home() {
   const showPreviousGalleryPhoto = () => {
     setActiveGalleryIndex((currentIndex) => (currentIndex + 1) % teamGallery.length)
   }
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveGalleryIndex((currentIndex) => (currentIndex + 1) % teamGallery.length)
-    }, 5000)
-
-    return () => window.clearInterval(interval)
-  }, [])
 
   return (
     <div className="flex min-h-screen flex-col bg-[#0a0118] text-purple-100">
@@ -235,9 +227,17 @@ export default function Home() {
                       alt={activeGalleryPhoto.alt}
                       width={1200}
                       height={800}
-                      className="aspect-[3/2] object-cover w-full transition-opacity duration-500"
+                      className="aspect-[4/3] w-full bg-black/40 object-contain transition-opacity duration-500"
                     />
                   </div>
+                  <button
+                    type="button"
+                    aria-label="Go back in time to the next team photo"
+                    className="absolute right-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white shadow-lg shadow-black/30 backdrop-blur-sm transition hover:bg-purple-600/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300"
+                    onClick={showPreviousGalleryPhoto}
+                  >
+                    <ChevronRight className="h-6 w-6" />
+                  </button>
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent z-20">
                     <div className="flex items-center space-x-2 mb-2">
                       <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />

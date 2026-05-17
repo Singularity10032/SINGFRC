@@ -3,9 +3,9 @@
   min-height: 100vh;
   overflow: hidden;
   background:
-    radial-gradient(circle at 20% 15%, rgba(168, 85, 247, 0.24), transparent 28rem),
-    radial-gradient(circle at 82% 8%, rgba(56, 189, 248, 0.16), transparent 24rem),
-    radial-gradient(circle at 50% 100%, rgba(217, 70, 239, 0.14), transparent 26rem),
+    radial-gradient(circle at 20% 15%, rgba(168, 85, 247, 0.08), transparent 30rem),
+    radial-gradient(circle at 82% 8%, rgba(56, 189, 248, 0.06), transparent 28rem),
+    radial-gradient(circle at 50% 100%, rgba(217, 70, 239, 0.05), transparent 30rem),
     #0a0118;
   color: #f6f0ff;
   padding: 76px 20px 92px;
@@ -16,20 +16,15 @@
   inset: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.72) 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(216, 180, 254, 0.48) 1px, transparent 1.5px),
-    linear-gradient(to right, rgba(168, 85, 247, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(168, 85, 247, 0.06) 1px, transparent 1px);
+    radial-gradient(circle, rgba(255, 255, 255, 0.22) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(216, 180, 254, 0.16) 0 1px, transparent 1.5px);
   background-position:
     0 0,
-    32px 44px,
-    0 0,
-    0 0;
+    38px 54px;
   background-size:
-    86px 86px,
-    124px 124px,
-    64px 64px,
-    64px 64px;
+    92px 92px,
+    146px 146px;
+  opacity: 0.38;
   mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
 }
 
@@ -61,7 +56,7 @@
   font-size: clamp(2.6rem, 7vw, 5.2rem);
   font-weight: 900;
   line-height: 0.95;
-  text-shadow: 0 0 38px rgba(168, 85, 247, 0.44);
+  text-shadow: 0 0 28px rgba(168, 85, 247, 0.22);
 }
 
 .subtitle {

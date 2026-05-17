@@ -23,9 +23,14 @@ import { OptimizedImage } from "@/components/optimized-image"
 
 const teamGallery = [
   {
-    src: "/images/teampicture.webp",
-    alt: "Singularity Robotics team during the 2024-2025 preseason",
-    caption: "24'-25' Preseason",
+    src: "/images/eoy-2025-2026.jpg",
+    alt: "Singularity Robotics team at the end of the 2025-2026 season",
+    caption: "EOY 25'/26'",
+  },
+  {
+    src: "/images/dripping-springs-2025-2026.png",
+    alt: "Singularity Robotics team at Dripping Springs",
+    caption: "Dripping Springs - 25'/26'",
   },
   {
     src: "/images/fort-worth-2025-2026.png",
@@ -33,15 +38,18 @@ const teamGallery = [
     caption: "Fort Worth - 25'/26'",
   },
   {
-    src: "/images/dripping-springs-2025-2026.png",
-    alt: "Singularity Robotics team at Dripping Springs",
-    caption: "Dripping Springs - 25'/26'",
+    src: "/images/teampicture.webp",
+    alt: "Singularity Robotics team during the 2024-2025 preseason",
+    caption: "24'-25' Preseason",
   },
 ]
 
 export default function Home() {
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0)
   const activeGalleryPhoto = teamGallery[activeGalleryIndex]
+  const showPreviousGalleryPhoto = () => {
+    setActiveGalleryIndex((currentIndex) => (currentIndex + 1) % teamGallery.length)
+  }
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -57,19 +65,8 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-black h-screen flex items-center justify-center">
-          {/* Animated background elements */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Untitled%20design%20(6)-4jsNQI5UhqgtGSbqfS0B8cTcCPRhTm.png')] bg-contain bg-center bg-no-repeat opacity-30 animate-pulse scale-75" />
-            <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-black/50 to-black" />
-
-            {/* Decorative elements */}
-            <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl animate-blob" />
-            <div className="absolute top-40 right-10 w-72 h-72 bg-indigo-600/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
-            <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-purple-400/10 rounded-full blur-3xl animate-blob animation-delay-4000" />
-
-            {/* Grid pattern overlay */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f46e510_1px,transparent_1px),linear-gradient(to_bottom,#4f46e510_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-          </div>
+          <div className="subtle-stars" />
+          <div className="absolute inset-0 bg-gradient-to-b from-purple-950/10 via-black/30 to-black" />
 
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32">
             <div className="text-center space-y-8">
@@ -137,8 +134,7 @@ export default function Home() {
 
         {/* About Section - Expanded spacing with centered content and image below */}
         <section className="relative py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,58,180,0.1)_0%,rgba(0,0,0,0)_70%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <div className="subtle-stars" />
 
           <div className="container relative mx-auto px-6 sm:px-8 lg:px-12">
             <div className="max-w-5xl mx-auto text-center">
@@ -220,14 +216,28 @@ export default function Home() {
               <div className="relative max-w-4xl mx-auto">
                 <div className="absolute -inset-4 bg-purple-500/10 rounded-3xl blur-xl" />
                 <div className="relative rounded-2xl overflow-hidden border border-purple-500/20">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-black/40 z-10" />
-                  <OptimizedImage
-                    src={activeGalleryPhoto.src}
-                    alt={activeGalleryPhoto.alt}
-                    width={1200}
-                    height={800}
-                    className="aspect-[3/2] object-cover w-full transition-opacity duration-500"
-                  />
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    aria-label="Click to go back in time through team photos"
+                    className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300"
+                    onClick={showPreviousGalleryPhoto}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault()
+                        showPreviousGalleryPhoto()
+                      }
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-black/40 z-10" />
+                    <OptimizedImage
+                      src={activeGalleryPhoto.src}
+                      alt={activeGalleryPhoto.alt}
+                      width={1200}
+                      height={800}
+                      className="aspect-[3/2] object-cover w-full transition-opacity duration-500"
+                    />
+                  </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent z-20">
                     <div className="flex items-center space-x-2 mb-2">
                       <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -235,6 +245,9 @@ export default function Home() {
                     </div>
                     <h3 className="text-xl font-bold text-white">Team 10032</h3>
                     <p className="mt-1 text-sm text-purple-100/90">{activeGalleryPhoto.caption}</p>
+                    <p className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-purple-200/80">
+                      Click to go back in time
+                    </p>
                     <div className="mt-4 flex justify-center gap-2">
                       {teamGallery.map((photo, index) => (
                         <button
@@ -244,7 +257,10 @@ export default function Home() {
                           className={`h-2.5 rounded-full transition-all ${
                             index === activeGalleryIndex ? "w-8 bg-purple-300" : "w-2.5 bg-white/40 hover:bg-white/70"
                           }`}
-                          onClick={() => setActiveGalleryIndex(index)}
+                          onClick={(event) => {
+                            event.stopPropagation()
+                            setActiveGalleryIndex(index)
+                          }}
                         />
                       ))}
                     </div>
@@ -257,7 +273,7 @@ export default function Home() {
 
         {/* Upcoming Events */}
         <section className="relative py-24 bg-gradient-to-b from-[#120426] to-[#0a0118]">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <div className="subtle-stars" />
 
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
@@ -299,7 +315,7 @@ export default function Home() {
 
         {/* Magazine Section */}
         <section className="relative py-24 bg-gradient-to-b from-[#0a0118] to-[#120426]">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <div className="subtle-stars" />
 
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
@@ -361,7 +377,7 @@ export default function Home() {
 
         {/* Connect With Us Section */}
         <section className="relative py-20 bg-gradient-to-b from-[#120426] to-[#0a0118]">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <div className="subtle-stars" />
 
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">

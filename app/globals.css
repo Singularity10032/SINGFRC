@@ -79,6 +79,22 @@
   animation: ticker 40s linear infinite;
 }
 
+.subtle-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.22) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(216, 180, 254, 0.16) 0 1px, transparent 1.5px);
+  background-position:
+    0 0,
+    38px 54px;
+  background-size:
+    92px 92px,
+    146px 146px;
+  opacity: 0.38;
+}
+
 @media (max-width: 768px) {
   .sponsors-ticker {
     animation-duration: 25s;

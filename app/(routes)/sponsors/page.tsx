@@ -82,7 +82,7 @@ const currentSponsors = [
   },
   {
     name: "Bioworld",
-    logo: "/images/sponsors/bioworld.png",
+    logo: "/images/sponsors/bioworld.jpg",
     description:
       "Bioworld is a global brand growth platform creating licensed merchandise programs across retail and consumer channels.",
     website: "https://www.bioworldmerch.com/",

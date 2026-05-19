@@ -315,7 +315,7 @@ export default function SponsorsPage() {
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
                       <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white group" asChild>
                         <Link
-                          href="https://drive.google.com/file/d/1uociI0i--A39BuKz6Tw6ar2x0Tsqh1uR/view"
+                          href="https://drive.google.com/file/d/1uOwNMZHO93HkUMtPvebO3xjrukH4R4OM/view?usp=sharing"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center justify-center"

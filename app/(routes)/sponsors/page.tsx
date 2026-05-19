@@ -61,14 +61,14 @@ const currentSponsors = [
   },
   {
     name: "Raytheon",
-    logo: "/images/sponsors/raytheonlogo.svg",
+    logo: "/images/sponsors/raytheon.svg",
     description:
       "Raytheon is an RTX business focused on advanced defense technology, engineering, and mission-driven innovation.",
     website: "https://www.raytheon.com/en",
   },
   {
     name: "Texas Instruments",
-    logo: "/images/sponsors/texasinstrumentslogo.svg",
+    logo: "/images/sponsors/texasinstruments.png",
     description:
       "Texas Instruments is a Dallas-based semiconductor company helping power electronics education and modern engineering.",
     website: "https://www.ti.com/",
@@ -82,7 +82,7 @@ const currentSponsors = [
   },
   {
     name: "Bioworld",
-    logo: "/images/sponsors/bioworldlogo.svg",
+    logo: "/images/sponsors/bioworld.png",
     description:
       "Bioworld is a global brand growth platform creating licensed merchandise programs across retail and consumer channels.",
     website: "https://www.bioworldmerch.com/",

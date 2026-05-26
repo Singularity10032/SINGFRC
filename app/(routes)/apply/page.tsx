@@ -62,6 +62,14 @@ export default function ApplyPage() {
 
           <div className="container relative mx-auto px-6 sm:px-8 lg:px-12">
             <div className="max-w-4xl mx-auto text-center">
+              <div className="mb-8 rounded-2xl border border-purple-300/40 bg-purple-600/25 px-6 py-5 shadow-[0_0_35px_rgba(168,85,247,0.22)] backdrop-blur-sm">
+                <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+                  <Calendar className="h-8 w-8 text-purple-200" />
+                  <p className="text-2xl font-black uppercase tracking-wide text-white sm:text-3xl">
+                    Applications due June 10th
+                  </p>
+                </div>
+              </div>
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
                 <Users className="w-3.5 h-3.5 mr-2" />
                 Join Our Team
@@ -204,20 +212,6 @@ export default function ApplyPage() {
                       </li>
                     ))}
                   </ul>
-
-                  <div className="bg-purple-900/20 border border-purple-500/20 rounded-xl p-6 w-full max-w-md">
-                    <div className="flex items-start">
-                      <Calendar className="w-5 h-5 text-purple-400 mt-1 mr-3 flex-shrink-0" />
-                      <div>
-                        <h3 className="text-lg font-semibold text-white mb-2">Rolling Applications</h3>
-                        <p className="text-purple-200/90">
-                          Applications are rolling, the first results of people who get accepted will come out{" "}
-                          <strong className="text-white">June 1st</strong>! Don't be discouraged if you don't make it,
-                          as we have multiple rounds of acceptance!
-                        </p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

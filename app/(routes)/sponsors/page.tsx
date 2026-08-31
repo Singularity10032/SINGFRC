@@ -97,6 +97,13 @@ const currentSponsors = [
     website: "https://www.mouser.com/",
   },
   {
+    name: "LitterLoot",
+    logo: "/placeholder-logo.svg",
+    description:
+      "LitterLoot supports our team's operations and outreach.",
+    website: "https://litterloot.com/",
+  },
+  {
     name: "PGA of America",
     logo: "/images/sponsors/pgaofamerica.png",
     description:

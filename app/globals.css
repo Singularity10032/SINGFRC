@@ -7,6 +7,12 @@
 @layer base {
   html {
     font-family: "Manrope", sans-serif;
+    /* Manrope has a "(c)" -> © contextual-alternate ligature that silently
+       mangles legal text like "501(c)(3)" into "501©(3)". Turn off contextual
+       alternates/discretionary ligatures site-wide so parenthesized text
+       renders literally. */
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "calt" 0;
   }
 
   /* Design tokens, themed to the site's space palette. Previously these were

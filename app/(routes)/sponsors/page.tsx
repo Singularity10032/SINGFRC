@@ -89,6 +89,27 @@ const currentSponsors = [
       "Bioworld is a global brand growth platform creating licensed merchandise programs across retail and consumer channels.",
     website: "https://www.bioworldmerch.com/",
   },
+  {
+    name: "Mouser Electronics",
+    logo: "/images/sponsors/mouserelectronics.svg",
+    description:
+      "Mouser Electronics is a global distributor of electronic components, supplying the parts our team uses to build and wire the robot.",
+    website: "https://www.mouser.com/",
+  },
+  {
+    name: "PGA of America",
+    logo: "/images/sponsors/pgaofamerica.png",
+    description:
+      "The PGA of America is the organization behind professional golf in the U.S., supporting our team's operations and outreach.",
+    website: "https://www.pga.com/",
+  },
+  {
+    name: "Corbridge Orthodontics",
+    logo: "/images/sponsors/corbridgeorthodontics.svg",
+    description:
+      "Corbridge Orthodontics is a Frisco-based orthodontic practice that supports local students and STEM programs like ours.",
+    website: "https://corbridgeorthodontics.com/",
+  },
 ]
 
 export default function SponsorsPage() {

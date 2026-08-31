@@ -5,7 +5,7 @@ export const projects: Project[] = [
     id: "algae-abyss",
     title: "Algae Abyss",
     excerpt:
-      "An immersive 8-bit game and tournament that helped our programming team teach game development, raise funds, and bring more students into FRC.",
+      "An 8-bit game our programming team built in two weeks, then turned into a teaching tool, a fundraiser tournament, and a recruiting pipeline.",
     coverImage: "/images/projects/algae-abyss-title.png",
     images: [
       {
@@ -26,15 +26,15 @@ export const projects: Project[] = [
       },
     ],
     content: `
-    <p class="mb-4">Over two weeks, our programming team poured its energy into creating Algae Abyss, an immersive 8-bit game that brought competitive gaming fun outside of traditional district events. The project started as a fresh, engaging way to learn programming and grew into something much bigger.</p>
+    <p class="mb-4">Our programming team spent two weeks building Algae Abyss, an 8-bit game meant to bring some competitive fun outside of district events. It started as a way to practice programming and grew into a lot more.</p>
 
-    <p class="mb-4">We did not just build the game; we used it as a dynamic teaching tool during our programming seminars. Participants got hands-on experience while diving into game development, sparking curiosity and creativity at every turn.</p>
+    <p class="mb-4">The game became a teaching tool in our programming seminars, where students got hands-on with game development instead of just reading about it.</p>
 
-    <p class="mb-4">The excitement reached a new level when we hosted a March Madness-style tournament using Algae Abyss. The tournament raised $500 for local charities and helped bring our community closer to FIRST Robotics Competition. By merging fun gameplay with meaningful engagement, we introduced new students and supporters to robotics.</p>
+    <p class="mb-4">Then we hosted a March Madness-style tournament using Algae Abyss. It raised $500 for local charities and gave people in our community a reason to come see what FIRST Robotics Competition is about.</p>
 
-    <p class="mb-4">Perhaps the most rewarding outcome was the addition of 25 new members to our team for the 2026 FRC season, including 10 freshmen who help strengthen our future. This initiative showcased the creativity of our programming team and gave us a unique way to spread a passion for robotics throughout our community.</p>
+    <p class="mb-4">The best outcome: 25 new members joined the team for the 2026 FRC season, 10 of them freshmen.</p>
 
-    <p class="mb-4">In the end, Algae Abyss was more than a game. It became a bridge between competitive gaming, community involvement, and the inspiring world of robotics. We are proud of the impact it made and excited to keep building from it.</p>
+    <p class="mb-4">We're proud of how it turned out, and we plan to keep building on it.</p>
   `,
     tournamentImages: [
       {

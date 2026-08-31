@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Reveal } from "@/components/reveal";
 import styles from "./team.module.css";
 
 type RoleKind = "mechanical" | "programming" | "business";
@@ -190,6 +191,7 @@ export default function Team() {
           </div>
         </section>
 
+        <Reveal>
         <section className={styles.panel}>
           <div className={styles.sectionHeader}>
             <p className={styles.kicker}>{activeSeason.label}</p>
@@ -243,7 +245,9 @@ export default function Team() {
             })}
           </div>
         </section>
+        </Reveal>
 
+        <Reveal delay={90}>
         <section className={styles.panel}>
           <div className={styles.sectionHeader}>
             <p className={styles.kicker}>{activeSeason.title}</p>
@@ -259,6 +263,7 @@ export default function Team() {
             ))}
           </div>
         </section>
+        </Reveal>
       </div>
     </div>
   );

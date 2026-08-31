@@ -1,8 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/navbar"
+import { Reveal } from "@/components/reveal"
+import { SpaceBackdrop } from "@/components/space-backdrop"
 import {
   Users,
   Calendar,
@@ -48,12 +50,60 @@ const teamGallery = [
   },
 ]
 
+const aboutCards = [
+  {
+    icon: Trophy,
+    title: "Competition",
+    body: "We build a new robot every season and compete in FIRST in Texas district events.",
+  },
+  {
+    icon: Code,
+    title: "Engineering",
+    body: "Members design in CAD, machine and assemble parts, wire the electronics, and write the robot code.",
+  },
+  {
+    icon: Users,
+    title: "Community",
+    body: "We mentor younger teams and run STEM outreach events around Frisco.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Learning by Doing",
+    body: "Nobody joins knowing everything. New members learn on real hardware, from day one.",
+  },
+]
+
 export default function Home() {
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0)
   const activeGalleryPhoto = teamGallery[activeGalleryIndex]
   const showPreviousGalleryPhoto = () => {
     setActiveGalleryIndex((currentIndex) => (currentIndex + 1) % teamGallery.length)
   }
+
+  // Subtle parallax on the hero content as the page scrolls away
+  const heroContentRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const node = heroContentRef.current
+      if (!node) return
+      const y = window.scrollY
+      const height = window.innerHeight || 1
+      const progress = Math.min(y / height, 1)
+      node.style.transform = `translateY(${y * 0.28}px)`
+      node.style.opacity = `${1 - progress * 0.9}`
+    }
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update)
+    }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [])
 
   return (
     <div className="flex min-h-screen flex-col bg-[#0a0118] text-purple-100">
@@ -63,8 +113,13 @@ export default function Home() {
         <section className="relative overflow-hidden bg-black h-screen flex items-center justify-center">
           <div className="subtle-stars" />
           <div className="absolute inset-0 bg-gradient-to-b from-purple-950/10 via-black/30 to-black" />
+          {/* Occasional shooting stars */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+            <span className="shooting-star" style={{ top: "14%", right: "8%" }} />
+            <span className="shooting-star" style={{ top: "32%", right: "30%", animationDelay: "4.6s" }} />
+          </div>
 
-          <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32">
+          <div ref={heroContentRef} className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32">
             <div className="text-center space-y-8">
               {/* Main heading with animated gradient */}
               <div className="relative">
@@ -82,7 +137,7 @@ export default function Home() {
                     1 VISION
                   </span>
                   <span
-                    className="block mt-2 bg-gradient-to-r from-purple-400 via-fuchsia-500 to-purple-600 bg-clip-text text-transparent 
+                    className="block mt-2 bg-gradient-to-r from-purple-400 via-fuchsia-500 to-purple-600 bg-clip-text text-transparent
                     animate-gradient-x transform hover:scale-105 transition-transform cursor-default"
                   >
                     ∞ POSSIBILITIES
@@ -95,7 +150,7 @@ export default function Home() {
                 <span className="relative inline-flex flex-col items-center">
                   <span className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-fuchsia-500/20 to-purple-600/20 blur-2xl rounded-full" />
                   <span
-                    className="relative bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent 
+                    className="relative bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent
                     animate-gradient-x hover:scale-105 transition-transform cursor-default"
                   >
                     Welcome to Singularity Robotics: Team 10032
@@ -128,218 +183,196 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Section - Expanded spacing with centered content and image below */}
+        {/* About Section */}
         <section className="relative py-32 overflow-hidden">
-          <div className="subtle-stars" />
+          <SpaceBackdrop glow="center" />
 
           <div className="container relative mx-auto px-6 sm:px-8 lg:px-12">
             <div className="max-w-5xl mx-auto text-center">
               {/* Centered header section */}
-              <div className="mb-16">
+              <Reveal className="mb-16">
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
                   <Star className="w-3.5 h-3.5 mr-2" />
                   About Singularity Robotics
                 </div>
                 <h2 className="text-4xl font-bold tracking-tight text-white mb-6">
-                  Pioneering the Future of{" "}
+                  A Robotics Team{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
-                    Robotics Excellence
+                    Run by Students
                   </span>
                 </h2>
                 <p className="text-lg text-purple-200/90 leading-relaxed max-w-3xl mx-auto">
-                  Team 10032, Singularity Robotics, is a FIRST Robotics Competition team dedicated to fostering
-                  innovation, engineering excellence, and community impact through competitive robotics.
+                  Team 10032 is a FIRST Robotics Competition team from Frisco, Texas. We design, build, and program
+                  competition robots, and students run every part of it, from engineering to outreach.
                 </p>
-              </div>
+              </Reveal>
 
               {/* Centered content */}
               <div className="space-y-8 max-w-3xl mx-auto mb-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="p-6 rounded-xl bg-purple-900/10 border border-purple-500/20 backdrop-blur-sm">
-                    <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4 mx-auto">
-                      <Trophy className="w-6 h-6 text-purple-400" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Competition Excellence</h3>
-                    <p className="text-purple-200/80">
-                      Our team competes at the highest levels of FIRST Robotics, pushing the boundaries of what's
-                      possible.
-                    </p>
-                  </div>
-
-                  <div className="p-6 rounded-xl bg-purple-900/10 border border-purple-500/20 backdrop-blur-sm">
-                    <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4 mx-auto">
-                      <Code className="w-6 h-6 text-purple-400" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Technical Innovation</h3>
-                    <p className="text-purple-200/80">
-                      We develop cutting-edge solutions, combining software, hardware, and mechanical engineering.
-                    </p>
-                  </div>
-
-                  <div className="p-6 rounded-xl bg-purple-900/10 border border-purple-500/20 backdrop-blur-sm">
-                    <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4 mx-auto">
-                      <Users className="w-6 h-6 text-purple-400" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Community Impact</h3>
-                    <p className="text-purple-200/80">
-                      We mentor younger teams and organize STEM outreach programs to inspire the next generation.
-                    </p>
-                  </div>
-
-                  <div className="p-6 rounded-xl bg-purple-900/10 border border-purple-500/20 backdrop-blur-sm">
-                    <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4 mx-auto">
-                      <Lightbulb className="w-6 h-6 text-purple-400" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">STEM Education</h3>
-                    <p className="text-purple-200/80">
-                      We provide hands-on learning experiences in science, technology, engineering, and mathematics.
-                    </p>
-                  </div>
+                  {aboutCards.map((card, index) => (
+                    <Reveal key={card.title} delay={index * 90}>
+                      <div className="glass-card h-full p-6">
+                        <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4 mx-auto">
+                          <card.icon className="w-6 h-6 text-purple-400" />
+                        </div>
+                        <h3 className="text-lg font-semibold text-white mb-2">{card.title}</h3>
+                        <p className="text-purple-200/80">{card.body}</p>
+                      </div>
+                    </Reveal>
+                  ))}
                 </div>
 
-                <Button
-                  className="mt-4 bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg transition-colors group"
-                  asChild
-                >
-                  <Link href="/about" className="inline-flex items-center">
-                    Learn More About Our Team
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
+                <Reveal delay={120}>
+                  <Button
+                    className="mt-4 bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg transition-colors group"
+                    asChild
+                  >
+                    <Link href="/about" className="inline-flex items-center">
+                      Learn More About Our Team
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
+                </Reveal>
               </div>
 
               {/* Team image below all content */}
-              <div className="relative max-w-4xl mx-auto">
-                <div className="absolute -inset-4 bg-purple-500/10 rounded-3xl blur-xl" />
-                <div className="relative rounded-2xl overflow-hidden border border-purple-500/20">
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    aria-label="Click to go back in time through team photos"
-                    className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300"
-                    onClick={showPreviousGalleryPhoto}
-                    onKeyDown={(event) => {
-                      if (event.key === "Enter" || event.key === " ") {
-                        event.preventDefault()
-                        showPreviousGalleryPhoto()
-                      }
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-black/40 z-10" />
-                    <OptimizedImage
-                      src={activeGalleryPhoto.src}
-                      alt={activeGalleryPhoto.alt}
-                      width={1200}
-                      height={800}
-                      className={activeGalleryPhoto.imageClassName}
-                    />
-                  </div>
-                  <button
-                    type="button"
-                    aria-label="Go back in time to the next team photo"
-                    className="absolute right-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white shadow-lg shadow-black/30 backdrop-blur-sm transition hover:bg-purple-600/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300"
-                    onClick={showPreviousGalleryPhoto}
-                  >
-                    <ChevronRight className="h-6 w-6" />
-                  </button>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent z-20">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                      <span className="text-sm font-medium text-green-400">Active Since 2024</span>
+              <Reveal>
+                <div className="relative max-w-4xl mx-auto">
+                  <div className="absolute -inset-4 bg-purple-500/10 rounded-3xl blur-xl" />
+                  <div className="relative rounded-2xl overflow-hidden border border-purple-500/20">
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      aria-label="Click to go back in time through team photos"
+                      className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300"
+                      onClick={showPreviousGalleryPhoto}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault()
+                          showPreviousGalleryPhoto()
+                        }
+                      }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-black/40 z-10" />
+                      <OptimizedImage
+                        src={activeGalleryPhoto.src}
+                        alt={activeGalleryPhoto.alt}
+                        width={1200}
+                        height={800}
+                        className={activeGalleryPhoto.imageClassName}
+                      />
                     </div>
-                    <h3 className="text-xl font-bold text-white">Team 10032</h3>
-                    <p className="mt-1 text-sm text-purple-100/90">{activeGalleryPhoto.caption}</p>
-                    <p className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-purple-200/80">
-                      Click to go back in time
-                    </p>
-                    <div className="mt-4 flex justify-center gap-2">
-                      {teamGallery.map((photo, index) => (
-                        <button
-                          key={photo.src}
-                          type="button"
-                          aria-label={`Show ${photo.caption}`}
-                          className={`h-2.5 rounded-full transition-all ${
-                            index === activeGalleryIndex ? "w-8 bg-purple-300" : "w-2.5 bg-white/40 hover:bg-white/70"
-                          }`}
-                          onClick={(event) => {
-                            event.stopPropagation()
-                            setActiveGalleryIndex(index)
-                          }}
-                        />
-                      ))}
+                    <button
+                      type="button"
+                      aria-label="Go back in time to the next team photo"
+                      className="absolute right-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white shadow-lg shadow-black/30 backdrop-blur-sm transition hover:bg-purple-600/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300"
+                      onClick={showPreviousGalleryPhoto}
+                    >
+                      <ChevronRight className="h-6 w-6" />
+                    </button>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent z-20">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                        <span className="text-sm font-medium text-green-400">Active Since 2024</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-white">Team 10032</h3>
+                      <p className="mt-1 text-sm text-purple-100/90">{activeGalleryPhoto.caption}</p>
+                      <p className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-purple-200/80">
+                        Click to go back in time
+                      </p>
+                      <div className="mt-4 flex justify-center gap-2">
+                        {teamGallery.map((photo, index) => (
+                          <button
+                            key={photo.src}
+                            type="button"
+                            aria-label={`Show ${photo.caption}`}
+                            className={`h-2.5 rounded-full transition-all ${
+                              index === activeGalleryIndex ? "w-8 bg-purple-300" : "w-2.5 bg-white/40 hover:bg-white/70"
+                            }`}
+                            onClick={(event) => {
+                              event.stopPropagation()
+                              setActiveGalleryIndex(index)
+                            }}
+                          />
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>
 
         {/* Upcoming Events */}
         <section className="relative py-24 bg-gradient-to-b from-[#120426] to-[#0a0118]">
-          <div className="subtle-stars" />
+          <SpaceBackdrop />
 
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
+              <Reveal className="text-center mb-16">
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
                   <Calendar className="w-3.5 h-3.5 mr-2" />
                   Mark Your Calendar
                 </div>
                 <h2 className="text-4xl font-bold text-white mb-4">Upcoming Events</h2>
-                <div className="h-px w-24 mx-auto bg-gradient-to-r from-purple-500 to-fuchsia-500 my-6" />
-              </div>
+                <div className="cosmic-rule my-6" />
+              </Reveal>
 
-              <div className="relative overflow-hidden rounded-xl bg-purple-900/10 border border-purple-500/20 p-8 text-center backdrop-blur-sm">
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-400/60 to-transparent" />
-                <div className="grid gap-8 md:grid-cols-[1.1fr,0.9fr] md:items-center md:text-left">
-                  <div>
-                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-500/20 md:mx-0">
-                      <Calendar className="h-6 w-6 text-purple-300" />
+              <Reveal delay={100}>
+                <div className="glass-card p-8 text-center">
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-400/60 to-transparent" />
+                  <div className="grid gap-8 md:grid-cols-[1.1fr,0.9fr] md:items-center md:text-left">
+                    <div>
+                      <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-500/20 md:mx-0">
+                        <Calendar className="h-6 w-6 text-purple-300" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-white">Coming Soon! Biocore</h3>
+                      <p className="mx-auto mt-3 max-w-2xl text-purple-200/90 md:mx-0">
+                        New season information and event details will be shared here soon.
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-bold text-white">Coming Soon! Biocore</h3>
-                    <p className="mx-auto mt-3 max-w-2xl text-purple-200/90 md:mx-0">
-                      New season information and event details will be shared here soon.
-                    </p>
-                  </div>
-                  <div className="relative overflow-hidden rounded-lg border border-purple-500/20 bg-[#0a0118]/80">
-                    <Image
-                      src="/images/biocore.jpeg"
-                      alt="FIRST Robotics Competition Biocore season teaser"
-                      width={900}
-                      height={520}
-                      className="h-full w-full object-cover"
-                    />
+                    <div className="relative overflow-hidden rounded-lg border border-purple-500/20 bg-[#0a0118]/80">
+                      <Image
+                        src="/images/biocore.jpeg"
+                        alt="FIRST Robotics Competition Biocore season teaser"
+                        width={900}
+                        height={520}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>
 
         {/* Magazine Section */}
         <section className="relative py-24 bg-gradient-to-b from-[#0a0118] to-[#120426]">
-          <div className="subtle-stars" />
+          <SpaceBackdrop />
 
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
+              <Reveal className="text-center mb-16">
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
                   <FileText className="w-3.5 h-3.5 mr-2" />
                   Latest Publication
                 </div>
                 <h2 className="text-4xl font-bold text-white mb-4">Our Magazine</h2>
-                <div className="h-px w-24 mx-auto bg-gradient-to-r from-purple-500 to-fuchsia-500 my-6" />
+                <div className="cosmic-rule my-6" />
                 <p className="max-w-2xl mx-auto text-lg text-purple-200/90">
-                  Check out the latest edition of our magazine featuring team updates, technical articles, and more.
+                  The latest edition of our team magazine is out now.
                 </p>
-              </div>
+              </Reveal>
 
-              <div className="bg-purple-900/10 border border-purple-500/20 rounded-xl p-8 backdrop-blur-sm">
-                <div className="flex flex-col md:flex-row items-center gap-8">
-                  <div className="md:w-1/2">
-                    <div className="relative aspect-[3/4] w-full max-w-sm mx-auto rounded-lg overflow-hidden border border-purple-500/30 shadow-lg shadow-purple-500/10">
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+              <Reveal delay={100}>
+                <div className="glass-card p-8">
+                  <div className="flex flex-col md:flex-row items-center gap-8">
+                    <div className="md:w-1/2">
+                      <div className="relative aspect-[3/4] w-full max-w-sm mx-auto rounded-lg overflow-hidden border border-purple-500/30 shadow-lg shadow-purple-500/10">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
                         <Image
                           src="/images/horizon-magazine-2026.png"
                           alt="Singularity Magazine Cover"
@@ -347,107 +380,105 @@ export default function Home() {
                           height={600}
                           className="object-cover w-full h-full"
                         />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-                        <div className="inline-block bg-purple-600/80 px-3 py-1 rounded-md text-sm font-medium text-white mb-2">
-                          Spring 2026
+                        <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
+                          <div className="inline-block bg-purple-600/80 px-3 py-1 rounded-md text-sm font-medium text-white mb-2">
+                            Spring 2026
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="md:w-1/2 text-center md:text-left space-y-6">
-                    <h3 className="text-2xl font-bold text-white">Singularity Magazine</h3>
-                    <p className="text-purple-200/90">
-                    Our magazine showcases our journey, technical insights, and the impact of our work. Learn about our latest community stories and discover the stories
-                      behind our robotics adventures.
-                    </p>
-                    <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white group" asChild>
-                      <a
-                        href="https://drive.google.com/file/d/1WTiEvd9SGteosK9-qp3lGhZLep4yNeCR/view?usp=sharing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center"
-                      >
-                        Read Latest Edition
-                        <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </a>
-                    </Button>
+                    <div className="md:w-1/2 text-center md:text-left space-y-6">
+                      <h3 className="text-2xl font-bold text-white">Singularity Magazine</h3>
+                      <p className="text-purple-200/90">
+                        Inside: team updates, technical articles, and stories from our community work over the past
+                        year.
+                      </p>
+                      <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white group" asChild>
+                        <a
+                          href="https://drive.google.com/file/d/1WTiEvd9SGteosK9-qp3lGhZLep4yNeCR/view?usp=sharing"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center"
+                        >
+                          Read Latest Edition
+                          <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>
 
         {/* Connect With Us Section */}
         <section className="relative py-20 bg-gradient-to-b from-[#120426] to-[#0a0118]">
-          <div className="subtle-stars" />
+          <SpaceBackdrop />
 
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
+              <Reveal className="text-center mb-16">
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
                   <Instagram className="w-3.5 h-3.5 mr-2" />
                   Stay Connected
                 </div>
                 <h2 className="text-3xl font-bold text-white mb-4">Connect With Us</h2>
-                <div className="h-px w-24 mx-auto bg-gradient-to-r from-purple-500 to-fuchsia-500 my-6" />
-                <p className="max-w-2xl mx-auto text-lg text-purple-200/90">
-                  Follow our journey and connect with us on social media.
-                </p>
-              </div>
+                <div className="cosmic-rule my-6" />
+              </Reveal>
 
-              <div className="bg-purple-900/10 border border-purple-500/20 rounded-xl p-8 backdrop-blur-sm">
-                <div className="text-center space-y-6">
-                  <p className="text-purple-200/90">
-                    To connect with a broader audience and share our journey, we maintain active social media profiles.
-                    Our Instagram and TikTok accounts, @singularityfrc, provide regular updates on our community work, events,
-                    and team milestones. Through these platforms, we aim to inspire and engage with fellow robotics
-                    enthusiasts, students, and supporters worldwide.
-                  </p>
+              <Reveal delay={100}>
+                <div className="glass-card p-8">
+                  <div className="text-center space-y-6">
+                    <p className="text-purple-200/90">
+                      We post on Instagram and TikTok as @singularityfrc: competition updates, build progress, outreach
+                      events, and team news.
+                    </p>
 
-                  <div className="flex flex-wrap justify-center gap-4 pt-4">
-                    <Button
-                      className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
-                      asChild
-                    >
-                      <a
-                        href="https://www.instagram.com/singularityfrc/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center"
+                    <div className="flex flex-wrap justify-center gap-4 pt-4">
+                      <Button
+                        className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                        asChild
                       >
-                        <Instagram className="mr-2 h-4 w-4" />
-                        Instagram
-                        <ExternalLink className="ml-1 h-3 w-3" />
-                      </a>
-                    </Button>
-                    <Button
-                      className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
-                      asChild
-                    >
-                      <a
-                        href="https://www.tiktok.com/@singularityfrc"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center"
+                        <a
+                          href="https://www.instagram.com/singularityfrc/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center"
+                        >
+                          <Instagram className="mr-2 h-4 w-4" />
+                          Instagram
+                          <ExternalLink className="ml-1 h-3 w-3" />
+                        </a>
+                      </Button>
+                      <Button
+                        className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
+                        asChild
                       >
-                        <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-                        </svg>
-                        TikTok
-                        <ExternalLink className="ml-1 h-3 w-3" />
-                      </a>
-                    </Button>
-                    <Button className="bg-purple-600 hover:bg-purple-800 text-white" asChild>
-                      <Link href="/sponsors" className="inline-flex items-center">
-                        Sponsor Us
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    </Button>
+                        <a
+                          href="https://www.tiktok.com/@singularityfrc"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center"
+                        >
+                          <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                          </svg>
+                          TikTok
+                          <ExternalLink className="ml-1 h-3 w-3" />
+                        </a>
+                      </Button>
+                      <Button className="bg-purple-600 hover:bg-purple-800 text-white" asChild>
+                        <Link href="/sponsors" className="inline-flex items-center">
+                          Sponsor Us
+                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -465,4 +496,3 @@ export default function Home() {
     </div>
   )
 }
-

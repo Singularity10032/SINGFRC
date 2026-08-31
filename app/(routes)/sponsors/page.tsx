@@ -3,6 +3,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Navbar } from "@/components/navbar"
+import { Reveal } from "@/components/reveal"
+import { SpaceBackdrop } from "@/components/space-backdrop"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Mail, HandHeart, FileText, MapPin, Phone } from "lucide-react"
 
@@ -97,19 +99,10 @@ export default function SponsorsPage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(147,51,234,0.15)_0%,rgba(0,0,0,0)_50%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.15)_0%,rgba(0,0,0,0)_50%)]" />
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-              <div className="absolute -top-40 -left-40 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl animate-blob" />
-              <div className="absolute top-40 -right-40 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
-              <div className="absolute bottom-40 left-1/3 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl animate-blob animation-delay-4000" />
-            </div>
-          </div>
+          <SpaceBackdrop glow="center" />
 
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center">
+            <Reveal className="max-w-3xl mx-auto text-center">
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
                 <HandHeart className="w-3.5 h-3.5 mr-2" />
                 Partner With Us
@@ -121,14 +114,14 @@ export default function SponsorsPage() {
                 </span>
               </h1>
               <p className="text-lg text-purple-200/90 mb-4">
-                Team 10032 is grateful for the organizations and families that help us inspire the next generation of
-                innovators through competitive robotics.
+                Team 10032 runs on the support of these organizations and of our families. Their backing covers our
+                operations and competition travel.
               </p>
               <p className="text-lg text-purple-200/90 mb-8">
-                Our team is 501(c)(3) verified hence all donations and sponsorships are tax-exempt.
+                We're a registered 501(c)(3), so donations and sponsorships are tax-deductible.
               </p>
-              <div className="h-px w-24 mx-auto bg-gradient-to-r from-purple-500 to-fuchsia-500 my-6" />
-            </div>
+              <div className="cosmic-rule my-6" />
+            </Reveal>
           </div>
         </section>
 
@@ -136,46 +129,52 @@ export default function SponsorsPage() {
         <section className="relative py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-5xl">
-              <div className="mb-10 text-center">
+              <Reveal className="mb-10 text-center">
                 <h2 className="mb-4 text-3xl font-bold text-white">Contact Our Team</h2>
                 <p className="mx-auto max-w-2xl text-lg text-purple-200/90">
                   Reach out about sponsorships, visits, and team opportunities.
                 </p>
-              </div>
+              </Reveal>
 
               <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-                <div className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-purple-900/20 to-black/40 border border-purple-500/20 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:border-purple-500/40">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/20">
-                    <Mail className="h-6 w-6 text-purple-400" />
+                <Reveal>
+                  <div className="glass-card group h-full p-6 text-center">
+                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/20">
+                      <Mail className="h-6 w-6 text-purple-400" />
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold text-white">Email Us</h3>
+                    <p className="mb-4 text-purple-200/80">For sponsorships, general questions, and partnership ideas.</p>
+                    <Link href="mailto:admin@singularityfrc.com" className="font-medium text-purple-400 hover:text-purple-300">
+                      admin@singularityfrc.com
+                    </Link>
                   </div>
-                  <h3 className="mb-2 text-xl font-bold text-white">Email Us</h3>
-                  <p className="mb-4 text-purple-200/80">For sponsorships, general questions, and partnership ideas.</p>
-                  <Link href="mailto:admin@singularityfrc.com" className="font-medium text-purple-400 hover:text-purple-300">
-                    admin@singularityfrc.com
-                  </Link>
-                </div>
+                </Reveal>
 
-                <div className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-purple-900/20 to-black/40 border border-purple-500/20 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:border-purple-500/40">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/20">
-                    <Phone className="h-6 w-6 text-purple-400" />
+                <Reveal delay={90}>
+                  <div className="glass-card group h-full p-6 text-center">
+                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/20">
+                      <Phone className="h-6 w-6 text-purple-400" />
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold text-white">Call Us</h3>
+                    <p className="mb-4 text-purple-200/80">For direct sponsorship or event coordination.</p>
+                    <Link href="tel:+14697680663" className="font-medium text-purple-400 hover:text-purple-300">
+                      +1-469-768-0663
+                    </Link>
                   </div>
-                  <h3 className="mb-2 text-xl font-bold text-white">Call Us</h3>
-                  <p className="mb-4 text-purple-200/80">For direct sponsorship or event coordination.</p>
-                  <Link href="tel:+14697680663" className="font-medium text-purple-400 hover:text-purple-300">
-                    +1-469-768-0663
-                  </Link>
-                </div>
+                </Reveal>
 
-                <div className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-purple-900/20 to-black/40 border border-purple-500/20 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:border-purple-500/40">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/20">
-                    <MapPin className="h-6 w-6 text-purple-400" />
+                <Reveal delay={180}>
+                  <div className="glass-card group h-full p-6 text-center">
+                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/20">
+                      <MapPin className="h-6 w-6 text-purple-400" />
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold text-white">Visit Us</h3>
+                    <p className="mb-4 text-purple-200/80">Our team is based at the following location.</p>
+                    <address className="not-italic font-medium text-purple-400">
+                      191 Southern Hills Dr
+                    </address>
                   </div>
-                  <h3 className="mb-2 text-xl font-bold text-white">Visit Us</h3>
-                  <p className="mb-4 text-purple-200/80">Our team is based at the following location.</p>
-                  <address className="not-italic font-medium text-purple-400">
-                    191 Southern Hills Dr
-                  </address>
-                </div>
+                </Reveal>
               </div>
             </div>
           </div>
@@ -183,48 +182,47 @@ export default function SponsorsPage() {
 
         {/* Current Sponsors Grid Section */}
         <section className="relative py-16 bg-gradient-to-b from-[#0a0118] to-[#120426]">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <SpaceBackdrop />
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
-              <div className="mb-10 text-center">
+              <Reveal className="mb-10 text-center">
                 <h2 className="mb-4 text-3xl font-bold text-white">Current Sponsors in Detail</h2>
                 <p className="mx-auto max-w-2xl text-lg text-purple-200/90">
                   These partners are helping Singularity Robotics grow through the current season.
                 </p>
-              </div>
+              </Reveal>
 
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {currentSponsors.map((sponsor) => (
-                  <div
-                    key={sponsor.name}
-                    className="group relative overflow-hidden rounded-xl border border-purple-500/20 bg-gradient-to-b from-purple-900/20 to-black/40 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/40"
-                  >
-                    <div className="absolute right-0 top-0 h-32 w-32 -translate-y-1/2 translate-x-1/2 rounded-full bg-purple-600/10 blur-2xl opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
-                    <div className="space-y-6 p-6">
-                      <div className="relative flex h-28 items-center justify-center overflow-hidden rounded-lg bg-[#0a0118]/80 p-4">
-                        <Image
-                          src={sponsor.logo}
-                          alt={`${sponsor.name} logo`}
-                          width={240}
-                          height={120}
-                          className="h-auto max-h-20 w-auto max-w-[220px] object-contain"
-                        />
+                {currentSponsors.map((sponsor, index) => (
+                  <Reveal key={sponsor.name} delay={(index % 3) * 90}>
+                    <div className="glass-card group h-full">
+                      <div className="absolute right-0 top-0 h-32 w-32 -translate-y-1/2 translate-x-1/2 rounded-full bg-purple-600/10 blur-2xl opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
+                      <div className="space-y-6 p-6">
+                        <div className="relative flex h-28 items-center justify-center overflow-hidden rounded-lg bg-[#0a0118]/80 p-4">
+                          <Image
+                            src={sponsor.logo}
+                            alt={`${sponsor.name} logo`}
+                            width={240}
+                            height={120}
+                            className="h-auto max-h-20 w-auto max-w-[220px] object-contain"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="mb-2 text-xl font-bold text-white">{sponsor.name}</h3>
+                          <p className="mb-4 text-sm text-purple-200/80">{sponsor.description}</p>
+                        </div>
+                        <Link
+                          href={sponsor.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-sm font-medium text-purple-400 hover:text-purple-300"
+                        >
+                          Visit Website
+                          <ExternalLink className="ml-1 h-3 w-3" />
+                        </Link>
                       </div>
-                      <div>
-                        <h3 className="mb-2 text-xl font-bold text-white">{sponsor.name}</h3>
-                        <p className="mb-4 text-sm text-purple-200/80">{sponsor.description}</p>
-                      </div>
-                      <Link
-                        href={sponsor.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm font-medium text-purple-400 hover:text-purple-300"
-                      >
-                        Visit Website
-                        <ExternalLink className="ml-1 h-3 w-3" />
-                      </Link>
                     </div>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
@@ -233,7 +231,7 @@ export default function SponsorsPage() {
 
         {/* Past Sponsors Ticker Section */}
         <section className="relative py-8 bg-gradient-to-b from-[#0a0118] to-[#120426] overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <SpaceBackdrop glow="none" />
 
           <div className="relative max-w-full mx-auto">
             <div className="text-center mb-6">
@@ -288,15 +286,16 @@ export default function SponsorsPage() {
 
         {/* Become a Sponsor Section */}
         <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,58,180,0.2)_0%,rgba(0,0,0,0)_70%)]" />
+          <SpaceBackdrop glow="center" />
 
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
-              <div className="relative overflow-hidden rounded-3xl">
+              <Reveal>
+              <div className="relative overflow-hidden rounded-3xl border border-purple-500/20">
                 <div className="absolute inset-0">
                   <Image
-                    src="/placeholder.svg?height=600&width=1200"
-                    alt="Robotics Team"
+                    src="/images/competition-2-team.png"
+                    alt="Singularity Robotics team at competition"
                     width={1200}
                     height={600}
                     className="object-cover w-full h-full"
@@ -308,9 +307,8 @@ export default function SponsorsPage() {
                   <div className="max-w-2xl mx-auto text-center">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Become a Sponsor</h2>
                     <p className="text-lg text-purple-200/90 mb-10">
-                      Partner with Team 10032 to support STEM education and help develop the next generation of
-                      innovators, engineers, and leaders. Your contribution makes a direct impact on our students and
-                      community.
+                      Sponsor Team 10032 and your contribution goes directly to our students and our community work.
+                      Download the packet for details, or email us and we'll set something up.
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
                       <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white group" asChild>
@@ -338,24 +336,25 @@ export default function SponsorsPage() {
                   </div>
                 </div>
               </div>
+              </Reveal>
             </div>
           </div>
         </section>
 
         {/* Sponsorship Benefits Section */}
         <section className="relative py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <SpaceBackdrop />
+          <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
-              <div className="text-center mb-12">
+              <Reveal className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-white mb-4">Sponsorship Benefits</h2>
                 <p className="text-lg text-purple-200/90">
-                  When you sponsor Team 10032, you receive recognition and benefits while making a significant impact on
-                  STEM education.
+                  Here's what sponsors get, and where the support goes.
                 </p>
-              </div>
+              </Reveal>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="p-6 rounded-xl bg-purple-900/10 border border-purple-500/20 backdrop-blur-sm">
+                <div className="glass-card p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">Brand Visibility</h3>
                   <ul className="space-y-2 text-purple-200/80">
                     <li className="flex items-start">
@@ -385,7 +384,7 @@ export default function SponsorsPage() {
                   </ul>
                 </div>
 
-                <div className="p-6 rounded-xl bg-purple-900/10 border border-purple-500/20 backdrop-blur-sm">
+                <div className="glass-card p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">Community Impact</h3>
                   <ul className="space-y-2 text-purple-200/80">
                     <li className="flex items-start">
@@ -415,7 +414,7 @@ export default function SponsorsPage() {
                   </ul>
                 </div>
 
-                <div className="p-6 rounded-xl bg-purple-900/10 border border-purple-500/20 backdrop-blur-sm">
+                <div className="glass-card p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">Team Engagement</h3>
                   <ul className="space-y-2 text-purple-200/80">
                     <li className="flex items-start">
@@ -445,7 +444,7 @@ export default function SponsorsPage() {
                   </ul>
                 </div>
 
-                <div className="p-6 rounded-xl bg-purple-900/10 border border-purple-500/20 backdrop-blur-sm">
+                <div className="glass-card p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">Tax Benefits</h3>
                   <ul className="space-y-2 text-purple-200/80">
                     <li className="flex items-start">

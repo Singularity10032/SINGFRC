@@ -12,8 +12,7 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: "Singularity Robotics",
-  description: "Inspiring innovation through STEM education and competitive robotics",
-  generator: "v0.dev",
+  description: "FRC Team 10032 — a student-led FIRST Robotics Competition team in Frisco, Texas.",
   appleWebApp: {
     title: "Singularity",
   },

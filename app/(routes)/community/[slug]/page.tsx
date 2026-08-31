@@ -3,6 +3,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Navbar } from "@/components/navbar"
+import { Reveal } from "@/components/reveal"
+import { SpaceBackdrop } from "@/components/space-backdrop"
 import { projects } from "@/lib/projects-data"
 
 export function generateStaticParams() {
@@ -23,11 +25,10 @@ export default async function CommunityStoryPage({ params }: { params: Promise<{
 
       <main className="flex-1">
         <section className="relative overflow-hidden py-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,58,180,0.15)_0%,rgba(0,0,0,0)_70%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <SpaceBackdrop glow="center" />
 
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-4xl">
+            <Reveal className="mx-auto max-w-4xl">
               <Link href="/community" className="mb-8 inline-flex items-center text-sm font-medium text-purple-300 hover:text-white">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Community
@@ -43,12 +44,13 @@ export default async function CommunityStoryPage({ params }: { params: Promise<{
                   className="h-auto w-full object-cover"
                 />
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
 
         <section className="relative py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <SpaceBackdrop />
+          <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <article
               className="prose prose-invert prose-p:text-purple-200/90 prose-strong:text-white mx-auto max-w-3xl"
               dangerouslySetInnerHTML={{ __html: project.content }}

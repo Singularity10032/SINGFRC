@@ -19,6 +19,8 @@ const navItems = [
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
+  const [scrolled, setScrolled] = React.useState(false)
+  const progressRef = React.useRef<HTMLDivElement>(null)
 
   // Prevent scrolling when mobile menu is open
   React.useEffect(() => {
@@ -32,9 +34,46 @@ export function Navbar() {
     }
   }, [mobileMenuOpen])
 
+  // Scroll progress bar + darker navbar once the page moves
+  React.useEffect(() => {
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const doc = document.documentElement
+      const max = doc.scrollHeight - doc.clientHeight
+      const progress = max > 0 ? Math.min(window.scrollY / max, 1) : 0
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${progress})`
+      }
+      setScrolled(window.scrollY > 12)
+    }
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onScroll)
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [])
+
   return (
     <>
-      <div className="fixed w-full z-50 bg-transparent backdrop-blur-sm supports-[backdrop-filter]:bg-transparent">
+      <div
+        className={cn(
+          "fixed w-full z-50 backdrop-blur-sm transition-colors duration-300",
+          scrolled ? "bg-[#0a0118]/85 border-b border-purple-500/10" : "bg-transparent",
+        )}
+      >
+        {/* Scroll progress */}
+        <div
+          ref={progressRef}
+          aria-hidden="true"
+          className="absolute left-0 top-0 h-[2px] w-full origin-left scale-x-0 bg-gradient-to-r from-[#7c3aed] via-[#c026d3] to-[#38bdf8]"
+        />
         <div className="relative">
           <nav className="flex h-14 sm:h-16 items-center px-3 sm:px-8">
             <Link href="/" className="flex items-center space-x-2 sm:space-x-3">

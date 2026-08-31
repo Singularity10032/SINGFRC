@@ -3,6 +3,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Navbar } from "@/components/navbar"
+import { Reveal } from "@/components/reveal"
+import { SpaceBackdrop } from "@/components/space-backdrop"
 import { Button } from "@/components/ui/button"
 import {
   Calendar,
@@ -57,11 +59,10 @@ export default function ApplyPage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,58,180,0.15)_0%,rgba(0,0,0,0)_70%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <SpaceBackdrop glow="center" />
 
           <div className="container relative mx-auto px-6 sm:px-8 lg:px-12">
-            <div className="max-w-4xl mx-auto text-center">
+            <Reveal className="max-w-4xl mx-auto text-center">
               <div className="mb-8 rounded-2xl border border-purple-300/40 bg-purple-600/25 px-6 py-5 shadow-[0_0_35px_rgba(168,85,247,0.22)] backdrop-blur-sm">
                 <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
                   <Calendar className="h-8 w-8 text-purple-200" />
@@ -75,14 +76,14 @@ export default function ApplyPage() {
                 Join Our Team
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Become Part of{" "}
+                Join{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
-                  Something Extraordinary
+                  Team 10032
                 </span>
               </h1>
               <p className="text-lg text-purple-200/90 mb-10 max-w-2xl mx-auto">
-                Team 10032 Singularity Robotics is looking for passionate, creative students to join our award-winning
-                robotics team. No experience necessary—just bring your enthusiasm and willingness to learn!
+                Whether you want to build, code, or run the business side, there's a place for you on Singularity
+                Robotics. No experience needed — you'll learn everything here.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -112,54 +113,52 @@ export default function ApplyPage() {
                   </Link>
                 </Button>
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
 
         {/* Application Process Section */}
         <section id="application-process" className="relative py-24 bg-gradient-to-b from-[#0a0118] to-[#120426]">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(79,70,229,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(79,70,229,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <SpaceBackdrop />
 
           <div className="container relative mx-auto px-6 sm:px-8 lg:px-12">
             <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
+              <Reveal className="text-center mb-16">
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
                   <FileText className="w-3.5 h-3.5 mr-2" />
                   How to Apply
                 </div>
                 <h2 className="text-4xl font-bold text-white mb-4">Application Process</h2>
-                <div className="h-px w-24 mx-auto bg-gradient-to-r from-purple-500 to-fuchsia-500 my-6" />
+                <div className="cosmic-rule my-6" />
                 <p className="max-w-2xl mx-auto text-lg text-purple-200/90">
-                  Our application process is designed to help us get to know you and find the best fit for your skills
-                  and interests on our team.
+                  Four steps. It's how we get to know you and figure out where you'd fit on the team.
                 </p>
-              </div>
+              </Reveal>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {applicationSteps.map((step, index) => (
-                  <div
-                    key={index}
-                    className="relative group overflow-hidden rounded-xl bg-gradient-to-b from-purple-900/20 to-black/40 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300"
-                  >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+                  <Reveal key={index} delay={index * 90}>
+                    <div className="glass-card group h-full">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
 
-                    <div className="p-8 relative">
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                          <step.icon className="w-6 h-6 text-purple-400" />
-                        </div>
-                        <div>
-                          <div className="flex items-center">
-                            <span className="w-6 h-6 rounded-full bg-purple-600 text-white text-sm flex items-center justify-center mr-3">
-                              {index + 1}
-                            </span>
-                            <h3 className="text-xl font-bold text-white">{step.title}</h3>
+                      <div className="p-8 relative">
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                            <step.icon className="w-6 h-6 text-purple-400" />
                           </div>
-                          <p className="mt-3 text-purple-200/80">{step.description}</p>
+                          <div>
+                            <div className="flex items-center">
+                              <span className="w-6 h-6 rounded-full bg-purple-600 text-white text-sm flex items-center justify-center mr-3">
+                                {index + 1}
+                              </span>
+                              <h3 className="text-xl font-bold text-white">{step.title}</h3>
+                            </div>
+                            <p className="mt-3 text-purple-200/80">{step.description}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
@@ -168,40 +167,43 @@ export default function ApplyPage() {
 
         {/* Eligibility Criteria Section */}
         <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(120,58,180,0.15)_0%,rgba(0,0,0,0)_70%)]" />
+          <SpaceBackdrop />
 
           <div className="container relative mx-auto px-6 sm:px-8 lg:px-12">
             <div className="max-w-5xl mx-auto">
-              {/* Add text-center class to the section header for consistent centering */}
-              <div className="text-center mb-12">
+              <Reveal className="text-center mb-12">
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
                   <CheckCircle2 className="w-3.5 h-3.5 mr-2" />
                   Who Can Apply
                 </div>
                 <h2 className="text-4xl font-bold text-white mb-6">Eligibility Criteria</h2>
                 <p className="text-lg text-purple-200/90 mb-8 max-w-2xl mx-auto">
-                  We're looking for students who are passionate about learning and working together to solve complex
-                  problems.
+                  Here's what we ask of everyone who applies.
                 </p>
-              </div>
+              </Reveal>
 
               <div className="flex flex-col lg:flex-row items-center gap-16">
-                <div className="lg:w-1/2 relative">
-                  <div className="absolute -inset-4 bg-purple-500/10 rounded-3xl blur-xl" />
-                  <div className="relative aspect-square w-full max-w-lg mx-auto rounded-2xl overflow-hidden border border-purple-500/20">
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-black/40 z-10" />
-                    <Image
-                      src="/images/competition-audience.png"
-                      alt="FRC Competition with audience and competition field"
-                      width={800}
-                      height={600}
-                      className="object-cover w-full h-full rounded-lg"
-                    />
+                <Reveal direction="left" className="lg:w-1/2">
+                  <div className="relative">
+                    <div className="absolute -inset-4 bg-purple-500/10 rounded-3xl blur-xl" />
+                    <div className="relative aspect-square w-full max-w-lg mx-auto rounded-2xl overflow-hidden border border-purple-500/20">
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-black/40 z-10" />
+                      <Image
+                        src="/images/competition-audience.png"
+                        alt="FRC Competition with audience and competition field"
+                        width={800}
+                        height={600}
+                        className="object-cover w-full h-full rounded-lg"
+                      />
+                    </div>
                   </div>
-                </div>
+                </Reveal>
 
-                {/* Center the eligibility criteria content */}
-                <div className="lg:w-1/2 space-y-8 flex flex-col items-center text-center lg:text-left lg:items-start">
+                <Reveal
+                  direction="right"
+                  delay={100}
+                  className="lg:w-1/2 space-y-8 flex flex-col items-center text-center lg:text-left lg:items-start"
+                >
                   <ul className="space-y-4 max-w-md w-full">
                     {eligibilityCriteria.map((criterion, index) => (
                       <li key={index} className="grid grid-cols-[auto,1fr] gap-3 text-left">
@@ -212,7 +214,7 @@ export default function ApplyPage() {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </Reveal>
               </div>
             </div>
           </div>

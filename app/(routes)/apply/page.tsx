@@ -67,7 +67,7 @@ export default function ApplyPage() {
                 <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
                   <Calendar className="h-8 w-8 text-purple-200" />
                   <p className="text-2xl font-black uppercase tracking-wide text-white sm:text-3xl">
-                    Applications due June 10th
+                    Rolling Applications
                   </p>
                 </div>
               </div>

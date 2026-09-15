@@ -106,7 +106,6 @@ const seasons: Season[] = [
       { name: "Dheemanth Suddekunte", year: "Junior" },
       { name: "Ishaant Majumdar", year: "Junior" },
       { name: "Ishan Pachnada", year: "Junior" },
-      { name: "Gyan Padoli", year: "Junior" },
       { name: "Shreya Samba", year: "Junior" },
       { name: "Aahan Kumbham", year: "Sophomore" },
       { name: "Aryaman Jalota", year: "Sophomore" },

@@ -10,10 +10,9 @@ export const metadata: Metadata = {
   description: "FRC Team 10032, a student-led FIRST Robotics Competition team in Frisco, Texas.",
 }
 
-// orionPhotos[0] is on the home hero; the rest of the ORION set past index 13
-// is on /gallery. Nothing here appears anywhere else.
+// The ORION set past index 13 is on /gallery. Nothing here appears anywhere else.
 const wallByIndex = [
-  { title: "ORION on the field", photos: orionPhotos.slice(1, 13) },
+  { title: "ORION on the field", photos: orionPhotos.slice(0, 13) },
   { title: "The 2025 robot", photos: reefPhotos },
 ]
 

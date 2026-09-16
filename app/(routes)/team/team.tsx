@@ -198,10 +198,10 @@ export default function Team() {
           </div>
         </div>
 
-        {/* Group shots. teamPhotos[0] is the home hero, so start at 1. */}
+        {/* Group shots. */}
         <div className="mt-16">
           <h2 className="font-display text-2xl">Together</h2>
-          <PhotoWall photos={teamPhotos.slice(1)} cols={3} className="mt-5" />
+          <PhotoWall photos={teamPhotos} cols={3} className="mt-5" />
         </div>
       </div>
 

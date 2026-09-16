@@ -1,11 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ResultsMarquee } from "@/components/results-marquee"
 import { StickerPhoto } from "@/components/sticker-photo"
 import { Reveal } from "@/components/reveal"
 import { BlobEdge, band } from "@/components/blob-edge"
 import { photos } from "@/lib/photos"
-import { orionPhotos, teamPhotos } from "@/lib/gallery"
 
 const whatWeDo = [
   {
@@ -26,18 +24,12 @@ const whatWeDo = [
   },
 ]
 
-// Hero photos: the full-team shot and ORION on the field. Used only here
-// (/team and /robots slice past them).
-const heroLeft = teamPhotos[0]
-const heroRight = orionPhotos[0]
-
 export default function Home() {
   return (
     <div>
-      {/* Hero: three layers. A giant outlined "10032" sits behind, two sticker
-          photos poke in from the edges in the middle, the headline sits on top.
-          Wording is dad's (2026-09-15). The minigame, the Orion chart and the
-          stat row that used to be here were all cut the same day at his request. */}
+      {/* Hero: a giant outlined "10032" behind the headline. Wording is dad's
+          (2026-09-15). The minigame, the Orion chart, the stat row and two hero
+          photos that used to be here were all cut the same day at his request. */}
       <section className="relative mx-auto max-w-6xl overflow-hidden px-4 pb-24 pt-14 sm:px-6 sm:pb-32 sm:pt-24">
         <p
           aria-hidden
@@ -47,12 +39,6 @@ export default function Home() {
           10032
         </p>
 
-        <div className="pointer-events-none absolute -left-10 top-10 hidden w-56 md:block lg:w-72">
-          <StickerPhoto src={heroLeft.src} width={heroLeft.width} height={heroLeft.height} alt={heroLeft.alt} index={0} className="w-full" sizes="288px" priority />
-        </div>
-        <div className="pointer-events-none absolute -right-10 bottom-16 hidden w-56 md:block lg:w-72">
-          <StickerPhoto src={heroRight.src} width={heroRight.width} height={heroRight.height} alt={heroRight.alt} index={3} className="w-full" sizes="288px" priority />
-        </div>
 
         <div className="relative mx-auto max-w-3xl text-center">
           <h1 className="font-display text-[12vw] leading-[0.95] sm:text-6xl md:text-7xl">
@@ -101,17 +87,13 @@ export default function Home() {
           ))}
         </div>
         </div>
-        <BlobEdge fill={band.fuel} />
+        <BlobEdge fill={band.sky} />
       </section>
 
-      {/* Results marquee: yellow band, blob edge underneath */}
-      <ResultsMarquee />
-      <BlobEdge fill={band.fuel} flip />
-
-      {/* Magazine + BIOCORE: two cards, stacked */}
-      <section className="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6">
+      {/* Horizon: sky band (dad, 2026-09-15: the cards become blob bands) */}
+      <section className="bg-arcade-sky text-ink">
         <Reveal>
-          <div className="grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-sky p-6 text-ink sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
+          <div className="mx-auto grid max-w-6xl gap-8 px-4 pb-16 pt-6 sm:grid-cols-[auto_1fr] sm:items-center sm:px-6 sm:pb-20">
             <Image
               src="/images/horizon-magazine-2026.png"
               alt="Horizon, our season magazine, volume 2 issue 1 cover"
@@ -136,11 +118,14 @@ export default function Home() {
             </div>
           </div>
         </Reveal>
+        <BlobEdge fill={band.mint} />
+      </section>
 
-        {/* Next season teaser (dad, 2026-09-15). The only facts here are the
-            ones on FIRST's own teaser graphic: game name, presenter, launch date. */}
+      {/* BIOCORE: mint band. The only facts here are the ones on FIRST's own
+          teaser graphic: game name, presenter, launch date. */}
+      <section className="bg-arcade-mint text-ink">
         <Reveal delay={80}>
-          <div className="mt-8 grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-mint p-6 text-ink sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
+          <div className="mx-auto grid max-w-6xl gap-8 px-4 pb-16 pt-6 sm:grid-cols-[auto_1fr] sm:items-center sm:px-6 sm:pb-20">
             <Image
               src="/images/biocore.jpeg"
               alt="FIRST Robotics Competition BIOCORE, presented by Haas, launches January 9, 2027"
@@ -160,12 +145,13 @@ export default function Home() {
             </div>
           </div>
         </Reveal>
+        <BlobEdge fill={band.purple} />
       </section>
 
-      {/* Follow */}
-      <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
+      {/* Follow: purple band, blob edge back out to the stars */}
+      <section className="bg-arcade-purple text-paper">
         <Reveal>
-          <div className="rounded-xl border-2 border-ink shadow-hard bg-arcade-purple p-8 text-center text-paper sm:p-14">
+          <div className="mx-auto max-w-6xl px-4 pb-16 pt-6 text-center sm:px-6 sm:pb-20">
             <h2 className="font-display text-3xl sm:text-4xl">Follow along</h2>
             <p className="mx-auto mt-3 max-w-md text-paper/85">
               We post build progress, competition updates and outreach on Instagram and TikTok as @singularityfrc.
@@ -173,6 +159,7 @@ export default function Home() {
           </div>
         </Reveal>
       </section>
+      <BlobEdge fill={band.purple} flip className="mb-16" />
     </div>
   )
 }

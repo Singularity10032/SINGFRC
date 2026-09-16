@@ -4,7 +4,8 @@
 
 import { fuelfrenzyPhotos, algaePhotos, interviewsPhotos, bookPhotos } from "@/lib/gallery"
 
-export type CommunityPhoto = { src: string; width: number; height: number; alt: string }
+// `fit: "cover"` lets a portrait screen fill the cabinet instead of letterboxing (dad, 2026-09-15, interviews).
+export type CommunityPhoto = { src: string; width: number; height: number; alt: string; fit?: "cover" | "contain" }
 
 export type Story = {
   slug: string
@@ -111,7 +112,7 @@ export const stories: Story[] = [
     fill: "mint",
     excerpt: "Walking the pits with a camera and a mic at both district events this season.",
     body: "At both district events this season we walked the pits with a camera and a mic and interviewed drivers, captains and mentors from teams across Texas. The interviews are on our Instagram and TikTok.",
-    screen: { src: "/images/photos/IMG_6710.webp", width: 1650, height: 2200, alt: "A student being interviewed on camera at competition" },
+    screen: { src: "/images/photos/IMG_6710.webp", width: 1650, height: 2200, alt: "A student being interviewed on camera at competition", fit: "cover" },
     gallery: [
       { src: "/images/photos/IMG_0802.webp", width: 1650, height: 2200, alt: "A student talking with a visitor at an outreach table" },
       ...interviewsPhotos,

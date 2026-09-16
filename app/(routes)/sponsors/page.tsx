@@ -26,7 +26,9 @@ export default function SponsorsPage() {
       <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
         {currentSponsors.map((logo, i) => (
           <Reveal key={logo.name} delay={i * 40}>
-            <div className="flex h-28 items-center justify-center rounded-xl border-2 border-ink bg-paper p-4 shadow-hard">
+            <div
+              className={`flex h-28 items-center justify-center rounded-xl border-2 border-ink p-4 shadow-hard ${logo.dark ? "bg-ink" : "bg-paper"}`}
+            >
               <Image
                 src={logo.src}
                 alt={logo.name}
@@ -47,7 +49,7 @@ export default function SponsorsPage() {
         {pastSupporters.map((s) => (
           <div
             key={s.name}
-            className="flex h-16 items-center justify-center rounded-xl border-2 border-ink bg-paper px-5 shadow-hard-sm"
+            className={`flex h-16 items-center justify-center rounded-xl border-2 border-ink px-5 shadow-hard-sm ${"dark" in s && s.dark ? "bg-ink" : "bg-paper"}`}
           >
             {"src" in s && s.src ? (
               <Image src={s.src} alt={s.name} width={s.width} height={s.height} className="h-10 w-auto object-contain" />

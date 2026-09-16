@@ -82,10 +82,11 @@ export const stories: Story[] = [
     gallery: [
       { src: "/images/projects/fll-table-mentoring.webp", width: 800, height: 571, alt: "Mentoring an FLL team at the competition table" },
       { src: "/images/projects/ftc-wakeland-team-uil.webp", width: 1648, height: 1341, alt: "Wakeland Wolverine Robotics with their trophy and medals" },
-      { src: "/images/projects/ftc-wakeland-trophy-robot.webp", width: 1511, height: 1122, alt: "Wakeland's trophy, medals and robot on the pit table" },
       { src: "/images/projects/ftc-league-img-4603.webp", width: 1650, height: 2200, alt: "Wakeland Wolverine Robotics student with their FTC robot at the league tournament" },
-      { src: "/images/projects/ftc-semis-img-1156.webp", width: 1920, height: 2200, alt: "Wakeland's two semi-regional trophies: Winning Alliance and Control Award" },
-      { src: "/images/projects/ftc-tuff-gsp-4345.webp", width: 2200, height: 1467, alt: "Wakeland's robot with game pieces on the semi-regional field" },
+      // The three below are dad's full-resolution downloads (2026-09-16).
+      { src: "/images/projects/ftc-trophies-semiregional.webp", width: 1920, height: 2200, alt: "Wakeland's two semi-regional trophies: Winning Alliance and Control Award" },
+      { src: "/images/projects/ftc-drive-team.webp", width: 2200, height: 1467, alt: "Wakeland's drive team at the controls" },
+      { src: "/images/projects/ftc-gsp-4940.webp", width: 2200, height: 1467, alt: "Wakeland's robot (33791) beside an alliance partner on the field" },
     ],
   },
   {

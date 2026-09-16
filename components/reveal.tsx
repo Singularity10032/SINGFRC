@@ -1,61 +1,48 @@
 "use client"
 
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react"
-import { cn } from "@/lib/utils"
+import type { ReactNode } from "react"
+import { motion, useReducedMotion } from "framer-motion"
 
-type RevealProps = {
-  children: ReactNode
-  className?: string
-  /** Delay in ms before the transition starts once visible (used for staggering). */
-  delay?: number
-  /** Direction the element slides in from. */
-  direction?: "up" | "down" | "left" | "right" | "none"
+const OFFSETS: Record<string, { x?: number; y?: number }> = {
+  up: { y: 12 },
+  down: { y: -12 },
+  left: { x: 12 },
+  right: { x: -12 },
+  none: {},
 }
 
 /**
- * Reveals its children with a fade/slide once they scroll into view.
- * Dependency-free (IntersectionObserver + CSS transitions in globals.css).
- * Honors prefers-reduced-motion via the CSS media query, and reveals
- * immediately if IntersectionObserver is unavailable.
+ * Reveals children as they scroll into view: fade + a small slide, per the
+ * shared motion budget (from y 12 / opacity .6, never opacity 0 parked at
+ * rest for non-JS or reduced-motion visitors).
  */
-export function Reveal({ children, className, delay = 0, direction = "up" }: RevealProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  direction = "up",
+}: {
+  children: ReactNode
+  className?: string
+  delay?: number
+  direction?: "up" | "down" | "left" | "right" | "none"
+}) {
+  const reduced = useReducedMotion()
+  const offset = OFFSETS[direction]
 
-  useEffect(() => {
-    const node = ref.current
-    if (!node) return
-
-    if (typeof IntersectionObserver === "undefined") {
-      setVisible(true)
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setVisible(true)
-            observer.disconnect()
-            break
-          }
-        }
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
-    )
-
-    observer.observe(node)
-    return () => observer.disconnect()
-  }, [])
+  if (reduced) {
+    return <div className={className}>{children}</div>
+  }
 
   return (
-    <div
-      ref={ref}
-      data-visible={visible}
-      className={cn("reveal", `reveal-${direction}`, className)}
-      style={delay ? ({ "--reveal-delay": `${delay}ms` } as CSSProperties) : undefined}
+    <motion.div
+      className={className}
+      initial={{ opacity: 0.6, ...offset }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+      transition={{ duration: 0.5, delay: delay / 1000, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
-    </div>
+    </motion.div>
   )
 }

@@ -1,12 +1,11 @@
-/* Font will be loaded through next/font/google in layout.tsx instead */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   html {
-    font-family: "Manrope", sans-serif;
+    font-family: var(--font-manrope), sans-serif;
+    scroll-behavior: auto; /* Lenis drives scroll feel; don't fight it with native smooth-scroll */
     /* Manrope has a "(c)" -> © contextual-alternate ligature that silently
        mangles legal text like "501(c)(3)" into "501©(3)". Turn off contextual
        alternates/discretionary ligatures site-wide so parenthesized text
@@ -15,70 +14,85 @@
     font-feature-settings: "liga" 0, "calt" 0;
   }
 
-  /* Design tokens, themed to the site's space palette. Previously these were
-     only defined in the unused styles/globals.css, which left --radius and
-     --ring undefined at runtime (square buttons, invisible focus rings). */
+  body {
+    background: #fff8ee;
+    color: #151515;
+  }
+
+  ::selection {
+    background: #ffd23f;
+    color: #151515;
+  }
+
   :root {
-    --background: 261 92% 5%; /* #0a0118 */
-    --foreground: 270 100% 97%;
-    --card: 261 60% 8%;
-    --card-foreground: 270 100% 97%;
-    --popover: 261 60% 8%;
-    --popover-foreground: 270 100% 97%;
-    --primary: 271 81% 56%; /* purple-600 */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 262 47% 18%;
-    --secondary-foreground: 270 100% 97%;
-    --muted: 262 47% 14%;
-    --muted-foreground: 270 40% 75%;
-    --accent: 262 47% 18%;
-    --accent-foreground: 270 100% 97%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 271 60% 30%;
-    --input: 271 60% 30%;
-    --ring: 271 76% 65%;
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-bricolage), sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 96;
   }
 }
 
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
+/* ---------------------------------------------------------------------------
+   Arcade tokens: hard offset shadow, sticker frames, pill buttons.
+   No gradients. No blur. No glow. Flat fills only.
+--------------------------------------------------------------------------- */
+
+.shadow-hard {
+  box-shadow: 4px 4px 0 0 #151515;
 }
 
-@keyframes bounce-x {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(25%);
-  }
+.shadow-hard-sm {
+  box-shadow: 2px 2px 0 0 #151515;
 }
 
-@keyframes gradient-x {
-  0% {
-    background-size: 200% 100%;
-    background-position: left center;
-  }
-  100% {
-    background-size: 200% 100%;
-    background-position: right center;
-  }
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 2px solid #151515;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  box-shadow: 4px 4px 0 0 #151515;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  white-space: nowrap;
 }
 
-@keyframes ticker {
+.btn-pill:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 #151515;
+}
+
+.btn-pill:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 0 #151515;
+}
+
+.sticker-frame {
+  display: inline-block;
+  background: #fff8ee;
+  border: 6px solid #fff8ee;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 0 #151515;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+}
+
+.sticker-frame:hover,
+.sticker-frame:focus-visible {
+  transform: rotate(0deg) !important;
+  box-shadow: 6px 6px 0 0 #151515;
+}
+
+/* Results ticker marquee */
+@keyframes arcade-ticker {
   0% {
     transform: translateX(0);
   }
@@ -87,211 +101,28 @@
   }
 }
 
-.animate-blob {
-  animation: blob 7s infinite;
+.ticker-track {
+  animation: arcade-ticker 32s linear infinite;
 }
 
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-
-.animate-bounce-x {
-  animation: bounce-x 1s infinite;
-}
-
-.animate-gradient-x {
-  animation: gradient-x 3s linear infinite;
-}
-
-.sponsors-ticker {
-  animation: ticker 40s linear infinite;
-}
-
-.subtle-stars {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.34) 0 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(216, 180, 254, 0.26) 0 1px, transparent 1.6px);
-  background-position:
-    0 0,
-    38px 54px;
-  background-size:
-    92px 92px,
-    146px 146px;
-  opacity: 0.62;
-}
-
-@media (max-width: 768px) {
-  .sponsors-ticker {
-    animation-duration: 25s;
-  }
-}
-
-/* ---------------------------------------------------------------------------
-   Shared space theme (drawn from the team page: #0a0118 base, purple/cyan
-   nebula glows, #7c3aed → #c026d3 → #38bdf8 accent gradient)
---------------------------------------------------------------------------- */
-
-.nebula-center {
-  background:
-    radial-gradient(circle at 50% 30%, rgba(168, 85, 247, 0.13), transparent 32rem),
-    radial-gradient(circle at 82% 8%, rgba(56, 189, 248, 0.07), transparent 26rem),
-    radial-gradient(circle at 12% 85%, rgba(217, 70, 239, 0.06), transparent 28rem);
-}
-
-.nebula-corner {
-  background:
-    radial-gradient(circle at 18% 12%, rgba(168, 85, 247, 0.1), transparent 28rem),
-    radial-gradient(circle at 85% 78%, rgba(56, 189, 248, 0.06), transparent 26rem);
-}
-
-/* Accent gradient rule used under section headings */
-.cosmic-rule {
-  height: 1px;
-  width: 6rem;
-  margin-left: auto;
-  margin-right: auto;
-  background: linear-gradient(to right, #7c3aed, #c026d3 55%, #38bdf8);
-  opacity: 0.85;
-}
-
-/* Shared card language (matches the team page's leader cards) */
-.glass-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.75rem;
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  background: linear-gradient(to bottom, rgba(88, 28, 135, 0.2), rgba(0, 0, 0, 0.4));
-  backdrop-filter: blur(4px);
-  transition:
-    border-color 220ms ease,
-    box-shadow 220ms ease,
-    transform 220ms ease;
-}
-
-.glass-card:hover {
-  border-color: rgba(216, 180, 254, 0.42);
-  box-shadow: 0 18px 46px rgba(109, 40, 217, 0.28);
-  transform: translateY(-4px);
-}
-
-/* Scroll-reveal (driven by components/reveal.tsx) */
-.reveal {
-  opacity: 0;
-  transition:
-    opacity 700ms ease,
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
-}
-
-.reveal-up {
-  transform: translateY(26px);
-}
-
-.reveal-down {
-  transform: translateY(-26px);
-}
-
-.reveal-left {
-  transform: translateX(-30px);
-}
-
-.reveal-right {
-  transform: translateX(30px);
-}
-
-.reveal-none {
-  transform: none;
-}
-
-.reveal[data-visible="true"] {
-  opacity: 1;
-  transform: none;
-}
-
-/* Shooting stars — home hero only */
-@keyframes shooting-star {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 0, 0) rotate(-32deg);
-  }
-  4% {
-    opacity: 0.75;
-  }
-  13% {
-    opacity: 0;
-    transform: translate3d(-340px, 215px, 0) rotate(-32deg);
-  }
-  100% {
-    opacity: 0;
-    transform: translate3d(-340px, 215px, 0) rotate(-32deg);
-  }
-}
-
-.shooting-star {
-  position: absolute;
-  width: 150px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.75), rgba(216, 180, 254, 0.3) 55%, transparent);
-  border-radius: 999px;
-  opacity: 0;
-  pointer-events: none;
-  animation: shooting-star 9s linear infinite;
+.ticker-track:hover,
+.ticker-track:focus-within {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-
-  .shooting-star,
-  .animate-blob,
-  .animate-bounce-x,
-  .animate-gradient-x,
-  .sponsors-ticker {
+  .ticker-track {
     animation: none !important;
   }
+  * {
+    scroll-behavior: auto !important;
+  }
 }
 
-/* Article styling */
-.prose h2 {
-  @apply text-2xl font-bold text-white mt-8 mb-4;
+/* Community story prose (kept minimal, no purple-glow prose theme) */
+.prose-arcade p {
+  margin-bottom: 1rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  max-width: 68ch;
 }
-
-.prose h3 {
-  @apply text-xl font-bold text-purple-300 mt-6 mb-3;
-}
-
-.prose p {
-  @apply mb-4 text-purple-200/90;
-}
-
-.prose ul {
-  @apply list-disc pl-6 mb-4 text-purple-200/90;
-}
-
-.prose li {
-  @apply mb-2;
-}
-
-.prose figure {
-  @apply my-8;
-}
-
-.prose figure img {
-  @apply w-full h-auto rounded-xl;
-}
-
-.prose figcaption {
-  @apply text-sm text-center text-purple-300 mt-2;
-}
-

@@ -97,7 +97,6 @@ export const winPhotos: Photo[] = [
 ]
 
 export const houston2025Photos: Photo[] = [
-  { src: "/images/photos/IMG-0865.webp", width: 1650, height: 2200, alt: "The Houston field under purple lights" },
   { src: "/images/photos/IMG-0866.webp", width: 1650, height: 2200, alt: "Awards on the big screen, Houston" },
   { src: "/images/photos/IMG-0867.webp", width: 2200, height: 1650, alt: "The crowd at Houston" },
   { src: "/images/photos/IMG-0840.webp", width: 2200, height: 1650, alt: "Members watching from the rail, Houston" },

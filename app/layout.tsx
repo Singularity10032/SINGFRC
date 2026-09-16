@@ -5,6 +5,7 @@ import { Nav } from "@/components/nav"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { Loader } from "@/components/loader"
+import { Starfield } from "@/components/starfield"
 import "./globals.css"
 
 const manrope = Manrope({
@@ -38,6 +39,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${manrope.variable} ${bricolage.variable} font-sans bg-space text-paper antialiased`}>
         <SmoothScroll />
+        <Starfield />
         <Loader />
         <Nav />
         <main className="pt-16">{children}</main>

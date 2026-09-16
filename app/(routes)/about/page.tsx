@@ -28,15 +28,6 @@ const missionLines = [
   "We keep looking for better ways to build, program and run the team.",
 ]
 
-const buildSteps = [
-  "Kickoff",
-  "Strategy week (game manual, Ri3D reviews, Chief Delphi)",
-  "Subsystem prototypes",
-  "CAD in Onshape",
-  "Fabrication",
-  "Integration and drive practice",
-]
-
 const fills = ["bg-arcade-sky", "bg-arcade-mint", "bg-arcade-fuel"]
 
 export default function AboutPage() {
@@ -137,31 +128,6 @@ export default function AboutPage() {
               </div>
             </Reveal>
           ))}
-        </div>
-      </section>
-
-      {/* How we build: numbered steps on a raised panel */}
-      <section className="border-y-2 border-paper/20 bg-deep text-paper">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <Reveal>
-            <h2 className="font-display text-3xl sm:text-4xl">How we build</h2>
-            <p className="mt-3 max-w-lg text-paper/70">
-              Every subsystem has a named owner and its own sub-assembly. The master assembly is the single source
-              of truth for packaging and weight.
-            </p>
-          </Reveal>
-          <ol className="mt-10 grid gap-x-8 gap-y-6 sm:grid-cols-2">
-            {buildSteps.map((step, i) => (
-              <Reveal key={step} delay={i * 60}>
-                <li className="flex items-baseline gap-4">
-                  <span className="font-display text-2xl font-extrabold text-arcade-fuel">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-paper/90">{step}</span>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
         </div>
       </section>
     </div>

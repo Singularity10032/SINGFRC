@@ -15,8 +15,8 @@ module.exports = {
         // Dark space mode (dad, 2026-09-15): two flat navies for the page,
         // cream for type and photo mats, the arcade accents unchanged so the
         // pop of colour is the same as the light version. No gradients, no glow.
-        space: "#0B1020",
-        deep: "#141B36",
+        space: "#050507",
+        deep: "#111118",
         paper: "#FFF8EE",
         ink: "#151515",
         arcade: {

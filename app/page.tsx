@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import { FuelCatch } from "@/components/fuel-catch"
 import { ResultsMarquee } from "@/components/results-marquee"
 import { StickerPhoto } from "@/components/sticker-photo"
 import { Reveal } from "@/components/reveal"
@@ -35,13 +34,13 @@ const whatWeDo = [
 export default function Home() {
   return (
     <div>
-      {/* Hero: centered headline over a real star chart, the minigame underneath.
-          Headline wording is dad's (2026-09-15). The chart is Orion drawn from
-          its seven bright stars at their real positions — the one kind of
-          starfield the brief allows, because it carries information. */}
-      <section className="relative mx-auto max-w-6xl overflow-hidden px-4 pb-16 pt-10 sm:px-6 sm:pt-16">
+      {/* Hero: centered headline over a real star chart. Headline wording is
+          dad's (2026-09-15); the minigame that sat under it was cut the same
+          day. The chart is Orion drawn from its seven bright stars at their
+          real positions, sitting on the site-wide starfield from layout.tsx. */}
+      <section className="relative mx-auto max-w-6xl overflow-hidden px-4 pb-24 pt-14 sm:px-6 sm:pb-32 sm:pt-24">
         <OrionChart
-          className="pointer-events-none absolute -right-8 top-0 -z-10 w-72 opacity-30 sm:-right-4 sm:w-[30rem] md:w-[36rem]"
+          className="pointer-events-none absolute -right-8 top-0 -z-10 w-72 opacity-50 sm:-right-4 sm:w-[30rem] md:w-[36rem]"
           color="#FFF8EE"
         />
 
@@ -63,10 +62,6 @@ export default function Home() {
               Sponsor us
             </Link>
           </div>
-        </div>
-
-        <div className="mt-12">
-          <FuelCatch />
         </div>
       </section>
 

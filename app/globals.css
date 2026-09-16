@@ -14,9 +14,9 @@
     font-feature-settings: "liga" 0, "calt" 0;
   }
 
-  /* Dark space mode: flat deep navy page, cream type. Same accents as before. */
+  /* Dark space mode: near-black page under a flat starfield, cream type. Same accents. */
   body {
-    background: #0b1020;
+    background: #050507;
     color: #fff8ee;
   }
 

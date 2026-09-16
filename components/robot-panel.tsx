@@ -37,15 +37,17 @@ export function RobotPanel({ robot, index }: { robot: Robot; index: number }) {
 
   return (
     <div className={`rounded-xl border-2 border-ink shadow-hard text-ink ${fillByIndex[index]} p-5 sm:p-6`}>
-      {/* Whole photo, nothing cropped (dad: "the photo is cut off"). */}
-      <div className="overflow-hidden rounded-xl border-2 border-ink bg-space">
+      {/* Whole photo, nothing cropped (dad: "the photo is cut off"), and the
+          frame hugs the image instead of pillarboxing a portrait shot in a
+          wide black box (dad's screenshot, 2026-09-15). */}
+      <div className="mx-auto w-fit max-w-full overflow-hidden rounded-xl border-2 border-ink">
         <Image
           src={photo.src}
           alt={photo.alt}
           width={photo.width}
           height={photo.height}
           sizes="(max-width: 640px) 90vw, 560px"
-          className="h-80 w-full object-contain sm:h-[28rem]"
+          className="h-auto max-h-[28rem] w-auto max-w-full"
         />
       </div>
 

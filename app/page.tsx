@@ -3,7 +3,6 @@ import Link from "next/link"
 import { ResultsMarquee } from "@/components/results-marquee"
 import { StickerPhoto } from "@/components/sticker-photo"
 import { Reveal } from "@/components/reveal"
-import { OrionChart } from "@/components/orion-chart"
 import { photos } from "@/lib/photos"
 
 const stats = [
@@ -34,21 +33,15 @@ const whatWeDo = [
 export default function Home() {
   return (
     <div>
-      {/* Hero: centered headline over a real star chart. Headline wording is
-          dad's (2026-09-15); the minigame that sat under it was cut the same
-          day. The chart is Orion drawn from its seven bright stars at their
-          real positions, sitting on the site-wide starfield from layout.tsx. */}
-      <section className="relative mx-auto max-w-6xl overflow-hidden px-4 pb-24 pt-14 sm:px-6 sm:pb-32 sm:pt-24">
-        <OrionChart
-          className="pointer-events-none absolute -right-8 top-0 -z-10 w-72 opacity-50 sm:-right-4 sm:w-[30rem] md:w-[36rem]"
-          color="#FFF8EE"
-        />
-
+      {/* Hero: centered headline on the site-wide starfield (layout.tsx).
+          Wording is dad's (2026-09-15); the minigame and the Orion chart that
+          sat here were both cut the same day at his request. */}
+      <section className="relative mx-auto max-w-6xl px-4 pb-24 pt-14 sm:px-6 sm:pb-32 sm:pt-24">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="font-display text-[12vw] leading-[0.95] sm:text-6xl md:text-7xl">
             <span className="block">1 Team.</span>
             <span className="block">1 Vision.</span>
-            <span className="block text-arcade-fuel">Infinite Possibilities.</span>
+            <span className="block text-arcade-purple">Infinite Possibilities.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-paper/80">
             Singularity Robotics is a FIRST Robotics Competition team from Frisco, Texas. Students design, build,

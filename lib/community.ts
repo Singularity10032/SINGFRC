@@ -80,13 +80,8 @@ export const stories: Story[] = [
     body: "We mentor local FIRST LEGO League teams, including the Brick Blazers (#68951) and the Science Builders (#28780): chassis builds, Spike Prime programming, and coaching them to present their innovation projects with confidence. We also partnered with Techie Factory, a local STEM organization, trading student volunteers for their FLL programs for sponsorship. And we helped Wakeland Wolverine Robotics (#33791), a first-year FTC team at Wakeland High School, through its rookie season: 2nd place in qualifications at Waco (5-0-0), 4.20 ranking points, two Control Awards, and Winning Alliance at the 2025-2026 North Texas Dallas Semi-Regional Championship. We didn't win those; Wakeland did. But when students invest in other students, this is what happens. We also mentor CircuitForge (#36923), another FTC team.",
     screen: { src: "/images/photos/PHOTO-2025-12-13-16-02-01.webp", width: 1600, height: 1200, alt: "Outreach group with a Go Brick Blazers sign" },
     gallery: [
+      // FTC photos removed at dad's request (2026-09-16); FLL only.
       { src: "/images/projects/fll-table-mentoring.webp", width: 800, height: 571, alt: "Mentoring an FLL team at the competition table" },
-      { src: "/images/projects/ftc-wakeland-team-uil.webp", width: 1648, height: 1341, alt: "Wakeland Wolverine Robotics with their trophy and medals" },
-      { src: "/images/projects/ftc-league-img-4603.webp", width: 1650, height: 2200, alt: "Wakeland Wolverine Robotics student with their FTC robot at the league tournament" },
-      // The three below are dad's full-resolution downloads (2026-09-16).
-      { src: "/images/projects/ftc-trophies-semiregional.webp", width: 1920, height: 2200, alt: "Wakeland's two semi-regional trophies: Winning Alliance and Control Award" },
-      { src: "/images/projects/ftc-drive-team.webp", width: 2200, height: 1467, alt: "Wakeland's drive team at the controls" },
-      { src: "/images/projects/ftc-gsp-4940.webp", width: 2200, height: 1467, alt: "Wakeland's robot (33791) beside an alliance partner on the field" },
     ],
   },
   {

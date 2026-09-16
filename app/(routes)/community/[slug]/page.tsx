@@ -58,6 +58,35 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
         </div>
       </Reveal>
 
+      {story.stats && (
+        <Reveal delay={160}>
+          <dl className="mt-8 grid gap-3 sm:grid-cols-2">
+            {story.stats.map((s, i) => (
+              <div
+                key={s.label}
+                className="rounded-xl border-2 border-ink bg-paper px-4 py-3 text-ink shadow-hard-sm"
+                style={{ rotate: `${i % 2 === 0 ? -0.6 : 0.6}deg` }}
+              >
+                <dt className="font-display text-3xl font-extrabold text-arcade-purple">{s.value}</dt>
+                <dd className="mt-1 text-sm text-ink/80">{s.label}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+      )}
+
+      {story.links && (
+        <Reveal delay={180}>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {story.links.map((l) => (
+              <a key={l.url} href={l.url} target="_blank" rel="noreferrer" className="btn-pill bg-arcade-fuel text-ink">
+                {l.label} ↗
+              </a>
+            ))}
+          </div>
+        </Reveal>
+      )}
+
       {/* Column flow, every photo at its own aspect ratio; the old fixed grid
           cropped wide frames like the Algae Abyss "red wins" screen (dad's
           screenshot, 2026-09-15). */}

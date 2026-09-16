@@ -17,6 +17,10 @@ export type Story = {
   body: string
   screen?: CommunityPhoto
   gallery: CommunityPhoto[]
+  /** Receipt-style figures shown under the body (2026-09-16). */
+  stats?: { value: string; label: string }[]
+  /** Outbound links shown as pills under the body (2026-09-16). */
+  links?: { label: string; url: string }[]
 }
 
 export const stories: Story[] = [
@@ -78,7 +82,8 @@ export const stories: Story[] = [
     // 13): the Techie Factory partnership and Wakeland's rookie-season results
     // are quoted from there. Photos: magazine pp. 11/13 plus the team's public
     // Drive folder "Competition Pictures" (league tournament, Meet 3, semi-regional).
-    body: "We mentor local FIRST LEGO League teams, including the Brick Blazers (#68951) and the Science Builders (#28780): chassis builds, Spike Prime programming, and coaching them to present their innovation projects with confidence. We also partnered with Techie Factory, a local STEM organization, trading student volunteers for their FLL programs for sponsorship. And we helped Wakeland Wolverine Robotics (#33791), a first-year FTC team at Wakeland High School, through its rookie season: 2nd place in qualifications at Waco (5-0-0), 4.20 ranking points, two Control Awards, and Winning Alliance at the 2025-2026 North Texas Dallas Semi-Regional Championship. We didn't win those; Wakeland did. But when students invest in other students, this is what happens. We also mentor CircuitForge (#36923), another FTC team.",
+    body: "We mentor local FIRST LEGO League teams, including the Brick Blazers (#68951) and the Science Builders (#28780): chassis builds, Spike Prime programming, and coaching them to present their innovation projects with confidence. We also partnered with Techie Factory, a local STEM organization, trading student volunteers for their FLL programs for sponsorship. And we helped Wakeland Wolverine Robotics (#33791), a first-year FTC team at Wakeland High School, through its rookie season: 2nd place in qualifications at Waco (5-0-0), 4.20 ranking points, two Control Awards, Winning Alliance at the 2025-2026 North Texas Dallas Semi-Regional Championship, 2nd alliance captains in their second competition, and second runner-up at UIL State. We didn't win those; Wakeland did. But when students invest in other students, this is what happens. We also mentor CircuitForge (#36923), another FTC team.",
+    links: [{ label: "wolverine-robotics.com", url: "https://www.wolverine-robotics.com/" }],
     screen: { src: "/images/photos/PHOTO-2025-12-13-16-02-01.webp", width: 1600, height: 1200, alt: "Outreach group with a Go Brick Blazers sign" },
     gallery: [
       // FTC photos removed at dad's request (2026-09-16); the two FLL photos
@@ -116,7 +121,16 @@ export const stories: Story[] = [
     year: "Ongoing",
     fill: "sky",
     excerpt: "A partnership with a student-led nonprofit that puts hands-on STEM kits in kids' hands.",
-    body: "STEMSeeds is a student-led nonprofit started by Frisco high schoolers. It designs and delivers hands-on STEM activity kits to children, including pediatric patients and kids in underserved communities. Singularity partners with STEMSeeds, and through that partnership we've helped get hundreds of STEM kits to kids.",
+    body: "STEMSeeds is a student-led 501(c)(3) started by Frisco high schoolers that delivers hands-on STEM kits to hospitalized pediatric patients and kids in underserved communities. Each kit has a Paper Rocket, a Pom-Pom Catapult and a Paper Robotic Hand. Singularity partners with and helps oversee STEMSeeds; it has been recognized by the Mayors of Frisco and Mansfield, and works with hospitals across DFW including Children's Health, Scottish Rite, Medical City, Cook Children's and the American Red Cross.",
+    // Figures below are STEMSeeds' own totals as listed on the team resume
+    // (Drive doc "Team Resume - Singularity #10032"); dad asked for all of them (2026-09-16).
+    stats: [
+      { value: "685+", label: "STEM kits delivered worldwide" },
+      { value: "36", label: "chapters, including India, Bangladesh, Canada, the Philippines, China and Sweden" },
+      { value: "$5.2K", label: "raised" },
+      { value: "2", label: "Mayoral Recognitions (Frisco and Mansfield)" },
+    ],
+    links: [{ label: "stemseeds.net", url: "https://stemseeds.net/" }],
     // Photo from dad in chat (2026-09-15): boxed STEM Seeds kits (Paper Rocket, Pom-Pom Catapult, Paper Robotic Hand) with info cards.
     screen: { src: "/images/projects/stemseeds-kits.webp", width: 702, height: 464, alt: "STEM Seeds activity kits boxed up: Paper Rocket, Pom-Pom Catapult and Paper Robotic Hand, with info cards" },
     gallery: [],
@@ -129,6 +143,7 @@ export const stories: Story[] = [
     excerpt: "Walking the pits with a camera and a mic at both district events this season.",
     body: "At both district events this season we walked the pits with a camera and a mic and interviewed drivers, captains and mentors from teams across Texas. The interviews are on our Instagram and TikTok.",
     screen: { src: "/images/photos/IMG_6710.webp", width: 1650, height: 2200, alt: "A student being interviewed on camera at competition", fit: "cover", focus: "55% 42%" },
+    links: [{ label: "Watch on Instagram", url: "https://www.instagram.com/singularityfrc/" }],
     gallery: [
       { src: "/images/photos/IMG_0802.webp", width: 1650, height: 2200, alt: "A student talking with a visitor at an outreach table" },
       ...interviewsPhotos,

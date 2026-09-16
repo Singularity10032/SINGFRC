@@ -61,10 +61,13 @@ export function Nav() {
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="btn-pill h-11 w-11 bg-paper p-0 text-ink md:hidden"
+            aria-expanded={open}
+            className="btn-pill h-11 items-center gap-2 bg-arcade-fuel px-4 text-ink md:hidden"
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            {/* Icon + word so it reads as the menu on a phone (dad, 2026-09-16). */}
+            {open ? <X size={20} strokeWidth={2.5} /> : <Menu size={20} strokeWidth={2.5} />}
+            <span className="text-sm font-extrabold uppercase tracking-wide">{open ? "Close" : "Menu"}</span>
           </button>
         </div>
       </header>

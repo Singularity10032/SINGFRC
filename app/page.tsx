@@ -104,7 +104,7 @@ export default function Home() {
       {/* Magazine */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <Reveal>
-          <div className="grid gap-8 rounded-xl border-2 border-ink bg-arcade-sky p-6 sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
+          <div className="grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-sky p-6 sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
             <Image
               src="/images/horizon-magazine-2026.png"
               alt="Horizon, our season magazine, volume 2 issue 1 cover"
@@ -134,7 +134,7 @@ export default function Home() {
       {/* Follow */}
       <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
         <Reveal>
-          <div className="rounded-xl border-2 border-ink bg-arcade-purple p-8 text-center text-paper sm:p-14">
+          <div className="rounded-xl border-2 border-ink shadow-hard bg-arcade-purple p-8 text-center text-paper sm:p-14">
             <h2 className="font-display text-3xl sm:text-4xl">Follow along</h2>
             <p className="mx-auto mt-3 max-w-md text-paper/85">
               We post build progress, competition updates and outreach on Instagram and TikTok as @singularityfrc.

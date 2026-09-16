@@ -59,7 +59,7 @@ export default function SponsorsPage() {
       </div>
 
       <Reveal>
-        <div className="mt-16 rounded-xl border-2 border-ink bg-arcade-purple p-8 text-paper sm:p-12">
+        <div className="mt-16 rounded-xl border-2 border-ink shadow-hard bg-arcade-purple p-8 text-paper sm:p-12">
           <h2 className="font-display text-3xl">Become a sponsor</h2>
           <p className="mt-3 max-w-xl text-paper/85">
             Sponsor Team 10032 and your contribution goes to our students and our community work. Read the packet,

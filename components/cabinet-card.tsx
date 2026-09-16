@@ -28,7 +28,7 @@ export function CabinetCard({ story }: { story: Story }) {
           type="button"
           onClick={() => setFlipped(true)}
           aria-label={`Flip to read about ${story.title}`}
-          className={`absolute inset-0 flex flex-col overflow-hidden rounded-xl border-2 border-ink text-left [backface-visibility:hidden] ${fillClass[story.fill]}`}
+          className={`absolute inset-0 flex flex-col overflow-hidden rounded-xl border-2 border-ink shadow-hard text-left [backface-visibility:hidden] ${fillClass[story.fill]}`}
         >
           <div className="relative flex-1 overflow-hidden border-b-2 border-ink bg-ink">
             {story.screen ? (

@@ -16,7 +16,7 @@ export function RobotPanel({ robot, index }: { robot: Robot; index: number }) {
   const photo = photoByIndex[index]
 
   return (
-    <div className={`rounded-xl border-2 border-ink ${fillByIndex[index]} p-5 sm:p-6`}>
+    <div className={`rounded-xl border-2 border-ink shadow-hard ${fillByIndex[index]} p-5 sm:p-6`}>
       <div className="overflow-hidden rounded-xl border-2 border-ink">
         <Image
           src={photo.src}

@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
 import { Reveal } from "@/components/reveal"
+import { StickerPhoto } from "@/components/sticker-photo"
+import { photos } from "@/lib/photos"
 
 export const metadata: Metadata = {
   title: "About — Singularity Robotics",
@@ -46,14 +48,24 @@ export default function AboutPage() {
       </Reveal>
 
       <Reveal delay={120}>
-        <div className="mt-12 rounded-xl border-2 border-ink bg-ink p-6 text-paper sm:p-10">
-          <p className="font-display text-2xl sm:text-3xl">The garage</p>
-          <p className="prose-arcade mt-4 max-w-2xl text-paper/85">
-            There is no robotics lab. We build out of a student&apos;s two-car garage in Prosper, Texas, and use the
-            driveway when 36 people can&apos;t fit inside. The shooter gets assembled in one corner, the MAXTubes get
-            cut outside, the intake gets fastened in another. Working this way keeps costs down, and the money goes
-            back into the robot and the people on the team.
-          </p>
+        <div className="mt-12 grid gap-6 rounded-xl border-2 border-ink bg-ink p-6 text-paper shadow-hard sm:grid-cols-[1fr_auto] sm:items-center sm:p-10">
+          <div>
+            <p className="font-display text-2xl sm:text-3xl">The garage</p>
+            <p className="prose-arcade mt-4 max-w-2xl text-paper/85">
+              There is no robotics lab. We build out of a student&apos;s two-car garage in Prosper, Texas, and use
+              the driveway when 36 people can&apos;t fit inside. The shooter gets assembled in one corner, the
+              MAXTubes get cut outside, the intake gets fastened in another. Working this way keeps costs down, and
+              the money goes back into the robot and the people on the team.
+            </p>
+          </div>
+          <StickerPhoto
+            src={photos.sticker3.src}
+            width={photos.sticker3.width}
+            height={photos.sticker3.height}
+            alt="A student hugging the bare robot chassis in the gym"
+            index={2}
+            className="mx-auto w-48 sm:w-56"
+          />
         </div>
       </Reveal>
 
@@ -71,7 +83,7 @@ export default function AboutPage() {
       <div className="mt-12 grid gap-4 sm:grid-cols-3">
         {values.map((v, i) => (
           <Reveal key={v.title} delay={i * 80}>
-            <div className={`h-full rounded-xl border-2 border-ink p-5 ${fills[i]}`}>
+            <div className={`h-full rounded-xl border-2 border-ink p-5 shadow-hard ${fills[i]}`}>
               <h3 className="font-display text-xl">{v.title}</h3>
               <p className="mt-2 text-sm text-ink/80">{v.body}</p>
             </div>

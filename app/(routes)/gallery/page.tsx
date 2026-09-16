@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Reveal } from "@/components/reveal"
 import { PhotoWall } from "@/components/photo-wall"
-import { winPhotos, houston2025Photos, buildPhotos, teamPhotos } from "@/lib/gallery"
+import { winPhotos, houston2025Photos, buildPhotos, teamPhotos, funPhotos } from "@/lib/gallery"
 
 export const metadata: Metadata = {
   title: "Gallery — Singularity Robotics",

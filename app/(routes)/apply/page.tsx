@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Reveal } from "@/components/reveal"
+import { BlobEdge, band } from "@/components/blob-edge"
 
 export const metadata: Metadata = {
   title: "Apply — Singularity Robotics",
@@ -9,11 +10,13 @@ export const metadata: Metadata = {
 const FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdxXEqo61gHjgszNQ6uFRoVZRYrkYnlj9LC4Ldm68heYH7dAQ/viewform?usp=dialog"
 
+// Copy unchanged from the previous version of this page (COPY-DECK); only the
+// layout changed (dad, 2026-09-15: "format the application page better").
 const steps = [
-  { n: "01", title: "Application", body: "Fill out the form with your contact info, interests and experience." },
-  { n: "02", title: "Interview", body: "A short conversation with student leaders." },
-  { n: "03", title: "Hands-on", body: "Depending on your interests, a small build or coding activity with the team." },
-  { n: "04", title: "Onboarding", body: "Accepted members get an invitation and start with the team." },
+  { n: "01", title: "Application", body: "Fill out the form with your contact info, interests and experience.", fill: "bg-arcade-fuel" },
+  { n: "02", title: "Interview", body: "A short conversation with student leaders.", fill: "bg-arcade-sky" },
+  { n: "03", title: "Hands-on", body: "Depending on your interests, a small build or coding activity with the team.", fill: "bg-arcade-mint" },
+  { n: "04", title: "Onboarding", body: "Accepted members get an invitation and start with the team.", fill: "bg-paper" },
 ]
 
 const eligibility = [
@@ -25,68 +28,87 @@ const eligibility = [
   "Underclassmen are especially welcome",
 ]
 
+function ApplyButton({ className = "" }: { className?: string }) {
+  return (
+    <a href={FORM_URL} target="_blank" rel="noreferrer" className={`btn-pill inline-flex bg-arcade-bumper text-paper ${className}`}>
+      Apply now
+    </a>
+  )
+}
+
 export default function ApplyPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-      <Reveal>
-        <h1 className="font-display text-4xl sm:text-5xl">Join Team 10032.</h1>
-      </Reveal>
-      <Reveal delay={60}>
-        <p className="prose-arcade mt-5 max-w-xl">
-          Build, code, or run the business side. No experience needed; you&apos;ll learn everything here.
-          Applications are rolling.
-        </p>
-        <a
-          href={FORM_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="btn-pill mt-6 inline-flex bg-arcade-bumper text-paper"
-        >
-          Apply
-        </a>
-      </Reveal>
+    <div>
+      {/* Headline, centered, one button */}
+      <section className="mx-auto max-w-3xl px-4 pb-16 pt-16 text-center sm:px-6 sm:pt-24">
+        <Reveal>
+          <p className="text-sm font-semibold text-arcade-fuel">Applications are rolling</p>
+          <h1 className="mt-2 font-display text-4xl leading-[1.02] sm:text-6xl">Join Team 10032.</h1>
+          <p className="mx-auto mt-5 max-w-xl text-lg text-paper/80">
+            Build, code, or run the business side. No experience needed; you&apos;ll learn everything here.
+          </p>
+          <ApplyButton className="mt-7" />
+        </Reveal>
+      </section>
 
-      <Reveal delay={100}>
-        <h2 className="mt-16 font-display text-2xl">How it works</h2>
-      </Reveal>
-      <div className="relative mt-6">
-        <div className="absolute bottom-0 left-4 top-0 w-[2px] bg-paper/20" aria-hidden />
-        <ol className="space-y-6">
-          {steps.map((step, i) => (
-            <Reveal key={step.n} delay={i * 70}>
-              <li className="relative flex gap-5 pl-0">
-                <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-arcade-fuel font-display text-sm text-ink">
-                  {step.n}
-                </span>
-                <div>
-                  <p className="font-display text-lg">{step.title}</p>
-                  <p className="text-sm text-paper/75">{step.body}</p>
-                </div>
-              </li>
-            </Reveal>
-          ))}
-        </ol>
-      </div>
+      {/* How it works: four numbered cards on a raised band */}
+      <BlobEdge fill={band.deep} />
+      <section className="bg-deep">
+        <div className="mx-auto max-w-6xl px-4 pb-16 pt-6 text-center sm:px-6">
+          <Reveal>
+            <h2 className="font-display text-3xl sm:text-4xl">How it works</h2>
+          </Reveal>
+          <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step, i) => (
+              <Reveal key={step.n} delay={i * 70}>
+                <li
+                  className={`h-full rounded-xl border-2 border-ink p-5 text-left text-ink shadow-hard ${step.fill}`}
+                  style={{ rotate: `${(i % 2 === 0 ? -1 : 1) * 0.6}deg` }}
+                >
+                  <p className="font-display text-3xl font-extrabold text-arcade-purple">{step.n}</p>
+                  <p className="mt-2 font-display text-xl">{step.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/80">{step.body}</p>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+        <BlobEdge fill={band.sky} />
+      </section>
 
-      <Reveal delay={100}>
-        <h2 className="mt-16 font-display text-2xl">Who can apply</h2>
-        <ul className="prose-arcade mt-4 space-y-2">
-          {eligibility.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </Reveal>
+      {/* Who can apply: a checklist on a sky band */}
+      <section className="bg-arcade-sky text-ink">
+        <div className="mx-auto max-w-3xl px-4 pb-16 pt-6 sm:px-6">
+          <Reveal>
+            <h2 className="text-center font-display text-3xl sm:text-4xl">Who can apply</h2>
+          </Reveal>
+          <ul className="mx-auto mt-8 grid max-w-2xl gap-3 sm:grid-cols-2">
+            {eligibility.map((item, i) => (
+              <Reveal key={item} delay={i * 50}>
+                <li className="flex h-full items-start gap-3 rounded-xl border-2 border-ink bg-paper px-4 py-3 shadow-hard-sm">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-arcade-mint text-[11px] font-extrabold" aria-hidden>
+                    ✓
+                  </span>
+                  <span className="text-sm leading-relaxed">{item}</span>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+        <BlobEdge fill={band.purple} />
+      </section>
 
-      <Reveal>
-        <a
-          href={FORM_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="btn-pill mt-12 inline-flex bg-arcade-bumper text-paper"
-        >
-          Apply
-        </a>
-      </Reveal>
+      {/* Closing call, purple band */}
+      <section className="bg-arcade-purple text-paper">
+        <div className="mx-auto max-w-3xl px-4 pb-16 pt-6 text-center sm:px-6">
+          <Reveal>
+            <h2 className="font-display text-3xl sm:text-4xl">Ready?</h2>
+            <p className="mx-auto mt-3 max-w-md text-paper/85">The form takes a few minutes. We read every one.</p>
+            <ApplyButton className="mt-6 !bg-arcade-fuel !text-ink" />
+          </Reveal>
+        </div>
+      </section>
+      <BlobEdge fill={band.purple} flip className="mb-16" />
     </div>
   )
 }

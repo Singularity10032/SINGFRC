@@ -64,7 +64,7 @@ export default function Home() {
       {/* What we do: a raised band with blob edges, cards sit flat on it */}
       <BlobEdge fill={band.deep} />
       <section className="bg-deep">
-        <div className="mx-auto max-w-6xl px-4 pb-16 pt-6 sm:px-6">
+        <div className="mx-auto max-w-6xl px-4 pb-16 pt-6 text-center sm:px-6">
         <Reveal>
           <h2 className="font-display text-4xl sm:text-5xl">What we do</h2>
         </Reveal>
@@ -93,17 +93,17 @@ export default function Home() {
       {/* Horizon: sky band (dad, 2026-09-15: the cards become blob bands) */}
       <section className="bg-arcade-sky text-ink">
         <Reveal>
-          <div className="mx-auto grid max-w-6xl gap-8 px-4 pb-16 pt-6 sm:grid-cols-[auto_1fr] sm:items-center sm:px-6 sm:pb-20">
+          <div className="mx-auto flex max-w-3xl flex-col items-center px-4 pb-16 pt-6 text-center sm:px-6 sm:pb-20">
             <Image
               src="/images/horizon-magazine-2026.png"
               alt="Horizon, our season magazine, volume 2 issue 1 cover"
               width={216}
               height={280}
-              className="mx-auto rounded-xl border-2 border-ink shadow-hard sm:mx-0"
+              className="rounded-xl border-2 border-ink shadow-hard"
             />
-            <div>
+            <div className="mt-8">
               <h2 className="font-display text-3xl">Horizon, our season magazine</h2>
-              <p className="mt-3 max-w-lg text-ink/80">
+              <p className="mx-auto mt-3 max-w-lg text-ink/80">
                 Vol. II, issue 1: build recap, the garage, competition recap, Frisco Ignite, FLL mentorship, the
                 arcade, interviews from the pit.
               </p>
@@ -125,20 +125,20 @@ export default function Home() {
           teaser graphic: game name, presenter, launch date. */}
       <section className="bg-arcade-mint text-ink">
         <Reveal delay={80}>
-          <div className="mx-auto grid max-w-6xl gap-8 px-4 pb-16 pt-6 sm:grid-cols-[auto_1fr] sm:items-center sm:px-6 sm:pb-20">
+          <div className="mx-auto flex max-w-3xl flex-col items-center px-4 pb-16 pt-6 text-center sm:px-6 sm:pb-20">
             <Image
               src="/images/biocore.jpeg"
               alt="FIRST Robotics Competition BIOCORE, presented by Haas, launches January 9, 2027"
               width={640}
               height={356}
-              className="mx-auto w-full max-w-xs rounded-xl border-2 border-ink shadow-hard sm:mx-0"
+              className="w-full max-w-sm rounded-xl border-2 border-ink shadow-hard"
             />
-            <div>
+            <div className="mt-8">
               <span className="inline-block rounded-full border-2 border-ink bg-arcade-fuel px-3 py-1 text-xs font-extrabold">
                 Coming soon
               </span>
               <h2 className="mt-3 font-display text-3xl">BIOCORE, the 2027 game</h2>
-              <p className="mt-3 max-w-lg text-ink/80">
+              <p className="mx-auto mt-3 max-w-lg text-ink/80">
                 FIRST&apos;s next Robotics Competition game, presented by Haas, launches January 9, 2027. Our third
                 season starts at kickoff; build progress will show up here and on @singularityfrc.
               </p>

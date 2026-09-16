@@ -28,20 +28,21 @@ const gradeOrder: Array<[string, string]> = [
   ["Freshman", "Freshmen"],
 ]
 
-// College logos dad downloaded on 2026-09-15 (Downloads/Singularity/College logos/).
-// The "which alumni went where" claim is dad's wording; logos are the schools'
-// own marks. Tiles are white so the dark-on-transparent marks read; UT Austin's
-// mark has white in it, so it sits on a dark tile.
+// College logos dad downloaded on 2026-09-15 (Downloads/Singularity/College logos/,
+// originals untouched). The copies here are trimmed to the mark's bounding box
+// and flattened onto white so every tile is the same white and the mark fills
+// it (dad: "make everything white … zoom in to fit"). The "which alumni went
+// where" claim is dad's wording.
 const colleges = [
-  { name: "Duke University", src: "/images/colleges/duke.webp", width: 3840, height: 1678 },
-  { name: "Georgia Tech", src: "/images/colleges/georgia-tech.png", width: 3840, height: 2159 },
-  { name: "New York University", src: "/images/colleges/nyu.webp", width: 3840, height: 1308 },
-  { name: "Purdue University", src: "/images/colleges/purdue.jpg", width: 2000, height: 1125 },
+  { name: "Duke University", src: "/images/colleges/duke.png", width: 1600, height: 699 },
+  { name: "Georgia Tech", src: "/images/colleges/georgia-tech.png", width: 1600, height: 336 },
+  { name: "New York University", src: "/images/colleges/nyu.png", width: 1600, height: 545 },
+  { name: "Purdue University", src: "/images/colleges/purdue.png", width: 1600, height: 350 },
   { name: "Texas A&M University", src: "/images/colleges/texas-am.png", width: 599, height: 92 },
-  { name: "University of Chicago", src: "/images/colleges/uchicago.png", width: 3840, height: 2163 },
-  { name: "University of Michigan", src: "/images/colleges/michigan.png", width: 1920, height: 1080 },
-  { name: "UCLA", src: "/images/colleges/ucla.png", width: 3000, height: 2000 },
-  { name: "University of Texas at Austin", src: "/images/colleges/ut-austin.webp", width: 3840, height: 1093, dark: true },
+  { name: "University of Chicago", src: "/images/colleges/uchicago.png", width: 1600, height: 365 },
+  { name: "University of Michigan", src: "/images/colleges/michigan.png", width: 1600, height: 359 },
+  { name: "UCLA", src: "/images/colleges/ucla.png", width: 1600, height: 557 },
+  { name: "University of Texas at Austin", src: "/images/colleges/ut-austin.png", width: 1600, height: 455 },
 ]
 
 const spring = { type: "spring", stiffness: 300, damping: 20 } as const
@@ -120,9 +121,7 @@ function MemberChips({ members }: { members: TeamMember[] }) {
 function CollegeTile({ college }: { college: (typeof colleges)[number] }) {
   return (
     <motion.div
-      className={`mx-3 flex h-24 w-44 shrink-0 items-center justify-center rounded-xl border-2 p-4 shadow-hard-sm ${
-        college.dark ? "border-paper/40 bg-deep" : "border-ink bg-white"
-      }`}
+      className="mx-3 flex h-28 w-60 shrink-0 items-center justify-center rounded-xl border-2 border-ink bg-white px-4 py-3 shadow-hard-sm"
       whileHover={{ y: -4, boxShadow: "4px 4px 0 0 #fff8ee" }}
       transition={spring}
     >
@@ -131,8 +130,8 @@ function CollegeTile({ college }: { college: (typeof colleges)[number] }) {
         alt={`${college.name} logo`}
         width={college.width}
         height={college.height}
-        sizes="176px"
-        className="h-full w-full object-contain"
+        sizes="240px"
+        className="max-h-full max-w-full object-contain"
       />
     </motion.div>
   )

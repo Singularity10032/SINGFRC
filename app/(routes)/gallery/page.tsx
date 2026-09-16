@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Reveal } from "@/components/reveal"
 import { PhotoWall } from "@/components/photo-wall"
-import { winPhotos, houston2025Photos, orionPhotos, pitPhotos, buildPhotos, teamPhotos } from "@/lib/gallery"
+import { winPhotos, houston2025Photos, orionPhotos, buildPhotos, teamPhotos } from "@/lib/gallery"
 
 export const metadata: Metadata = {
   title: "Gallery — Singularity Robotics",
@@ -17,7 +17,6 @@ const sections = [
   { title: "Together", fill: "bg-paper", photos: teamPhotos },
   { title: "Houston 2025: FIRST Championship", fill: "bg-arcade-sky", photos: houston2025Photos },
   { title: "More of ORION", fill: "bg-arcade-bumper text-paper", photos: orionPhotos.slice(13) },
-  { title: "Pits, practice, stands", fill: "bg-arcade-sky", photos: pitPhotos },
   // Moved here from /about (dad, 2026-09-15).
   { title: "Build season, in pictures", fill: "bg-paper", photos: buildPhotos },
 ]

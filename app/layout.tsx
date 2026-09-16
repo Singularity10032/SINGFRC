@@ -4,6 +4,7 @@ import { Manrope, Bricolage_Grotesque } from "next/font/google"
 import { Nav } from "@/components/nav"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
+import { Loader } from "@/components/loader"
 import "./globals.css"
 
 const manrope = Manrope({
@@ -37,6 +38,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${manrope.variable} ${bricolage.variable} font-sans bg-paper text-ink antialiased`}>
         <SmoothScroll />
+        <Loader />
         <Nav />
         <main className="pt-16">{children}</main>
         <Footer />

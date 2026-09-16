@@ -36,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} ${bricolage.variable} font-sans bg-paper text-ink antialiased`}>
+      <body className={`${manrope.variable} ${bricolage.variable} font-sans bg-space text-paper antialiased`}>
         <SmoothScroll />
         <Loader />
         <Nav />

@@ -14,9 +14,10 @@
     font-feature-settings: "liga" 0, "calt" 0;
   }
 
+  /* Dark space mode: flat deep navy page, cream type. Same accents as before. */
   body {
-    background: #fff8ee;
-    color: #151515;
+    background: #0b1020;
+    color: #fff8ee;
   }
 
   ::selection {
@@ -42,14 +43,18 @@
 /* ---------------------------------------------------------------------------
    Arcade tokens: hard offset shadow, sticker frames, pill buttons.
    No gradients. No blur. No glow. Flat fills only.
+   Dark mode: the offset shadow is cream on navy (a misregistered-print look,
+   the same trick as before with the colours swapped), pill outlines follow
+   the pill's own text colour so a cream pill gets an ink edge and a purple
+   pill gets a cream edge.
 --------------------------------------------------------------------------- */
 
 .shadow-hard {
-  box-shadow: 4px 4px 0 0 #151515;
+  box-shadow: 4px 4px 0 0 #fff8ee;
 }
 
 .shadow-hard-sm {
-  box-shadow: 2px 2px 0 0 #151515;
+  box-shadow: 2px 2px 0 0 #fff8ee;
 }
 
 .btn-pill {
@@ -58,37 +63,38 @@
   justify-content: center;
   gap: 0.5rem;
   border-radius: 999px;
-  border: 2px solid #151515;
+  border: 2px solid currentColor;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
-  box-shadow: 4px 4px 0 0 #151515;
+  box-shadow: 4px 4px 0 0 #fff8ee;
   transition: transform 150ms ease, box-shadow 150ms ease;
   white-space: nowrap;
 }
 
 .btn-pill:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 0 #151515;
+  box-shadow: 6px 6px 0 0 #fff8ee;
 }
 
 .btn-pill:active {
   transform: translate(0, 0);
-  box-shadow: 2px 2px 0 0 #151515;
+  box-shadow: 2px 2px 0 0 #fff8ee;
 }
 
+/* Photo mats stay cream: a light sticker on a dark desk is the pop. */
 .sticker-frame {
   display: inline-block;
   background: #fff8ee;
   border: 6px solid #fff8ee;
   border-radius: 12px;
-  box-shadow: 4px 4px 0 0 #151515;
+  box-shadow: 4px 4px 0 0 #6b2fd6;
   transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
 }
 
 .sticker-frame:hover,
 .sticker-frame:focus-visible {
   transform: rotate(0deg) !important;
-  box-shadow: 6px 6px 0 0 #151515;
+  box-shadow: 6px 6px 0 0 #6b2fd6;
 }
 
 /* Results ticker marquee */

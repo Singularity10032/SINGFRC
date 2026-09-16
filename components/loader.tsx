@@ -75,7 +75,7 @@ export function Loader() {
           role="status"
           aria-label="Loading"
           onClick={finish}
-          className="fixed inset-0 z-[100] flex cursor-pointer flex-col items-center justify-center gap-4 bg-paper"
+          className="fixed inset-0 z-[100] flex cursor-pointer flex-col items-center justify-center gap-4 bg-space"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
@@ -90,7 +90,7 @@ export function Loader() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.35 }}
-            className="font-display text-sm font-extrabold tracking-tight text-ink"
+            className="font-display text-sm font-extrabold tracking-tight text-paper"
           >
             insert coin
           </motion.p>

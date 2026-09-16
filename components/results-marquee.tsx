@@ -2,7 +2,7 @@ import { results } from "@/lib/results"
 
 function Receipt({ season, event, result }: (typeof results)[number]) {
   return (
-    <div className="mx-2 flex shrink-0 items-center gap-2 rounded-full border-2 border-ink bg-paper px-4 py-2 text-sm font-semibold">
+    <div className="mx-2 flex shrink-0 items-center gap-2 rounded-full border-2 border-ink bg-paper px-4 py-2 text-sm font-semibold text-ink">
       <span className="tabular-nums">{season}</span>
       <span aria-hidden>·</span>
       <span>{event}</span>

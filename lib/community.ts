@@ -78,6 +78,21 @@ export const stories: Story[] = [
     gallery: [],
   },
   {
+    // Added 2026-09-15 at dad's request. Facts: stemseeds.net (fetched
+    // 2026-09-15) for what STEMSeeds is; the team's own Mayoral Recognition
+    // application (2026-09-07, per the vault) for "hundreds of STEM kits"
+    // through the partnership. STEMSeeds' own totals (720 kits, 36 chapters,
+    // 6 countries) are the organisation's, not this team's, so they are not
+    // claimed here. No photo on record yet.
+    slug: "stemseeds",
+    title: "STEMSeeds",
+    year: "Ongoing",
+    fill: "sky",
+    excerpt: "A partnership with a student-led nonprofit that puts hands-on STEM kits in kids' hands.",
+    body: "STEMSeeds is a student-led nonprofit started by Frisco high schoolers. It designs and delivers hands-on STEM activity kits to children, including pediatric patients and kids in underserved communities. Singularity partners with STEMSeeds, and through that partnership we've helped get hundreds of STEM kits to kids.",
+    gallery: [],
+  },
+  {
     slug: "interviews-from-the-pit",
     title: "Interviews from the pit",
     year: "2025-2026",

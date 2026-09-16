@@ -37,7 +37,7 @@ export function Footer() {
   }, [])
 
   return (
-    <footer className="border-t-2 border-ink bg-ink text-paper">
+    <footer className="border-t-2 border-paper/20 bg-deep text-paper">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-wrap items-start justify-between gap-8">
           <div>

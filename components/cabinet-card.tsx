@@ -28,9 +28,9 @@ export function CabinetCard({ story }: { story: Story }) {
           type="button"
           onClick={() => setFlipped(true)}
           aria-label={`Flip to read about ${story.title}`}
-          className={`absolute inset-0 flex flex-col overflow-hidden rounded-xl border-2 border-ink shadow-hard text-left [backface-visibility:hidden] ${fillClass[story.fill]}`}
+          className={`absolute inset-0 flex flex-col overflow-hidden rounded-xl border-2 border-ink shadow-hard text-left text-ink [backface-visibility:hidden] ${fillClass[story.fill]}`}
         >
-          <div className="relative flex-1 overflow-hidden border-b-2 border-ink bg-ink">
+          <div className="relative flex-1 overflow-hidden border-b-2 border-ink bg-space">
             {story.screen ? (
               <Image
                 src={story.screen.src}
@@ -54,7 +54,7 @@ export function CabinetCard({ story }: { story: Story }) {
 
         {/* Back: the paragraph */}
         <div
-          className={`absolute inset-0 flex flex-col justify-between overflow-y-auto rounded-xl border-2 border-ink p-5 [backface-visibility:hidden] ${fillClass[story.fill]}`}
+          className={`absolute inset-0 flex flex-col justify-between overflow-y-auto rounded-xl border-2 border-ink p-5 text-ink [backface-visibility:hidden] ${fillClass[story.fill]}`}
           style={{ transform: "rotateY(180deg)" }}
         >
           <div>

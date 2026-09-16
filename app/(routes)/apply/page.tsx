@@ -50,17 +50,17 @@ export default function ApplyPage() {
         <h2 className="mt-16 font-display text-2xl">How it works</h2>
       </Reveal>
       <div className="relative mt-6">
-        <div className="absolute bottom-0 left-4 top-0 w-[2px] bg-ink/20" aria-hidden />
+        <div className="absolute bottom-0 left-4 top-0 w-[2px] bg-paper/20" aria-hidden />
         <ol className="space-y-6">
           {steps.map((step, i) => (
             <Reveal key={step.n} delay={i * 70}>
               <li className="relative flex gap-5 pl-0">
-                <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-arcade-fuel font-display text-sm">
+                <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-arcade-fuel font-display text-sm text-ink">
                   {step.n}
                 </span>
                 <div>
                   <p className="font-display text-lg">{step.title}</p>
-                  <p className="text-sm text-ink/75">{step.body}</p>
+                  <p className="text-sm text-paper/75">{step.body}</p>
                 </div>
               </li>
             </Reveal>

@@ -30,7 +30,7 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
       </Link>
 
       <Reveal>
-        <p className="mt-4 text-sm font-semibold text-ink/60">{story.year}</p>
+        <p className="mt-4 text-sm font-semibold text-paper/60">{story.year}</p>
         <h1 className="mt-1 font-display text-4xl sm:text-5xl">{story.title}</h1>
       </Reveal>
 

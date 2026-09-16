@@ -4,6 +4,7 @@ import { FuelCatch } from "@/components/fuel-catch"
 import { ResultsMarquee } from "@/components/results-marquee"
 import { StickerPhoto } from "@/components/sticker-photo"
 import { Reveal } from "@/components/reveal"
+import { OrionChart } from "@/components/orion-chart"
 import { photos } from "@/lib/photos"
 
 const stats = [
@@ -31,22 +32,30 @@ const whatWeDo = [
   },
 ]
 
-const cardFills = ["bg-arcade-sky", "bg-arcade-mint", "bg-arcade-fuel", "bg-paper"]
-
 export default function Home() {
   return (
     <div>
-      {/* Hero: minigame + headline */}
-      <section className="mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-10 sm:px-6 sm:pt-16 md:grid-cols-2 md:items-center md:gap-8">
-        <div className="order-2 md:order-1">
-          <h1 className="font-display text-[13vw] leading-[0.95] sm:text-5xl md:text-6xl">
-            We build the robot. We run the team.
+      {/* Hero: centered headline over a real star chart, the minigame underneath.
+          Headline wording is dad's (2026-09-15). The chart is Orion drawn from
+          its seven bright stars at their real positions — the one kind of
+          starfield the brief allows, because it carries information. */}
+      <section className="relative mx-auto max-w-6xl overflow-hidden px-4 pb-16 pt-10 sm:px-6 sm:pt-16">
+        <OrionChart
+          className="pointer-events-none absolute -right-8 top-0 -z-10 w-72 opacity-30 sm:-right-4 sm:w-[30rem] md:w-[36rem]"
+          color="#FFF8EE"
+        />
+
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="font-display text-[12vw] leading-[0.95] sm:text-6xl md:text-7xl">
+            <span className="block">1 Team.</span>
+            <span className="block">1 Vision.</span>
+            <span className="block text-arcade-fuel">Infinite Possibilities.</span>
           </h1>
-          <p className="mt-5 max-w-md text-lg text-ink/80">
+          <p className="mx-auto mt-6 max-w-xl text-lg text-paper/80">
             Singularity Robotics is a FIRST Robotics Competition team from Frisco, Texas. Students design, build,
             program and fund every part of it.
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Link href="/apply" className="btn-pill bg-arcade-purple text-paper">
               Join the team
             </Link>
@@ -56,14 +65,14 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="order-1 md:order-2">
+        <div className="mt-12">
           <FuelCatch />
         </div>
       </section>
 
       {/* Stat row */}
       <Reveal>
-        <section className="border-y-2 border-ink bg-ink text-paper">
+        <section className="border-y-2 border-paper/20 bg-deep text-paper">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 py-10 sm:grid-cols-3 sm:px-6">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
@@ -75,7 +84,7 @@ export default function Home() {
         </section>
       </Reveal>
 
-      {/* What we do: sticker photos on a desk */}
+      {/* What we do: sticker photos on a dark desk */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <Reveal>
           <h2 className="font-display text-4xl sm:text-5xl">What we do</h2>
@@ -91,7 +100,7 @@ export default function Home() {
               <div className="flex flex-col items-center text-center">
                 <StickerPhoto src={photo.src} width={photo.width} height={photo.height} alt={alt} index={i} className="w-full" />
                 <h3 className="mt-4 font-display text-lg">{card.title}</h3>
-                <p className="mt-1 text-sm text-ink/70">{card.body}</p>
+                <p className="mt-1 text-sm text-paper/70">{card.body}</p>
               </div>
             </Reveal>
           ))}
@@ -104,7 +113,7 @@ export default function Home() {
       {/* Magazine */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <Reveal>
-          <div className="grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-sky p-6 sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
+          <div className="grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-sky p-6 text-ink sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
             <Image
               src="/images/horizon-magazine-2026.png"
               alt="Horizon, our season magazine, volume 2 issue 1 cover"

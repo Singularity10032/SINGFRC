@@ -39,12 +39,12 @@ export function FuelCatch() {
   const draw = useCallback((ctx: CanvasRenderingContext2D) => {
     const s = stateRef.current
     ctx.clearRect(0, 0, W, H)
-    ctx.fillStyle = "#FFF8EE"
+    ctx.fillStyle = "#0B1020"
     ctx.fillRect(0, 0, W, H)
 
-    // catcher (ORION, simplified): purple body, ink outline, yellow eye.
+    // catcher (ORION, simplified): purple body, cream outline, yellow eye.
     ctx.fillStyle = "#6B2FD6"
-    ctx.strokeStyle = "#151515"
+    ctx.strokeStyle = "#FFF8EE"
     ctx.lineWidth = 2
     const cy = H - 24
     ctx.beginPath()
@@ -58,7 +58,7 @@ export function FuelCatch() {
     for (const b of s.balls) {
       ctx.beginPath()
       ctx.fillStyle = "#FFD23F"
-      ctx.strokeStyle = "#151515"
+      ctx.strokeStyle = "#FFF8EE"
       ctx.lineWidth = 1.5
       ctx.arc(b.x, b.y, BALL_R, 0, Math.PI * 2)
       ctx.fill()
@@ -186,7 +186,7 @@ export function FuelCatch() {
         />
 
         {phase !== "playing" && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-ink/80 text-paper">
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-space/85 text-paper">
             {phase === "done" && (
               <p className="font-display text-3xl font-extrabold tabular-nums">{score} caught</p>
             )}
@@ -200,7 +200,7 @@ export function FuelCatch() {
 
       <div className="mt-2 flex items-center justify-between px-1 text-sm font-semibold">
         <span className="font-display tabular-nums">{score}</span>
-        <span className="tabular-nums text-ink/60">{timeLeft}s</span>
+        <span className="tabular-nums text-paper/60">{timeLeft}s</span>
       </div>
     </div>
   )

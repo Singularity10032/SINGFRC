@@ -22,7 +22,7 @@ export function Nav() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-ink bg-paper">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-paper/20 bg-space">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
             <Image src="/images/singularity-logo.png" alt="Singularity Robotics logo" width={32} height={32} />
@@ -37,7 +37,7 @@ export function Nav() {
                   key={item.href}
                   href={item.href}
                   className={`rounded-full px-3 py-2 text-[15px] font-semibold transition-colors ${
-                    active ? "bg-ink text-paper" : "hover:bg-arcade-sky"
+                    active ? "bg-paper text-ink" : "hover:bg-paper/10"
                   }`}
                 >
                   {item.title}
@@ -52,7 +52,7 @@ export function Nav() {
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="btn-pill h-11 w-11 bg-paper p-0 md:hidden"
+            className="btn-pill h-11 w-11 bg-paper p-0 text-ink md:hidden"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X size={22} /> : <Menu size={22} />}

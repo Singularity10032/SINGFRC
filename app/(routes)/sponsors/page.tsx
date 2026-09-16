@@ -27,7 +27,7 @@ export default function SponsorsPage() {
         {currentSponsors.map((logo, i) => (
           <Reveal key={logo.name} delay={i * 40}>
             <div
-              className={`flex h-28 items-center justify-center rounded-xl border-2 border-ink p-4 shadow-hard ${logo.dark ? "bg-ink" : "bg-paper"}`}
+              className={`flex h-28 items-center justify-center rounded-xl border-2 p-4 shadow-hard ${logo.dark ? "border-paper/40 bg-deep" : "border-ink bg-paper"}`}
             >
               <Image
                 src={logo.src}
@@ -49,7 +49,7 @@ export default function SponsorsPage() {
         {pastSupporters.map((s) => (
           <div
             key={s.name}
-            className={`flex h-16 items-center justify-center rounded-xl border-2 border-ink px-5 shadow-hard-sm ${"dark" in s && s.dark ? "bg-ink" : "bg-paper"}`}
+            className={`flex h-16 items-center justify-center rounded-xl border-2 px-5 shadow-hard-sm ${"dark" in s && s.dark ? "border-paper/40 bg-deep text-paper" : "border-ink bg-paper text-ink"}`}
           >
             {"src" in s && s.src ? (
               <Image src={s.src} alt={s.name} width={s.width} height={s.height} className="h-10 w-auto object-contain" />
@@ -93,7 +93,7 @@ export default function SponsorsPage() {
       </Reveal>
 
       <Reveal>
-        <p className="mt-10 text-sm text-ink/70">
+        <p className="mt-10 text-sm text-paper/70">
           Contact: <a href="mailto:admin@singularityfrc.com" className="underline">admin@singularityfrc.com</a> ·{" "}
           <a href="tel:+14697680663" className="underline">+1 469-768-0663</a>
         </p>

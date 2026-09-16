@@ -17,13 +17,16 @@ export type Story = {
 export const stories: Story[] = [
   {
     slug: "fuel-frenzy",
-    title: "Fuel Frenzy and the arcade cabinet",
+    title: "Fuel Frenzy",
     year: "2026",
     fill: "fuel",
     excerpt: "Our 8-bit arcade game for the REBUILT season, and the cabinet students built to house it.",
     body: "Fuel Frenzy is our 8-bit arcade game for the REBUILT season, built by the programming team. Then we built the cabinet: woodworking, panels, wiring, joysticks and the painted desert and wild-west artwork, all by students. It travels to competitions and workshops, and the plan is to install it at the local library.",
-    screen: { src: "/images/photos/IMG_3270.webp", width: 1650, height: 2200, alt: "The Fuel Frenzy cabinet at night" },
+    // Title card drawn in the same pixel idiom as the Algae Abyss title screen
+    // (dad, 2026-09-15); FIRST in Texas + S1NGULARITY marks are cropped from that screen.
+    screen: { src: "/images/projects/fuel-frenzy-title.png", width: 2848, height: 1572, alt: "Fuel Frenzy title screen" },
     gallery: [
+      { src: "/images/photos/IMG_3270.webp", width: 1650, height: 2200, alt: "The Fuel Frenzy cabinet at night" },
       { src: "/images/photos/IMG_3280.webp", width: 1650, height: 2200, alt: "Kids playing the Fuel Frenzy cabinet" },
       { src: "/images/photos/IMG_3284.webp", width: 1650, height: 2200, alt: "Students playing the Fuel Frenzy cabinet" },
       { src: "/images/photos/IMG_3287.webp", width: 1650, height: 2200, alt: "A student at the arcade cabinet" },

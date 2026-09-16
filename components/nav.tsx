@@ -24,9 +24,18 @@ export function Nav() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-paper/20 bg-space">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-            <Image src="/images/singularity-logo.png" alt="Singularity Robotics logo" width={32} height={32} />
-            <span className="font-display text-lg font-extrabold tracking-tight">10032</span>
+          {/* Wordmark (dad, 2026-09-15: use the S1NGULARITY mark top-left). White
+              cut from the team's own Algae Abyss title screen; the purple paste
+              was never received as a file. Carries "10032" itself. */}
+          <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+            <Image
+              src="/images/singularity-wordmark.png"
+              alt="10032 Singularity"
+              width={334}
+              height={108}
+              priority
+              className="h-9 w-auto"
+            />
           </Link>
 
           <nav className="hidden items-center gap-1 md:flex">

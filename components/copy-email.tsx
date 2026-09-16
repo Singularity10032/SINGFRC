@@ -1,0 +1,38 @@
+"use client"
+
+import { useState } from "react"
+
+export function CopyEmail({ email }: { email: string }) {
+  const [copied, setCopied] = useState(false)
+
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1600)
+    } catch {
+      // clipboard permission denied; the mailto link still works
+    }
+  }
+
+  return (
+    <span className="relative inline-flex items-center gap-2">
+      <a href={`mailto:${email}`} className="btn-pill bg-arcade-purple text-paper">
+        Email {email}
+      </a>
+      <button
+        type="button"
+        onClick={copy}
+        aria-label="Copy email address"
+        className="rounded-full border-2 border-ink px-3 py-2 text-xs font-semibold shadow-hard-sm transition-colors hover:bg-arcade-sky"
+      >
+        Copy
+      </button>
+      {copied && (
+        <span className="absolute -top-9 left-0 rounded-full border-2 border-ink bg-arcade-fuel px-3 py-1 text-xs font-semibold shadow-hard-sm">
+          copied
+        </span>
+      )}
+    </span>
+  )
+}

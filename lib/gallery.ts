@@ -22,11 +22,11 @@ export const orionPhotos: Photo[] = [
   { src: "/images/photos/IMG-4215.webp", width: 1237, height: 2200, alt: "ORION driving through fuel balls" },
   { src: "/images/photos/IMG-4243.webp", width: 1237, height: 2200, alt: "ORION near the alliance wall during a match" },
   { src: "/images/photos/IMG-4408.webp", width: 2200, height: 1650, alt: "ORION's electronics lit red on the cart" },
-  { src: "/images/photos/IMG-4523.webp", width: 2200, height: 1467, alt: "ORION and alliance partners on the field, Houston" },
-  { src: "/images/photos/IMG-4528.webp", width: 2200, height: 1467, alt: "ORION beside a partner robot, Houston" },
-  { src: "/images/photos/IMG-4561.webp", width: 2200, height: 1467, alt: "ORION rolling out for a match, Houston" },
+  { src: "/images/photos/IMG-4523.webp", width: 2200, height: 1467, alt: "ORION and alliance partners on the field" },
+  { src: "/images/photos/IMG-4528.webp", width: 2200, height: 1467, alt: "ORION beside a partner robot" },
+  { src: "/images/photos/IMG-4561.webp", width: 2200, height: 1467, alt: "ORION rolling out for a match" },
   { src: "/images/photos/IMG-4570.webp", width: 2200, height: 1467, alt: "The drive team with ORION on the field" },
-  { src: "/images/photos/IMG-4583.webp", width: 2200, height: 1467, alt: "ORION scoring on the hub, Houston" },
+  { src: "/images/photos/IMG-4583.webp", width: 2200, height: 1467, alt: "ORION scoring on the hub" },
   { src: "/images/photos/IMG-4595.webp", width: 2200, height: 1467, alt: "ORION among fuel balls at the alliance wall" },
   { src: "/images/photos/IMG-6073.webp", width: 2200, height: 1650, alt: "ORION on its cart in the pit" },
   { src: "/images/photos/IMG-6734.webp", width: 2200, height: 1650, alt: "ORION nameplate lit up" },
@@ -34,16 +34,17 @@ export const orionPhotos: Photo[] = [
   { src: "/images/photos/IMG-7414.webp", width: 1650, height: 2200, alt: "ORION under the hub lights" },
   { src: "/images/photos/IMG-7421.webp", width: 2200, height: 1650, alt: "ORION on the cart, wired for the next match" },
   { src: "/images/photos/IMG-9641.webp", width: 2200, height: 1650, alt: "A student with ORION in the pit" },
-  { src: "/images/photos/IMG-9715.webp", width: 1650, height: 2200, alt: "ORION on the cart in the Houston pits" },
+  { src: "/images/photos/IMG-9715.webp", width: 1650, height: 2200, alt: "ORION on the cart in the pits" },
+  { src: "/images/photos/5630.webp", width: 1650, height: 2200, alt: "ORION on the cart in the gym" },
+  { src: "/images/photos/5631.webp", width: 1650, height: 2200, alt: "Pit crew working on ORION" },
+  { src: "/images/photos/IMG-6446.webp", width: 2200, height: 1650, alt: "ORION lining up on the field" },
 ]
 
 export const reefPhotos: Photo[] = [
   { src: "/images/photos/20250417-093503.webp", width: 1016, height: 2200, alt: "The 2025 robot on the REEFSCAPE field" },
   { src: "/images/photos/20250417-112042.webp", width: 1016, height: 2200, alt: "The 2025 robot on its cart" },
-  { src: "/images/photos/5630.webp", width: 1650, height: 2200, alt: "The 2025 robot on the cart in the gym" },
-  { src: "/images/photos/5631.webp", width: 1650, height: 2200, alt: "Pit crew working on the 2025 robot" },
   { src: "/images/photos/IMG-0860.webp", width: 1237, height: 2200, alt: "The 2025 robot on the REEFSCAPE field, Houston" },
-  { src: "/images/photos/IMG-6446.webp", width: 2200, height: 1650, alt: "The 2025 robot lining up on the field" },
+  { src: "/images/photos/IMG-0845.webp", width: 1650, height: 2200, alt: "A member with the 2025 robot in the Houston pits" },
 ]
 
 export const buildPhotos: Photo[] = [
@@ -68,10 +69,10 @@ export const teamPhotos: Photo[] = [
   { src: "/images/photos/100-0384.webp", width: 2200, height: 1467, alt: "Three members at a build event" },
   { src: "/images/photos/100-0409.webp", width: 2200, height: 1467, alt: "Members in team shirts in the stands" },
   { src: "/images/photos/100-0427.webp", width: 2200, height: 1467, alt: "Members in the hallway between matches" },
-  { src: "/images/photos/IMG-2035.webp", width: 2200, height: 1650, alt: "The team at the field, Houston" },
+  { src: "/images/photos/IMG-2035.webp", width: 2200, height: 1650, alt: "The team at the field" },
   { src: "/images/photos/IMG-4247.webp", width: 2200, height: 1238, alt: "The team on the field after the win, Fort Worth" },
   { src: "/images/photos/IMG-4265.webp", width: 2200, height: 1238, alt: "The team behind ORION on the field" },
-  { src: "/images/photos/IMG-4608.webp", width: 2200, height: 1467, alt: "The whole team in the pit, Houston" },
+  { src: "/images/photos/IMG-4608.webp", width: 2200, height: 1467, alt: "The whole team in the pit" },
   { src: "/images/photos/IMG-6468.webp", width: 2200, height: 1650, alt: "The team with the Fort Worth winner banner at school" },
   { src: "/images/photos/IMG-7405.webp", width: 2200, height: 1650, alt: "Members on the field with fuel balls" },
   { src: "/images/photos/IMG-7406.webp", width: 2200, height: 1650, alt: "Four members in team jerseys at the arena" },
@@ -98,21 +99,24 @@ export const winPhotos: Photo[] = [
   { src: "/images/photos/100-0397-1.webp", width: 2200, height: 1467, alt: "The team in the stands with 10032 letters" },
 ]
 
-export const houstonPhotos: Photo[] = [
+export const houston2025Photos: Photo[] = [
   { src: "/images/photos/IMG-0865.webp", width: 1650, height: 2200, alt: "The Houston field under purple lights" },
   { src: "/images/photos/IMG-0866.webp", width: 1650, height: 2200, alt: "Awards on the big screen, Houston" },
   { src: "/images/photos/IMG-0867.webp", width: 2200, height: 1650, alt: "The crowd at Houston" },
   { src: "/images/photos/IMG-0840.webp", width: 2200, height: 1650, alt: "Members watching from the rail, Houston" },
   { src: "/images/photos/IMG-0842.webp", width: 2200, height: 1650, alt: "The team at the rail with the Singularity flag" },
+  { src: "/images/photos/IMG-0862.webp", width: 1650, height: 2200, alt: "Celebrating in the crowd after a match" },
+  { src: "/images/photos/IMG-0863.webp", width: 1650, height: 2200, alt: "The team celebrating outside the arena" },
+  { src: "/images/photos/IMG-0837.webp", width: 2200, height: 1650, alt: "Members at the rail during a match" },
+]
+
+export const champs2026Photos: Photo[] = [
   { src: "/images/photos/IMG-9615.webp", width: 1650, height: 2200, alt: "The drive team on the jumbotron" },
   { src: "/images/photos/IMG-9709.webp", width: 1650, height: 2200, alt: "Singularity on the jumbotron" },
   { src: "/images/photos/IMG-9711.webp", width: 1650, height: 2200, alt: "The playoff bracket: Alliance 4 with Singularity" },
   { src: "/images/photos/IMG-9704.webp", width: 1650, height: 2200, alt: "Team dinner on the Houston trip" },
   { src: "/images/photos/IMG-3911.webp", width: 1650, height: 2200, alt: "Members in suits on stage" },
   { src: "/images/photos/IMG-7368.webp", width: 2200, height: 1650, alt: "The drive team on the big screen" },
-  { src: "/images/photos/IMG-0862.webp", width: 1650, height: 2200, alt: "Celebrating in the crowd after a match" },
-  { src: "/images/photos/IMG-0863.webp", width: 1650, height: 2200, alt: "The team celebrating outside the arena" },
-  { src: "/images/photos/IMG-0837.webp", width: 2200, height: 1650, alt: "Members at the rail during a match" },
   { src: "/images/photos/IMG-3349.webp", width: 1650, height: 2200, alt: "In front of the team trailer" },
 ]
 
@@ -127,7 +131,7 @@ export const pitPhotos: Photo[] = [
   { src: "/images/photos/IMG-3109.webp", width: 2200, height: 1650, alt: "In the stands before a match" },
   { src: "/images/photos/IMG-3120.webp", width: 1650, height: 2200, alt: "The practice field in the gym" },
   { src: "/images/photos/IMG-3121.webp", width: 2200, height: 1650, alt: "Crowded around ORION in the pit" },
-  { src: "/images/photos/IMG-3488.webp", width: 1650, height: 2200, alt: "ORION on the cart, Houston pits" },
+  { src: "/images/photos/IMG-3488.webp", width: 1650, height: 2200, alt: "ORION on the cart" },
   { src: "/images/photos/IMG-4212.webp", width: 1237, height: 2200, alt: "Driver station and controls" },
   { src: "/images/photos/IMG-4214.webp", width: 1237, height: 2200, alt: "Fuel balls at the alliance wall" },
   { src: "/images/photos/IMG-4219.webp", width: 2200, height: 1238, alt: "The field from the stands" },
@@ -135,7 +139,7 @@ export const pitPhotos: Photo[] = [
   { src: "/images/photos/IMG-4256.webp", width: 1237, height: 2200, alt: "Huddle at the field rail" },
   { src: "/images/photos/IMG-4268.webp", width: 1237, height: 2200, alt: "A member with the district winner sash" },
   { src: "/images/photos/IMG-4576.webp", width: 2200, height: 1467, alt: "A driver at the station" },
-  { src: "/images/photos/IMG-4599.webp", width: 2200, height: 1467, alt: "A huddle in the Houston pits" },
+  { src: "/images/photos/IMG-4599.webp", width: 2200, height: 1467, alt: "A huddle in the pits" },
   { src: "/images/photos/IMG-6091.webp", width: 1650, height: 2200, alt: "Drive team on the practice field" },
   { src: "/images/photos/IMG-7372.webp", width: 1650, height: 2200, alt: "Practicing shots at the hub" },
   { src: "/images/photos/IMG-7396.webp", width: 1650, height: 2200, alt: "Shooting fuel at the practice hub" },
@@ -171,7 +175,7 @@ export const fuelfrenzyPhotos: Photo[] = [
   { src: "/images/photos/IMG-4499.webp", width: 2200, height: 1467, alt: "Two players at the Fuel Frenzy cabinet" },
   { src: "/images/photos/IMG-4506.webp", width: 2200, height: 1467, alt: "A Minion tries Fuel Frenzy" },
   { src: "/images/photos/IMG-4507.webp", width: 2200, height: 1467, alt: "Minions at the Fuel Frenzy booth" },
-  { src: "/images/photos/IMG-4513.webp", width: 1467, height: 2200, alt: "Playing Fuel Frenzy at the booth, Houston" },
+  { src: "/images/photos/IMG-4513.webp", width: 1467, height: 2200, alt: "Playing Fuel Frenzy at the booth" },
   { src: "/images/photos/IMG-4534.webp", width: 1467, height: 2200, alt: "Cheerleaders playing Fuel Frenzy" },
   { src: "/images/photos/IMG-4575.webp", width: 1467, height: 2200, alt: "The Fuel Frenzy high-score board" },
   { src: "/images/photos/IMG-9397.webp", width: 1650, height: 2200, alt: "Painting the cabinet artwork" },
@@ -182,7 +186,6 @@ export const interviewsPhotos: Photo[] = [
   { src: "/images/photos/IMG-0800.webp", width: 1650, height: 2200, alt: "Interviewing a driver in the pits" },
   { src: "/images/photos/IMG-0801.webp", width: 1650, height: 2200, alt: "An interview with the mic in the pits" },
   { src: "/images/photos/IMG-2041.webp", width: 2200, height: 1017, alt: "Talking with the event announcer" },
-  { src: "/images/photos/IMG-0845.webp", width: 1650, height: 2200, alt: "On the camera in the pits" },
   { src: "/images/photos/IMG-3294.webp", width: 1650, height: 2200, alt: "Filming in the pit" },
 ]
 

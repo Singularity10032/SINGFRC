@@ -4,7 +4,7 @@
 // white or black tile. Names come from the previous COPY-DECK list; the
 // Dow entry there was actually DoW STEM (Department of War STEM), per the logo
 // dad supplied. URLs: the sponsor's own site, found by web search on
-// 2026-09-15; LitterLoot has no site on record, so it does not link.
+// 2026-09-15; the LitterLoot URL is from dad in chat (2026-09-15).
 // FIRST (the program) is not a sponsor and was dropped from the list.
 
 export type Sponsor = { name: string; src: string; width: number; height: number; tile: "white" | "black"; url?: string }
@@ -22,5 +22,5 @@ export const sponsors: Sponsor[] = [
   { name: "Raising Cane's", src: "/images/sponsors/raising-canes.png", width: 596, height: 298, tile: "white", url: "https://www.raisingcanes.com/" },
   { name: "Techie Factory", src: "/images/sponsors/techie-factory.png", width: 800, height: 781, tile: "white", url: "https://techiefactory.com/frisco/" },
   { name: "Texas Workforce Commission", src: "/images/sponsors/texas-workforce-commission.png", width: 1200, height: 1200, tile: "white", url: "https://www.twc.texas.gov/" },
-  { name: "LitterLoot", src: "/images/sponsors/litterloot.png", width: 936, height: 910, tile: "white" },
+  { name: "LitterLoot", src: "/images/sponsors/litterloot.png", width: 936, height: 910, tile: "white", url: "https://www.litterloot.co/" },
 ]

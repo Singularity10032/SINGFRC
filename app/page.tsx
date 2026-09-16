@@ -73,7 +73,7 @@ export default function Home() {
             // Order set by dad, 2026-09-15: trophy shot for Competition, a detailed
             // robot for Engineering, the chassis-hug for Learning by doing.
             { photo: photos.sticker4, alt: "Two students holding a trophy, crowd behind", card: whatWeDo[0] },
-            { photo: photos.engineering, alt: "ORION's bare chassis on the mats during build season", card: whatWeDo[1] },
+            { photo: photos.engineering, alt: "ORION mid-match on the field", card: whatWeDo[1] },
             { photo: photos.sticker2, alt: "Students in a car, candid, smiling", card: whatWeDo[2] },
             { photo: photos.sticker3, alt: "A student hugging the bare robot chassis in the gym", card: whatWeDo[3] },
           ].map(({ photo, alt, card }, i) => (

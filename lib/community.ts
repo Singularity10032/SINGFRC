@@ -65,10 +65,14 @@ export const stories: Story[] = [
     year: "2025-2026",
     fill: "mint",
     excerpt: "Bi-monthly STEAM workshops for local elementary students, now in a second year.",
-    body: "For the second year we've partnered with Frisco Ignite to run hands-on STEAM workshops for local elementary students. In our first season we reached over 600 K-5 students through bi-monthly workshops: science concepts, mini engineering challenges, and a lot of marble runs.",
-    screen: { src: "/images/photos/IMG_1796.webp", width: 2200, height: 1467, alt: "Young kids doing a water and bottle STEM activity" },
+    body: "For the second year we've partnered with Frisco Ignite to run hands-on STEAM workshops for local elementary students. In our first season we reached over 600 K-5 students through bi-monthly workshops: science concepts, mini engineering challenges, and a lot of marble runs. Frisco Ignite holds a City of Frisco Certificate of Recognition, signed by Mayor Jeff Cheney.",
+    // The Mayoral Recognition photo leads the story (dad, 2026-09-16): the close
+    // frame from the 09/29 album where the certificate is legible ("The City of
+    // Frisco · Certificate of Recognition · Frisco Ignite", Jeff Cheney, Mayor).
+    // IMG_1908 was the same moment framed wider, so it is replaced, not repeated.
+    screen: { src: "/images/projects/ignite-mayoral-recognition.webp", width: 2200, height: 1467, alt: "Two Frisco Ignite leads holding the City of Frisco Certificate of Recognition signed by Mayor Jeff Cheney" },
     gallery: [
-      { src: "/images/photos/IMG_1908.webp", width: 2200, height: 1467, alt: "Two students holding a certificate from Frisco Ignite" },
+      { src: "/images/photos/IMG_1796.webp", width: 2200, height: 1467, alt: "Young kids doing a water and bottle STEM activity" },
       // PHOTO-2025-12-13 (Brick Blazers sign) is the FLL/FTC story's screen; not repeated here.
       // 15 from the "ignite 09/29" Google Photos album dad shared (2026-09-16), full size.
       { src: "/images/projects/ignite-2026-09-29-040.webp", width: 2200, height: 1467, alt: "The Frisco Ignite workshop welcome screen" },

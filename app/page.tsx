@@ -77,10 +77,12 @@ export default function Home() {
             { photo: photos.sticker2, alt: "Students in a car, candid, smiling", card: whatWeDo[2] },
             { photo: photos.sticker3, alt: "A student hugging the bare robot chassis in the gym", card: whatWeDo[3] },
           ].map(({ photo, alt, card }, i) => (
-            <Reveal key={card.title} delay={i * 80}>
-              <div className="flex flex-col items-center text-center">
-                <div className="rounded-xl border-2 border-ink bg-paper p-3 text-ink shadow-hard">
-                  <StickerPhoto src={photo.src} width={photo.width} height={photo.height} alt={alt} index={i} className="w-full" />
+            <Reveal key={card.title} delay={i * 80} className="h-full">
+              <div className="flex h-full flex-col items-center text-center">
+                {/* Every card the same shape: photos cropped to 4:3 so the four line up
+                    whatever the source aspect (dad, 2026-09-16). */}
+                <div className="flex h-full w-full flex-col rounded-xl border-2 border-ink bg-paper p-3 text-ink shadow-hard">
+                  <StickerPhoto src={photo.src} width={photo.width} height={photo.height} alt={alt} index={i} className="block aspect-[4/3] w-full" />
                   <h3 className="mt-4 font-display text-lg sm:text-2xl">{card.title}</h3>
                   <p className="mt-1 text-sm text-ink/70 sm:mt-2 sm:text-base">{card.body}</p>
                 </div>

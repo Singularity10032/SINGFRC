@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import { motion } from "framer-motion"
 import type { Robot } from "@/lib/robots"
 import { RobotViewer } from "@/components/robot-viewer"
@@ -37,21 +36,9 @@ export function RobotPanel({ robot, index }: { robot: Robot; index: number }) {
 
   return (
     <div className={`rounded-xl border-2 border-ink shadow-hard text-ink ${fillByIndex[index]} p-5 sm:p-6`}>
-      {/* Whole photo, nothing cropped (dad: "the photo is cut off"), and the
-          frame hugs the image instead of pillarboxing a portrait shot in a
-          wide black box (dad's screenshot, 2026-09-15). */}
-      <div className="mx-auto w-fit max-w-full overflow-hidden rounded-xl border-2 border-ink">
-        <Image
-          src={photo.src}
-          alt={photo.alt}
-          width={photo.width}
-          height={photo.height}
-          sizes="(max-width: 640px) 90vw, 560px"
-          className="h-auto max-h-[28rem] w-auto max-w-full"
-        />
-      </div>
-
-      <h3 className="mt-4 font-display text-2xl">{robot.name}</h3>
+      {/* The top photo was removed (dad, 2026-09-15: the walls under each
+          panel carry the photos now); it lives on as the CAD viewer's poster. */}
+      <h3 className="font-display text-2xl">{robot.name}</h3>
       <p className="text-sm font-semibold text-ink/70">{robot.season}</p>
       <p className="mt-1 text-sm text-ink/70">{robot.tag}</p>
 

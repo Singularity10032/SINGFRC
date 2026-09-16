@@ -4,6 +4,7 @@ import { RobotPanel } from "@/components/robot-panel"
 import { PhotoWall } from "@/components/photo-wall"
 import { robots } from "@/lib/robots"
 import { orionPhotos, reefPhotos } from "@/lib/gallery"
+import { photos } from "@/lib/photos"
 
 export const metadata: Metadata = {
   title: "Robots — Singularity Robotics",
@@ -11,9 +12,10 @@ export const metadata: Metadata = {
 }
 
 // The ORION set past index 13 is on /gallery. Nothing here appears anywhere else.
+// The two former panel-top photos lead each wall so they are not lost.
 const wallByIndex = [
-  { title: "ORION on the field", photos: orionPhotos.slice(0, 13) },
-  { title: "The 2025 robot", photos: reefPhotos },
+  { title: "ORION on the field", photos: [{ ...photos.robotOrion, alt: "ORION nameplate close-up on the field" }, ...orionPhotos.slice(0, 13)] },
+  { title: "The 2025 robot", photos: [{ ...photos.robot2025, alt: "The 2025 REEFSCAPE robot on the field" }, ...reefPhotos] },
 ]
 
 export default function RobotsPage() {

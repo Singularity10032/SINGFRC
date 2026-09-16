@@ -1,10 +1,8 @@
 import type { Metadata } from "next"
 import { Reveal } from "@/components/reveal"
 import { StickerPhoto } from "@/components/sticker-photo"
-import { PhotoWall } from "@/components/photo-wall"
 import { BlobEdge, band } from "@/components/blob-edge"
 import { results } from "@/lib/results"
-import { buildPhotos } from "@/lib/gallery"
 
 export const metadata: Metadata = {
   title: "About — Singularity Robotics",
@@ -142,14 +140,6 @@ export default function AboutPage() {
             </Reveal>
           ))}
         </div>
-      </section>
-
-      {/* In the garage: build-season photos, all from the garage/pit set */}
-      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-24">
-        <Reveal>
-          <h2 className="font-display text-3xl sm:text-4xl">Build season, in pictures</h2>
-        </Reveal>
-        <PhotoWall photos={buildPhotos} cols={3} className="mt-8" />
       </section>
 
       {/* Values */}

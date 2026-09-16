@@ -83,9 +83,9 @@ export const stories: Story[] = [
     fill: "fuel",
     excerpt: "A children's book about machine learning that the team is associated with.",
     body: "A children's book about machine learning: Bob loves peanut butter and pickle sandwiches, and his robot friend Rob keeps getting it wrong. Written by Adiv Padgilwar and illustrated by Ananya Ramanan. Profits go to the Gifted Minds Prosper booster club.",
-    // IMG_3264 from Slack: the book held up at the Singularity booth (dad, 2026-09-15: "no photo").
-    screen: bookPhotos[0],
-    gallery: [],
+    // Cover from dad in chat (2026-09-15); the booth shot with the book (IMG_3264) sits in the gallery.
+    screen: { src: "/images/projects/thats-not-peanut-butter-cover.webp", width: 1000, height: 799, alt: "That's Not Peanut Butter! book cover, created by Adiv Padgilwar, illustrated by Ananya Ramanan" },
+    gallery: [...bookPhotos],
   },
   {
     // Added 2026-09-15 at dad's request. Facts: stemseeds.net (fetched

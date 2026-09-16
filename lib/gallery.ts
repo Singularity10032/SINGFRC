@@ -59,7 +59,6 @@ export const buildPhotos: Photo[] = [
   { src: "/images/photos/IMG-4437.webp", width: 1650, height: 2200, alt: "Mentor and student working on the shooter" },
   { src: "/images/photos/IMG-9381.webp", width: 1650, height: 2200, alt: "Working on the chassis in the garage" },
   { src: "/images/photos/IMG-9383.webp", width: 1650, height: 2200, alt: "Sorting parts on the garage floor" },
-  { src: "/images/photos/IMG-4199.webp", width: 2200, height: 1650, alt: "The pit: shelves and tools" },
 ]
 
 export const teamPhotos: Photo[] = [

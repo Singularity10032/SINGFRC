@@ -93,13 +93,15 @@ export const stories: Story[] = [
     // application (2026-09-07, per the vault) for "hundreds of STEM kits"
     // through the partnership. STEMSeeds' own totals (720 kits, 36 chapters,
     // 6 countries) are the organisation's, not this team's, so they are not
-    // claimed here. No photo on record yet.
+    // claimed here. Photo below from dad, 2026-09-15.
     slug: "stemseeds",
     title: "STEMSeeds",
     year: "Ongoing",
     fill: "sky",
     excerpt: "A partnership with a student-led nonprofit that puts hands-on STEM kits in kids' hands.",
     body: "STEMSeeds is a student-led nonprofit started by Frisco high schoolers. It designs and delivers hands-on STEM activity kits to children, including pediatric patients and kids in underserved communities. Singularity partners with STEMSeeds, and through that partnership we've helped get hundreds of STEM kits to kids.",
+    // Photo from dad in chat (2026-09-15): boxed STEM Seeds kits (Paper Rocket, Pom-Pom Catapult, Paper Robotic Hand) with info cards.
+    screen: { src: "/images/projects/stemseeds-kits.webp", width: 702, height: 464, alt: "STEM Seeds activity kits boxed up: Paper Rocket, Pom-Pom Catapult and Paper Robotic Hand, with info cards" },
     gallery: [],
   },
   {

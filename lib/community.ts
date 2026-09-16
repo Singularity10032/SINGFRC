@@ -35,6 +35,13 @@ export const stories: Story[] = [
     // (dad, 2026-09-15); FIRST in Texas + S1NGULARITY marks are cropped from that screen.
     screen: { src: "/images/projects/fuel-frenzy-title.png", width: 2848, height: 1572, alt: "Fuel Frenzy title screen" },
     gallery: [
+      // Six real game screens dad captured (Downloads/Singularity/Fuel Frenzy screens, 2026-09-16).
+      { src: "/images/projects/fuel-frenzy-screen-1.webp", width: 2200, height: 1240, alt: "Fuel Frenzy title screen: red and blue press both buttons to ready up" },
+      { src: "/images/projects/fuel-frenzy-screen-2.webp", width: 2200, height: 1235, alt: "Kickoff: both hubs active, fuel piled in the centre" },
+      { src: "/images/projects/fuel-frenzy-screen-3.webp", width: 2200, height: 1214, alt: "Blue hub active, red leads 9 to 2" },
+      { src: "/images/projects/fuel-frenzy-screen-4.webp", width: 2200, height: 1235, alt: "Red hub active with one second left, 21 to 16" },
+      { src: "/images/projects/fuel-frenzy-screen-5.webp", width: 2200, height: 1231, alt: "Both hubs active, blue ahead 22 to 21" },
+      { src: "/images/projects/fuel-frenzy-screen-6.webp", width: 2200, height: 1235, alt: "Blue wins, 30 to 25" },
       { src: "/images/photos/IMG_3270.webp", width: 1650, height: 2200, alt: "The Fuel Frenzy cabinet at night" },
       { src: "/images/photos/IMG_3280.webp", width: 1650, height: 2200, alt: "Kids playing the Fuel Frenzy cabinet" },
       { src: "/images/photos/IMG_3284.webp", width: 1650, height: 2200, alt: "Students playing the Fuel Frenzy cabinet" },

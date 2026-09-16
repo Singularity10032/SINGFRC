@@ -70,6 +70,22 @@ export const stories: Story[] = [
     gallery: [
       { src: "/images/photos/IMG_1908.webp", width: 2200, height: 1467, alt: "Two students holding a certificate from Frisco Ignite" },
       // PHOTO-2025-12-13 (Brick Blazers sign) is the FLL/FTC story's screen; not repeated here.
+      // 15 from the "ignite 09/29" Google Photos album dad shared (2026-09-16), full size.
+      { src: "/images/projects/ignite-2026-09-29-040.webp", width: 2200, height: 1467, alt: "The Frisco Ignite workshop welcome screen" },
+      { src: "/images/projects/ignite-2026-09-29-050.webp", width: 2200, height: 1467, alt: "Volunteers helping kids build a snap circuit" },
+      { src: "/images/projects/ignite-2026-09-29-056.webp", width: 2200, height: 1467, alt: "Kids at the circuit table with a Singularity volunteer" },
+      { src: "/images/projects/ignite-2026-09-29-062.webp", width: 2200, height: 1467, alt: "Building a paper tower" },
+      { src: "/images/projects/ignite-2026-09-29-082.webp", width: 2200, height: 1467, alt: "Kids gathered around the water-bin experiment" },
+      { src: "/images/projects/ignite-2026-09-29-088.webp", width: 2200, height: 1467, alt: "Safety glasses on, watching the reaction" },
+      { src: "/images/projects/ignite-2026-09-29-115.webp", width: 2200, height: 1467, alt: "The elephant-toothpaste bottles going off" },
+      { src: "/images/projects/ignite-2026-09-29-118.webp", width: 2200, height: 1467, alt: "Kids watching the foam erupt" },
+      { src: "/images/projects/ignite-2026-09-29-132.webp", width: 2200, height: 1467, alt: "A harp demonstration for the kids" },
+      { src: "/images/projects/ignite-2026-09-29-165.webp", width: 2200, height: 1467, alt: "A volunteer guiding kids through the bottle experiment" },
+      { src: "/images/projects/ignite-2026-09-29-181.webp", width: 2200, height: 1467, alt: "A boy wiring his snap circuit" },
+      { src: "/images/projects/ignite-2026-09-29-186.webp", width: 2200, height: 1467, alt: "Kids with their finished paper towers" },
+      { src: "/images/projects/ignite-2026-09-29-246.webp", width: 2200, height: 1467, alt: "Kids seated for the workshop talk" },
+      { src: "/images/projects/ignite-2026-09-29-254.webp", width: 2200, height: 1467, alt: "Volunteers presenting the science segment" },
+      { src: "/images/projects/ignite-2026-09-29-270.webp", width: 2200, height: 1467, alt: "The technology segment, kids seated in front of the screen" },
     ],
   },
   {

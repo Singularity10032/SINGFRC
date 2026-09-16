@@ -16,15 +16,15 @@ export function CopyEmail({ email }: { email: string }) {
   }
 
   return (
-    <span className="relative inline-flex items-center gap-2">
-      <a href={`mailto:${email}`} className="btn-pill bg-arcade-purple text-paper">
-        Email {email}
+    <span className="relative flex flex-wrap items-center gap-2">
+      <a href={`mailto:${email}`} className="btn-pill max-w-full bg-arcade-purple text-paper">
+        <span className="truncate">Email {email}</span>
       </a>
       <button
         type="button"
         onClick={copy}
         aria-label="Copy email address"
-        className="rounded-full border-2 border-ink px-3 py-2 text-xs font-semibold shadow-hard-sm transition-colors hover:bg-arcade-sky"
+        className="shrink-0 rounded-full border-2 border-ink px-3 py-2 text-xs font-semibold shadow-hard-sm transition-colors hover:bg-arcade-sky"
       >
         Copy
       </button>

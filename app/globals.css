@@ -14,6 +14,29 @@
     font-feature-settings: "liga" 0, "calt" 0;
   }
 
+  /* Type scale (dad, 2026-09-15: "font sizes are small throughout"). Every
+     size on the site is in rem, so the root size sets the whole scale: phones
+     stay at 16px, tablets get 17, laptops 18, wide screens 20. Spacing is rem
+     too, so proportions hold. */
+  html {
+    font-size: 16px;
+  }
+  @media (min-width: 640px) {
+    html {
+      font-size: 17px;
+    }
+  }
+  @media (min-width: 1024px) {
+    html {
+      font-size: 18px;
+    }
+  }
+  @media (min-width: 1440px) {
+    html {
+      font-size: 20px;
+    }
+  }
+
   /* Dark space mode: near-black page under a flat starfield, cream type. Same accents. */
   body {
     background: #050507;

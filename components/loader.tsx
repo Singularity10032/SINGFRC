@@ -60,7 +60,12 @@ export function Loader() {
     setVisible(false)
   }
 
-  if (reduced || !visible) return null
+  // Only bail out entirely for reduced motion (nothing to show, ever). Once
+  // `visible` has been true, keep AnimatePresence mounted so its exit
+  // animation can finish before the node is actually removed — bailing via
+  // an early `return null` here raced framer-motion's own node cleanup
+  // against React's and threw `NotFoundError: removeChild`.
+  if (reduced) return null
 
   return (
     <AnimatePresence>

@@ -1,92 +1,79 @@
-import { notFound } from "next/navigation"
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
-import { Navbar } from "@/components/navbar"
+import { notFound } from "next/navigation"
 import { Reveal } from "@/components/reveal"
-import { SpaceBackdrop } from "@/components/space-backdrop"
-import { projects } from "@/lib/projects-data"
+import { getStory, stories } from "@/lib/community"
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.id }))
+  return stories.map((s) => ({ slug: s.slug }))
 }
 
-export default async function CommunityStoryPage({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const project = projects.find((item) => item.id === slug)
-
-  if (!project) {
-    notFound()
+  const story = getStory(slug)
+  return {
+    title: story ? `${story.title} — Singularity Robotics` : "Singularity Robotics",
+    description: "FRC Team 10032, a student-led FIRST Robotics Competition team in Frisco, Texas.",
   }
+}
+
+export default async function StoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const story = getStory(slug)
+  if (!story) notFound()
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#0a0118] text-purple-100">
-      <Navbar />
+    <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+      <Link href="/community" className="text-sm font-semibold text-arcade-purple hover:underline">
+        &larr; Back to community
+      </Link>
 
-      <main className="flex-1">
-        <section className="relative overflow-hidden py-20">
-          <SpaceBackdrop glow="center" />
+      <Reveal>
+        <p className="mt-4 text-sm font-semibold text-ink/60">{story.year}</p>
+        <h1 className="mt-1 font-display text-4xl sm:text-5xl">{story.title}</h1>
+      </Reveal>
 
-          <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-            <Reveal className="mx-auto max-w-4xl">
-              <Link href="/community" className="mb-8 inline-flex items-center text-sm font-medium text-purple-300 hover:text-white">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Community
-              </Link>
-              <h1 className="mb-6 text-4xl font-bold text-white md:text-5xl">{project.title}</h1>
-              <p className="mb-8 text-lg text-purple-200/90">{project.excerpt}</p>
-              <div className="overflow-hidden rounded-2xl border border-purple-500/20 bg-purple-900/10">
+      {story.screen && (
+        <Reveal delay={80}>
+          <div className="sticker-frame mt-8 overflow-hidden">
+            <Image
+              src={story.screen.src}
+              alt={story.screen.alt}
+              width={story.screen.width}
+              height={story.screen.height}
+              sizes="(max-width: 768px) 92vw, 700px"
+              className="h-auto w-full rounded-[6px] object-cover"
+              priority
+            />
+          </div>
+        </Reveal>
+      )}
+
+      <Reveal delay={140}>
+        <div className="prose-arcade mt-8">
+          <p>{story.body}</p>
+        </div>
+      </Reveal>
+
+      {story.gallery.length > 0 && (
+        <Reveal delay={200}>
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
+            {story.gallery.map((photo, i) => (
+              <div key={photo.src} className="sticker-frame overflow-hidden" style={{ rotate: `${(i % 2 === 0 ? -1 : 1) * 1.5}deg` }}>
                 <Image
-                  src={project.coverImage}
-                  alt={project.title}
-                  width={1200}
-                  height={675}
-                  className="h-auto w-full object-cover"
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={photo.width}
+                  height={photo.height}
+                  sizes="(max-width: 640px) 45vw, 220px"
+                  className="h-full w-full rounded-[6px] object-cover"
                 />
               </div>
-            </Reveal>
+            ))}
           </div>
-        </section>
-
-        <section className="relative py-16">
-          <SpaceBackdrop />
-          <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-            <article
-              className="prose prose-invert prose-p:text-purple-200/90 prose-strong:text-white mx-auto max-w-3xl"
-              dangerouslySetInnerHTML={{ __html: project.content }}
-            />
-
-            <div className="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-2">
-              {project.images.map((image) => (
-                <div key={image.src} className="overflow-hidden rounded-xl border border-purple-500/20 bg-purple-900/10">
-                  <Image src={image.src} alt={image.alt} width={900} height={560} className="h-full w-full object-cover" />
-                </div>
-              ))}
-            </div>
-
-            {project.tournamentImages ? (
-              <div className="mx-auto mt-16 max-w-5xl">
-                <h2 className="mb-8 text-center text-3xl font-bold text-white">Community Tournament</h2>
-                <div className="grid gap-6 md:grid-cols-2">
-                  {project.tournamentImages.map((image) => (
-                    <div key={image.src} className="overflow-hidden rounded-xl border border-purple-500/20 bg-purple-900/10">
-                      <Image src={image.src} alt={image.alt} width={900} height={560} className="h-full w-full object-cover" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : null}
-          </div>
-        </section>
-      </main>
-
-      <footer className="border-t border-purple-900/20 bg-[#0a0118]">
-        <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-sm text-purple-400">© 2026 Singularity Robotics. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+        </Reveal>
+      )}
     </div>
   )
 }

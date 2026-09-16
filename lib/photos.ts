@@ -17,6 +17,9 @@ export const photos = {
   robotOrion: { src: "/images/photos/image_3.webp", width: 1280, height: 960 },
   robot2025: { src: "/images/photos/20250417_142332.webp", width: 1016, height: 2200 },
   teamHeader: { src: "/images/photos/IMG_4607.webp", width: 2200, height: 1467 },
+  fuelFrenzy2: { src: "/images/photos/IMG_3287.webp", width: 1650, height: 2200 },
+  fuelFrenzyBoard: { src: "/images/photos/IMG_3492.webp", width: 1650, height: 2200 },
+  interviewTable: { src: "/images/photos/IMG_0802.webp", width: 1650, height: 2200 },
 } as const
 
 export type PhotoKey = keyof typeof photos

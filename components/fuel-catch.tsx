@@ -124,6 +124,21 @@ export function FuelCatch() {
     setPhase("playing")
   }
 
+  // Idle frame: draw ORION parked with a few resting fuel balls, so the
+  // canvas isn't a blank rectangle before the visitor presses play.
+  useEffect(() => {
+    if (phase !== "idle") return
+    const s = stateRef.current
+    const cy = H - 24
+    s.balls = [
+      { x: 60, y: cy - BALL_R, speed: 0 },
+      { x: 150, y: cy - BALL_R, speed: 0 },
+      { x: 250, y: cy - BALL_R, speed: 0 },
+    ]
+    const ctx = canvasRef.current?.getContext("2d")
+    if (ctx) draw(ctx)
+  }, [phase, draw])
+
   useEffect(() => {
     if (phase !== "playing") return
     const s = stateRef.current
@@ -183,12 +198,10 @@ export function FuelCatch() {
         )}
       </div>
 
-      {phase === "playing" && (
-        <div className="mt-2 flex items-center justify-between px-1 text-sm font-semibold">
-          <span className="font-display tabular-nums">{score}</span>
-          <span className="tabular-nums text-ink/60">{timeLeft}s</span>
-        </div>
-      )}
+      <div className="mt-2 flex items-center justify-between px-1 text-sm font-semibold">
+        <span className="font-display tabular-nums">{score}</span>
+        <span className="tabular-nums text-ink/60">{timeLeft}s</span>
+      </div>
     </div>
   )
 }

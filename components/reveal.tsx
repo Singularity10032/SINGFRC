@@ -12,9 +12,12 @@ const OFFSETS: Record<string, { x?: number; y?: number }> = {
 }
 
 /**
- * Reveals children as they scroll into view: fade + a small slide, per the
- * shared motion budget (from y 12 / opacity .6, never opacity 0 parked at
- * rest for non-JS or reduced-motion visitors).
+ * Reveals children as they scroll into view with a small slide. Transform
+ * only — opacity is always 1, never parked below full visibility at rest.
+ * A full-page instant screenshot (no real scroll) freezes every element at
+ * its "initial" state, so an opacity < 1 initial reads as a rendering bug
+ * rather than an in-progress animation. Director caught this on the first
+ * pass here (and independently on variant A).
  */
 export function Reveal({
   children,
@@ -37,7 +40,7 @@ export function Reveal({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0.6, ...offset }}
+      initial={{ opacity: 1, ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
       transition={{ duration: 0.5, delay: delay / 1000, ease: [0.22, 1, 0.36, 1] }}

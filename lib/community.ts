@@ -68,14 +68,35 @@ export const stories: Story[] = [
     ],
   },
   {
-    slug: "fll-ftc-mentorship",
+slug: "fll-ftc-mentorship",
     title: "FLL and FTC mentorship",
     year: "2025-2026",
     fill: "sky",
     excerpt: "Mentoring FIRST LEGO League teams and a first-year FTC team through their rookie season.",
-    body: "We mentor local FIRST LEGO League teams, including the Brick Blazers (#68951) and the Science Builders (#28780): chassis builds, Spike Prime programming, and presenting their innovation projects. We also helped Wakeland Wolverine Robotics, a first-year FTC team at Wakeland High School, get through its rookie season.",
+    // Body expanded 2026-09-16 from the team's own season magazine (pp. 11 and
+    // 13): the Techie Factory partnership and Wakeland's rookie-season results
+    // are quoted from there. Photos: magazine pp. 11/13 plus the team's public
+    // Drive folder "Competition Pictures" (league tournament, Meet 3, semi-regional).
+    body: "We mentor local FIRST LEGO League teams, including the Brick Blazers (#68951) and the Science Builders (#28780): chassis builds, Spike Prime programming, and coaching them to present their innovation projects with confidence. We also partnered with Techie Factory, a local STEM organization, trading student volunteers for their FLL programs for sponsorship. And we helped Wakeland Wolverine Robotics (#33791), a first-year FTC team at Wakeland High School, through its rookie season: 2nd place in qualifications at Waco (5-0-0), 4.20 ranking points, two Control Awards, and Winning Alliance at the 2025-2026 North Texas Dallas Semi-Regional Championship. We didn't win those; Wakeland did. But when students invest in other students, this is what happens.",
     screen: { src: "/images/photos/PHOTO-2025-12-13-16-02-01.webp", width: 1600, height: 1200, alt: "Outreach group with a Go Brick Blazers sign" },
-    gallery: [],
+    gallery: [
+      { src: "/images/projects/fll-table-mentoring.webp", width: 800, height: 571, alt: "Mentoring an FLL team at the competition table" },
+      { src: "/images/projects/ftc-wakeland-team-uil.webp", width: 1648, height: 1341, alt: "Wakeland Wolverine Robotics with their trophy and medals" },
+      { src: "/images/projects/ftc-wakeland-trophy-robot.webp", width: 1511, height: 1122, alt: "Wakeland's trophy, medals and robot on the pit table" },
+      { src: "/images/projects/ftc-wakeland-build.webp", width: 1789, height: 1238, alt: "Working on Wakeland's FTC robot" },
+      { src: "/images/projects/ftc-league-img-4603.webp", width: 1650, height: 2200, alt: "Wakeland Wolverine Robotics student with their FTC robot at the league tournament" },
+      { src: "/images/projects/ftc-league-img-4604.webp", width: 1650, height: 2200, alt: "A Singularity mentor with Wakeland's robot at the league tournament" },
+      { src: "/images/projects/ftc-league-img-4630.webp", width: 1650, height: 2200, alt: "Wakeland's FTC Control Award trophy, North Texas league tournament" },
+      { src: "/images/projects/ftc-meet3-20260110-074556.webp", width: 1650, height: 2200, alt: "Wakeland's FTC robot, close-up, at Meet 3" },
+      { src: "/images/projects/ftc-meet3-20260110-090600.webp", width: 2200, height: 1650, alt: "The FTC field at Meet 3" },
+      { src: "/images/projects/ftc-meet3-img-4223.webp", width: 2200, height: 1650, alt: "Working on Wakeland's robot between matches at Meet 3" },
+      { src: "/images/projects/ftc-semis-img-1134.webp", width: 2200, height: 1308, alt: "Wakeland Wolverine Robotics with their robot at the North Texas semi-regional" },
+      { src: "/images/projects/ftc-semis-img-1156.webp", width: 1920, height: 2200, alt: "Wakeland's two semi-regional trophies: Winning Alliance and Control Award" },
+      { src: "/images/projects/ftc-tuff-gsp-4058.webp", width: 2200, height: 1467, alt: "Wakeland's robot (33791) on the field at the semi-regional" },
+      { src: "/images/projects/ftc-tuff-gsp-4174.webp", width: 2200, height: 1467, alt: "Wakeland's drive team at the controls" },
+      { src: "/images/projects/ftc-tuff-gsp-4228.webp", width: 2200, height: 1467, alt: "Adjusting the robot at the field edge before a match" },
+      { src: "/images/projects/ftc-tuff-gsp-4345.webp", width: 2200, height: 1467, alt: "Wakeland's robot with game pieces on the semi-regional field" },
+    ],
   },
   {
     slug: "thats-not-peanut-butter",
@@ -86,7 +107,12 @@ export const stories: Story[] = [
     body: "A children's book about machine learning: Bob loves peanut butter and pickle sandwiches, and his robot friend Rob keeps getting it wrong. Written by Adiv Padgilwar and illustrated by Ananya Ramanan. Profits go to the Gifted Minds Prosper booster club.",
     // Cover from dad in chat (2026-09-15); the booth shot with the book (IMG_3264) sits in the gallery.
     screen: { src: "/images/projects/thats-not-peanut-butter-cover.webp", width: 1000, height: 799, alt: "That's Not Peanut Butter! book cover, created by Adiv Padgilwar, illustrated by Ananya Ramanan" },
-    gallery: [...bookPhotos],
+    gallery: [
+      ...bookPhotos,
+      // From the season magazine, p. 12.
+      { src: "/images/projects/book-on-shelf.webp", width: 1644, height: 1123, alt: "That's Not Peanut Butter! on a bookstore shelf" },
+      { src: "/images/projects/book-inside-pages.webp", width: 2080, height: 1141, alt: "Inside the book: Bob and Rob work through a training set" },
+    ],
   },
   {
     // Added 2026-09-15 at dad's request. Facts: stemseeds.net (fetched

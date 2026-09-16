@@ -4,12 +4,7 @@ import { ResultsMarquee } from "@/components/results-marquee"
 import { StickerPhoto } from "@/components/sticker-photo"
 import { Reveal } from "@/components/reveal"
 import { photos } from "@/lib/photos"
-
-const stats = [
-  { value: "36", label: "students" },
-  { value: "2", label: "seasons" },
-  { value: "1", label: "blue banner (Fort Worth 2026)" },
-]
+import { orionPhotos, teamPhotos } from "@/lib/gallery"
 
 const whatWeDo = [
   {
@@ -30,14 +25,35 @@ const whatWeDo = [
   },
 ]
 
+// Hero photos: the full-team shot and ORION on the field. Used only here
+// (/team and /robots slice past them).
+const heroLeft = teamPhotos[0]
+const heroRight = orionPhotos[0]
+
 export default function Home() {
   return (
     <div>
-      {/* Hero: centered headline on the site-wide starfield (layout.tsx).
-          Wording is dad's (2026-09-15); the minigame and the Orion chart that
-          sat here were both cut the same day at his request. */}
-      <section className="relative mx-auto max-w-6xl px-4 pb-24 pt-14 sm:px-6 sm:pb-32 sm:pt-24">
-        <div className="mx-auto max-w-3xl text-center">
+      {/* Hero: three layers. A giant outlined "10032" sits behind, two sticker
+          photos poke in from the edges in the middle, the headline sits on top.
+          Wording is dad's (2026-09-15). The minigame, the Orion chart and the
+          stat row that used to be here were all cut the same day at his request. */}
+      <section className="relative mx-auto max-w-6xl overflow-hidden px-4 pb-24 pt-14 sm:px-6 sm:pb-32 sm:pt-24">
+        <p
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-4 -z-10 -translate-x-1/2 select-none whitespace-nowrap font-display text-[38vw] font-extrabold leading-none text-transparent sm:text-[22rem]"
+          style={{ WebkitTextStroke: "2px rgba(255,248,238,0.10)" }}
+        >
+          10032
+        </p>
+
+        <div className="pointer-events-none absolute -left-10 top-10 hidden w-56 md:block lg:w-72">
+          <StickerPhoto src={heroLeft.src} width={heroLeft.width} height={heroLeft.height} alt={heroLeft.alt} index={0} className="w-full" sizes="288px" priority />
+        </div>
+        <div className="pointer-events-none absolute -right-10 bottom-16 hidden w-56 md:block lg:w-72">
+          <StickerPhoto src={heroRight.src} width={heroRight.width} height={heroRight.height} alt={heroRight.alt} index={3} className="w-full" sizes="288px" priority />
+        </div>
+
+        <div className="relative mx-auto max-w-3xl text-center">
           <h1 className="font-display text-[12vw] leading-[0.95] sm:text-6xl md:text-7xl">
             <span className="block">1 Team.</span>
             <span className="block">1 Vision.</span>
@@ -58,22 +74,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stat row */}
-      <Reveal>
-        <section className="border-y-2 border-paper/20 bg-deep text-paper">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 py-10 sm:grid-cols-3 sm:px-6">
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="font-display text-5xl font-extrabold tabular-nums text-arcade-fuel">{s.value}</p>
-                <p className="mt-1 text-sm text-paper/80">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      </Reveal>
-
-      {/* What we do: sticker photos on a dark desk */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      {/* What we do: sticker photos that hang over the results ticker below */}
+      <section className="relative z-10 mx-auto -mb-12 max-w-6xl px-4 pt-8 sm:px-6">
         <Reveal>
           <h2 className="font-display text-4xl sm:text-5xl">What we do</h2>
         </Reveal>
@@ -86,22 +88,26 @@ export default function Home() {
           ].map(({ photo, alt, card }, i) => (
             <Reveal key={card.title} delay={i * 80}>
               <div className="flex flex-col items-center text-center">
-                <StickerPhoto src={photo.src} width={photo.width} height={photo.height} alt={alt} index={i} className="w-full" />
-                <h3 className="mt-4 font-display text-lg">{card.title}</h3>
-                <p className="mt-1 text-sm text-paper/70">{card.body}</p>
+                <div className="rounded-xl border-2 border-ink bg-paper p-3 text-ink shadow-hard">
+                  <StickerPhoto src={photo.src} width={photo.width} height={photo.height} alt={alt} index={i} className="w-full" />
+                  <h3 className="mt-4 font-display text-lg">{card.title}</h3>
+                  <p className="mt-1 text-sm text-ink/70">{card.body}</p>
+                </div>
               </div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* Results marquee */}
-      <ResultsMarquee />
+      {/* Results marquee: the layer the cards above sit on */}
+      <div className="pt-16">
+        <ResultsMarquee />
+      </div>
 
-      {/* Magazine */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      {/* Magazine + BIOCORE: two cards, the second tucked under the first */}
+      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
         <Reveal>
-          <div className="grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-sky p-6 text-ink sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
+          <div className="relative z-10 -mt-8 grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-sky p-6 text-ink sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
             <Image
               src="/images/horizon-magazine-2026.png"
               alt="Horizon, our season magazine, volume 2 issue 1 cover"
@@ -127,12 +133,13 @@ export default function Home() {
           </div>
         </Reveal>
 
-        {/* Next season teaser (dad, 2026-09-15: "add the coming soon biocore one
-            underneath the magazine, similar to the last one"). Same card shape
-            as the magazine. The only facts here are the ones on FIRST's own
-            teaser graphic: game name, presenter, launch date. */}
+        {/* Next season teaser (dad, 2026-09-15). The only facts here are the
+            ones on FIRST's own teaser graphic: game name, presenter, launch date. */}
         <Reveal delay={80}>
-          <div className="mt-8 grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-mint p-6 text-ink sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
+          <div
+            className="relative -mt-4 ml-4 mr-0 grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-mint p-6 text-ink sm:-mt-6 sm:ml-12 sm:grid-cols-[auto_1fr] sm:items-center sm:p-10"
+            style={{ rotate: "0.6deg" }}
+          >
             <Image
               src="/images/biocore.jpeg"
               alt="FIRST Robotics Competition BIOCORE, presented by Haas, launches January 9, 2027"

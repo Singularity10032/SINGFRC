@@ -1,5 +1,8 @@
 // Community stories, verbatim from COPY-DECK.md "Community" section.
 // Photos only from PHOTO-MANIFEST.md / public/images — never invented.
+// 2026-09-15: galleries extended from lib/gallery.ts (the Slack + local pull).
+
+import { fuelfrenzyPhotos, algaePhotos, interviewsPhotos, bookPhotos } from "@/lib/gallery"
 
 export type CommunityPhoto = { src: string; width: number; height: number; alt: string }
 
@@ -31,6 +34,7 @@ export const stories: Story[] = [
       { src: "/images/photos/IMG_3284.webp", width: 1650, height: 2200, alt: "Students playing the Fuel Frenzy cabinet" },
       { src: "/images/photos/IMG_3287.webp", width: 1650, height: 2200, alt: "A student at the arcade cabinet" },
       { src: "/images/photos/IMG_3492.webp", width: 1650, height: 2200, alt: "A student holding the arcade leaderboard whiteboard" },
+      ...fuelfrenzyPhotos,
     ],
   },
   {
@@ -46,6 +50,7 @@ export const stories: Story[] = [
       { src: "/images/projects/algae-abyss-gameplay.png", width: 2848, height: 1592, alt: "Algae Abyss gameplay" },
       { src: "/images/projects/algae-abyss-instructions.png", width: 2824, height: 1568, alt: "Algae Abyss game instructions" },
       { src: "/images/projects/algae-abyss-red-wins.png", width: 2840, height: 1560, alt: "Algae Abyss red wins screen" },
+      ...algaePhotos,
     ],
   },
   {
@@ -58,7 +63,7 @@ export const stories: Story[] = [
     screen: { src: "/images/photos/IMG_1796.webp", width: 2200, height: 1467, alt: "Young kids doing a water and bottle STEM activity" },
     gallery: [
       { src: "/images/photos/IMG_1908.webp", width: 2200, height: 1467, alt: "Two students holding a certificate from Frisco Ignite" },
-      { src: "/images/photos/PHOTO-2025-12-13-16-02-01.webp", width: 1600, height: 1200, alt: "Outreach group with a Go Brick Blazers sign" },
+      // PHOTO-2025-12-13 (Brick Blazers sign) is the FLL/FTC story's screen; not repeated here.
     ],
   },
   {
@@ -78,6 +83,8 @@ export const stories: Story[] = [
     fill: "fuel",
     excerpt: "A children's book about machine learning that the team is associated with.",
     body: "A children's book about machine learning: Bob loves peanut butter and pickle sandwiches, and his robot friend Rob keeps getting it wrong. Written by Adiv Padgilwar and illustrated by Ananya Ramanan. Profits go to the Gifted Minds Prosper booster club.",
+    // IMG_3264 from Slack: the book held up at the Singularity booth (dad, 2026-09-15: "no photo").
+    screen: bookPhotos[0],
     gallery: [],
   },
   {
@@ -103,7 +110,10 @@ export const stories: Story[] = [
     excerpt: "Walking the pits with a camera and a mic at both district events this season.",
     body: "At both district events this season we walked the pits with a camera and a mic and interviewed drivers, captains and mentors from teams across Texas. The interviews are on our Instagram and TikTok.",
     screen: { src: "/images/photos/IMG_6710.webp", width: 1650, height: 2200, alt: "A student being interviewed on camera at competition" },
-    gallery: [{ src: "/images/photos/IMG_0802.webp", width: 1650, height: 2200, alt: "A student talking with a visitor at an outreach table" }],
+    gallery: [
+      { src: "/images/photos/IMG_0802.webp", width: 1650, height: 2200, alt: "A student talking with a visitor at an outreach table" },
+      ...interviewsPhotos,
+    ],
   },
 ]
 

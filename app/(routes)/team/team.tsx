@@ -4,6 +4,8 @@ import { useMemo, useState } from "react"
 import Image from "next/image"
 import { motion, useReducedMotion } from "framer-motion"
 import { Reveal } from "@/components/reveal"
+import { PhotoWall } from "@/components/photo-wall"
+import { teamPhotos } from "@/lib/gallery"
 import {
   seasons,
   getMemberRoles,
@@ -193,6 +195,12 @@ export default function Team() {
           <div className="mt-5">
             <MemberChips members={season.members} />
           </div>
+        </div>
+
+        {/* Group shots. teamPhotos[0] is the home hero, so start at 1. */}
+        <div className="mt-16">
+          <h2 className="font-display text-2xl">Together</h2>
+          <PhotoWall photos={teamPhotos.slice(1)} cols={3} className="mt-5" />
         </div>
       </div>
 

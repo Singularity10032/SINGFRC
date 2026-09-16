@@ -1,6 +1,9 @@
 import type { Metadata } from "next"
 import { Reveal } from "@/components/reveal"
 import { StickerPhoto } from "@/components/sticker-photo"
+import { PhotoWall } from "@/components/photo-wall"
+import { results } from "@/lib/results"
+import { buildPhotos } from "@/lib/gallery"
 
 export const metadata: Metadata = {
   title: "About — Singularity Robotics",
@@ -22,13 +25,15 @@ const values = [
   { title: "Determined", body: "We work through problems together instead of giving up on them." },
 ]
 
-const missionLines = [
-  "Give students real, hands-on STEM experience and a team where they can figure out what they're good at.",
-  "We want the girls on our team to have the support to lead, and we run outreach so more young women see robotics and engineering as places they belong.",
-  "We keep looking for better ways to build, program and run the team.",
-]
-
 const fills = ["bg-arcade-sky", "bg-arcade-mint", "bg-arcade-fuel"]
+
+// Achievements by year (dad, 2026-09-15: "list our achievements by year in a
+// colorful way but easy to differentiate"). Rows come straight from
+// lib/results.ts (The Blue Alliance); one colour per season, nothing added.
+const seasonsByYear = [
+  { year: "2026", fill: "bg-arcade-fuel", ink: "text-arcade-fuel", rows: results.filter((r) => r.season === "2026") },
+  { year: "2025", fill: "bg-arcade-sky", ink: "text-arcade-sky", rows: results.filter((r) => r.season === "2025") },
+]
 
 export default function AboutPage() {
   return (
@@ -102,16 +107,47 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+      {/* Achievements by year: a big colour-coded year tab, receipts beside it.
+          Pulled up over the mint band so the two layers overlap. */}
+      <section className="relative z-10 mx-auto -mt-8 max-w-6xl px-4 pb-16 sm:-mt-10 sm:px-6 sm:pb-24">
         <Reveal>
-          <h2 className="font-display text-3xl sm:text-4xl">What we&apos;re after</h2>
-          <ul className="prose-arcade mt-6 space-y-3 text-paper/85">
-            {missionLines.map((line) => (
-              <li key={line}>{line}</li>
-            ))}
-          </ul>
+          <h2 className="font-display text-3xl sm:text-4xl">What we&apos;ve won</h2>
         </Reveal>
+        <div className="mt-8 space-y-10">
+          {seasonsByYear.map((s, si) => (
+            <Reveal key={s.year} delay={si * 80}>
+              <div className="grid gap-4 sm:grid-cols-[auto_1fr] sm:gap-6">
+                <div
+                  className={`flex h-24 w-24 items-center justify-center rounded-xl border-2 border-ink font-display text-3xl font-extrabold text-ink shadow-hard sm:h-28 sm:w-28 sm:text-4xl ${s.fill}`}
+                  style={{ rotate: `${si % 2 === 0 ? -2 : 2}deg` }}
+                >
+                  {s.year}
+                </div>
+                <ol className="space-y-3">
+                  {s.rows.map((r, i) => (
+                    <li
+                      key={r.event}
+                      className="flex flex-wrap items-baseline gap-x-3 gap-y-1 rounded-xl border-2 border-ink bg-paper px-4 py-3 text-ink shadow-hard-sm"
+                      style={{ marginLeft: `${(i % 3) * 12}px` }}
+                    >
+                      <span className={`h-3 w-3 shrink-0 self-center rounded-full border border-ink ${s.fill}`} aria-hidden />
+                      <span className="font-display text-lg">{r.result}</span>
+                      <span className="text-sm text-ink/70">{r.event}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* In the garage: build-season photos, all from the garage/pit set */}
+      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-24">
+        <Reveal>
+          <h2 className="font-display text-3xl sm:text-4xl">Build season, in pictures</h2>
+        </Reveal>
+        <PhotoWall photos={buildPhotos} cols={3} className="mt-8" />
       </section>
 
       {/* Values */}

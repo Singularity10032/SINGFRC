@@ -126,6 +126,32 @@ export default function Home() {
             </div>
           </div>
         </Reveal>
+
+        {/* Next season teaser (dad, 2026-09-15: "add the coming soon biocore one
+            underneath the magazine, similar to the last one"). Same card shape
+            as the magazine. The only facts here are the ones on FIRST's own
+            teaser graphic: game name, presenter, launch date. */}
+        <Reveal delay={80}>
+          <div className="mt-8 grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-mint p-6 text-ink sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
+            <Image
+              src="/images/biocore.jpeg"
+              alt="FIRST Robotics Competition BIOCORE, presented by Haas, launches January 9, 2027"
+              width={640}
+              height={356}
+              className="mx-auto w-full max-w-xs rounded-xl border-2 border-ink shadow-hard sm:mx-0"
+            />
+            <div>
+              <span className="inline-block rounded-full border-2 border-ink bg-arcade-fuel px-3 py-1 text-xs font-extrabold">
+                Coming soon
+              </span>
+              <h2 className="mt-3 font-display text-3xl">BIOCORE, the 2027 game</h2>
+              <p className="mt-3 max-w-lg text-ink/80">
+                FIRST&apos;s next Robotics Competition game, presented by Haas, launches January 9, 2027. Our third
+                season starts at kickoff; build progress will show up here and on @singularityfrc.
+              </p>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* Follow */}

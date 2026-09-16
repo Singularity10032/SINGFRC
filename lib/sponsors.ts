@@ -15,7 +15,7 @@ export const sponsors: Sponsor[] = [
   { name: "Texas Instruments", src: "/images/sponsors/texas-instruments.png", width: 582, height: 169, tile: "white", url: "https://www.ti.com/" },
   { name: "Gene Haas Foundation", src: "/images/sponsors/gene-haas-foundation.png", width: 470, height: 194, tile: "white", url: "https://www.ghaasfoundation.org/" },
   { name: "DoW STEM", src: "/images/sponsors/dow-stem.png", width: 615, height: 219, tile: "white", url: "https://dowstem.us/" },
-  { name: "Bioworld", src: "/images/sponsors/bioworld.png", width: 1088, height: 383, tile: "black", url: "https://www.bioworldmerch.com/" },
+  { name: "Bioworld", src: "/images/sponsors/bioworld.png", width: 910, height: 176, tile: "white", url: "https://www.bioworldmerch.com/" },
   { name: "Mouser Electronics", src: "/images/sponsors/mouser-electronics.svg", width: 1997, height: 771, tile: "white", url: "https://www.mouser.com/" },
   { name: "PGA of America", src: "/images/sponsors/pga-of-america.png", width: 1200, height: 413, tile: "white", url: "https://www.pga.com/" },
   { name: "Corbridge Orthodontics", src: "/images/sponsors/corbridge-orthodontics.png", width: 467, height: 165, tile: "white", url: "https://corbridgeorthodontics.com/" },

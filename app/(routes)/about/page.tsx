@@ -29,9 +29,11 @@ const fills = ["bg-arcade-sky", "bg-arcade-mint", "bg-arcade-fuel"]
 // Achievements by year (dad, 2026-09-15: "list our achievements by year in a
 // colorful way but easy to differentiate"). Rows come straight from
 // lib/results.ts (The Blue Alliance); one colour per season, nothing added.
+// "Competed" rows (no award) are left off this list at dad's request (2026-09-15).
+const won = results.filter((r) => r.result !== "Competed")
 const seasonsByYear = [
-  { year: "2026", fill: "bg-arcade-fuel", ink: "text-arcade-fuel", rows: results.filter((r) => r.season === "2026") },
-  { year: "2025", fill: "bg-arcade-sky", ink: "text-arcade-sky", rows: results.filter((r) => r.season === "2025") },
+  { year: "2026", fill: "bg-arcade-fuel", rows: won.filter((r) => r.season === "2026") },
+  { year: "2025", fill: "bg-arcade-sky", rows: won.filter((r) => r.season === "2025") },
 ]
 
 export default function AboutPage() {

@@ -16,6 +16,7 @@ const sections = [
   // Moved here from /team (dad, 2026-09-15).
   { title: "Together", fill: "bg-paper", photos: teamPhotos },
   { title: "Houston 2025: FIRST Championship", fill: "bg-arcade-sky", photos: houston2025Photos },
+  { title: "Us having fun", fill: "bg-arcade-mint", photos: funPhotos },
   // Moved here from /about (dad, 2026-09-15).
   { title: "Build season, in pictures", fill: "bg-paper", photos: buildPhotos },
 ]

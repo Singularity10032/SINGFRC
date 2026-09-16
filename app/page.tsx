@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ResultsMarquee } from "@/components/results-marquee"
 import { StickerPhoto } from "@/components/sticker-photo"
 import { Reveal } from "@/components/reveal"
+import { BlobEdge, band } from "@/components/blob-edge"
 import { photos } from "@/lib/photos"
 import { orionPhotos, teamPhotos } from "@/lib/gallery"
 
@@ -74,8 +75,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What we do: sticker photos that hang over the results ticker below */}
-      <section className="relative z-10 mx-auto -mb-12 max-w-6xl px-4 pt-8 sm:px-6">
+      {/* What we do: a raised band with blob edges, cards sit flat on it */}
+      <BlobEdge fill={band.deep} />
+      <section className="bg-deep">
+        <div className="mx-auto max-w-6xl px-4 pb-16 pt-6 sm:px-6">
         <Reveal>
           <h2 className="font-display text-4xl sm:text-5xl">What we do</h2>
         </Reveal>
@@ -97,17 +100,18 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
+        </div>
+        <BlobEdge fill={band.fuel} />
       </section>
 
-      {/* Results marquee: the layer the cards above sit on */}
-      <div className="pt-16">
-        <ResultsMarquee />
-      </div>
+      {/* Results marquee: yellow band, blob edge underneath */}
+      <ResultsMarquee />
+      <BlobEdge fill={band.fuel} flip />
 
-      {/* Magazine + BIOCORE: two cards, the second tucked under the first */}
-      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+      {/* Magazine + BIOCORE: two cards, stacked */}
+      <section className="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6">
         <Reveal>
-          <div className="relative z-10 -mt-8 grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-sky p-6 text-ink sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
+          <div className="grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-sky p-6 text-ink sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
             <Image
               src="/images/horizon-magazine-2026.png"
               alt="Horizon, our season magazine, volume 2 issue 1 cover"
@@ -136,10 +140,7 @@ export default function Home() {
         {/* Next season teaser (dad, 2026-09-15). The only facts here are the
             ones on FIRST's own teaser graphic: game name, presenter, launch date. */}
         <Reveal delay={80}>
-          <div
-            className="relative -mt-4 ml-4 mr-0 grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-mint p-6 text-ink sm:-mt-6 sm:ml-12 sm:grid-cols-[auto_1fr] sm:items-center sm:p-10"
-            style={{ rotate: "0.6deg" }}
-          >
+          <div className="mt-8 grid gap-8 rounded-xl border-2 border-ink shadow-hard bg-arcade-mint p-6 text-ink sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
             <Image
               src="/images/biocore.jpeg"
               alt="FIRST Robotics Competition BIOCORE, presented by Haas, launches January 9, 2027"

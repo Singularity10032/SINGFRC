@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Reveal } from "@/components/reveal"
 import { StickerPhoto } from "@/components/sticker-photo"
 import { PhotoWall } from "@/components/photo-wall"
+import { BlobEdge, band } from "@/components/blob-edge"
 import { results } from "@/lib/results"
 import { buildPhotos } from "@/lib/gallery"
 
@@ -81,8 +82,9 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
-      {/* The garage: full-bleed mint band */}
-      <section className="border-y-2 border-ink bg-arcade-mint text-ink">
+      {/* The garage: full-bleed mint band with blob edges top and bottom */}
+      <BlobEdge fill={band.mint} />
+      <section className="bg-arcade-mint text-ink">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:grid-cols-[1.1fr_1fr] sm:px-6 sm:py-20">
           <Reveal>
             <h2 className="font-display text-3xl sm:text-4xl">The garage</h2>
@@ -107,9 +109,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Achievements by year: a big colour-coded year tab, receipts beside it.
-          Pulled up over the mint band so the two layers overlap. */}
-      <section className="relative z-10 mx-auto -mt-8 max-w-6xl px-4 pb-16 sm:-mt-10 sm:px-6 sm:pb-24">
+      {/* Achievements by year: a big colour-coded year tab, receipts beside it. */}
+      <BlobEdge fill={band.mint} flip />
+      <section className="mx-auto max-w-6xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-16">
         <Reveal>
           <h2 className="font-display text-3xl sm:text-4xl">What we&apos;ve won</h2>
         </Reveal>

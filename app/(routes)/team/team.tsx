@@ -5,6 +5,7 @@ import Image from "next/image"
 import { motion, useReducedMotion } from "framer-motion"
 import { Reveal } from "@/components/reveal"
 import { PhotoWall } from "@/components/photo-wall"
+import { BlobEdge, band } from "@/components/blob-edge"
 import { teamPhotos } from "@/lib/gallery"
 import {
   seasons,
@@ -207,7 +208,8 @@ export default function Team() {
       {/* Alumni: line + logo carousel, at the bottom (dad, 2026-09-15). Same
           ticker mechanism as the results marquee; pauses on hover; a static
           wrapped row under prefers-reduced-motion. */}
-      <section className="border-t-2 border-paper/20 bg-deep py-14">
+      <BlobEdge fill={band.deep} />
+      <section className="bg-deep pb-14 pt-6">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <Reveal>
             <h2 className="font-display text-2xl sm:text-3xl">

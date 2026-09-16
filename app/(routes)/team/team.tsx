@@ -4,9 +4,7 @@ import { useMemo, useState } from "react"
 import Image from "next/image"
 import { motion, useReducedMotion } from "framer-motion"
 import { Reveal } from "@/components/reveal"
-import { PhotoWall } from "@/components/photo-wall"
 import { BlobEdge, band } from "@/components/blob-edge"
-import { teamPhotos } from "@/lib/gallery"
 import {
   seasons,
   getMemberRoles,
@@ -198,11 +196,6 @@ export default function Team() {
           </div>
         </div>
 
-        {/* Group shots. */}
-        <div className="mt-16">
-          <h2 className="font-display text-2xl">Together</h2>
-          <PhotoWall photos={teamPhotos} cols={3} className="mt-5" />
-        </div>
       </div>
 
       {/* Alumni: line + logo carousel, at the bottom (dad, 2026-09-15). Same

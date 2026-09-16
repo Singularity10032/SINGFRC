@@ -83,7 +83,6 @@ export const teamPhotos: Photo[] = [
 export const winPhotos: Photo[] = [
   { src: "/images/photos/IMG-1406-1.webp", width: 2200, height: 1238, alt: "Two members biting their winner medals in the stands" },
   { src: "/images/photos/100-0441.webp", width: 1467, height: 2200, alt: "The Fort Worth district winner banner beside ORION" },
-  { src: "/images/photos/100-0442.webp", width: 1467, height: 2200, alt: "Winner banner, ORION, and trophy" },
   { src: "/images/photos/100-0443.webp", width: 2200, height: 1467, alt: "Two members with the winner plaque and trophy" },
   { src: "/images/photos/5661.webp", width: 1650, height: 2200, alt: "Two members with medals in the gym" },
   { src: "/images/photos/IMG-4267.webp", width: 1237, height: 2200, alt: "A member with the winner medal" },

@@ -36,7 +36,7 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
         <h1 className="mt-1 font-display text-4xl sm:text-5xl">{story.title}</h1>
       </Reveal>
 
-      {story.screen && (
+      {story.screen && !story.gallery.some((g) => g.src === story.screen?.src) && (
         <Reveal delay={80}>
           <div className="sticker-frame mt-8 overflow-hidden">
             <Image

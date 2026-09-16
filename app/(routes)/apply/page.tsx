@@ -45,7 +45,7 @@ export default function ApplyPage() {
           <p className="text-sm font-semibold text-arcade-fuel">Applications are rolling</p>
           <h1 className="mt-2 font-display text-4xl leading-[1.02] sm:text-6xl">Join Team 10032.</h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-paper/80">
-            Build, code, or run the business side. No experience needed; you&apos;ll learn everything here.
+            Build, code, or run the business side. You&apos;ll learn everything here.
           </p>
           <ApplyButton className="mt-7" />
         </Reveal>

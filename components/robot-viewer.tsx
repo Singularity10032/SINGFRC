@@ -80,7 +80,7 @@ export function RobotViewer({
         />
       ) : (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={poster} alt={alt} className="h-full w-full object-cover" />
+        <img src={poster} alt={alt} className="h-full w-full object-contain" />
       )}
 
       {ready ? (

@@ -38,7 +38,7 @@ export function CabinetCard({ story }: { story: Story }) {
                 width={story.screen.width}
                 height={story.screen.height}
                 sizes="(max-width: 640px) 90vw, 380px"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
               />
             ) : (
               <div className="flex h-full items-center justify-center px-4 text-center font-display text-paper/80">

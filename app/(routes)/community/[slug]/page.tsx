@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Reveal } from "@/components/reveal"
+import { PhotoWall } from "@/components/photo-wall"
 import { getStory, stories } from "@/lib/community"
 
 export function generateStaticParams() {
@@ -43,7 +44,7 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
               width={story.screen.width}
               height={story.screen.height}
               sizes="(max-width: 768px) 92vw, 700px"
-              className="h-auto w-full rounded-[6px] object-cover"
+              className="h-auto w-full rounded-[6px]"
               priority
             />
           </div>
@@ -56,24 +57,10 @@ export default async function StoryPage({ params }: { params: Promise<{ slug: st
         </div>
       </Reveal>
 
-      {story.gallery.length > 0 && (
-        <Reveal delay={200}>
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
-            {story.gallery.map((photo, i) => (
-              <div key={photo.src} className="sticker-frame overflow-hidden" style={{ rotate: `${(i % 2 === 0 ? -1 : 1) * 1.5}deg` }}>
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={photo.width}
-                  height={photo.height}
-                  sizes="(max-width: 640px) 45vw, 220px"
-                  className="h-full w-full rounded-[6px] object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      )}
+      {/* Column flow, every photo at its own aspect ratio; the old fixed grid
+          cropped wide frames like the Algae Abyss "red wins" screen (dad's
+          screenshot, 2026-09-15). */}
+      {story.gallery.length > 0 && <PhotoWall photos={story.gallery} cols={3} className="mt-10" />}
     </div>
   )
 }

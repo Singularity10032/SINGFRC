@@ -21,7 +21,6 @@ export const orionPhotos: Photo[] = [
   { src: "/images/photos/IMG-3108.webp", width: 1650, height: 2200, alt: "ORION scoring fuel at the hub" },
   { src: "/images/photos/IMG-4215.webp", width: 1237, height: 2200, alt: "ORION driving through fuel balls" },
   { src: "/images/photos/IMG-4243.webp", width: 1237, height: 2200, alt: "ORION near the alliance wall during a match" },
-  { src: "/images/photos/IMG-4408.webp", width: 2200, height: 1650, alt: "ORION's electronics lit red on the cart" },
   { src: "/images/photos/IMG-4523.webp", width: 2200, height: 1467, alt: "ORION and alliance partners on the field" },
   { src: "/images/photos/IMG-4528.webp", width: 2200, height: 1467, alt: "ORION beside a partner robot" },
   { src: "/images/photos/IMG-4561.webp", width: 2200, height: 1467, alt: "ORION rolling out for a match" },

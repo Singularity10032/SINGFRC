@@ -70,10 +70,12 @@ export default function Home() {
         </Reveal>
         <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-4 sm:gap-6">
           {[
-            { photo: photos.sticker1, alt: "ORION on the field surrounded by yellow fuel balls", card: whatWeDo[0] },
-            { photo: photos.sticker3, alt: "A student hugging the bare robot chassis in the gym", card: whatWeDo[1] },
+            // Order set by dad, 2026-09-15: trophy shot for Competition, a detailed
+            // robot for Engineering, the chassis-hug for Learning by doing.
+            { photo: photos.sticker4, alt: "Two students holding a trophy, crowd behind", card: whatWeDo[0] },
+            { photo: photos.engineering, alt: "Inside ORION: shooter, wiring and electronics lit up on the cart", card: whatWeDo[1] },
             { photo: photos.sticker2, alt: "Students in a car, candid, smiling", card: whatWeDo[2] },
-            { photo: photos.sticker4, alt: "Two students holding a trophy, crowd behind", card: whatWeDo[3] },
+            { photo: photos.sticker3, alt: "A student hugging the bare robot chassis in the gym", card: whatWeDo[3] },
           ].map(({ photo, alt, card }, i) => (
             <Reveal key={card.title} delay={i * 80}>
               <div className="flex flex-col items-center text-center">

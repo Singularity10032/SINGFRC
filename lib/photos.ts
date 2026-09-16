@@ -14,6 +14,9 @@ export const photos = {
   cabinetFll: { src: "/images/photos/PHOTO-2025-12-13-16-02-01.webp", width: 1600, height: 1200 },
   cabinetInterviews: { src: "/images/photos/IMG_6710.webp", width: 1650, height: 2200 },
   cabinetIgnite2: { src: "/images/photos/IMG_1908.webp", width: 2200, height: 1467 },
+  // Detailed robot shot for the home "Engineering" card (dad, 2026-09-15): ORION's
+  // internals with the electronics lit, on the cart. Pulled out of the gallery set.
+  engineering: { src: "/images/photos/IMG-4408.webp", width: 2200, height: 1650 },
   robotOrion: { src: "/images/photos/image_3.webp", width: 1280, height: 960 },
   robot2025: { src: "/images/photos/20250417_142332.webp", width: 1016, height: 2200 },
   teamHeader: { src: "/images/photos/IMG_4607.webp", width: 2200, height: 1467 },

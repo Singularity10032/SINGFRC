@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import { Reveal } from "@/components/reveal"
 import { CopyEmail } from "@/components/copy-email"
-import { currentSponsors, pastSupporters } from "@/lib/sponsors"
+import { sponsors } from "@/lib/sponsors"
 
 export const metadata: Metadata = {
   title: "Sponsors — Singularity Robotics",
@@ -23,41 +23,38 @@ export default function SponsorsPage() {
         </p>
       </Reveal>
 
+      {/* One grid, every sponsor, each tile links out (dad, 2026-09-15). Tiles
+          are plain white or black so every mark reads; hover lifts the tile. */}
       <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-        {currentSponsors.map((logo, i) => (
-          <Reveal key={logo.name} delay={i * 40}>
+        {sponsors.map((logo, i) => {
+          const tile = (
             <div
-              className={`flex h-28 items-center justify-center rounded-xl border-2 p-4 shadow-hard ${logo.dark ? "border-paper/40 bg-deep" : "border-ink bg-paper"}`}
+              className={`flex h-32 items-center justify-center rounded-xl border-2 p-4 shadow-hard transition-transform duration-200 ease-out group-hover:-translate-y-1 ${
+                logo.tile === "black" ? "border-paper/40 bg-black" : "border-ink bg-white"
+              }`}
             >
               <Image
                 src={logo.src}
                 alt={logo.name}
                 width={logo.width}
                 height={logo.height}
-                sizes="160px"
-                className="h-full w-full object-contain"
+                sizes="(max-width: 640px) 45vw, 260px"
+                className="max-h-full max-w-full object-contain"
               />
             </div>
-          </Reveal>
-        ))}
-      </div>
-
-      <Reveal>
-        <h2 className="mt-16 font-display text-2xl">Past supporters</h2>
-      </Reveal>
-      <div className="mt-6 flex flex-wrap gap-4">
-        {pastSupporters.map((s) => (
-          <div
-            key={s.name}
-            className={`flex h-16 items-center justify-center rounded-xl border-2 px-5 shadow-hard-sm ${"dark" in s && s.dark ? "border-paper/40 bg-deep text-paper" : "border-ink bg-paper text-ink"}`}
-          >
-            {"src" in s && s.src ? (
-              <Image src={s.src} alt={s.name} width={s.width} height={s.height} className="h-10 w-auto object-contain" />
-            ) : (
-              <span className="text-sm font-semibold">{s.name}</span>
-            )}
-          </div>
-        ))}
+          )
+          return (
+            <Reveal key={logo.name} delay={i * 40}>
+              {logo.url ? (
+                <a href={logo.url} target="_blank" rel="noreferrer" aria-label={`${logo.name} website`} className="group block">
+                  {tile}
+                </a>
+              ) : (
+                <div className="group" title={logo.name}>{tile}</div>
+              )}
+            </Reveal>
+          )
+        })}
       </div>
 
       <Reveal>

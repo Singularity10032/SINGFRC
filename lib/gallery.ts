@@ -59,7 +59,6 @@ export const buildPhotos: Photo[] = [
   { src: "/images/photos/IMG-4437.webp", width: 1650, height: 2200, alt: "Mentor and student working on the shooter" },
   { src: "/images/photos/IMG-9381.webp", width: 1650, height: 2200, alt: "Working on the chassis in the garage" },
   { src: "/images/photos/IMG-9383.webp", width: 1650, height: 2200, alt: "Sorting parts on the garage floor" },
-  { src: "/images/photos/IMG-3072.webp", width: 1650, height: 2200, alt: "Organizing the pit shelving" },
   { src: "/images/photos/IMG-4199.webp", width: 2200, height: 1650, alt: "The pit: shelves and tools" },
 ]
 
@@ -109,16 +108,6 @@ export const houston2025Photos: Photo[] = [
   { src: "/images/photos/IMG-0837.webp", width: 2200, height: 1650, alt: "Members at the rail during a match" },
 ]
 
-export const champs2026Photos: Photo[] = [
-  { src: "/images/photos/IMG-9615.webp", width: 1650, height: 2200, alt: "The drive team on the jumbotron" },
-  { src: "/images/photos/IMG-9709.webp", width: 1650, height: 2200, alt: "Singularity on the jumbotron" },
-  { src: "/images/photos/IMG-9711.webp", width: 1650, height: 2200, alt: "The playoff bracket: Alliance 4 with Singularity" },
-  { src: "/images/photos/IMG-9704.webp", width: 1650, height: 2200, alt: "Team dinner on the Houston trip" },
-  { src: "/images/photos/IMG-3911.webp", width: 1650, height: 2200, alt: "Members in suits on stage" },
-  { src: "/images/photos/IMG-7368.webp", width: 2200, height: 1650, alt: "The drive team on the big screen" },
-  { src: "/images/photos/IMG-3349.webp", width: 1650, height: 2200, alt: "In front of the team trailer" },
-]
-
 export const pitPhotos: Photo[] = [
   { src: "/images/photos/100-0412.webp", width: 2200, height: 1467, alt: "ORION's side panel and bumpers" },
   { src: "/images/photos/100-0416.webp", width: 2200, height: 1467, alt: "Playing with a fuel ball on the practice hub" },
@@ -156,12 +145,6 @@ export const pitPhotos: Photo[] = [
   { src: "/images/photos/IMG-4603.webp", width: 2200, height: 1467, alt: "Two members in the hallway" },
   { src: "/images/photos/IMG-1395.webp", width: 1650, height: 2200, alt: "A member with the ORION nameplate" },
   { src: "/images/photos/IMG-1396.webp", width: 1650, height: 2200, alt: "Two members head-to-head, joking" },
-]
-
-export const outreachPhotos: Photo[] = [
-  { src: "/images/photos/IMG-2686.webp", width: 1650, height: 2200, alt: "Face-paint outreach at A City of Stars" },
-  { src: "/images/photos/IMG-9907.webp", width: 2200, height: 1650, alt: "Volunteers in green shirts at an outreach event" },
-  { src: "/images/photos/IMG-9380.webp", width: 1650, height: 2200, alt: "Building a kit at an outreach event" },
 ]
 
 export const fuelfrenzyPhotos: Photo[] = [

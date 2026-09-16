@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Reveal } from "@/components/reveal"
 import { PhotoWall } from "@/components/photo-wall"
-import { winPhotos, houston2025Photos, champs2026Photos, orionPhotos, pitPhotos, outreachPhotos, buildPhotos, teamPhotos } from "@/lib/gallery"
+import { winPhotos, houston2025Photos, orionPhotos, pitPhotos, buildPhotos, teamPhotos } from "@/lib/gallery"
 
 export const metadata: Metadata = {
   title: "Gallery — Singularity Robotics",
@@ -15,11 +15,9 @@ const sections = [
   { title: "Fort Worth 2026: district winners", fill: "bg-arcade-fuel", photos: winPhotos },
   // Moved here from /team (dad, 2026-09-15).
   { title: "Together", fill: "bg-paper", photos: teamPhotos },
-  { title: "District Championship 2026", fill: "bg-arcade-purple text-paper", photos: champs2026Photos },
   { title: "Houston 2025: FIRST Championship", fill: "bg-arcade-sky", photos: houston2025Photos },
   { title: "More of ORION", fill: "bg-arcade-bumper text-paper", photos: orionPhotos.slice(13) },
   { title: "Pits, practice, stands", fill: "bg-arcade-sky", photos: pitPhotos },
-  { title: "Outreach", fill: "bg-arcade-mint", photos: outreachPhotos },
   // Moved here from /about (dad, 2026-09-15).
   { title: "Build season, in pictures", fill: "bg-paper", photos: buildPhotos },
 ]

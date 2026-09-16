@@ -17,7 +17,7 @@ export function RobotPanel({ robot, index }: { robot: Robot; index: number }) {
 
   return (
     <div className={`rounded-xl border-2 border-ink ${fillByIndex[index]} p-5 sm:p-6`}>
-      <div className="overflow-hidden rounded-lg border-2 border-ink">
+      <div className="overflow-hidden rounded-xl border-2 border-ink">
         <Image
           src={photo.src}
           alt={photo.alt}
@@ -59,7 +59,7 @@ export function RobotPanel({ robot, index }: { robot: Robot; index: number }) {
       >
         <ol className="mt-5 space-y-4">
           {robot.subsystems.map((s) => (
-            <li key={s.number} className="rounded-lg border-2 border-ink bg-paper p-4">
+            <li key={s.number} className="rounded-xl border-2 border-ink bg-paper p-4">
               <p className="font-display text-sm text-arcade-purple">{s.number}</p>
               <p className="font-display text-lg">{s.name}</p>
               <p className="mt-1 text-sm text-ink/80">{s.body}</p>

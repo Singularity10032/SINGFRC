@@ -110,7 +110,7 @@ export default function Home() {
               alt="Horizon, our season magazine, volume 2 issue 1 cover"
               width={216}
               height={280}
-              className="mx-auto rounded-lg border-2 border-ink shadow-hard sm:mx-0"
+              className="mx-auto rounded-xl border-2 border-ink shadow-hard sm:mx-0"
             />
             <div>
               <h2 className="font-display text-3xl">Horizon, our season magazine</h2>

@@ -1,270 +1,159 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { Reveal } from "@/components/reveal";
-import styles from "./team.module.css";
+import { useMemo, useState } from "react"
+import Image from "next/image"
+import { Reveal } from "@/components/reveal"
+import {
+  seasons,
+  getMemberRoles,
+  isCaptain,
+  roleLabels,
+  type LeadershipMember,
+  type RoleKind,
+  type TeamMember,
+} from "@/lib/team-data"
+import { photos } from "@/lib/photos"
 
-type RoleKind = "mechanical" | "programming" | "business";
-
-type LeadershipMember = {
-  name: string;
-  position: string;
-  roleKind: RoleKind;
-  roleKinds?: [RoleKind, RoleKind];
-};
-
-type TeamMember = {
-  name: string;
-  year: string;
-};
-
-type Season = {
-  id: string;
-  label: string;
-  title: string;
-  leadership: LeadershipMember[];
-  members: TeamMember[];
-};
-
-const roleStars: Record<RoleKind, string> = {
-  mechanical: "\u2605",
-  programming: "\u2726",
-  business: "\u2727",
-};
-
-const roleLabels: Record<RoleKind, string> = {
-  mechanical: "Mechanical star",
-  programming: "Programming star",
-  business: "Business, outreach, and media star",
-};
-
-const roleBadgeClass: Record<RoleKind, string> = {
-  mechanical: styles.mechanicalBadge,
-  programming: styles.programmingBadge,
-  business: styles.businessBadge,
-};
-
-const dualRoleBadgeClass: Record<string, string> = {
-  "mechanical-programming": styles.mechanicalProgrammingBadge,
-  "mechanical-business": styles.mechanicalBusinessBadge,
-  "programming-business": styles.programmingBusinessBadge,
-};
-
-const roleOrder: RoleKind[] = ["mechanical", "programming", "business"];
-
-function getMemberRoles(member: LeadershipMember) {
-  return member.roleKinds ?? [member.roleKind];
+const dotColor: Record<RoleKind, string> = {
+  mechanical: "bg-arcade-bumper",
+  programming: "bg-arcade-purple",
+  business: "bg-arcade-mint",
 }
 
-function getDualRoleKey(roles: RoleKind[]) {
-  return [...roles].sort((first, second) => roleOrder.indexOf(first) - roleOrder.indexOf(second)).join("-");
+const gradeOrder = ["Senior", "Junior", "Sophomore", "Freshman"]
+
+function RoleDots({ member }: { member: LeadershipMember }) {
+  const roles = getMemberRoles(member)
+  return (
+    <span className="flex items-center gap-1" aria-label={roles.map((r) => roleLabels[r]).join(" and ")}>
+      {roles.map((r) => (
+        <span key={r} className={`h-3 w-3 rounded-full border border-ink ${dotColor[r]}`} />
+      ))}
+    </span>
+  )
 }
 
-function getRoleLabel(roles: RoleKind[]) {
-  return roles.map((role) => roleLabels[role]).join(" and ");
+function LeaderCard({ member, index }: { member: LeadershipMember; index: number }) {
+  const captain = isCaptain(member)
+  return (
+    <div
+      className={`rounded-xl border-2 border-ink bg-paper p-4 shadow-hard ${captain ? "ring-2 ring-arcade-fuel ring-offset-2 ring-offset-paper" : ""}`}
+      style={{ rotate: `${(index % 2 === 0 ? -1 : 1) * 0.6}deg` }}
+    >
+      <div className="flex items-start justify-between">
+        <RoleDots member={member} />
+        {captain && (
+          <span className="rounded-full border-2 border-ink bg-arcade-fuel px-2 py-0.5 text-[11px] font-semibold">
+            Captain
+          </span>
+        )}
+      </div>
+      <p className="mt-3 font-display text-lg leading-tight">{member.name}</p>
+      <p className="mt-0.5 text-sm text-ink/70">{member.position}</p>
+    </div>
+  )
 }
 
-function isCaptain(member: LeadershipMember) {
-  return member.position.toLowerCase().includes("captain");
-}
-
-const seasons: Season[] = [
-  {
-    id: "2025-2026",
-    label: "25'-26' Season",
-    title: "2025-2026 Team",
-    leadership: [
-      { name: "Aadhitya Senthilkumar", position: "Mech Captain", roleKind: "mechanical" },
-      { name: "Raghav Ramprasad", position: "Business Captain", roleKind: "business" },
-      { name: "Shiven Velagapudi", position: "Programming Captain", roleKind: "programming" },
-      { name: "Kavin Ravi", position: "Mech Captain", roleKind: "mechanical" },
-      { name: "Nirbhay Challa", position: "Scouting Captain", roleKind: "business" },
-      { name: "Sanjana Rajaram", position: "CAD Captain", roleKind: "mechanical" },
-      { name: "Sachin Rajan", position: "Driver", roleKind: "mechanical" },
-      { name: "Shaurya Singh", position: "Outreach Lead", roleKind: "business" },
-      { name: "Shreyansh Panigrahi", position: "Programming Lead", roleKind: "programming" },
-      {
-        name: "Mohan Chillara",
-        position: "Business and Mech Lead",
-        roleKind: "business",
-        roleKinds: ["business", "mechanical"],
-      },
-    ],
-    members: [
-      { name: "Arnau Ariga", year: "Senior" },
-      { name: "Linda Zhang", year: "Senior" },
-      { name: "Amrith Ponneth", year: "Senior" },
-      { name: "Chaitanya Polavarapu", year: "Senior" },
-      { name: "Chetan Kapavarapu", year: "Senior" },
-      { name: "Dhruva Venkatraman", year: "Senior" },
-      { name: "Eshwar Mahadevan", year: "Senior" },
-      { name: "Gabriel Bell", year: "Senior" },
-      { name: "Kavin Dasari", year: "Senior" },
-      { name: "Rishi Alluri", year: "Senior" },
-      { name: "Alexander Wick", year: "Junior" },
-      { name: "Daniel Brown", year: "Junior" },
-      { name: "Dheemanth Suddekunte", year: "Junior" },
-      { name: "Ishaant Majumdar", year: "Junior" },
-      { name: "Ishan Pachnada", year: "Junior" },
-      { name: "Shreya Samba", year: "Junior" },
-      { name: "Aahan Kumbham", year: "Sophomore" },
-      { name: "Aryaman Jalota", year: "Sophomore" },
-      { name: "Sathyndhira J Thirumal", year: "Freshman" },
-      { name: "Shanavi Rajaram", year: "Freshman" },
-      { name: "Shivani Umashanker", year: "Freshman" },
-    ],
-  },
-  {
-    id: "2024-2025",
-    label: "24'-25' Season",
-    title: "2024-2025 Team",
-    leadership: [
-      { name: "Aadhitya Senthilkumar", position: "Captain", roleKind: "mechanical" },
-      { name: "Meghana Chodavarapu", position: "Captain", roleKind: "business" },
-      { name: "Kaushal Prasath", position: "Captain", roleKind: "mechanical" },
-      { name: "Diya Sangal", position: "Captain", roleKind: "business" },
-      { name: "Raghav Ramprasad", position: "Business Lead", roleKind: "business" },
-      { name: "Sachin Rajan", position: "Business Lead", roleKind: "business" },
-      { name: "Kavin Ravi", position: "Programming Lead", roleKind: "programming" },
-      { name: "Nirbhay Challa", position: "Scouting Lead", roleKind: "business" },
-      { name: "Sofy Gutierrez", position: "Mech Lead", roleKind: "mechanical" },
-      { name: "Jose Hernandez", position: "CAD Lead", roleKind: "mechanical" },
-      { name: "Rayhan Mohammad", position: "Programming Lead", roleKind: "programming" },
-      { name: "Ethan Zheng", position: "Electrical Lead", roleKind: "mechanical" },
-    ],
-    members: [
-      { name: "Mayank Jain", year: "Senior" },
-      { name: "Shreyas Kadari", year: "Senior" },
-      { name: "Tanush Saxena", year: "Senior" },
-      { name: "Rishi Alluri", year: "Junior" },
-      { name: "Kavin Dasari", year: "Junior" },
-      { name: "Ahaan Girotra", year: "Junior" },
-      { name: "Chetan Kapavarapu", year: "Junior" },
-      { name: "Medha Kota", year: "Junior" },
-      { name: "Roy Lee", year: "Junior" },
-      { name: "Eshwar Mahadevan", year: "Junior" },
-      { name: "Chaitanya Polavarapu", year: "Junior" },
-      { name: "Amrith Ponneth", year: "Junior" },
-      { name: "Sanjana Rajaram", year: "Junior" },
-      { name: "Vishruth Thota", year: "Junior" },
-      { name: "Vishva Venkatesh", year: "Junior" },
-      { name: "Dhruva Venkatraman", year: "Junior" },
-      { name: "Mykhailo Bolshakov", year: "Sophomore" },
-      { name: "Shubhangi Dixit", year: "Sophomore" },
-      { name: "Ishaant Majumdar", year: "Sophomore" },
-      { name: "Shreyansh Panigrahi", year: "Sophomore" },
-      { name: "Shreya Samba", year: "Sophomore" },
-      { name: "Ansh Shah", year: "Sophomore" },
-      { name: "Gyan Padoli", year: "Sophomore" },
-      { name: "Rishi Vijaykrishna", year: "Sophomore" },
-      { name: "Mohan Chillara", year: "Freshman" },
-    ],
-  },
-];
-
-export default function Team() {
-  const [activeSeasonId, setActiveSeasonId] = useState(seasons[0].id);
-  const activeSeason = seasons.find((season) => season.id === activeSeasonId) ?? seasons[0];
+function MemberChips({ members }: { members: TeamMember[] }) {
+  const grouped = useMemo(() => {
+    const map = new Map<string, TeamMember[]>()
+    for (const m of members) {
+      if (!map.has(m.year)) map.set(m.year, [])
+      map.get(m.year)!.push(m)
+    }
+    return gradeOrder.filter((g) => map.has(g)).map((g) => [g, map.get(g)!] as const)
+  }, [members])
 
   return (
-    <div className={styles.container}>
-      <div className={styles.starField} />
-      <div className={styles.content}>
-        <section className={styles.hero}>
-          <p className={styles.eyebrow}>Singularity Robotics</p>
-          <h1 className={styles.title}>Our Team</h1>
-          <p className={styles.subtitle}>
-            Explore each season&apos;s leadership and roster through a little galaxy of team stars.
-          </p>
-
-          <div className={styles.tabs} aria-label="Choose team season">
-            {seasons.map((season) => (
-              <button
-                key={season.id}
-                type="button"
-                className={`${styles.tab} ${season.id === activeSeasonId ? styles.activeTab : ""}`}
-                onClick={() => setActiveSeasonId(season.id)}
+    <div className="space-y-6">
+      {grouped.map(([grade, list]) => (
+        <div key={grade}>
+          <p className="text-sm font-semibold text-ink/60">{grade}</p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {list.map((m) => (
+              <span
+                key={m.name}
+                className="rounded-full border-2 border-ink bg-paper px-3 py-1.5 text-sm font-medium shadow-hard-sm"
               >
-                {season.label}
-              </button>
+                {m.name}
+              </span>
             ))}
           </div>
-        </section>
+        </div>
+      ))}
+    </div>
+  )
+}
 
-        <Reveal>
-        <section className={styles.panel}>
-          <div className={styles.sectionHeader}>
-            <p className={styles.kicker}>{activeSeason.label}</p>
-            <h2 className={styles.sectionTitle}>Leadership Team</h2>
-          </div>
+export default function Team() {
+  const [activeId, setActiveId] = useState(seasons[0].id)
+  const season = seasons.find((s) => s.id === activeId) ?? seasons[0]
 
-          <div className={styles.legend} aria-label="Role star legend">
-            <span>
-              <b className={styles.mechanicalStar}>{"\u2605"}</b> Mechanical
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <Reveal>
+        <div className="overflow-hidden rounded-xl border-2 border-ink">
+          <Image
+            src={photos.teamHeader.src}
+            alt="Full team group photo at competition"
+            width={photos.teamHeader.width}
+            height={photos.teamHeader.height}
+            sizes="(max-width: 768px) 100vw, 1100px"
+            priority
+            className="h-48 w-full object-cover sm:h-72"
+          />
+        </div>
+      </Reveal>
+
+      <Reveal delay={60}>
+        <h1 className="mt-8 font-display text-4xl sm:text-5xl">The people.</h1>
+        <p className="mt-2 text-ink/70">Every season&apos;s leadership and roster.</p>
+      </Reveal>
+
+      <Reveal delay={100}>
+        <div className="mt-6 inline-flex gap-2 rounded-full border-2 border-ink bg-paper p-1">
+          {seasons.map((s) => (
+            <button
+              key={s.id}
+              type="button"
+              onClick={() => setActiveId(s.id)}
+              className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                s.id === activeId ? "bg-ink text-paper" : "hover:bg-arcade-sky"
+              }`}
+            >
+              {s.label}
+            </button>
+          ))}
+        </div>
+      </Reveal>
+
+      <Reveal delay={140}>
+        <div className="mt-4 flex flex-wrap gap-4 text-sm text-ink/70">
+          {(["mechanical", "programming", "business"] as RoleKind[]).map((r) => (
+            <span key={r} className="flex items-center gap-1.5">
+              <span className={`h-3 w-3 rounded-full border border-ink ${dotColor[r]}`} /> {roleLabels[r]}
             </span>
-            <span>
-              <b className={styles.programmingStar}>{"\u2726"}</b> Programming
-            </span>
-            <span>
-              <b className={styles.businessStar}>{"\u2727"}</b> Business / Outreach / Media
-            </span>
-          </div>
+          ))}
+        </div>
+      </Reveal>
 
-          <div className={styles.leadershipGrid}>
-            {activeSeason.leadership.map((member) => {
-              const roles = getMemberRoles(member);
-              const isDualRole = roles.length === 2;
-              const captain = isCaptain(member);
-              const badgeClass = isDualRole
-                ? `${styles.dualBadge} ${dualRoleBadgeClass[getDualRoleKey(roles)]}`
-                : roleBadgeClass[roles[0]];
+      <div className="mt-10">
+        <h2 className="font-display text-2xl">Leadership</h2>
+        <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+          {season.leadership.map((member, i) => (
+            <Reveal key={`${season.id}-${member.name}-${member.position}`} delay={i * 40}>
+              <LeaderCard member={member} index={i} />
+            </Reveal>
+          ))}
+        </div>
+      </div>
 
-              return (
-                <article
-                  key={`${activeSeason.id}-${member.name}-${member.position}`}
-                  className={`${styles.leaderCard} ${captain ? styles.captainCard : ""}`}
-                >
-                  <div className={`${styles.starBadge} ${badgeClass}`}>
-                    <span role="img" aria-label={getRoleLabel(roles)}>
-                      {isDualRole ? (
-                        <span className={styles.dualStar}>{"\u2726"}</span>
-                      ) : (
-                        roleStars[roles[0]]
-                      )}
-                    </span>
-                  </div>
-                  <div>
-                    <div className={styles.leaderNameRow}>
-                      <h3>{member.name}</h3>
-                      {captain ? <span className={styles.captainTag}>Captain</span> : null}
-                    </div>
-                    <p>{member.position}</p>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-        </Reveal>
-
-        <Reveal delay={90}>
-        <section className={styles.panel}>
-          <div className={styles.sectionHeader}>
-            <p className={styles.kicker}>{activeSeason.title}</p>
-            <h2 className={styles.sectionTitle}>Team Members</h2>
-          </div>
-
-          <div className={styles.memberCloud}>
-            {activeSeason.members.map((member) => (
-              <button key={`${activeSeason.id}-${member.name}-${member.year}`} type="button" className={styles.memberChip}>
-                <span>{member.name}</span>
-                <small>{member.year}</small>
-              </button>
-            ))}
-          </div>
-        </section>
-        </Reveal>
+      <div className="mt-12">
+        <h2 className="font-display text-2xl">Members</h2>
+        <div className="mt-5">
+          <MemberChips members={season.members} />
+        </div>
       </div>
     </div>
-  );
+  )
 }

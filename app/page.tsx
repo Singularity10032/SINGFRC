@@ -41,12 +41,12 @@ export default function Home() {
 
 
         <div className="relative mx-auto max-w-3xl text-center">
-          <h1 className="font-display text-[12vw] leading-[0.95] sm:text-6xl md:text-7xl">
+          <h1 className="font-display text-[12vw] leading-[0.95] sm:text-6xl md:text-7xl lg:text-8xl">
             <span className="block">1 Team.</span>
             <span className="block">1 Vision.</span>
             <span className="block text-arcade-purple">Infinite Possibilities.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-paper/80">
+          <p className="mx-auto mt-6 max-w-xl text-lg text-paper/80 sm:mt-8 sm:max-w-2xl sm:text-xl md:text-2xl">
             Singularity Robotics is a FIRST Robotics Competition team from Frisco, Texas. Students design, build,
             program and fund every part of it.
           </p>
@@ -79,8 +79,8 @@ export default function Home() {
               <div className="flex flex-col items-center text-center">
                 <div className="rounded-xl border-2 border-ink bg-paper p-3 text-ink shadow-hard">
                   <StickerPhoto src={photo.src} width={photo.width} height={photo.height} alt={alt} index={i} className="w-full" />
-                  <h3 className="mt-4 font-display text-lg">{card.title}</h3>
-                  <p className="mt-1 text-sm text-ink/70">{card.body}</p>
+                  <h3 className="mt-4 font-display text-lg sm:text-2xl">{card.title}</h3>
+                  <p className="mt-1 text-sm text-ink/70 sm:mt-2 sm:text-base">{card.body}</p>
                 </div>
               </div>
             </Reveal>
@@ -102,8 +102,8 @@ export default function Home() {
               className="rounded-xl border-2 border-ink shadow-hard"
             />
             <div className="mt-8">
-              <h2 className="font-display text-3xl">Horizon, our season magazine</h2>
-              <p className="mx-auto mt-3 max-w-lg text-ink/80">
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl">Horizon, our season magazine</h2>
+              <p className="mx-auto mt-3 max-w-lg text-ink/80 sm:mt-4 sm:max-w-xl sm:text-lg md:text-xl">
                 Vol. II, issue 1: build recap, the garage, competition recap, Frisco Ignite, FLL mentorship, the
                 arcade, interviews from the pit.
               </p>
@@ -134,11 +134,11 @@ export default function Home() {
               className="w-full max-w-sm rounded-xl border-2 border-ink shadow-hard"
             />
             <div className="mt-8">
-              <span className="inline-block rounded-full border-2 border-ink bg-arcade-fuel px-3 py-1 text-xs font-extrabold">
+              <span className="inline-block rounded-full border-2 border-ink bg-arcade-fuel px-3 py-1 text-xs font-extrabold sm:text-sm">
                 Coming soon
               </span>
-              <h2 className="mt-3 font-display text-3xl">BIOCORE, the 2027 game</h2>
-              <p className="mx-auto mt-3 max-w-lg text-ink/80">
+              <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl">BIOCORE, the 2027 game</h2>
+              <p className="mx-auto mt-3 max-w-lg text-ink/80 sm:mt-4 sm:max-w-xl sm:text-lg md:text-xl">
                 FIRST&apos;s next Robotics Competition game, presented by Haas, launches January 9, 2027. Our third
                 season starts at kickoff; build progress will show up here and on @singularityfrc.
               </p>
@@ -152,8 +152,8 @@ export default function Home() {
       <section className="bg-arcade-purple text-paper">
         <Reveal>
           <div className="mx-auto max-w-6xl px-4 pb-16 pt-6 text-center sm:px-6 sm:pb-20">
-            <h2 className="font-display text-3xl sm:text-4xl">Follow along</h2>
-            <p className="mx-auto mt-3 max-w-md text-paper/85">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl">Follow along</h2>
+            <p className="mx-auto mt-3 max-w-md text-paper/85 sm:mt-4 sm:max-w-lg sm:text-lg md:text-xl">
               We post build progress, competition updates and outreach on Instagram and TikTok as @singularityfrc.
             </p>
           </div>

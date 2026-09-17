@@ -141,6 +141,8 @@ function CollegeTile({ college }: { college: (typeof colleges)[number] }) {
 export default function Team() {
   const [activeId, setActiveId] = useState(seasons[0].id)
   const season = seasons.find((s) => s.id === activeId) ?? seasons[0]
+  // Captains first, everyone else in the data's order (dad, 2026-09-16). Stable sort.
+  const leadership = [...season.leadership].sort((a, b) => Number(isCaptain(b)) - Number(isCaptain(a)))
   const reduced = useReducedMotion()
 
   return (
@@ -181,7 +183,7 @@ export default function Team() {
         <div className="mt-10">
           <h2 className="font-display text-2xl">Leadership</h2>
           <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-            {season.leadership.map((member, i) => (
+            {leadership.map((member, i) => (
               <Reveal key={`${season.id}-${member.name}-${member.position}`} delay={i * 40}>
                 <LeaderCard member={member} index={i} />
               </Reveal>

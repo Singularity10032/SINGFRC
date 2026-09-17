@@ -47,10 +47,10 @@ export const seasons: Season[] = [
     leadership: [
       { name: "Aadhitya Senthilkumar", position: "Mech Captain", roleKind: "mechanical" },
       { name: "Raghav Ramprasad", position: "Business Captain", roleKind: "business" },
-      { name: "Shiven Velagapudi", position: "Programming Captain", roleKind: "programming" },
+      { name: "Shiven Velagapudi", position: "Programming Lead", roleKind: "programming" },
       { name: "Kavin Ravi", position: "Mech Captain", roleKind: "mechanical" },
-      { name: "Nirbhay Challa", position: "Scouting Captain", roleKind: "business" },
-      { name: "Sanjana Rajaram", position: "CAD Captain", roleKind: "mechanical" },
+      { name: "Nirbhay Challa", position: "Scouting Lead", roleKind: "business" },
+      { name: "Sanjana Rajaram", position: "CAD Lead", roleKind: "mechanical" },
       { name: "Sachin Rajan", position: "Driver", roleKind: "mechanical" },
       { name: "Shaurya Singh", position: "Outreach Lead", roleKind: "business" },
       { name: "Shreyansh Panigrahi", position: "Programming Lead", roleKind: "programming" },

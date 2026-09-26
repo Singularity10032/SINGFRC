@@ -128,6 +128,7 @@ export const seasons: Season[] = [
       { name: "Ansh Shah", year: "Sophomore" },
       { name: "Gyan Padoli", year: "Sophomore" },
       { name: "Rishi Vijaykrishna", year: "Sophomore" },
+      { name: "Anjaneya Narayan", year: "Sophomore" },
       { name: "Mohan Chillara", year: "Freshman" },
     ],
   },

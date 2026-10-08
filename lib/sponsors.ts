@@ -6,10 +6,16 @@
 // dad supplied. URLs: the sponsor's own site, found by web search on
 // 2026-09-15; the LitterLoot URL is from dad in chat (2026-09-15).
 // FIRST (the program) is not a sponsor and was dropped from the list.
+// Boeing and BAE Systems added first, ahead of NASA (dad, 2026-10-08). Boeing:
+// boeing.com/content/dam/boeing/boeing-logo-white.svg, fill set to the blue of
+// boeing.com's own boeing-logo-blue.png (#0033a1). BAE Systems: Wikimedia
+// Commons BAE_Systems_logo.svg (baesystems.com blocks automated downloads).
 
 export type Sponsor = { name: string; src: string; width: number; height: number; tile: "white" | "black"; url?: string }
 
 export const sponsors: Sponsor[] = [
+  { name: "Boeing", src: "/images/sponsors/boeing.svg", width: 1419, height: 325, tile: "white", url: "https://www.boeing.com/" },
+  { name: "BAE Systems", src: "/images/sponsors/bae-systems.svg", width: 709, height: 110, tile: "white", url: "https://www.baesystems.com/" },
   { name: "NASA", src: "/images/sponsors/nasa.png", width: 1600, height: 563, tile: "white", url: "https://www.nasa.gov/" },
   { name: "Raytheon", src: "/images/sponsors/raytheon.png", width: 1600, height: 523, tile: "white", url: "https://www.rtx.com/raytheon" },
   { name: "Texas Instruments", src: "/images/sponsors/texas-instruments.png", width: 582, height: 169, tile: "white", url: "https://www.ti.com/" },

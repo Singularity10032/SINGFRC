@@ -10,6 +10,7 @@
 // boeing.com/content/dam/boeing/boeing-logo-white.svg, fill set to the blue of
 // boeing.com's own boeing-logo-blue.png (#0033a1). BAE Systems: Wikimedia
 // Commons BAE_Systems_logo.svg (baesystems.com blocks automated downloads).
+// Zippy added right after Bioworld (dad, 2026-10-08); logo from the file dad downloaded.
 
 export type Sponsor = { name: string; src: string; width: number; height: number; tile: "white" | "black"; url?: string }
 
@@ -22,6 +23,7 @@ export const sponsors: Sponsor[] = [
   { name: "Gene Haas Foundation", src: "/images/sponsors/gene-haas-foundation.png", width: 470, height: 194, tile: "white", url: "https://www.ghaasfoundation.org/" },
   { name: "DoW STEM", src: "/images/sponsors/dow-stem.png", width: 615, height: 219, tile: "white", url: "https://dowstem.us/" },
   { name: "Bioworld", src: "/images/sponsors/bioworld.png", width: 910, height: 176, tile: "white", url: "https://www.bioworldmerch.com/" },
+  { name: "Zippy", src: "/images/sponsors/zippy.png", width: 900, height: 574, tile: "white" },
   { name: "Mouser Electronics", src: "/images/sponsors/mouser-electronics.svg", width: 1997, height: 771, tile: "white", url: "https://www.mouser.com/" },
   { name: "PGA of America", src: "/images/sponsors/pga-of-america.png", width: 1200, height: 413, tile: "white", url: "https://www.pga.com/" },
   { name: "Corbridge Orthodontics", src: "/images/sponsors/corbridge-orthodontics.png", width: 467, height: 165, tile: "white", url: "https://corbridgeorthodontics.com/" },

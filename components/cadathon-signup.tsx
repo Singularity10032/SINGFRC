@@ -159,7 +159,11 @@ export function CadathonSignup() {
             )}
             <Check name="photoConsent">Photos or screenshots of the student&apos;s work may be shared by the team.</Check>
             <Check name="conductAgreed" required>
-              I agree to the event code of conduct.
+              I agree to the{" "}
+              <a href="/cadathon/code-of-conduct" target="_blank" className="font-semibold underline">
+                event code of conduct
+              </a>
+              .
             </Check>
           </>
         )}

@@ -225,6 +225,8 @@ export default function CadathonPage() {
           </div>
           <p className="mt-8 text-center text-sm text-paper/70">
             Questions? <a className="underline" href="mailto:admin@singularityfrc.com?subject=CADathon">admin@singularityfrc.com</a>
+            {" · "}
+            <a className="underline" href="/cadathon/code-of-conduct">Code of conduct</a>
           </p>
         </div>
         <BlobEdge fill={band.deep} flip className="mb-16" />

@@ -1,13 +1,14 @@
 import type { Metadata } from "next"
 import { Reveal } from "@/components/reveal"
 import { BlobEdge, band } from "@/components/blob-edge"
-import { CadathonSignup } from "@/components/cadathon-signup"
 
 export const metadata: Metadata = {
   title: "Event Horizon CADathon — Singularity Robotics",
   description:
     "A free, online CADathon with Beginner, Intermediate and Advanced divisions, open to anyone. Hosted by FRC Team 10032 Singularity Robotics.",
 }
+
+const FORM_URL = "https://forms.gle/khPmZtTZKN3Puuur7"
 
 // Start date (Nov 14) is set but subject to change. Prizes, judges and
 // supporters are placeholders marked TBA. The theme gets a short teaser; the
@@ -65,18 +66,10 @@ const prizeTiers = [
   { name: "Advanced", size: "Biggest prizes", fill: "bg-arcade-fuel", h: "h-32" },
 ]
 
-const crossAwards = [
-  { name: "Most Creative", how: "The idea nobody else thought of" },
-  { name: "Community Favorite", how: "Voted by everyone taking part" },
-  { name: "Best Design Document", how: "The clearest explanation of the why" },
-  { name: "Rookie Designer", how: "The best work from a first-time CAD user" },
-  { name: "Best Render", how: "The design that looks the part" },
-  { name: "Judges' Choice", how: "The one the judges couldn't stop talking about" },
-]
 const judges = ["Industry judge", "Industry judge", "Industry judge", "Industry judge"]
 
 const safety = [
-  "Screened adults are on duty for the whole event.",
+  "Adult organizers moderate the event online the whole time.",
   "Direct messages are turned off. All help happens where staff can see it.",
   "Students under 13 join on Google Meet with a parent or coach, not Discord.",
   "Students under 18 need a parent's consent to register.",
@@ -110,7 +103,7 @@ export default function CadathonPage() {
               Starts Saturday, November 14, 2026
               <span className="text-xs font-normal text-paper/60">Date subject to change</span>
             </span>
-            <a href="#signup" className="btn-pill bg-arcade-bumper text-paper">
+            <a href={FORM_URL} target="_blank" rel="noreferrer" className="btn-pill bg-arcade-bumper text-paper">
               Register now
             </a>
           </div>
@@ -240,24 +233,10 @@ export default function CadathonPage() {
         <BlobEdge fill={band.space} />
       </section>
 
-      {/* Cross-division and sponsor awards */}
+      {/* Sponsor's Choice awards */}
       <section className="mx-auto max-w-6xl px-4 pb-6 pt-10 text-center sm:px-6">
         <Reveal>
-          <h2 className="font-display text-3xl sm:text-4xl">Awards across every division</h2>
-          <p className="mx-auto mt-3 max-w-xl text-paper/75">Any team in any division can win these.</p>
-        </Reveal>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {crossAwards.map((a, i) => (
-            <Reveal key={a.name} delay={i * 40}>
-              <div className="h-full rounded-xl border-2 border-ink bg-paper p-4 text-left text-ink shadow-hard-sm">
-                <p className="font-display text-xl">{a.name}</p>
-                <p className="mt-1 text-sm text-ink/70">{a.how}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal>
-          <div className="mt-10 rounded-xl border-2 border-dashed border-arcade-fuel/70 p-6 text-left">
+          <div className="rounded-xl border-2 border-dashed border-arcade-fuel/70 p-6 text-left">
             <h3 className="flex flex-wrap items-center gap-3 font-display text-2xl">
               Sponsor&apos;s Choice awards <Tba className="text-arcade-fuel" />
             </h3>
@@ -321,7 +300,21 @@ export default function CadathonPage() {
               ))}
             </ul>
           </Reveal>
-          <CadathonSignup />
+          <div className="rounded-xl border-2 border-ink bg-paper p-6 text-ink shadow-hard sm:p-8">
+            <p className="font-display text-2xl">Register a student</p>
+            <ol className="mt-4 space-y-3 text-sm leading-relaxed">
+              <li><span className="font-semibold">1.</span> Pick your team and a team name. Teams are 1 to 4 people.</li>
+              <li><span className="font-semibold">2.</span> Every student fills in the form, using the exact same team name.</li>
+              <li><span className="font-semibold">3.</span> Students under 18 need a parent or guardian&apos;s email and consent.</li>
+            </ol>
+            <a href={FORM_URL} target="_blank" rel="noreferrer" className="btn-pill mt-6 w-full bg-arcade-bumper text-paper">
+              Open the registration form
+            </a>
+            <p className="mt-3 text-xs text-ink/60">
+              Opens a Google Form. By registering you agree to the{" "}
+              <a href="/cadathon/code-of-conduct" className="underline">code of conduct</a>.
+            </p>
+          </div>
         </div>
         <BlobEdge fill={band.deep} />
       </section>

@@ -30,7 +30,7 @@ function Check({ name, children, required }: { name: string; children: ReactNode
 }
 
 export function CadathonSignup() {
-  const [kind, setKind] = useState<Kind>("waitlist")
+  const kind = "registration" as Kind
   const [state, setState] = useState<State>("idle")
   const [under18, setUnder18] = useState(true)
 
@@ -60,9 +60,7 @@ export function CadathonSignup() {
       <div className="rounded-xl border-2 border-ink bg-arcade-mint p-6 text-ink shadow-hard">
         <p className="font-display text-2xl">You&apos;re in.</p>
         <p className="mt-2 text-sm">
-          {kind === "waitlist"
-            ? "We'll email you when dates and registration are announced."
-            : "We'll email you the details before the event."}
+          We&apos;ll email you the details before the event.
         </p>
       </div>
     )
@@ -70,25 +68,8 @@ export function CadathonSignup() {
 
   return (
     <div className="rounded-xl border-2 border-ink bg-paper p-5 text-ink shadow-hard sm:p-7">
-      <div className="grid grid-cols-2 gap-2 rounded-full border-2 border-ink p-1" role="tablist">
-        {(["waitlist", "registration"] as Kind[]).map((k) => (
-          <button
-            key={k}
-            type="button"
-            role="tab"
-            aria-selected={kind === k}
-            onClick={() => {
-              setKind(k)
-              setState("idle")
-            }}
-            className={`rounded-full px-3 py-2 text-sm font-semibold transition-colors ${
-              kind === k ? "bg-arcade-purple text-paper" : "hover:bg-ink/5"
-            }`}
-          >
-            {k === "waitlist" ? "Join the waitlist" : "Register a team"}
-          </button>
-        ))}
-      </div>
+      <p className="font-display text-2xl">Register a student</p>
+      <p className="mt-1 text-sm text-ink/70">One form per student. Teammates each register.</p>
 
       <form onSubmit={submit} className="mt-6 space-y-4">
         <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
@@ -173,7 +154,7 @@ export function CadathonSignup() {
           disabled={state === "sending"}
           className="btn-pill w-full bg-arcade-bumper text-paper disabled:opacity-60"
         >
-          {state === "sending" ? "Sending…" : kind === "waitlist" ? "Join the waitlist" : "Register"}
+          {state === "sending" ? "Sending…" : "Register"}
         </button>
 
         {state === "closed" && (

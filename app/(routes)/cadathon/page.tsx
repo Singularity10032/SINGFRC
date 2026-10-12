@@ -9,9 +9,9 @@ export const metadata: Metadata = {
     "A free, online CADathon for FLL, FTC and FRC students, hosted by FRC Team 10032 Singularity Robotics.",
 }
 
-// Anything not yet official is a placeholder marked TBA: dates, schedule,
-// prizes, judges and supporters. The theme and challenges are revealed only
-// at Opening, so this page gives an overview of the divisions and nothing more.
+// Start date (Nov 14) is set but subject to change. Prizes, judges and
+// supporters are placeholders marked TBA. The theme gets a short teaser; the
+// full challenges are revealed only at Opening on the day.
 
 function Tba({ className = "" }: { className?: string }) {
   return (
@@ -29,7 +29,23 @@ const divisions = [
   { name: "FRC", who: "High school", note: "The full CADathon", fill: "bg-arcade-fuel" },
 ]
 
-const prizes = ["1st place", "2nd place", "3rd place"]
+const places = ["1st", "2nd", "3rd", "Honorable mention"]
+
+// Prize size scales with the division: the harder the division, the bigger the prize.
+const prizeTiers = [
+  { name: "FLL", size: "Prizes", fill: "bg-arcade-mint", h: "h-16" },
+  { name: "FTC", size: "Bigger prizes", fill: "bg-arcade-sky", h: "h-24" },
+  { name: "FRC", size: "Biggest prizes", fill: "bg-arcade-fuel", h: "h-32" },
+]
+
+const crossAwards = [
+  { name: "Most Creative", how: "The idea nobody else thought of" },
+  { name: "Community Favorite", how: "Voted by everyone taking part" },
+  { name: "Best Design Document", how: "The clearest explanation of the why" },
+  { name: "Rookie Designer", how: "The best work from a first-time CAD user" },
+  { name: "Best Render", how: "The design that looks the part" },
+  { name: "Judges' Choice", how: "The one the judges couldn't stop talking about" },
+]
 const judges = ["Industry judge", "Industry judge", "Industry judge", "Industry judge"]
 
 const safety = [
@@ -44,8 +60,8 @@ const faq = [
   { q: "Do I need CAD experience?", a: "No. Beginners are welcome, and there will be help for first-timers." },
   { q: "What do I need?", a: "A computer with a web browser. The CAD tools we use are free." },
   { q: "Can I join without a FIRST team?", a: "Yes. Pick the division that fits your grade." },
-  { q: "What's the theme?", a: "It's a secret until Opening. Everyone starts from zero at the same time." },
-  { q: "When is it?", a: "Dates are coming soon. Join the waitlist and you'll hear first." },
+  { q: "What's the theme?", a: "A mission in orbit. The full challenge is revealed at Opening, so everyone starts from zero at the same time." },
+  { q: "When is it?", a: "It starts Saturday, November 14, 2026. The date may still change; registered teams hear first." },
 ]
 
 export default function CadathonPage() {
@@ -61,11 +77,12 @@ export default function CadathonPage() {
             judged by people who do this for a living.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border-2 border-paper/30 px-4 py-2 text-sm font-semibold text-paper/85">
-              Dates <Tba className="text-arcade-fuel" />
+            <span className="inline-flex flex-col rounded-2xl border-2 border-paper/30 px-4 py-2 text-sm font-semibold text-paper/85">
+              Starts Saturday, November 14, 2026
+              <span className="text-xs font-normal text-paper/60">Date subject to change</span>
             </span>
             <a href="#signup" className="btn-pill bg-arcade-bumper text-paper">
-              Join the waitlist
+              Register now
             </a>
           </div>
         </Reveal>
@@ -78,8 +95,20 @@ export default function CadathonPage() {
           <Reveal>
             <h2 className="font-display text-3xl sm:text-4xl">Three divisions</h2>
             <p className="mx-auto mt-3 max-w-xl text-paper/75">
-              Each division gets its own challenge. The theme and every challenge stay secret until Opening.
+              Each division gets its own challenge, sized for its level.
             </p>
+          </Reveal>
+          <Reveal>
+            <div className="mx-auto mt-8 max-w-3xl rounded-xl border-2 border-dashed border-arcade-fuel/70 p-5 text-left sm:p-6">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-arcade-fuel">Mission briefing</p>
+              <p className="mt-3 text-paper/90">
+                Something has gone wrong in orbit. A station needs help that only a robot can give, and your team has
+                one shot to design it. Every division gets the same mission, with a different job to do.
+              </p>
+              <p className="mt-3 text-sm text-paper/60">
+                The full challenge is revealed at Opening on November 14. Nobody sees it early, us included.
+              </p>
+            </div>
           </Reveal>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {divisions.map((d, i) => (
@@ -108,21 +137,32 @@ export default function CadathonPage() {
           <div>
             <Reveal>
               <h2 className="flex flex-wrap items-center gap-3 font-display text-3xl sm:text-4xl">
-                Prizes <Tba />
+                Division prizes <Tba />
               </h2>
-              <p className="mt-2 text-sm text-ink/70">Prizes in every division. Details coming soon.</p>
+              <p className="mt-2 text-sm text-ink/70">
+                1st, 2nd, 3rd and an honorable mention in every division. The harder the division, the bigger the prize.
+              </p>
             </Reveal>
-            <div className="mt-6 grid grid-cols-3 gap-3">
-              {prizes.map((p, i) => (
-                <Reveal key={p} delay={i * 50}>
-                  <div className="flex h-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-ink bg-paper/60 px-2 py-6 text-center">
-                    <p className="font-display text-3xl font-extrabold text-arcade-purple">{i + 1}</p>
-                    <p className="mt-1 text-xs font-semibold">{p}</p>
-                    <p className="mt-2 text-xs text-ink/60">Prize TBA</p>
+            <div className="mt-6 grid grid-cols-3 items-end gap-3">
+              {prizeTiers.map((t, i) => (
+                <Reveal key={t.name} delay={i * 60}>
+                  <div className="text-center">
+                    <p className="font-display text-2xl font-extrabold text-arcade-purple">{t.name}</p>
+                    <div className={`mt-2 flex ${t.h} items-center justify-center rounded-t-xl border-2 border-b-0 border-ink px-1 ${t.fill}`}>
+                      <span className="text-xs font-semibold">{t.size}</span>
+                    </div>
                   </div>
                 </Reveal>
               ))}
             </div>
+            <ul className="mt-0 grid grid-cols-2 gap-2 rounded-b-xl border-2 border-ink bg-paper p-3 sm:grid-cols-4">
+              {places.map((p) => (
+                <li key={p} className="rounded-lg border-2 border-dashed border-ink/40 px-2 py-2 text-center">
+                  <span className="block text-xs font-semibold">{p}</span>
+                  <span className="block text-[11px] text-ink/60">Prize TBA</span>
+                </li>
+              ))}
+            </ul>
             <p className="mt-4 text-sm">Every participant who submits gets a certificate.</p>
           </div>
           <div>
@@ -152,12 +192,49 @@ export default function CadathonPage() {
         <BlobEdge fill={band.space} />
       </section>
 
+      {/* Cross-division and sponsor awards */}
+      <section className="mx-auto max-w-6xl px-4 pb-6 pt-10 text-center sm:px-6">
+        <Reveal>
+          <h2 className="font-display text-3xl sm:text-4xl">Awards across every division</h2>
+          <p className="mx-auto mt-3 max-w-xl text-paper/75">Any team in any division can win these.</p>
+        </Reveal>
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {crossAwards.map((a, i) => (
+            <Reveal key={a.name} delay={i * 40}>
+              <div className="h-full rounded-xl border-2 border-ink bg-paper p-4 text-left text-ink shadow-hard-sm">
+                <p className="font-display text-xl">{a.name}</p>
+                <p className="mt-1 text-sm text-ink/70">{a.how}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal>
+          <div className="mt-10 rounded-xl border-2 border-dashed border-arcade-fuel/70 p-6 text-left">
+            <h3 className="flex flex-wrap items-center gap-3 font-display text-2xl">
+              Sponsor&apos;s Choice awards <Tba className="text-arcade-fuel" />
+            </h3>
+            <p className="mt-2 max-w-2xl text-sm text-paper/80">
+              Like the special awards at a science fair: engineers from a supporting company pick their favorite design
+              from any division, and their company names the prize. Announced as supporters join.
+            </p>
+            <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {[0, 1, 2, 3].map((i) => (
+                <div key={i} className="rounded-lg border-2 border-dashed border-paper/30 px-3 py-4 text-center text-sm font-semibold text-paper/60">
+                  [Company]&apos;s Choice
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       {/* Supporters */}
       <section className="mx-auto max-w-6xl px-4 pb-16 pt-10 text-center sm:px-6">
         <Reveal>
           <h2 className="font-display text-3xl sm:text-4xl">Supported by</h2>
           <p className="mx-auto mt-3 max-w-xl text-paper/75">
-            Want your company here? Sponsor a prize, send a judge, or give a talk to the next generation of engineers.
+            Want your company here? Sponsor a prize, name a Sponsor&apos;s Choice award, send a judge, or give a talk to
+            the next generation of engineers.
           </p>
         </Reveal>
         <div className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
@@ -180,14 +257,10 @@ export default function CadathonPage() {
       <section id="signup" className="scroll-mt-24 bg-arcade-purple text-paper">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-6 sm:px-6 lg:grid-cols-[1fr_1.2fr] lg:items-start">
           <Reveal>
-            <h2 className="font-display text-3xl sm:text-4xl">Get in</h2>
+            <h2 className="font-display text-3xl sm:text-4xl">Register</h2>
             <p className="mt-3 max-w-md text-paper/85">
-              <span className="font-semibold">Waitlist:</span> just your name and email. You&apos;ll be first to hear
-              the dates.
-            </p>
-            <p className="mt-3 max-w-md text-paper/85">
-              <span className="font-semibold">Register:</span> sign up a student now. Under 18 needs a parent&apos;s
-              email and consent.
+              Registration is open. Sign up each student who&apos;s taking part. Students under 18 need a
+              parent&apos;s email and consent. It&apos;s free.
             </p>
             <h3 className="mt-10 font-display text-2xl">For parents and coaches</h3>
             <ul className="mt-4 space-y-2">

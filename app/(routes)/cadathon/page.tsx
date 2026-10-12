@@ -8,9 +8,9 @@ export const metadata: Metadata = {
     "A free, online CADathon with Beginner, Intermediate and Advanced divisions, open to anyone. Hosted by FRC Team 10032 Singularity Robotics.",
 }
 
-const FORM_URL = "https://forms.gle/khPmZtTZKN3Puuur7"
+const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd3RL3jfIAdqNWFbDINjCdI9lTLIMrufMAkCkS_cCzZd2almA/viewform"
 const FORM_EMBED =
-  "https://docs.google.com/forms/d/e/1FAIpQLScdw3F5kERgqmeWtIp1S6WA1zt2R7IdHFK5qKnmplJjGzLL-Q/viewform?embedded=true"
+  "https://docs.google.com/forms/d/e/1FAIpQLSd3RL3jfIAdqNWFbDINjCdI9lTLIMrufMAkCkS_cCzZd2almA/viewform?embedded=true"
 
 // Start date (Nov 14) is set but subject to change. Prizes, judges and
 // supporters are placeholders marked TBA. The theme gets a short teaser; the
@@ -312,7 +312,7 @@ export default function CadathonPage() {
               src={FORM_EMBED}
               title="CADathon registration form"
               loading="lazy"
-              className="mt-4 h-[2250px] w-full rounded-lg bg-white sm:h-[2000px]"
+              className="mt-4 h-[3000px] w-full rounded-lg bg-white sm:h-[2700px]"
             >
               Loading…
             </iframe>

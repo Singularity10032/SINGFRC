@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 }
 
 const FORM_URL = "https://forms.gle/khPmZtTZKN3Puuur7"
+const FORM_EMBED =
+  "https://docs.google.com/forms/d/e/1FAIpQLScdw3F5kERgqmeWtIp1S6WA1zt2R7IdHFK5qKnmplJjGzLL-Q/viewform?embedded=true"
 
 // Start date (Nov 14) is set but subject to change. Prizes, judges and
 // supporters are placeholders marked TBA. The theme gets a short teaser; the
@@ -103,7 +105,7 @@ export default function CadathonPage() {
               Starts Saturday, November 14, 2026
               <span className="text-xs font-normal text-paper/60">Date subject to change</span>
             </span>
-            <a href={FORM_URL} target="_blank" rel="noreferrer" className="btn-pill bg-arcade-bumper text-paper">
+            <a href="#signup" className="btn-pill bg-arcade-bumper text-paper">
               Register now
             </a>
           </div>
@@ -300,18 +302,26 @@ export default function CadathonPage() {
               ))}
             </ul>
           </Reveal>
-          <div className="rounded-xl border-2 border-ink bg-paper p-6 text-ink shadow-hard sm:p-8">
-            <p className="font-display text-2xl">Register a student</p>
-            <ol className="mt-4 space-y-3 text-sm leading-relaxed">
+          <div className="rounded-xl border-2 border-ink bg-paper p-3 text-ink shadow-hard sm:p-4">
+            <ol className="space-y-2 px-2 pt-2 text-sm leading-relaxed">
               <li><span className="font-semibold">1.</span> Pick your team and a team name. Teams are 1 to 4 people.</li>
               <li><span className="font-semibold">2.</span> Every student fills in the form, using the exact same team name.</li>
               <li><span className="font-semibold">3.</span> Students under 18 need a parent or guardian&apos;s email and consent.</li>
             </ol>
-            <a href={FORM_URL} target="_blank" rel="noreferrer" className="btn-pill mt-6 w-full bg-arcade-bumper text-paper">
-              Open the registration form
-            </a>
-            <p className="mt-3 text-xs text-ink/60">
-              Opens a Google Form. By registering you agree to the{" "}
+            <iframe
+              src={FORM_EMBED}
+              title="CADathon registration form"
+              loading="lazy"
+              className="mt-4 h-[2250px] w-full rounded-lg bg-white sm:h-[2000px]"
+            >
+              Loading…
+            </iframe>
+            <p className="px-2 pb-1 pt-3 text-xs text-ink/60">
+              Form not loading?{" "}
+              <a href={FORM_URL} target="_blank" rel="noreferrer" className="font-semibold underline">
+                Open it in a new tab
+              </a>
+              . By registering you agree to the{" "}
               <a href="/cadathon/code-of-conduct" className="underline">code of conduct</a>.
             </p>
           </div>

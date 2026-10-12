@@ -312,7 +312,7 @@ export default function CadathonPage() {
               src={FORM_EMBED}
               title="CADathon registration form"
               loading="lazy"
-              className="mt-4 h-[3000px] w-full rounded-lg bg-white sm:h-[2700px]"
+              className="mt-4 h-[3250px] w-full rounded-lg bg-white sm:h-[2850px]"
             >
               Loading…
             </iframe>

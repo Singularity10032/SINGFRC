@@ -6,7 +6,7 @@ import { CadathonSignup } from "@/components/cadathon-signup"
 export const metadata: Metadata = {
   title: "Event Horizon CADathon — Singularity Robotics",
   description:
-    "A free, online CADathon for FLL, FTC and FRC students, hosted by FRC Team 10032 Singularity Robotics.",
+    "A free, online CADathon with Beginner, Intermediate and Advanced divisions, open to anyone. Hosted by FRC Team 10032 Singularity Robotics.",
 }
 
 // Start date (Nov 14) is set but subject to change. Prizes, judges and
@@ -23,19 +23,46 @@ function Tba({ className = "" }: { className?: string }) {
   )
 }
 
+// Divisions are open to anyone. An age cap keeps experienced people out of the
+// easier divisions: you can enter your own division or any harder one, never an
+// easier one. Content scales up: a gadget, then one mechanism, then a full robot.
 const divisions = [
-  { name: "FLL", who: "Elementary and middle school", note: "A shorter session, with your coach", fill: "bg-arcade-mint" },
-  { name: "FTC", who: "Middle and high school", note: "The full CADathon", fill: "bg-arcade-sky" },
-  { name: "FRC", who: "High school", note: "The full CADathon", fill: "bg-arcade-fuel" },
+  {
+    name: "Beginner",
+    age: "Ages 13 and under",
+    who: "New to CAD, or just getting started",
+    build: "Design a small gadget",
+    tool: "Tinkercad, made for first-timers",
+    time: "A shorter daytime session",
+    fill: "bg-arcade-mint",
+  },
+  {
+    name: "Intermediate",
+    age: "Ages 18 and under",
+    who: "You've made a few parts and assemblies",
+    build: "Design one robot mechanism",
+    tool: "Onshape",
+    time: "The full 24 hours",
+    fill: "bg-arcade-sky",
+  },
+  {
+    name: "Advanced",
+    age: "Any age",
+    who: "You're confident designing full assemblies",
+    build: "Design a full competition-size robot",
+    tool: "Onshape",
+    time: "The full 24 hours",
+    fill: "bg-arcade-fuel",
+  },
 ]
 
 const places = ["1st", "2nd", "3rd", "Honorable mention"]
 
 // Prize size scales with the division: the harder the division, the bigger the prize.
 const prizeTiers = [
-  { name: "FLL", size: "Prizes", fill: "bg-arcade-mint", h: "h-16" },
-  { name: "FTC", size: "Bigger prizes", fill: "bg-arcade-sky", h: "h-24" },
-  { name: "FRC", size: "Biggest prizes", fill: "bg-arcade-fuel", h: "h-32" },
+  { name: "Beginner", size: "Prizes", fill: "bg-arcade-mint", h: "h-16" },
+  { name: "Intermediate", size: "Bigger prizes", fill: "bg-arcade-sky", h: "h-24" },
+  { name: "Advanced", size: "Biggest prizes", fill: "bg-arcade-fuel", h: "h-32" },
 ]
 
 const crossAwards = [
@@ -51,7 +78,7 @@ const judges = ["Industry judge", "Industry judge", "Industry judge", "Industry 
 const safety = [
   "Screened adults are on duty for the whole event.",
   "Direct messages are turned off. All help happens where staff can see it.",
-  "Younger students join with their coach.",
+  "Students under 13 join on Google Meet with a parent or coach, not Discord.",
   "Students under 18 need a parent's consent to register.",
   "Nobody has to stay up overnight.",
 ]
@@ -59,7 +86,9 @@ const safety = [
 const faq = [
   { q: "Do I need CAD experience?", a: "No. Beginners are welcome, and there will be help for first-timers." },
   { q: "What do I need?", a: "A computer with a web browser. The CAD tools we use are free." },
-  { q: "Can I join without a FIRST team?", a: "Yes. Pick the division that fits your grade." },
+  { q: "Which division should I pick?", a: "Start with your age: 13 and under can enter any division, 14 to 18 can enter Intermediate or Advanced, and over 18 enters Advanced. Then pick by skill. Playing up into a harder division is always allowed." },
+  { q: "Can I join without a robotics team?", a: "Yes. The CADathon is open to anyone. Enter solo or team up with friends." },
+  { q: "Can my robotics team enter more than one CADathon team?", a: "Yes. Split up however you like, and mix with students from other teams." },
   { q: "What's the theme?", a: "A mission in orbit. The full challenge is revealed at Opening, so everyone starts from zero at the same time." },
   { q: "When is it?", a: "It starts Saturday, November 14, 2026. The date may still change; registered teams hear first." },
 ]
@@ -73,8 +102,8 @@ export default function CadathonPage() {
           <p className="text-sm font-semibold text-arcade-fuel">Hosted by FRC Team 10032 · Online · Free</p>
           <h1 className="mt-2 font-display text-4xl leading-[1.02] sm:text-6xl">Event Horizon CADathon</h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-paper/80">
-            One theme, revealed live. A clock. Design a robot from nothing. Divisions for FLL, FTC and FRC students,
-            judged by people who do this for a living.
+            One theme, revealed live. A clock. Design a robot from nothing. Three divisions from first-timer to
+            advanced, open to anyone, judged by people who do this for a living.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <span className="inline-flex flex-col rounded-2xl border-2 border-paper/30 px-4 py-2 text-sm font-semibold text-paper/85">
@@ -95,7 +124,7 @@ export default function CadathonPage() {
           <Reveal>
             <h2 className="font-display text-3xl sm:text-4xl">Three divisions</h2>
             <p className="mx-auto mt-3 max-w-xl text-paper/75">
-              Each division gets its own challenge, sized for its level.
+              Open to anyone. Each step up is a bigger build. Age is your age on November 14.
             </p>
           </Reveal>
           <Reveal>
@@ -106,7 +135,7 @@ export default function CadathonPage() {
                 one shot to design it. Every division gets the same mission, with a different job to do.
               </p>
               <p className="mt-3 text-sm text-paper/60">
-                The full challenge is revealed at Opening on November 14. Nobody sees it early, us included.
+                The full challenge is revealed at Opening on November 14. No participant sees it early.
               </p>
             </div>
           </Reveal>
@@ -117,9 +146,16 @@ export default function CadathonPage() {
                   className={`h-full rounded-xl border-2 border-ink p-5 text-left text-ink shadow-hard ${d.fill}`}
                   style={{ rotate: `${(i % 2 === 0 ? -1 : 1) * 0.6}deg` }}
                 >
-                  <p className="font-display text-4xl font-extrabold text-arcade-purple">{d.name}</p>
-                  <p className="mt-2 font-semibold">{d.who}</p>
-                  <p className="mt-1 text-sm text-ink/75">{d.note}</p>
+                  <p className="font-display text-3xl font-extrabold text-arcade-purple sm:text-4xl">{d.name}</p>
+                  <p className="mt-2 inline-flex rounded-full border-2 border-ink bg-paper px-3 py-0.5 text-xs font-extrabold uppercase tracking-wide">
+                    {d.age}
+                  </p>
+                  <p className="mt-3 font-semibold">{d.who}</p>
+                  <ul className="mt-3 space-y-1 text-sm text-ink/80">
+                    <li>{d.build}</li>
+                    <li>{d.tool}</li>
+                    <li>{d.time}</li>
+                  </ul>
                   <p className="mt-4 flex items-center gap-2 text-sm font-semibold">
                     Challenge <span className="font-display text-lg">???</span>
                   </p>
@@ -127,6 +163,18 @@ export default function CadathonPage() {
               </Reveal>
             ))}
           </div>
+          <Reveal>
+            <div className="mx-auto mt-10 max-w-3xl rounded-xl border-2 border-ink bg-paper p-5 text-left text-ink shadow-hard sm:p-6">
+              <h3 className="font-display text-2xl">How teams work</h3>
+              <ul className="mt-3 space-y-2 text-sm leading-relaxed">
+                <li><span className="font-semibold">You can always play up, never down.</span> Enter the division for your age or any harder one. A team&apos;s oldest member decides the easiest division it can enter.</li>
+                <li><span className="font-semibold">Teams of 1 to 4.</span> Going solo is a team of one.</li>
+                <li><span className="font-semibold">Mix freely.</span> Teammates can come from different robotics teams, different schools, or no team at all.</li>
+                <li><span className="font-semibold">One robotics team can enter several CADathon teams,</span> in any divisions.</li>
+                <li><span className="font-semibold">Every student fills in their own form,</span> with the same CADathon team name as their teammates. That&apos;s how we group you.</li>
+              </ul>
+            </div>
+          </Reveal>
         </div>
         <BlobEdge fill={band.sky} />
       </section>
@@ -259,7 +307,8 @@ export default function CadathonPage() {
           <Reveal>
             <h2 className="font-display text-3xl sm:text-4xl">Register</h2>
             <p className="mt-3 max-w-md text-paper/85">
-              Registration is open. Sign up each student who&apos;s taking part. Students under 18 need a
+              Registration is open. <span className="font-semibold">One form per student:</span> every teammate fills
+              in their own, using the same team name. Students under 18 need a
               parent&apos;s email and consent. It&apos;s free.
             </p>
             <h3 className="mt-10 font-display text-2xl">For parents and coaches</h3>

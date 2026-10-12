@@ -45,8 +45,9 @@ export async function POST(req: Request) {
 
   if (kind === "registration") {
     Object.assign(row, {
+      teamName: clean(body.teamName),
       team: clean(body.team),
-      grade: clean(body.grade),
+      age: clean(body.age),
       location: clean(body.location),
       firstTimeCad: clean(body.firstTimeCad),
       under18: body.under18 === true,
@@ -55,8 +56,14 @@ export async function POST(req: Request) {
       photoConsent: body.photoConsent === true,
       conductAgreed: body.conductAgreed === true,
     })
-    if (!row.division || !row.grade || !row.conductAgreed) {
+    if (!row.division || !row.age || !row.teamName || !row.conductAgreed) {
       return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 })
+    }
+    // Play up, never down: each division has an age cap.
+    const caps: Record<string, number> = { Beginner: 13, Intermediate: 18, Advanced: 200 }
+    const age = Number(row.age)
+    if (!(row.division in caps) || !Number.isInteger(age) || age < 5 || age > 99 || age > caps[row.division as string]) {
+      return NextResponse.json({ ok: false, error: "division" }, { status: 400 })
     }
     if (row.under18 && (!isEmail(row.parentEmail as string) || !row.parentConsent)) {
       return NextResponse.json({ ok: false, error: "consent" }, { status: 400 })

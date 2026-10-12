@@ -5,8 +5,9 @@ import { useState, type FormEvent, type ReactNode } from "react"
 type Kind = "waitlist" | "registration"
 type State = "idle" | "sending" | "done" | "closed" | "error"
 
-const divisions = ["FLL", "FTC", "FRC", "Not sure yet"]
-const grades = ["Grades 4 to 6", "Grades 7 to 8", "Grades 9 to 12", "Other"]
+const divisions = ["Beginner", "Intermediate", "Advanced"]
+// Oldest age allowed in each division; you can always enter a harder one.
+const maxAge: Record<string, number> = { Beginner: 13, Intermediate: 18, Advanced: 200 }
 
 const input =
   "mt-1 w-full rounded-lg border-2 border-ink bg-white px-3 py-2 text-sm text-ink outline-none focus:ring-2 focus:ring-arcade-purple"
@@ -32,7 +33,10 @@ function Check({ name, children, required }: { name: string; children: ReactNode
 export function CadathonSignup() {
   const kind = "registration" as Kind
   const [state, setState] = useState<State>("idle")
-  const [under18, setUnder18] = useState(true)
+  const [age, setAge] = useState("")
+  const [division, setDivision] = useState("")
+  const under18 = age === "" || Number(age) < 18
+  const tooOld = age !== "" && division !== "" && Number(age) > (maxAge[division] ?? 200)
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -69,7 +73,9 @@ export function CadathonSignup() {
   return (
     <div className="rounded-xl border-2 border-ink bg-paper p-5 text-ink shadow-hard sm:p-7">
       <p className="font-display text-2xl">Register a student</p>
-      <p className="mt-1 text-sm text-ink/70">One form per student. Teammates each register.</p>
+      <p className="mt-1 text-sm text-ink/70">
+        One form per student. Every teammate registers separately with the same team name.
+      </p>
 
       <form onSubmit={submit} className="mt-6 space-y-4">
         <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
@@ -79,8 +85,20 @@ export function CadathonSignup() {
         <Field label="Email">
           <input name="email" type="email" required className={input} />
         </Field>
+        <Field label="CADathon team name">
+          <input name="teamName" required className={input} />
+          <span className="mt-1 block text-xs font-normal text-ink/60">
+            Type it exactly like your teammates do. Going solo? Make one up.
+          </span>
+        </Field>
         <Field label="Division">
-          <select name="division" required={kind === "registration"} defaultValue="" className={input}>
+          <select
+            name="division"
+            required
+            value={division}
+            onChange={(e) => setDivision(e.target.value)}
+            className={input}
+          >
             <option value="" disabled>
               Pick one
             </option>
@@ -93,18 +111,20 @@ export function CadathonSignup() {
         {kind === "registration" && (
           <>
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="FIRST team number (or &quot;none&quot;)">
+              <Field label="Robotics team number, if you have one">
                 <input name="team" className={input} />
               </Field>
-              <Field label="Grade">
-                <select name="grade" required defaultValue="" className={input}>
-                  <option value="" disabled>
-                    Pick one
-                  </option>
-                  {grades.map((g) => (
-                    <option key={g}>{g}</option>
-                  ))}
-                </select>
+              <Field label="Age on November 14">
+                <input
+                  name="age"
+                  type="number"
+                  min={5}
+                  max={99}
+                  required
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                  className={input}
+                />
               </Field>
             </div>
             <Field label="City, state and country">
@@ -119,15 +139,7 @@ export function CadathonSignup() {
                 <option>No</option>
               </select>
             </Field>
-            <label className="flex items-center gap-3 text-left text-sm font-semibold">
-              <input
-                type="checkbox"
-                checked={under18}
-                onChange={(e) => setUnder18(e.target.checked)}
-                className="h-4 w-4 accent-[#6B2FD6]"
-              />
-              The student is under 18
-            </label>
+
             {under18 && (
               <div className="space-y-3 rounded-lg border-2 border-dashed border-ink/40 p-4">
                 <Field label="Parent or guardian email">
@@ -149,9 +161,14 @@ export function CadathonSignup() {
           </>
         )}
 
+        {tooOld && (
+          <p className="text-sm font-semibold text-arcade-bumper">
+            {division} is for ages {maxAge[division]} and under. Pick a harder division.
+          </p>
+        )}
         <button
           type="submit"
-          disabled={state === "sending"}
+          disabled={state === "sending" || tooOld}
           className="btn-pill w-full bg-arcade-bumper text-paper disabled:opacity-60"
         >
           {state === "sending" ? "Sending…" : "Register"}

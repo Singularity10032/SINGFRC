@@ -57,6 +57,30 @@ export default function Home() {
   return (
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {/* CADathon banner at the very top of the home page (Mohan, 2026-10-13). */}
+      <section className="border-b-2 border-ink bg-arcade-fuel text-ink">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 py-3 text-center text-sm sm:px-6">
+          <span className="font-display text-base font-extrabold">Singularity CADathon 2026</span>
+          <span>Free online CAD competition · Sat, Nov 14</span>
+          <span className="rounded-full border-2 border-ink bg-paper px-3 py-0.5">
+            <Countdown to={CADATHON_START} compact />
+          </span>
+          <span className="flex gap-2">
+            <a
+              href={CADATHON_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border-2 border-ink bg-arcade-bumper px-4 py-1 font-semibold text-paper"
+            >
+              Register
+            </a>
+            <Link href="/cadathon" className="rounded-full border-2 border-ink bg-paper px-4 py-1 font-semibold">
+              Learn more
+            </Link>
+          </span>
+        </div>
+      </section>
+
       {/* Hero: a giant outlined "10032" behind the headline. Wording is dad's
           (2026-09-15). The minigame, the Orion chart, the stat row and two hero
           photos that used to be here were all cut the same day at his request. */}
@@ -89,26 +113,6 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
-
-      {/* CADathon banner, right under the hero's "Join the team" row (Mohan, 2026-10-13). */}
-      <section className="mx-auto max-w-3xl px-4 pb-16 sm:px-6">
-        <Reveal>
-          <div className="rounded-xl border-2 border-dashed border-arcade-fuel/70 p-6 text-center sm:p-8">
-            <p className="text-xs font-extrabold uppercase tracking-widest text-arcade-fuel">Free online CAD competition</p>
-            <h2 className="mt-2 font-display text-3xl sm:text-4xl">Singularity CADathon 2026</h2>
-            <p className="mt-2 text-paper/80">Starts Saturday, November 14. Junior (13 and under) and Senior (14 and up).</p>
-            <Countdown to={CADATHON_START} />
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <a href={CADATHON_FORM_URL} target="_blank" rel="noopener noreferrer" className="btn-pill bg-arcade-bumper text-paper">
-                Register
-              </a>
-              <Link href="/cadathon" className="btn-pill bg-paper text-ink">
-                Learn more
-              </Link>
-            </div>
-          </div>
-        </Reveal>
       </section>
 
       {/* What we do: a raised band with blob edges, cards sit flat on it */}

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 // Counts down to a fixed instant. Renders dashes on the server and first
 // paint, then ticks in the browser, so there is no hydration mismatch. At zero
 // the clock stops and shows "Live now".
-export function Countdown({ to }: { to: string }) {
+export function Countdown({ to, compact = false }: { to: string; compact?: boolean }) {
   const target = new Date(to).getTime()
   const [now, setNow] = useState<number | null>(null)
 
@@ -26,6 +26,22 @@ export function Countdown({ to }: { to: string }) {
     { label: "min", v: left === null ? null : Math.floor(left / 60000) % 60 },
     { label: "sec", v: left === null ? null : Math.floor(left / 1000) % 60 },
   ]
+
+  if (compact) {
+    if (left === 0) {
+      return (
+        <span className="inline-flex items-center gap-1.5 font-display font-extrabold">
+          <span className="h-2 w-2 rounded-full bg-arcade-bumper motion-safe:animate-pulse" aria-hidden />
+          Live now
+        </span>
+      )
+    }
+    return (
+      <span className="font-display font-extrabold tabular-nums" aria-label="Time until the CADathon starts">
+        {parts.map((p) => `${p.v === null ? "--" : String(p.v).padStart(2, "0")}${p.label[0]}`).join(" ")}
+      </span>
+    )
+  }
 
   if (left === 0) {
     return (

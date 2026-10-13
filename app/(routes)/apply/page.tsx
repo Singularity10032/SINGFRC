@@ -3,8 +3,9 @@ import { Reveal } from "@/components/reveal"
 import { BlobEdge, band } from "@/components/blob-edge"
 
 export const metadata: Metadata = {
-  title: "Apply — Singularity Robotics",
-  description: "FRC Team 10032, a student-led FIRST Robotics Competition team in Frisco, Texas.",
+  title: "Apply | Singularity Robotics, Frisco FRC Team 10032",
+  description:
+    "Join Singularity Robotics, a student-led FRC robotics team in Frisco, Texas. Applications are open to high school students.",
 }
 
 const FORM_URL =

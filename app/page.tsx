@@ -4,6 +4,7 @@ import { StickerPhoto } from "@/components/sticker-photo"
 import { Reveal } from "@/components/reveal"
 import { BlobEdge, band } from "@/components/blob-edge"
 import { photos } from "@/lib/photos"
+import { teamAwards } from "@/lib/team-awards"
 
 const whatWeDo = [
   {
@@ -24,9 +25,36 @@ const whatWeDo = [
   },
 ]
 
+// Structured data for search engines and AI assistants. Nothing visible on the
+// page changed for this; the description stays a plain factual line.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["SportsTeam", "Organization"],
+  name: "Singularity Robotics",
+  alternateName: ["FRC Team 10032", "Singularity FRC"],
+  sport: "FIRST Robotics Competition",
+  url: "https://www.singularity-frc.com",
+  logo: "https://www.singularity-frc.com/images/singularity-logo.png",
+  foundingDate: "2024",
+  location: {
+    "@type": "Place",
+    address: { "@type": "PostalAddress", addressLocality: "Frisco", addressRegion: "TX", addressCountry: "US" },
+  },
+  sameAs: [
+    "https://instagram.com/singularityfrc",
+    "https://tiktok.com/@singularityfrc",
+    "https://linktr.ee/singularityfrc",
+    "https://github.com/Singularity10032",
+    "https://www.thebluealliance.com/team/10032",
+  ],
+  award: teamAwards,
+  description: "Singularity Robotics is a student-led FIRST Robotics Competition team from Frisco, Texas.",
+}
+
 export default function Home() {
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Hero: a giant outlined "10032" behind the headline. Wording is dad's
           (2026-09-15). The minigame, the Orion chart, the stat row and two hero
           photos that used to be here were all cut the same day at his request. */}

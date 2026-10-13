@@ -4,8 +4,9 @@ import { PhotoWall } from "@/components/photo-wall"
 import { winPhotos, houston2025Photos, buildPhotos, teamPhotos, funPhotos } from "@/lib/gallery"
 
 export const metadata: Metadata = {
-  title: "Gallery — Singularity Robotics",
-  description: "FRC Team 10032, a student-led FIRST Robotics Competition team in Frisco, Texas.",
+  title: "Gallery | Singularity Robotics, Frisco FRC Team 10032",
+  description:
+    "Photos from Singularity Robotics, a Frisco, Texas FRC robotics team, including our 2026 Fort Worth district win.",
 }
 
 // Everything that doesn't already live on another page (no photo appears

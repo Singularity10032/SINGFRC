@@ -5,8 +5,9 @@ import { CopyEmail } from "@/components/copy-email"
 import { sponsors } from "@/lib/sponsors"
 
 export const metadata: Metadata = {
-  title: "Sponsors — Singularity Robotics",
-  description: "FRC Team 10032, a student-led FIRST Robotics Competition team in Frisco, Texas.",
+  title: "Sponsors | Singularity Robotics, Frisco FRC Team 10032",
+  description:
+    "The sponsors behind Singularity Robotics, FRC Team 10032 in Frisco, Texas, and how to support a student robotics team.",
 }
 
 export default function SponsorsPage() {

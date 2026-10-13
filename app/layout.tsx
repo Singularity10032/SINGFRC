@@ -23,8 +23,10 @@ const bricolage = Bricolage_Grotesque({
 })
 
 export const metadata: Metadata = {
-  title: "Singularity Robotics",
-  description: "FRC Team 10032, a student-led FIRST Robotics Competition team in Frisco, Texas.",
+  metadataBase: new URL("https://www.singularity-frc.com"),
+  title: "Singularity Robotics | FRC Team 10032 | Frisco, Texas Robotics Team",
+  description:
+    "Singularity Robotics (FRC 10032) is a Frisco, Texas FIRST Robotics team. 5 awards in our first 2 seasons, including the 2026 Fort Worth district win.",
   appleWebApp: {
     title: "Singularity",
   },

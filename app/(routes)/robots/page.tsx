@@ -7,8 +7,9 @@ import { orionPhotos, reefPhotos } from "@/lib/gallery"
 import { photos } from "@/lib/photos"
 
 export const metadata: Metadata = {
-  title: "Robots — Singularity Robotics",
-  description: "FRC Team 10032, a student-led FIRST Robotics Competition team in Frisco, Texas.",
+  title: "Robots | Singularity Robotics, Frisco FRC Team 10032",
+  description:
+    "The robots built by Singularity Robotics, FRC Team 10032 from Frisco, Texas, including ORION (2026) and our 2025 REEFSCAPE robot.",
 }
 
 // The ORION set past index 12 is unused (dad trimmed the wall, 2026-09-16). Nothing here appears anywhere else.

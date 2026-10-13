@@ -5,8 +5,9 @@ import { BlobEdge, band } from "@/components/blob-edge"
 import { results } from "@/lib/results"
 
 export const metadata: Metadata = {
-  title: "About — Singularity Robotics",
-  description: "FRC Team 10032, a student-led FIRST Robotics Competition team in Frisco, Texas.",
+  title: "About | Singularity Robotics, Frisco FRC Team 10032",
+  description:
+    "About Singularity Robotics, a student-led FIRST Robotics Competition team in Frisco, Texas: how the team is run and what we value.",
 }
 
 // Layout ported from variant G's /about at dad's request (2026-09-15), in

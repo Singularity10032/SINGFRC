@@ -15,8 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const story = getStory(slug)
   return {
-    title: story ? `${story.title} — Singularity Robotics` : "Singularity Robotics",
-    description: "FRC Team 10032, a student-led FIRST Robotics Competition team in Frisco, Texas.",
+    title: story ? `${story.title} | Singularity Robotics, Frisco FRC Team 10032` : "Singularity Robotics",
+    description: story
+      ? `${story.excerpt} From Singularity Robotics, an FRC robotics team in Frisco, Texas.`
+      : "Singularity Robotics, an FRC robotics team in Frisco, Texas.",
   }
 }
 

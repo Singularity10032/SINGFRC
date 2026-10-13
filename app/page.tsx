@@ -4,6 +4,7 @@ import { StickerPhoto } from "@/components/sticker-photo"
 import { Reveal } from "@/components/reveal"
 import { BlobEdge, band } from "@/components/blob-edge"
 import { photos } from "@/lib/photos"
+import { teamAwards, awardsClaim, awardsSource } from "@/lib/team-awards"
 
 const whatWeDo = [
   {
@@ -24,9 +25,37 @@ const whatWeDo = [
   },
 ]
 
+// Structured data for search engines and AI assistants. Every fact here is also
+// visible on the page (Google requires the two to match).
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["SportsTeam", "Organization"],
+  name: "Singularity Robotics",
+  alternateName: ["FRC Team 10032", "Singularity FRC"],
+  sport: "FIRST Robotics Competition",
+  url: "https://www.singularity-frc.com",
+  logo: "https://www.singularity-frc.com/images/singularity-logo.png",
+  foundingDate: "2024",
+  location: {
+    "@type": "Place",
+    address: { "@type": "PostalAddress", addressLocality: "Frisco", addressRegion: "TX", addressCountry: "US" },
+  },
+  sameAs: [
+    "https://instagram.com/singularityfrc",
+    "https://tiktok.com/@singularityfrc",
+    "https://linktr.ee/singularityfrc",
+    "https://github.com/Singularity10032",
+    "https://www.thebluealliance.com/team/10032",
+  ],
+  award: teamAwards,
+  description:
+    "Singularity Robotics is a student-led FIRST Robotics Competition team from Frisco, Texas. Highest awards-per-season of any Frisco, Texas FRC team (2.5 per season; The Blue Alliance award records, 2019-2026).",
+}
+
 export default function Home() {
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Hero: a giant outlined "10032" behind the headline. Wording is dad's
           (2026-09-15). The minigame, the Orion chart, the stat row and two hero
           photos that used to be here were all cut the same day at his request. */}
@@ -59,6 +88,21 @@ export default function Home() {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* Awards strip: the same facts as the JSON-LD above. */}
+      <section className="mx-auto max-w-4xl px-4 pb-16 text-center sm:px-6">
+        <Reveal>
+          <p className="font-display text-2xl sm:text-3xl">{awardsClaim}</p>
+          <ul className="mt-5 flex flex-wrap justify-center gap-2">
+            {teamAwards.map((a) => (
+              <li key={a} className="rounded-full border-2 border-ink bg-paper px-3 py-1 text-xs font-semibold text-ink sm:text-sm">
+                {a}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-xs text-paper/60">{awardsSource}</p>
+        </Reveal>
       </section>
 
       {/* What we do: a raised band with blob edges, cards sit flat on it */}

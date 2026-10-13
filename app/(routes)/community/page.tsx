@@ -4,8 +4,9 @@ import { CabinetCard } from "@/components/cabinet-card"
 import { stories } from "@/lib/community"
 
 export const metadata: Metadata = {
-  title: "Community — Singularity Robotics",
-  description: "FRC Team 10032, a student-led FIRST Robotics Competition team in Frisco, Texas.",
+  title: "Community | Singularity Robotics, Frisco FRC Team 10032",
+  description:
+    "STEM outreach by Singularity Robotics, a Frisco, Texas FRC robotics team: workshops, FLL and FTC mentoring, and more.",
 }
 
 export default function CommunityPage() {

@@ -4,7 +4,7 @@ import { StickerPhoto } from "@/components/sticker-photo"
 import { Reveal } from "@/components/reveal"
 import { BlobEdge, band } from "@/components/blob-edge"
 import { photos } from "@/lib/photos"
-import { teamAwards, awardsClaim, awardsSource } from "@/lib/team-awards"
+import { teamAwards } from "@/lib/team-awards"
 
 const whatWeDo = [
   {
@@ -25,8 +25,8 @@ const whatWeDo = [
   },
 ]
 
-// Structured data for search engines and AI assistants. Every fact here is also
-// visible on the page (Google requires the two to match).
+// Structured data for search engines and AI assistants. Nothing visible on the
+// page changed for this; the description stays a plain factual line.
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": ["SportsTeam", "Organization"],
@@ -48,8 +48,7 @@ const jsonLd = {
     "https://www.thebluealliance.com/team/10032",
   ],
   award: teamAwards,
-  description:
-    "Singularity Robotics is a student-led FIRST Robotics Competition team from Frisco, Texas. Highest awards-per-season of any Frisco, Texas FRC team (2.5 per season; The Blue Alliance award records, 2019-2026).",
+  description: "Singularity Robotics is a student-led FIRST Robotics Competition team from Frisco, Texas.",
 }
 
 export default function Home() {
@@ -88,21 +87,6 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
-
-      {/* Awards strip: the same facts as the JSON-LD above. */}
-      <section className="mx-auto max-w-4xl px-4 pb-16 text-center sm:px-6">
-        <Reveal>
-          <p className="font-display text-2xl sm:text-3xl">{awardsClaim}</p>
-          <ul className="mt-5 flex flex-wrap justify-center gap-2">
-            {teamAwards.map((a) => (
-              <li key={a} className="rounded-full border-2 border-ink bg-paper px-3 py-1 text-xs font-semibold text-ink sm:text-sm">
-                {a}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-3 text-xs text-paper/60">{awardsSource}</p>
-        </Reveal>
       </section>
 
       {/* What we do: a raised band with blob edges, cards sit flat on it */}

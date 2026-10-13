@@ -4,8 +4,9 @@
 // never show the names unless someone sets the variable on purpose, so a merge
 // can't publish unconfirmed company names (dad's rule: no company named until it
 // confirms in writing).
-export const SHOW_JC_SPONSORS =
-  process.env.NEXT_PUBLIC_SHOW_JC_SPONSORS === "true" || process.env.VERCEL_ENV === "preview"
+// 2026-10-13: dad turned this on for production in chat ("logos live now").
+// Set NEXT_PUBLIC_SHOW_JC_SPONSORS to "false" to hide them again.
+export const SHOW_JC_SPONSORS = process.env.NEXT_PUBLIC_SHOW_JC_SPONSORS !== "false"
 
 // Logos for the invited Judges' Choice presenters. Shown only when SHOW_JC_SPONSORS is on.
 // Sources: Lockheed Martin = Wikimedia Commons "Lockheed Martin logo (2).svg" (public domain);

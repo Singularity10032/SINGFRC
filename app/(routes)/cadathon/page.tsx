@@ -87,10 +87,18 @@ export default function CadathonPage() {
       <section className="mx-auto max-w-3xl px-4 pb-16 pt-16 text-center sm:px-6 sm:pt-24">
         <Reveal>
           <h1 className="mt-2 font-display text-4xl leading-[1.02] sm:text-6xl">Singularity CADathon 2026</h1>
-          <p className="mx-auto mt-5 max-w-xl text-lg text-paper/80">
-            One theme, revealed live. A clock. Design a robot from nothing. Two divisions, Junior and Senior,
-            open to anyone, judged by people who do this for a living.
-          </p>
+          {SHOW_JC_SPONSORS && (
+            <div className="mx-auto mt-6 max-w-2xl">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-paper/70">Judges&apos; Choice Awards</p>
+              <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {JC_LOGOS.map((l) => (
+                  <li key={l.name} className="flex h-16 items-center justify-center rounded-lg border-2 border-ink bg-white p-3">
+                    <img src={l.src} alt={l.name} width={l.width} height={l.height} className="max-h-10 w-auto max-w-full object-contain" />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <Countdown to={CADATHON_START} />
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <span className="inline-flex flex-col rounded-2xl border-2 border-paper/30 px-4 py-2 text-sm font-semibold text-paper/85">
@@ -174,15 +182,6 @@ export default function CadathonPage() {
             <div className="mx-auto mt-6 max-w-3xl rounded-xl border-2 border-dashed border-ink bg-paper/70 p-5 text-center sm:p-6">
               <h3 className="font-display text-2xl">Judges&apos; Choice Awards</h3>
               <p className="mt-1 text-xs font-extrabold uppercase tracking-wide text-ink/60">Open to both divisions</p>
-              {SHOW_JC_SPONSORS && (
-                <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  {JC_LOGOS.map((l) => (
-                    <li key={l.name} className="flex h-20 items-center justify-center rounded-lg border-2 border-ink bg-white p-3">
-                      <img src={l.src} alt={l.name} width={l.width} height={l.height} className="max-h-12 w-auto max-w-full object-contain" />
-                    </li>
-                  ))}
-                </ul>
-              )}
             </div>
           </Reveal>
           <Reveal>

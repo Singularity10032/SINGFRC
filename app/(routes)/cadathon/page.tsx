@@ -10,19 +10,9 @@ export const metadata: Metadata = {
 
 const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd3RL3jfIAdqNWFbDINjCdI9lTLIMrufMAkCkS_cCzZd2almA/viewform"
 
-// Start date (Nov 14) is set but subject to change. Prizes, judges and
-// supporters are placeholders marked TBA. The theme gets a short teaser; the
+// Start date (Nov 14) is set but subject to change. Judges and supporters
+// are still placeholders. The theme gets a short teaser; the
 // full challenges are revealed only at Opening on the day.
-
-function Tba({ className = "" }: { className?: string }) {
-  return (
-    <span
-      className={`inline-flex items-center rounded-full border-2 border-dashed border-current px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wide ${className}`}
-    >
-      TBA
-    </span>
-  )
-}
 
 // Two divisions, open to anyone, split by age on November 14. You can play up
 // (a 12-year-old may enter Senior), never down. Content scales up from Junior
@@ -48,13 +38,40 @@ const divisions = [
   },
 ]
 
-const places = ["1st", "2nd", "3rd", "Honorable mention"]
-
-// Prize size scales with the division: the harder the division, the bigger the prize.
-const prizeTiers = [
-  { name: "Junior", size: "Prizes", fill: "bg-arcade-mint", h: "h-20" },
-  { name: "Senior", size: "Bigger prizes", fill: "bg-arcade-fuel", h: "h-32" },
+// Awards as set by Mohan (2026-10-13). Dollar prizes need new funding, so the
+// page says they're subject to change. No company is named on the page until it
+// confirms in writing.
+const awards = [
+  {
+    name: "Senior Division",
+    age: "14 and up",
+    fill: "bg-arcade-fuel",
+    places: [
+      { place: "1st", prize: "$250 vendor credit", detail: "REV, AndyMark, WCP or goBILDA. Your design 3D-printed, a 30-minute design review with 10032, featured on our home page and socials." },
+      { place: "2nd", prize: "$150 vendor credit", detail: "Your design 3D-printed, a 30-minute design review with 10032, featured." },
+      { place: "3rd", prize: "$75 vendor credit", detail: "Your design 3D-printed, featured." },
+    ],
+  },
+  {
+    name: "Junior Division",
+    age: "13 and under",
+    fill: "bg-arcade-mint",
+    places: [
+      { place: "1st", prize: "$100 gift card", detail: "LEGO or Amazon. Your design 3D-printed, a 30-minute design review with 10032, featured on our home page and socials." },
+      { place: "2nd", prize: "$60 gift card", detail: "LEGO or Amazon. Your design 3D-printed, featured." },
+      { place: "3rd", prize: "$30 gift card", detail: "LEGO or Amazon. Your design 3D-printed, featured." },
+    ],
+  },
 ]
+
+const everyonePlaces = [
+  "Your design 3D-printed and mailed to you",
+  "Featured on singularity-frc.com and our Instagram, TikTok, LinkedIn and YouTube",
+  "Added to the winners gallery",
+  "A placing certificate",
+]
+
+const everyoneSubmits = ["A participation certificate", "A shout-out at the live Closing"]
 
 const safety = [
   "Adult organizers moderate the event online the whole time.",
@@ -65,9 +82,9 @@ const safety = [
 ]
 
 const faq = [
-  { q: "Do I need CAD experience?", a: "No. Beginners are welcome, and there will be help for first-timers." },
+  { q: "Do I need CAD experience?", a: "No. First-timers are welcome, and there will be help getting started." },
   { q: "What do I need?", a: "A computer with a web browser. The CAD tools we use are free." },
-  { q: "Which division should I pick?", a: "Go by your age on November 14: 13 and under is Junior, 14 and up is Senior. Juniors who want a bigger challenge can enter Senior instead." },
+  { q: "Which division should I pick?", a: "Go by your age on November 14. If you're 13 or under, enter Junior, or play up into Senior if you want a harder challenge. If you're 14 or older, enter Senior. You can always play up, but never down." },
   { q: "Can I join without a robotics team?", a: "Yes. The CADathon is open to anyone. Enter solo or team up with friends." },
   { q: "Can my robotics team enter more than one CADathon team?", a: "Yes. Split up however you like, and mix with students from other teams." },
   { q: "What's the theme?", a: "A mission in orbit. The full challenge is revealed at Opening, so everyone starts from zero at the same time." },
@@ -164,73 +181,81 @@ export default function CadathonPage() {
         <BlobEdge fill={band.sky} />
       </section>
 
-      {/* Prizes + judges */}
+      {/* Awards + judges */}
       <section className="bg-arcade-sky text-ink">
-        <div className="mx-auto grid max-w-6xl gap-12 px-4 pb-16 pt-6 sm:px-6 lg:grid-cols-2">
-          <div>
-            <Reveal>
-              <h2 className="flex flex-wrap items-center gap-3 font-display text-3xl sm:text-4xl">
-                Division prizes <Tba />
-              </h2>
-              <p className="mt-2 text-sm text-ink/70">
-                1st, 2nd, 3rd and an honorable mention in each division. Senior prizes are bigger.
-              </p>
-            </Reveal>
-            <div className="mt-6 grid grid-cols-2 items-end gap-3">
-              {prizeTiers.map((t, i) => (
-                <Reveal key={t.name} delay={i * 60}>
-                  <div className="text-center">
-                    <p className="font-display text-2xl font-extrabold text-arcade-purple">{t.name}</p>
-                    <div className={`mt-2 flex ${t.h} items-center justify-center rounded-t-xl border-2 border-b-0 border-ink px-1 ${t.fill}`}>
-                      <span className="text-xs font-semibold">{t.size}</span>
-                    </div>
+        <div className="mx-auto max-w-6xl px-4 pb-16 pt-6 sm:px-6">
+          <Reveal>
+            <h2 className="text-center font-display text-3xl sm:text-4xl">Awards</h2>
+            <p className="mt-2 text-center text-sm font-semibold text-ink/70">
+              Brought to you by Singularity Robotics, FRC 10032
+            </p>
+          </Reveal>
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            {awards.map((d, i) => (
+              <Reveal key={d.name} delay={i * 70}>
+                <div className={`h-full rounded-xl border-2 border-ink p-5 shadow-hard sm:p-6 ${d.fill}`}>
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="font-display text-2xl sm:text-3xl">{d.name}</h3>
+                    <span className="rounded-full border-2 border-ink bg-paper px-3 py-0.5 text-xs font-extrabold uppercase tracking-wide">
+                      {d.age}
+                    </span>
                   </div>
-                </Reveal>
-              ))}
-            </div>
-            <ul className="mt-0 grid grid-cols-2 gap-2 rounded-b-xl border-2 border-ink bg-paper p-3 sm:grid-cols-4">
-              {places.map((p) => (
-                <li key={p} className="rounded-lg border-2 border-dashed border-ink/40 px-2 py-2 text-center">
-                  <span className="block text-xs font-semibold">{p}</span>
-                  <span className="block text-[11px] text-ink/60">Prize TBA</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-sm">Every participant who submits gets a certificate.</p>
+                  <ol className="mt-5 space-y-3">
+                    {d.places.map((p) => (
+                      <li key={p.place} className="rounded-lg border-2 border-ink bg-paper p-3">
+                        <div className="flex flex-wrap items-baseline gap-x-3">
+                          <span className="font-display text-xl font-extrabold text-arcade-purple">{p.place}</span>
+                          <span className="font-display text-xl">{p.prize}</span>
+                        </div>
+                        <p className="mt-1 text-sm text-ink/75">{p.detail}</p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </Reveal>
+            ))}
           </div>
-          <div>
+          <Reveal>
+            <div className="mt-5 rounded-xl border-2 border-dashed border-ink bg-paper/70 p-5 sm:p-6">
+              <h3 className="font-display text-2xl">Judges&apos; Choice Awards</h3>
+              <p className="mt-1 text-xs font-extrabold uppercase tracking-wide text-ink/60">Open to both divisions</p>
+              <p className="mt-2 text-sm">Industry-sponsored Judges&apos; Choice awards. Sponsors announcing soon.</p>
+            </div>
+          </Reveal>
+          <div className="mt-5 grid gap-5 md:grid-cols-2">
             <Reveal>
-              <h2 className="font-display text-3xl sm:text-4xl">Judges</h2>
-              <div className="mt-6 flex min-h-40 flex-col items-center justify-center rounded-xl border-2 border-dashed border-ink bg-paper/60 p-8 text-center">
-                <p className="font-display text-3xl">Coming soon</p>
-                <p className="mt-2 max-w-sm text-sm text-ink/70">Engineers and industry professionals. We&apos;ll announce them here.</p>
+              <div className="h-full rounded-xl border-2 border-ink bg-paper p-5">
+                <h3 className="font-display text-xl">Everyone who places</h3>
+                <ul className="mt-3 space-y-1.5 text-sm">
+                  {everyonePlaces.map((t) => (
+                    <li key={t} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-arcade-purple" aria-hidden />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+            <Reveal>
+              <div className="h-full rounded-xl border-2 border-ink bg-paper p-5">
+                <h3 className="font-display text-xl">Everyone who submits</h3>
+                <ul className="mt-3 space-y-1.5 text-sm">
+                  {everyoneSubmits.map((t) => (
+                    <li key={t} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-arcade-purple" aria-hidden />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </Reveal>
           </div>
+          <p className="mt-4 text-center text-xs text-ink/60">Prizes are subject to change.</p>
+          <Reveal>
+            <p className="mt-10 text-center font-display text-2xl">Judges: announcing soon.</p>
+          </Reveal>
         </div>
         <BlobEdge fill={band.space} />
-      </section>
-
-      {/* Sponsor's Choice awards */}
-      <section className="mx-auto max-w-6xl px-4 pb-6 pt-10 text-center sm:px-6">
-        <Reveal>
-          <div className="rounded-xl border-2 border-dashed border-arcade-fuel/70 p-6 text-left">
-            <h3 className="flex flex-wrap items-center gap-3 font-display text-2xl">
-              Sponsor&apos;s Choice awards <Tba className="text-arcade-fuel" />
-            </h3>
-            <p className="mt-2 max-w-2xl text-sm text-paper/80">
-              Like the special awards at a science fair: engineers from a supporting company pick their favorite design
-              from any division, and their company names the prize. Announced as supporters join.
-            </p>
-            <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {[0, 1, 2, 3].map((i) => (
-                <div key={i} className="rounded-lg border-2 border-dashed border-paper/30 px-3 py-4 text-center text-sm font-semibold text-paper/60">
-                  [Company]&apos;s Choice
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
       </section>
 
       {/* Supporters */}
@@ -238,7 +263,7 @@ export default function CadathonPage() {
         <Reveal>
           <h2 className="font-display text-3xl sm:text-4xl">Supported by</h2>
           <p className="mx-auto mt-3 max-w-xl text-paper/75">
-            Want your company here? Sponsor a prize, name a Sponsor&apos;s Choice award, send a judge, or give a talk to
+            Want your company here? Sponsor a prize, present a Judges&apos; Choice award, send a judge, or give a talk to
             the next generation of engineers.
           </p>
         </Reveal>

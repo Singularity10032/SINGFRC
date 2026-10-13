@@ -2,7 +2,7 @@
 
 import { useId, useRef, useState, type KeyboardEvent } from "react"
 
-export type Place = { place: string; prize: string; details: string[] }
+export type Place = { place: string; prize: string; sub?: string; details: string[] }
 export type Division = { key: string; name: string; age: string; fill: string; places: Place[] }
 
 // Junior / Senior tabs over the 1st-3rd prize cards. Each card is a button that
@@ -89,6 +89,7 @@ export function CadathonAwards({ divisions }: { divisions: Division[] }) {
                     <span className="font-display text-2xl font-extrabold text-arcade-purple">{p.place}</span>
                     <span className="font-display text-xl">{p.prize}</span>
                   </span>
+                  {p.sub && <span className="mt-0.5 block text-xs text-ink/70">{p.sub}</span>}
                   <span className="mt-1 block text-xs font-semibold text-ink/60">
                     {isOpen ? "Hide details" : "Tap for details"}
                   </span>

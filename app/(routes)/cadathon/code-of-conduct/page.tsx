@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Reveal } from "@/components/reveal"
 
 export const metadata: Metadata = {
-  title: "CADathon Code of Conduct — Singularity Robotics",
+  title: "CADathon Code of Conduct | Singularity Robotics, Frisco FRC Team 10032",
   description: "The rules everyone at the Singularity CADathon 2026 agrees to.",
 }
 

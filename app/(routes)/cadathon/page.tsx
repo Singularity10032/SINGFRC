@@ -2,12 +2,12 @@ import type { Metadata } from "next"
 import { Reveal } from "@/components/reveal"
 import { BlobEdge, band } from "@/components/blob-edge"
 import { CadathonAwards, type Division } from "@/components/cadathon-awards"
-import { SHOW_JC_SPONSORS, JC_INVITED } from "@/lib/flags"
+import { SHOW_JC_SPONSORS, JC_LOGOS } from "@/lib/flags"
 
 export const metadata: Metadata = {
-  title: "Singularity CADathon 2026 — Singularity Robotics",
+  title: "Singularity CADathon 2026 | Online CAD Competition by Frisco FRC Team 10032",
   description:
-    "A free, online CADathon with Junior (13 and under) and Senior (14 and up) divisions, open to anyone. Hosted by FRC Team 10032 Singularity Robotics.",
+    "A free online CADathon for students, run by Singularity Robotics, a Frisco, Texas FRC robotics team. Junior (13 and under) and Senior (14 and up) divisions.",
 }
 
 const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd3RL3jfIAdqNWFbDINjCdI9lTLIMrufMAkCkS_cCzZd2almA/viewform"
@@ -23,19 +23,11 @@ const divisions = [
   {
     name: "Junior",
     age: "Ages 13 and under",
-    who: "New to CAD, or still learning",
-    build: "Design a robot mechanism",
-    tool: "Tinkercad or Onshape, your choice",
-    time: "A shorter daytime session",
     fill: "bg-arcade-mint",
   },
   {
     name: "Senior",
     age: "Ages 14 and up",
-    who: "Ready for a full robot",
-    build: "Design a full competition-size robot",
-    tool: "Onshape",
-    time: "The full 24 hours",
     fill: "bg-arcade-fuel",
   },
 ]
@@ -50,9 +42,9 @@ const awards: Division[] = [
     age: "13 and under",
     fill: "bg-arcade-mint",
     places: [
-      { place: "1st", prize: "$100 gift card", details: ["$100 LEGO or Amazon gift card", "Your design 3D-printed", "A 30-minute design review with 10032", "Featured on our home page and socials"] },
-      { place: "2nd", prize: "$60 gift card", details: ["$60 LEGO or Amazon gift card", "Your design 3D-printed", "Featured on our home page and socials"] },
-      { place: "3rd", prize: "$30 gift card", details: ["$30 LEGO or Amazon gift card", "Your design 3D-printed", "Featured on our home page and socials"] },
+      { place: "1st", prize: "$100 + your design 3D-printed", sub: "LEGO or Amazon gift card", details: ["A 30-minute design review with 10032", "Featured on our home page and socials"] },
+      { place: "2nd", prize: "$60 + your design 3D-printed", sub: "LEGO or Amazon gift card", details: ["Featured on our home page and socials"] },
+      { place: "3rd", prize: "$30 + your design 3D-printed", sub: "LEGO or Amazon gift card", details: ["Featured on our home page and socials"] },
     ],
   },
   {
@@ -61,9 +53,9 @@ const awards: Division[] = [
     age: "14 and up",
     fill: "bg-arcade-fuel",
     places: [
-      { place: "1st", prize: "$250 vendor credit", details: ["$250 vendor credit (REV, AndyMark, WCP or goBILDA)", "Your design 3D-printed", "A 30-minute design review with 10032", "Featured on our home page and socials"] },
-      { place: "2nd", prize: "$150 vendor credit", details: ["$150 vendor credit", "Your design 3D-printed", "A 30-minute design review with 10032", "Featured on our home page and socials"] },
-      { place: "3rd", prize: "$75 vendor credit", details: ["$75 vendor credit", "Your design 3D-printed", "Featured on our home page and socials"] },
+      { place: "1st", prize: "$250 + your design 3D-printed", details: ["A 30-minute design review with 10032", "Featured on our home page and socials"] },
+      { place: "2nd", prize: "$150 + your design 3D-printed", details: ["A 30-minute design review with 10032", "Featured on our home page and socials"] },
+      { place: "3rd", prize: "$75 + your design 3D-printed", details: ["Featured on our home page and socials"] },
     ],
   },
 ]
@@ -75,7 +67,6 @@ const everyonePlaces = [
   "A placing certificate",
 ]
 
-const everyoneSubmits = ["A participation certificate", "A shout-out at the live Closing"]
 
 const faq = [
   { q: "Do I need CAD experience?", a: "No. First-timers are welcome, and there will be help getting started." },
@@ -93,7 +84,6 @@ export default function CadathonPage() {
       {/* Hero */}
       <section className="mx-auto max-w-3xl px-4 pb-16 pt-16 text-center sm:px-6 sm:pt-24">
         <Reveal>
-          <p className="text-sm font-semibold text-arcade-fuel">Hosted by FRC Team 10032 · Online · Free</p>
           <h1 className="mt-2 font-display text-4xl leading-[1.02] sm:text-6xl">Singularity CADathon 2026</h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-paper/80">
             One theme, revealed live. A clock. Design a robot from nothing. Two divisions, Junior and Senior,
@@ -121,9 +111,6 @@ export default function CadathonPage() {
         <div className="mx-auto max-w-6xl px-4 pb-16 pt-6 text-center sm:px-6">
           <Reveal>
             <h2 className="font-display text-3xl sm:text-4xl">Two divisions</h2>
-            <p className="mx-auto mt-3 max-w-xl text-paper/75">
-              Open to anyone. Senior is the bigger build. Age is your age on November 14.
-            </p>
           </Reveal>
           <Reveal>
             <div className="mx-auto mt-8 max-w-3xl rounded-xl border-2 border-dashed border-arcade-fuel/70 p-5 text-center sm:p-6">
@@ -147,15 +134,6 @@ export default function CadathonPage() {
                   <p className="font-display text-3xl font-extrabold text-arcade-purple sm:text-4xl">{d.name}</p>
                   <p className="mt-2 inline-flex rounded-full border-2 border-ink bg-paper px-3 py-0.5 text-xs font-extrabold uppercase tracking-wide">
                     {d.age}
-                  </p>
-                  <p className="mt-3 font-semibold">{d.who}</p>
-                  <ul className="mt-3 space-y-1 text-sm text-ink/80">
-                    <li>{d.build}</li>
-                    <li>{d.tool}</li>
-                    <li>{d.time}</li>
-                  </ul>
-                  <p className="mt-4 flex items-center justify-center gap-2 text-sm font-semibold">
-                    Challenge <span className="font-display text-lg">???</span>
                   </p>
                 </div>
               </Reveal>
@@ -193,44 +171,27 @@ export default function CadathonPage() {
             <div className="mx-auto mt-6 max-w-3xl rounded-xl border-2 border-dashed border-ink bg-paper/70 p-5 text-center sm:p-6">
               <h3 className="font-display text-2xl">Judges&apos; Choice Awards</h3>
               <p className="mt-1 text-xs font-extrabold uppercase tracking-wide text-ink/60">Open to both divisions</p>
-              {SHOW_JC_SPONSORS ? (
-                <>
-                  <p className="mt-2 text-sm">Invited presenters (confirmations pending):</p>
-                  <ul className="mt-3 flex flex-wrap justify-center gap-2">
-                    {JC_INVITED.map((n) => (
-                      <li key={n} className="rounded-full border-2 border-ink bg-paper px-3 py-1 text-sm font-semibold">
-                        {n}
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : (
-                <p className="mt-2 text-sm">Industry-sponsored Judges&apos; Choice awards. Sponsors announcing soon.</p>
+              {SHOW_JC_SPONSORS && (
+                <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {JC_LOGOS.map((l) => (
+                    <li key={l.name} className="flex h-20 items-center justify-center rounded-lg border-2 border-ink bg-white p-3">
+                      <img src={l.src} alt={l.name} width={l.width} height={l.height} className="max-h-12 w-auto max-w-full object-contain" />
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
           </Reveal>
-          <div className="mx-auto mt-6 grid max-w-3xl gap-5 md:grid-cols-2">
-            <Reveal>
-              <div className="h-full rounded-xl border-2 border-ink bg-paper p-5 text-center">
-                <h3 className="font-display text-xl">Everyone who places</h3>
-                <ul className="mt-3 space-y-1.5 text-sm">
-                  {everyonePlaces.map((t) => (
-                    <li key={t}>{t}</li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-            <Reveal>
-              <div className="h-full rounded-xl border-2 border-ink bg-paper p-5 text-center">
-                <h3 className="font-display text-xl">Everyone who submits</h3>
-                <ul className="mt-3 space-y-1.5 text-sm">
-                  {everyoneSubmits.map((t) => (
-                    <li key={t}>{t}</li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          </div>
+          <Reveal>
+            <div className="mx-auto mt-6 max-w-xl rounded-xl border-2 border-ink bg-paper p-5 text-center">
+              <h3 className="font-display text-xl">Everyone who places</h3>
+              <ul className="mt-3 space-y-1.5 text-sm">
+                {everyonePlaces.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
           <p className="mt-4 text-center text-xs text-ink/60">Prizes are subject to change.</p>
           <Reveal>
             <p className="mt-10 text-center font-display text-2xl">Judges: announcing soon.</p>

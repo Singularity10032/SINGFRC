@@ -4,7 +4,7 @@ import { Reveal } from "@/components/reveal"
 
 export const metadata: Metadata = {
   title: "CADathon Code of Conduct — Singularity Robotics",
-  description: "The rules everyone at the Event Horizon CADathon agrees to.",
+  description: "The rules everyone at the Singularity CADathon 2026 agrees to.",
 }
 
 // Event-specific code, drawn from the principles in the team's member code
@@ -74,7 +74,7 @@ export default function CodeOfConductPage() {
     <div className="mx-auto max-w-3xl px-4 pb-24 pt-16 sm:px-6 sm:pt-24">
       <Reveal>
         <Link href="/cadathon" className="text-sm font-semibold text-arcade-fuel hover:underline">
-          ← Event Horizon CADathon
+          ← Singularity CADathon 2026
         </Link>
         <h1 className="mt-3 font-display text-4xl leading-[1.05] sm:text-5xl">Code of Conduct</h1>
         <p className="mt-4 text-lg text-paper/80">

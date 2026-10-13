@@ -3,7 +3,7 @@ import { Reveal } from "@/components/reveal"
 import { BlobEdge, band } from "@/components/blob-edge"
 
 export const metadata: Metadata = {
-  title: "Event Horizon CADathon — Singularity Robotics",
+  title: "Singularity CADathon 2026 — Singularity Robotics",
   description:
     "A free, online CADathon with Beginner, Intermediate and Advanced divisions, open to anyone. Hosted by FRC Team 10032 Singularity Robotics.",
 }
@@ -95,7 +95,7 @@ export default function CadathonPage() {
       <section className="mx-auto max-w-3xl px-4 pb-16 pt-16 text-center sm:px-6 sm:pt-24">
         <Reveal>
           <p className="text-sm font-semibold text-arcade-fuel">Hosted by FRC Team 10032 · Online · Free</p>
-          <h1 className="mt-2 font-display text-4xl leading-[1.02] sm:text-6xl">Event Horizon CADathon</h1>
+          <h1 className="mt-2 font-display text-4xl leading-[1.02] sm:text-6xl">Singularity CADathon 2026</h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-paper/80">
             One theme, revealed live. A clock. Design a robot from nothing. Three divisions from first-timer to
             advanced, open to anyone, judged by people who do this for a living.

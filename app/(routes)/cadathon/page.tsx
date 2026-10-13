@@ -200,30 +200,6 @@ export default function CadathonPage() {
         <BlobEdge fill={band.space} />
       </section>
 
-      {/* Supporters */}
-      <section className="mx-auto max-w-6xl px-4 pb-16 pt-10 text-center sm:px-6">
-        <Reveal>
-          <h2 className="font-display text-3xl sm:text-4xl">Supported by</h2>
-          <p className="mx-auto mt-3 max-w-xl text-paper/75">
-            Want your company here? Sponsor a prize, present a Judges&apos; Choice award, send a judge, or give a talk to
-            the next generation of engineers.
-          </p>
-        </Reveal>
-        <div className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
-          {[0, 1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="flex h-20 items-center justify-center rounded-xl border-2 border-dashed border-paper/30 text-sm font-semibold text-paper/50"
-            >
-              Your logo
-            </div>
-          ))}
-        </div>
-        <a href="mailto:admin@singularityfrc.com?subject=Supporting%20the%20CADathon" className="btn-pill mt-8 bg-arcade-fuel text-ink">
-          Become a supporter
-        </a>
-      </section>
-
       {/* Sign up */}
       <BlobEdge fill={band.purple} />
       <section id="signup" className="scroll-mt-24 bg-arcade-purple text-paper">

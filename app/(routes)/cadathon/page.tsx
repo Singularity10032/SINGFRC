@@ -3,6 +3,8 @@ import { Reveal } from "@/components/reveal"
 import { BlobEdge, band } from "@/components/blob-edge"
 import { CadathonAwards, type Division } from "@/components/cadathon-awards"
 import { SHOW_JC_SPONSORS, JC_LOGOS } from "@/lib/flags"
+import { Countdown } from "@/components/countdown"
+import { CADATHON_START, CADATHON_FORM_URL } from "@/lib/cadathon"
 
 export const metadata: Metadata = {
   title: "Singularity CADathon 2026 | Online CAD Competition by Frisco FRC Team 10032",
@@ -10,7 +12,7 @@ export const metadata: Metadata = {
     "A free online CADathon for students, run by Singularity Robotics, a Frisco, Texas FRC robotics team. Junior (13 and under) and Senior (14 and up) divisions.",
 }
 
-const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd3RL3jfIAdqNWFbDINjCdI9lTLIMrufMAkCkS_cCzZd2almA/viewform"
+const FORM_URL = CADATHON_FORM_URL
 
 // Start date (Nov 14) is set but subject to change. Judges and supporters
 // are still placeholders. The theme gets a short teaser; the
@@ -89,6 +91,7 @@ export default function CadathonPage() {
             One theme, revealed live. A clock. Design a robot from nothing. Two divisions, Junior and Senior,
             open to anyone, judged by people who do this for a living.
           </p>
+          <Countdown to={CADATHON_START} />
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <span className="inline-flex flex-col rounded-2xl border-2 border-paper/30 px-4 py-2 text-sm font-semibold text-paper/85">
               Starts Saturday, November 14, 2026

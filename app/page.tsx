@@ -5,6 +5,8 @@ import { Reveal } from "@/components/reveal"
 import { BlobEdge, band } from "@/components/blob-edge"
 import { photos } from "@/lib/photos"
 import { teamAwards } from "@/lib/team-awards"
+import { Countdown } from "@/components/countdown"
+import { CADATHON_START, CADATHON_FORM_URL } from "@/lib/cadathon"
 
 const whatWeDo = [
   {
@@ -87,6 +89,26 @@ export default function Home() {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* CADathon banner, right under the hero's "Join the team" row (Mohan, 2026-10-13). */}
+      <section className="mx-auto max-w-3xl px-4 pb-16 sm:px-6">
+        <Reveal>
+          <div className="rounded-xl border-2 border-dashed border-arcade-fuel/70 p-6 text-center sm:p-8">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-arcade-fuel">Free online CAD competition</p>
+            <h2 className="mt-2 font-display text-3xl sm:text-4xl">Singularity CADathon 2026</h2>
+            <p className="mt-2 text-paper/80">Starts Saturday, November 14. Junior (13 and under) and Senior (14 and up).</p>
+            <Countdown to={CADATHON_START} />
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <a href={CADATHON_FORM_URL} target="_blank" rel="noopener noreferrer" className="btn-pill bg-arcade-bumper text-paper">
+                Register
+              </a>
+              <Link href="/cadathon" className="btn-pill bg-paper text-ink">
+                Learn more
+              </Link>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* What we do: a raised band with blob edges, cards sit flat on it */}

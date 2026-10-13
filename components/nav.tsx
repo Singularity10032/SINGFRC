@@ -15,6 +15,7 @@ const navItems = [
   { title: "Community", href: "/community" },
   { title: "Gallery", href: "/gallery" },
   { title: "Sponsors", href: "/sponsors" },
+  { title: "CADathon", href: "/cadathon" },
 ]
 
 export function Nav() {

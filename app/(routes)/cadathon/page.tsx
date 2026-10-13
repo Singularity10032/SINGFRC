@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Reveal } from "@/components/reveal"
 import { BlobEdge, band } from "@/components/blob-edge"
+import { CadathonAwards, type Division } from "@/components/cadathon-awards"
+import { SHOW_JC_SPONSORS, JC_INVITED } from "@/lib/flags"
 
 export const metadata: Metadata = {
   title: "Singularity CADathon 2026 — Singularity Robotics",
@@ -41,25 +43,27 @@ const divisions = [
 // Awards as set by Mohan (2026-10-13). Dollar prizes need new funding, so the
 // page says they're subject to change. No company is named on the page until it
 // confirms in writing.
-const awards = [
+const awards: Division[] = [
   {
-    name: "Senior Division",
-    age: "14 and up",
-    fill: "bg-arcade-fuel",
-    places: [
-      { place: "1st", prize: "$250 vendor credit", detail: "REV, AndyMark, WCP or goBILDA. Your design 3D-printed, a 30-minute design review with 10032, featured on our home page and socials." },
-      { place: "2nd", prize: "$150 vendor credit", detail: "Your design 3D-printed, a 30-minute design review with 10032, featured." },
-      { place: "3rd", prize: "$75 vendor credit", detail: "Your design 3D-printed, featured." },
-    ],
-  },
-  {
-    name: "Junior Division",
+    key: "junior",
+    name: "Junior",
     age: "13 and under",
     fill: "bg-arcade-mint",
     places: [
-      { place: "1st", prize: "$100 gift card", detail: "LEGO or Amazon. Your design 3D-printed, a 30-minute design review with 10032, featured on our home page and socials." },
-      { place: "2nd", prize: "$60 gift card", detail: "LEGO or Amazon. Your design 3D-printed, featured." },
-      { place: "3rd", prize: "$30 gift card", detail: "LEGO or Amazon. Your design 3D-printed, featured." },
+      { place: "1st", prize: "$100 gift card", details: ["$100 LEGO or Amazon gift card", "Your design 3D-printed", "A 30-minute design review with 10032", "Featured on our home page and socials"] },
+      { place: "2nd", prize: "$60 gift card", details: ["$60 LEGO or Amazon gift card", "Your design 3D-printed", "Featured on our home page and socials"] },
+      { place: "3rd", prize: "$30 gift card", details: ["$30 LEGO or Amazon gift card", "Your design 3D-printed", "Featured on our home page and socials"] },
+    ],
+  },
+  {
+    key: "senior",
+    name: "Senior",
+    age: "14 and up",
+    fill: "bg-arcade-fuel",
+    places: [
+      { place: "1st", prize: "$250 vendor credit", details: ["$250 vendor credit (REV, AndyMark, WCP or goBILDA)", "Your design 3D-printed", "A 30-minute design review with 10032", "Featured on our home page and socials"] },
+      { place: "2nd", prize: "$150 vendor credit", details: ["$150 vendor credit", "Your design 3D-printed", "A 30-minute design review with 10032", "Featured on our home page and socials"] },
+      { place: "3rd", prize: "$75 vendor credit", details: ["$75 vendor credit", "Your design 3D-printed", "Featured on our home page and socials"] },
     ],
   },
 ]
@@ -72,14 +76,6 @@ const everyonePlaces = [
 ]
 
 const everyoneSubmits = ["A participation certificate", "A shout-out at the live Closing"]
-
-const safety = [
-  "Adult organizers moderate the event online the whole time.",
-  "Direct messages are turned off. All help happens where staff can see it.",
-  "Students under 13 join on Google Meet with a parent or coach, not Discord.",
-  "Students under 18 need a parent's consent to register.",
-  "Nobody has to stay up overnight.",
-]
 
 const faq = [
   { q: "Do I need CAD experience?", a: "No. First-timers are welcome, and there will be help getting started." },
@@ -130,7 +126,7 @@ export default function CadathonPage() {
             </p>
           </Reveal>
           <Reveal>
-            <div className="mx-auto mt-8 max-w-3xl rounded-xl border-2 border-dashed border-arcade-fuel/70 p-5 text-left sm:p-6">
+            <div className="mx-auto mt-8 max-w-3xl rounded-xl border-2 border-dashed border-arcade-fuel/70 p-5 text-center sm:p-6">
               <p className="text-xs font-extrabold uppercase tracking-widest text-arcade-fuel">Mission briefing</p>
               <p className="mt-3 text-paper/90">
                 Something has gone wrong in orbit. A station needs help that only a robot can give, and your team has
@@ -145,7 +141,7 @@ export default function CadathonPage() {
             {divisions.map((d, i) => (
               <Reveal key={d.name} delay={i * 70}>
                 <div
-                  className={`h-full rounded-xl border-2 border-ink p-5 text-left text-ink shadow-hard ${d.fill}`}
+                  className={`h-full rounded-xl border-2 border-ink p-5 text-center text-ink shadow-hard ${d.fill}`}
                   style={{ rotate: `${(i % 2 === 0 ? -1 : 1) * 0.6}deg` }}
                 >
                   <p className="font-display text-3xl font-extrabold text-arcade-purple sm:text-4xl">{d.name}</p>
@@ -158,7 +154,7 @@ export default function CadathonPage() {
                     <li>{d.tool}</li>
                     <li>{d.time}</li>
                   </ul>
-                  <p className="mt-4 flex items-center gap-2 text-sm font-semibold">
+                  <p className="mt-4 flex items-center justify-center gap-2 text-sm font-semibold">
                     Challenge <span className="font-display text-lg">???</span>
                   </p>
                 </div>
@@ -166,7 +162,7 @@ export default function CadathonPage() {
             ))}
           </div>
           <Reveal>
-            <div className="mx-auto mt-10 max-w-3xl rounded-xl border-2 border-ink bg-paper p-5 text-left text-ink shadow-hard sm:p-6">
+            <div className="mx-auto mt-10 max-w-3xl rounded-xl border-2 border-ink bg-paper p-5 text-center text-ink shadow-hard sm:p-6">
               <h3 className="font-display text-2xl">How teams work</h3>
               <ul className="mt-3 space-y-2 text-sm leading-relaxed">
                 <li><span className="font-semibold">You can play up, never down.</span> Juniors can enter Senior; anyone 14 or older enters Senior. A team with any member 14 or older is a Senior team.</li>
@@ -190,61 +186,46 @@ export default function CadathonPage() {
               Brought to you by Singularity Robotics, FRC 10032
             </p>
           </Reveal>
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {awards.map((d, i) => (
-              <Reveal key={d.name} delay={i * 70}>
-                <div className={`h-full rounded-xl border-2 border-ink p-5 shadow-hard sm:p-6 ${d.fill}`}>
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <h3 className="font-display text-2xl sm:text-3xl">{d.name}</h3>
-                    <span className="rounded-full border-2 border-ink bg-paper px-3 py-0.5 text-xs font-extrabold uppercase tracking-wide">
-                      {d.age}
-                    </span>
-                  </div>
-                  <ol className="mt-5 space-y-3">
-                    {d.places.map((p) => (
-                      <li key={p.place} className="rounded-lg border-2 border-ink bg-paper p-3">
-                        <div className="flex flex-wrap items-baseline gap-x-3">
-                          <span className="font-display text-xl font-extrabold text-arcade-purple">{p.place}</span>
-                          <span className="font-display text-xl">{p.prize}</span>
-                        </div>
-                        <p className="mt-1 text-sm text-ink/75">{p.detail}</p>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </Reveal>
-            ))}
+          <div className="mt-8">
+            <CadathonAwards divisions={awards} />
           </div>
           <Reveal>
-            <div className="mt-5 rounded-xl border-2 border-dashed border-ink bg-paper/70 p-5 sm:p-6">
+            <div className="mx-auto mt-6 max-w-3xl rounded-xl border-2 border-dashed border-ink bg-paper/70 p-5 text-center sm:p-6">
               <h3 className="font-display text-2xl">Judges&apos; Choice Awards</h3>
               <p className="mt-1 text-xs font-extrabold uppercase tracking-wide text-ink/60">Open to both divisions</p>
-              <p className="mt-2 text-sm">Industry-sponsored Judges&apos; Choice awards. Sponsors announcing soon.</p>
+              {SHOW_JC_SPONSORS ? (
+                <>
+                  <p className="mt-2 text-sm">Invited presenters (confirmations pending):</p>
+                  <ul className="mt-3 flex flex-wrap justify-center gap-2">
+                    {JC_INVITED.map((n) => (
+                      <li key={n} className="rounded-full border-2 border-ink bg-paper px-3 py-1 text-sm font-semibold">
+                        {n}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <p className="mt-2 text-sm">Industry-sponsored Judges&apos; Choice awards. Sponsors announcing soon.</p>
+              )}
             </div>
           </Reveal>
-          <div className="mt-5 grid gap-5 md:grid-cols-2">
+          <div className="mx-auto mt-6 grid max-w-3xl gap-5 md:grid-cols-2">
             <Reveal>
-              <div className="h-full rounded-xl border-2 border-ink bg-paper p-5">
+              <div className="h-full rounded-xl border-2 border-ink bg-paper p-5 text-center">
                 <h3 className="font-display text-xl">Everyone who places</h3>
                 <ul className="mt-3 space-y-1.5 text-sm">
                   {everyonePlaces.map((t) => (
-                    <li key={t} className="flex items-start gap-2">
-                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-arcade-purple" aria-hidden />
-                      {t}
-                    </li>
+                    <li key={t}>{t}</li>
                   ))}
                 </ul>
               </div>
             </Reveal>
             <Reveal>
-              <div className="h-full rounded-xl border-2 border-ink bg-paper p-5">
+              <div className="h-full rounded-xl border-2 border-ink bg-paper p-5 text-center">
                 <h3 className="font-display text-xl">Everyone who submits</h3>
                 <ul className="mt-3 space-y-1.5 text-sm">
                   {everyoneSubmits.map((t) => (
-                    <li key={t} className="flex items-start gap-2">
-                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-arcade-purple" aria-hidden />
-                      {t}
-                    </li>
+                    <li key={t}>{t}</li>
                   ))}
                 </ul>
               </div>
@@ -285,25 +266,8 @@ export default function CadathonPage() {
       {/* Sign up */}
       <BlobEdge fill={band.purple} />
       <section id="signup" className="scroll-mt-24 bg-arcade-purple text-paper">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-6 sm:px-6 lg:grid-cols-[1fr_1.2fr] lg:items-start">
-          <Reveal>
-            <h2 className="font-display text-3xl sm:text-4xl">Register</h2>
-            <p className="mt-3 max-w-md text-paper/85">
-              Registration is open. <span className="font-semibold">One form per student:</span> every teammate fills
-              in their own, using the same team name. Students under 18 need a
-              parent&apos;s email and consent. It&apos;s free.
-            </p>
-            <h3 className="mt-10 font-display text-2xl">For parents and coaches</h3>
-            <ul className="mt-4 space-y-2">
-              {safety.map((s) => (
-                <li key={s} className="flex items-start gap-3 text-sm text-paper/85">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-arcade-mint" aria-hidden />
-                  {s}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-          <div className="rounded-xl border-2 border-ink bg-paper p-6 text-ink shadow-hard sm:p-8">
+        <div className="mx-auto max-w-6xl px-4 pb-16 pt-6 sm:px-6">
+          <div className="mx-auto max-w-lg rounded-xl border-2 border-ink bg-paper p-6 text-center text-ink shadow-hard sm:p-8">
             <p className="font-display text-2xl">Register a student</p>
             <ol className="mt-4 space-y-2 text-sm leading-relaxed">
               <li><span className="font-semibold">1.</span> Pick your team and a team name. Teams are 1 to 4 people.</li>

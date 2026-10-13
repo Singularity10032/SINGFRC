@@ -7,67 +7,74 @@ export const metadata: Metadata = {
   description: "The rules everyone at the Singularity CADathon 2026 agrees to.",
 }
 
-// Event-specific code, drawn from the principles in the team's member code
-// (Gracious Professionalism, no harassment, no impersonation) and the youth
-// safety rules in the CADathon plan.
+// Text from the v2 draft (01 Projects/Singularity CADathon — code of conduct v2
+// 2026-10-13.md in the vault), sections in its order, wording as written.
+// A section has paragraphs (p) or bullets (list); **text** renders bold.
 
-const sections = [
-  {
-    h: "Who this covers",
-    p: [
-      "Everyone at the CADathon: students, coaches, mentors, judges, organizers, speakers and supporters. It applies in every event space, including Discord, video calls and shared files, from sign-up until the last message after Closing.",
-    ],
-  },
+type Section = { h: string; p?: string[]; list?: string[] }
+
+const sections: Section[] = [
   {
     h: "Gracious Professionalism",
     p: [
-      "Compete hard and be kind. Help people who are stuck, credit people who helped you, and treat other teams the way you'd want a judge to treat your work.",
+      "Compete hard and be kind. Help people who are stuck, credit people who helped you, and treat every team's work the way you'd want the judges to treat yours. Good sportsmanship in the chat counts as much as good CAD.",
     ],
   },
   {
-    h: "Respect",
-    p: [
-      "No harassment, bullying, slurs, threats or sexual content. No discrimination based on race, color, national origin, religion, sex, gender identity, sexual orientation, disability or age.",
+    h: "No cheating",
+    list: [
+      "Everything you submit is modeled during the event by your team's students. Mentors and parents can answer questions, but they don't touch the CAD.",
+      "No pre-made models of your design. Standard parts from public libraries (screws, motors, COTS parts) are fine.",
+      "If you borrow an idea from someone else's published design, say so in your design document.",
+      "If you use AI tools, list them in your design document.",
+      "Don't open, copy, download or change another team's files or Onshape documents.",
+      "One account per person, one registration per student. Don't enter under someone else's name.",
+      "Submissions that break these rules are disqualified.",
+    ],
+  },
+  {
+    h: "Online conduct",
+    list: [
+      "Use the event's shared channels, where organizers can see. Don't direct-message other participants, and never ask a student to move to another app.",
       "Keep usernames, profile pictures, messages and designs appropriate for an event with elementary school students in it.",
+      "No harassment, bullying, slurs, threats, spam or sexual content. No discrimination of any kind.",
+      "Don't share personal information, yours or anyone else's: no addresses, phone numbers, school schedules or photos of other people.",
+      "Don't pretend to be an organizer, a judge, a sponsor or another participant, even as a joke.",
     ],
   },
   {
-    h: "Online safety",
-    p: [
-      "Talk in the event's shared channels, where organizers can see. Don't message other participants privately, and never ask a student to move to another app or platform.",
-      "Adults are never alone with a student in a call or a chat.",
-      "Don't share personal information: yours or anyone else's. That means no home addresses, phone numbers, school schedules or photos of other people without their permission.",
-    ],
-  },
-  {
-    h: "Do your own work",
-    p: [
-      "Everything your team models is made during the event by your team's students. Mentors can answer questions, but they don't do the CAD.",
-      "Off-the-shelf parts from public libraries are fine. If you take an idea from someone else's published design, say so in your design document.",
-      "If you used AI tools, list them in your design document.",
-      "Don't open, copy or change another team's files.",
-    ],
-  },
-  {
-    h: "Be who you are",
-    p: [
-      "Don't pretend to be an organizer, a judge, a sponsor, another participant or the Singularity team, even as a joke.",
+    h: "Age, divisions and prizes",
+    list: [
+      "Your division is set by your age on November 14, 2026: Junior is 13 and under, Senior is 14 and up. You can play up, never down.",
+      "**Winners must verify their age before any prize is sent.** We'll email the winner (and, for anyone under 18, the parent or guardian on the registration) to confirm name, age and division. A parent or guardian confirms for students under 18. We never ask students to send ID.",
+      "Prizes for students under 18 are sent to the parent or guardian. Shipping addresses are collected only from winners, only for shipping, and deleted afterward.",
+      "If the age on a registration turns out to be wrong, the team can be moved to the right division or disqualified, and the prize goes to the next team.",
+      "Prizes can't be transferred or exchanged for cash, and they may change if a sponsor's prize falls through.",
     ],
   },
   {
     h: "Reporting a problem",
     p: [
-      "If something makes you uncomfortable or breaks these rules, tell any organizer or email admin@singularityfrc.com. Reports go to an adult safety lead. You won't get in trouble for reporting something honestly.",
-      "If someone is in danger, contact local emergency services first.",
+      "Tell any organizer or email admin@singularityfrc.com. Reports go to an adult safety lead. You won't get in trouble for reporting something honestly. If someone is in danger, contact local emergency services first.",
     ],
   },
   {
-    h: "What happens if the code is broken",
+    h: "If the code is broken",
     p: [
-      "Depending on how serious it is, organizers may give a warning, remove someone from the event's channels, disqualify a team, or ban someone from future events. Serious safety concerns are shared with the people who need to know, including parents, coaches and, when required, the authorities.",
+      "Depending on how serious it is: a warning, removal from the event's channels, disqualification, or a ban from future events. Serious safety concerns are shared with parents, coaches and, when required, the authorities.",
     ],
   },
 ]
+
+function Rich({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/(\*\*[^*]+\*\*)/).map((part, i) =>
+        part.startsWith("**") ? <strong key={i}>{part.slice(2, -2)}</strong> : part,
+      )}
+    </>
+  )
+}
 
 export default function CodeOfConductPage() {
   return (
@@ -85,11 +92,20 @@ export default function CodeOfConductPage() {
         {sections.map((s) => (
           <section key={s.h} className="rounded-xl border-2 border-ink bg-paper p-5 text-ink shadow-hard-sm sm:p-6">
             <h2 className="font-display text-2xl">{s.h}</h2>
-            {s.p.map((t) => (
+            {s.p?.map((t) => (
               <p key={t} className="mt-3 text-sm leading-relaxed text-ink/85">
-                {t}
+                <Rich text={t} />
               </p>
             ))}
+            {s.list && (
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-ink/85">
+                {s.list.map((t) => (
+                  <li key={t}>
+                    <Rich text={t} />
+                  </li>
+                ))}
+              </ul>
+            )}
           </section>
         ))}
       </div>

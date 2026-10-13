@@ -5,12 +5,10 @@ import { BlobEdge, band } from "@/components/blob-edge"
 export const metadata: Metadata = {
   title: "Singularity CADathon 2026 — Singularity Robotics",
   description:
-    "A free, online CADathon with Beginner, Intermediate and Advanced divisions, open to anyone. Hosted by FRC Team 10032 Singularity Robotics.",
+    "A free, online CADathon with Junior (13 and under) and Senior (14 and up) divisions, open to anyone. Hosted by FRC Team 10032 Singularity Robotics.",
 }
 
 const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd3RL3jfIAdqNWFbDINjCdI9lTLIMrufMAkCkS_cCzZd2almA/viewform"
-const FORM_EMBED =
-  "https://docs.google.com/forms/d/e/1FAIpQLSd3RL3jfIAdqNWFbDINjCdI9lTLIMrufMAkCkS_cCzZd2almA/viewform?embedded=true"
 
 // Start date (Nov 14) is set but subject to change. Prizes, judges and
 // supporters are placeholders marked TBA. The theme gets a short teaser; the
@@ -26,32 +24,23 @@ function Tba({ className = "" }: { className?: string }) {
   )
 }
 
-// Divisions are open to anyone. An age cap keeps experienced people out of the
-// easier divisions: you can enter your own division or any harder one, never an
-// easier one. Content scales up: a gadget, then one mechanism, then a full robot.
+// Two divisions, open to anyone, split by age on November 14. You can play up
+// (a 12-year-old may enter Senior), never down. Content scales up from Junior
+// to Senior.
 const divisions = [
   {
-    name: "Beginner",
+    name: "Junior",
     age: "Ages 13 and under",
-    who: "New to CAD, or just getting started",
-    build: "Design a small gadget",
-    tool: "Tinkercad, made for first-timers",
+    who: "New to CAD, or still learning",
+    build: "Design a robot mechanism",
+    tool: "Tinkercad or Onshape, your choice",
     time: "A shorter daytime session",
     fill: "bg-arcade-mint",
   },
   {
-    name: "Intermediate",
-    age: "Ages 18 and under",
-    who: "You've made a few parts and assemblies",
-    build: "Design one robot mechanism",
-    tool: "Onshape",
-    time: "The full 24 hours",
-    fill: "bg-arcade-sky",
-  },
-  {
-    name: "Advanced",
-    age: "Any age",
-    who: "You're confident designing full assemblies",
+    name: "Senior",
+    age: "Ages 14 and up",
+    who: "Ready for a full robot",
     build: "Design a full competition-size robot",
     tool: "Onshape",
     time: "The full 24 hours",
@@ -63,12 +52,9 @@ const places = ["1st", "2nd", "3rd", "Honorable mention"]
 
 // Prize size scales with the division: the harder the division, the bigger the prize.
 const prizeTiers = [
-  { name: "Beginner", size: "Prizes", fill: "bg-arcade-mint", h: "h-16" },
-  { name: "Intermediate", size: "Bigger prizes", fill: "bg-arcade-sky", h: "h-24" },
-  { name: "Advanced", size: "Biggest prizes", fill: "bg-arcade-fuel", h: "h-32" },
+  { name: "Junior", size: "Prizes", fill: "bg-arcade-mint", h: "h-20" },
+  { name: "Senior", size: "Bigger prizes", fill: "bg-arcade-fuel", h: "h-32" },
 ]
-
-const judges = ["Industry judge", "Industry judge", "Industry judge", "Industry judge"]
 
 const safety = [
   "Adult organizers moderate the event online the whole time.",
@@ -81,7 +67,7 @@ const safety = [
 const faq = [
   { q: "Do I need CAD experience?", a: "No. Beginners are welcome, and there will be help for first-timers." },
   { q: "What do I need?", a: "A computer with a web browser. The CAD tools we use are free." },
-  { q: "Which division should I pick?", a: "Start with your age: 13 and under can enter any division, 14 to 18 can enter Intermediate or Advanced, and over 18 enters Advanced. Then pick by skill. Playing up into a harder division is always allowed." },
+  { q: "Which division should I pick?", a: "Go by your age on November 14: 13 and under is Junior, 14 and up is Senior. Juniors who want a bigger challenge can enter Senior instead." },
   { q: "Can I join without a robotics team?", a: "Yes. The CADathon is open to anyone. Enter solo or team up with friends." },
   { q: "Can my robotics team enter more than one CADathon team?", a: "Yes. Split up however you like, and mix with students from other teams." },
   { q: "What's the theme?", a: "A mission in orbit. The full challenge is revealed at Opening, so everyone starts from zero at the same time." },
@@ -97,18 +83,22 @@ export default function CadathonPage() {
           <p className="text-sm font-semibold text-arcade-fuel">Hosted by FRC Team 10032 · Online · Free</p>
           <h1 className="mt-2 font-display text-4xl leading-[1.02] sm:text-6xl">Singularity CADathon 2026</h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-paper/80">
-            One theme, revealed live. A clock. Design a robot from nothing. Three divisions from first-timer to
-            advanced, open to anyone, judged by people who do this for a living.
+            One theme, revealed live. A clock. Design a robot from nothing. Two divisions, Junior and Senior,
+            open to anyone, judged by people who do this for a living.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <span className="inline-flex flex-col rounded-2xl border-2 border-paper/30 px-4 py-2 text-sm font-semibold text-paper/85">
               Starts Saturday, November 14, 2026
               <span className="text-xs font-normal text-paper/60">Date subject to change</span>
             </span>
-            <a href="#signup" className="btn-pill bg-arcade-bumper text-paper">
-              Register now
+            <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="btn-pill bg-arcade-bumper text-paper">
+              Register
             </a>
           </div>
+          <p className="mt-3 text-xs text-paper/60">
+            Opens the registration form in a new tab. By registering you agree to the{" "}
+            <a href="/cadathon/code-of-conduct" className="underline">code of conduct</a>.
+          </p>
         </Reveal>
       </section>
 
@@ -117,9 +107,9 @@ export default function CadathonPage() {
       <section className="bg-deep">
         <div className="mx-auto max-w-6xl px-4 pb-16 pt-6 text-center sm:px-6">
           <Reveal>
-            <h2 className="font-display text-3xl sm:text-4xl">Three divisions</h2>
+            <h2 className="font-display text-3xl sm:text-4xl">Two divisions</h2>
             <p className="mx-auto mt-3 max-w-xl text-paper/75">
-              Open to anyone. Each step up is a bigger build. Age is your age on November 14.
+              Open to anyone. Senior is the bigger build. Age is your age on November 14.
             </p>
           </Reveal>
           <Reveal>
@@ -134,7 +124,7 @@ export default function CadathonPage() {
               </p>
             </div>
           </Reveal>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-2">
             {divisions.map((d, i) => (
               <Reveal key={d.name} delay={i * 70}>
                 <div
@@ -162,7 +152,7 @@ export default function CadathonPage() {
             <div className="mx-auto mt-10 max-w-3xl rounded-xl border-2 border-ink bg-paper p-5 text-left text-ink shadow-hard sm:p-6">
               <h3 className="font-display text-2xl">How teams work</h3>
               <ul className="mt-3 space-y-2 text-sm leading-relaxed">
-                <li><span className="font-semibold">You can always play up, never down.</span> Enter the division for your age or any harder one. A team&apos;s oldest member decides the easiest division it can enter.</li>
+                <li><span className="font-semibold">You can play up, never down.</span> Juniors can enter Senior; anyone 14 or older enters Senior. A team with any member 14 or older is a Senior team.</li>
                 <li><span className="font-semibold">Teams of 1 to 4.</span> Going solo is a team of one.</li>
                 <li><span className="font-semibold">Mix freely.</span> Teammates can come from different robotics teams, different schools, or no team at all.</li>
                 <li><span className="font-semibold">One robotics team can enter several CADathon teams,</span> in any divisions.</li>
@@ -183,10 +173,10 @@ export default function CadathonPage() {
                 Division prizes <Tba />
               </h2>
               <p className="mt-2 text-sm text-ink/70">
-                1st, 2nd, 3rd and an honorable mention in every division. The harder the division, the bigger the prize.
+                1st, 2nd, 3rd and an honorable mention in each division. Senior prizes are bigger.
               </p>
             </Reveal>
-            <div className="mt-6 grid grid-cols-3 items-end gap-3">
+            <div className="mt-6 grid grid-cols-2 items-end gap-3">
               {prizeTiers.map((t, i) => (
                 <Reveal key={t.name} delay={i * 60}>
                   <div className="text-center">
@@ -210,26 +200,12 @@ export default function CadathonPage() {
           </div>
           <div>
             <Reveal>
-              <h2 className="flex flex-wrap items-center gap-3 font-display text-3xl sm:text-4xl">
-                Judges <Tba />
-              </h2>
-              <p className="mt-2 text-sm text-ink/70">Engineers and industry professionals. Announcing soon.</p>
+              <h2 className="font-display text-3xl sm:text-4xl">Judges</h2>
+              <div className="mt-6 flex min-h-40 flex-col items-center justify-center rounded-xl border-2 border-dashed border-ink bg-paper/60 p-8 text-center">
+                <p className="font-display text-3xl">Coming soon</p>
+                <p className="mt-2 max-w-sm text-sm text-ink/70">Engineers and industry professionals. We&apos;ll announce them here.</p>
+              </div>
             </Reveal>
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              {judges.map((j, i) => (
-                <Reveal key={i} delay={i * 50}>
-                  <div className="flex items-center gap-3 rounded-xl border-2 border-dashed border-ink bg-paper/60 p-3">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-paper font-display text-lg" aria-hidden>
-                      ?
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-sm font-semibold">{j}</span>
-                      <span className="block text-xs text-ink/60">Company TBA</span>
-                    </span>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
           </div>
         </div>
         <BlobEdge fill={band.space} />
@@ -302,26 +278,18 @@ export default function CadathonPage() {
               ))}
             </ul>
           </Reveal>
-          <div className="rounded-xl border-2 border-ink bg-paper p-3 text-ink shadow-hard sm:p-4">
-            <ol className="space-y-2 px-2 pt-2 text-sm leading-relaxed">
+          <div className="rounded-xl border-2 border-ink bg-paper p-6 text-ink shadow-hard sm:p-8">
+            <p className="font-display text-2xl">Register a student</p>
+            <ol className="mt-4 space-y-2 text-sm leading-relaxed">
               <li><span className="font-semibold">1.</span> Pick your team and a team name. Teams are 1 to 4 people.</li>
               <li><span className="font-semibold">2.</span> Every student fills in the form, using the exact same team name.</li>
               <li><span className="font-semibold">3.</span> Students under 18 need a parent or guardian&apos;s email and consent.</li>
             </ol>
-            <iframe
-              src={FORM_EMBED}
-              title="CADathon registration form"
-              loading="lazy"
-              className="mt-4 h-[3250px] w-full rounded-lg bg-white sm:h-[2850px]"
-            >
-              Loading…
-            </iframe>
-            <p className="px-2 pb-1 pt-3 text-xs text-ink/60">
-              Form not loading?{" "}
-              <a href={FORM_URL} target="_blank" rel="noreferrer" className="font-semibold underline">
-                Open it in a new tab
-              </a>
-              . By registering you agree to the{" "}
+            <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="btn-pill mt-6 w-full bg-arcade-bumper text-paper">
+              Register
+            </a>
+            <p className="mt-3 text-xs text-ink/60">
+              Opens the registration form in a new tab. By registering you agree to the{" "}
               <a href="/cadathon/code-of-conduct" className="underline">code of conduct</a>.
             </p>
           </div>

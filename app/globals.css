@@ -134,13 +134,24 @@
   animation: arcade-ticker 32s linear infinite;
 }
 
+/* Gallery tile strip on /community: same loop, much slower. */
+.gallery-track {
+  animation: arcade-ticker 140s linear infinite;
+}
+
+.group:hover .gallery-track,
+.group:focus-visible .gallery-track {
+  animation-play-state: paused;
+}
+
 .ticker-track:hover,
 .ticker-track:focus-within {
   animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ticker-track {
+  .ticker-track,
+  .gallery-track {
     animation: none !important;
   }
   * {

@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // The CADathon pages ship on their own branch; merge that one before or with this.
     "/cadathon",
     "/cadathon/code-of-conduct",
+    "/cadathon/game",
     ...stories.map((s) => `/community/${s.slug}`),
   ]
   return paths.map((p) => ({ url: `${BASE}${p}` }))

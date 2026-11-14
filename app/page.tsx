@@ -7,6 +7,7 @@ import { photos } from "@/lib/photos"
 import { teamAwards } from "@/lib/team-awards"
 import { Countdown } from "@/components/countdown"
 import { CADATHON_START, CADATHON_FORM_URL } from "@/lib/cadathon"
+import { AfterRelease } from "@/components/after-release"
 
 const whatWeDo = [
   {
@@ -74,9 +75,18 @@ export default function Home() {
             >
               Register
             </a>
-            <Link href="/cadathon" className="rounded-full border-2 border-ink bg-paper px-4 py-1 font-semibold">
-              Learn more
-            </Link>
+            <AfterRelease
+              at={CADATHON_START}
+              before={
+                <Link href="/cadathon" className="rounded-full border-2 border-ink bg-paper px-4 py-1 font-semibold">
+                  Learn more
+                </Link>
+              }
+            >
+              <Link href="/cadathon/game" className="rounded-full border-2 border-ink bg-paper px-4 py-1 font-semibold">
+                Read the game
+              </Link>
+            </AfterRelease>
           </span>
         </div>
       </section>

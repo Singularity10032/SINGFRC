@@ -4,6 +4,7 @@ import { BlobEdge, band } from "@/components/blob-edge"
 import { CadathonAwards, type Division } from "@/components/cadathon-awards"
 import { SHOW_JC_SPONSORS, JC_LOGOS } from "@/lib/flags"
 import { Countdown } from "@/components/countdown"
+import { AfterRelease } from "@/components/after-release"
 import { CADATHON_START, CADATHON_FORM_URL } from "@/lib/cadathon"
 
 export const metadata: Metadata = {
@@ -98,6 +99,11 @@ export default function CadathonPage() {
             <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="btn-pill bg-arcade-bumper text-paper">
               Register
             </a>
+            <AfterRelease at={CADATHON_START}>
+              <a href="/cadathon/game" className="btn-pill bg-arcade-fuel text-ink">
+                Read the game
+              </a>
+            </AfterRelease>
           </div>
           <p className="mt-3 text-xs text-paper/60">
             Opens the registration form in a new tab. By registering you agree to the{" "}
@@ -121,7 +127,12 @@ export default function CadathonPage() {
                 one shot to design it. Every division gets the same mission, with a different job to do.
               </p>
               <p className="mt-3 text-sm text-paper/60">
-                The full game is released at 5:30 PM Central on November 14. No participant sees it early.
+                <AfterRelease
+                  at={CADATHON_START}
+                  before="The full game is released at 5:30 PM Central on November 14. No participant sees it early."
+                >
+                  The game is out. <a href="/cadathon/game" className="underline">Read the full game</a>.
+                </AfterRelease>
               </p>
             </div>
           </Reveal>

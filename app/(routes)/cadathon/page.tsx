@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 
 const FORM_URL = CADATHON_FORM_URL
 
-// Start date (Nov 14) is set but subject to change. Judges and supporters
-// are still placeholders. The theme gets a short teaser; the
-// full challenges are revealed only at Opening on the day.
+// The game is released Nov 14 at 5:30 PM Central; results come out Jan 15
+// (Mohan, 2026-11-14). Judges and supporters are still placeholders. The theme
+// gets a short teaser; the full game is revealed only at release.
 
 // Two divisions, open to anyone, split by age on November 14. You can play up
 // (a 12-year-old may enter Senior), never down. Content scales up from Junior
@@ -76,8 +76,9 @@ const faq = [
   { q: "Which division should I pick?", a: "Go by your age on November 14. If you're 13 or under, enter Junior, or play up into Senior if you want a harder challenge. If you're 14 or older, enter Senior. You can always play up, but never down." },
   { q: "Can I join without a robotics team?", a: "Yes. The CADathon is open to anyone. Enter solo or team up with friends." },
   { q: "Can my robotics team enter more than one CADathon team?", a: "Yes. Split up however you like, and mix with students from other teams." },
-  { q: "What's the theme?", a: "A mission in orbit. The full challenge is revealed at Opening, so everyone starts from zero at the same time." },
-  { q: "When is it?", a: "It starts Saturday, November 14, 2026. The date may still change; registered teams hear first." },
+  { q: "What's the theme?", a: "A mission in orbit. The full game is released at 5:30 PM Central on November 14, so everyone starts from zero at the same time." },
+  { q: "When is it?", a: "The game is released Saturday, November 14, 2026 at 5:30 PM Central." },
+  { q: "When do results come out?", a: "January 15." },
 ]
 
 export default function CadathonPage() {
@@ -90,8 +91,8 @@ export default function CadathonPage() {
           <Countdown to={CADATHON_START} />
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <span className="inline-flex flex-col rounded-2xl border-2 border-paper/30 px-4 py-2 text-sm font-semibold text-paper/85">
-              Starts Saturday, November 14, 2026
-              <span className="text-xs font-normal text-paper/60">Date subject to change</span>
+              Game releases Saturday, November 14 at 5:30 PM Central
+              <span className="text-xs font-normal text-paper/60">Results come out January 15</span>
             </span>
             <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="btn-pill bg-arcade-bumper text-paper">
               Register
@@ -119,7 +120,7 @@ export default function CadathonPage() {
                 one shot to design it. Every division gets the same mission, with a different job to do.
               </p>
               <p className="mt-3 text-sm text-paper/60">
-                The full challenge is revealed at Opening on November 14. No participant sees it early.
+                The full game is released at 5:30 PM Central on November 14. No participant sees it early.
               </p>
             </div>
           </Reveal>

@@ -61,7 +61,7 @@ export default function Home() {
       <section className="border-b-2 border-ink bg-arcade-fuel text-ink">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 py-3 text-center text-sm sm:px-6">
           <span className="font-display text-base font-extrabold">Singularity CADathon 2026</span>
-          <span>Free online CAD competition · Sat, Nov 14</span>
+          <span>Free online CAD competition · Game releases Sat, Nov 14, 5:30 PM CT</span>
           <span className="rounded-full border-2 border-ink bg-paper px-3 py-0.5">
             <Countdown to={CADATHON_START} compact />
           </span>

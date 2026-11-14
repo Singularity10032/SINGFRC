@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 
 const FORM_URL = CADATHON_FORM_URL
 
-// The game is released Nov 14 at 5:30 PM Central; results come out Jan 15
-// (Mohan, 2026-11-14). Judges and supporters are still placeholders. The theme
+// The game is released Nov 14 at 5:30 PM Central; submissions are due Jan 1 and
+// results come out Jan 15 (Mohan, 2026-11-14). Judges and supporters are still placeholders. The theme
 // gets a short teaser; the full game is revealed only at release.
 
 // Two divisions, open to anyone, split by age on November 14. You can play up
@@ -78,7 +78,8 @@ const faq = [
   { q: "Can my robotics team enter more than one CADathon team?", a: "Yes. Split up however you like, and mix with students from other teams." },
   { q: "What's the theme?", a: "A mission in orbit. The full game is released at 5:30 PM Central on November 14, so everyone starts from zero at the same time." },
   { q: "When is it?", a: "The game is released Saturday, November 14, 2026 at 5:30 PM Central." },
-  { q: "When do results come out?", a: "January 15." },
+  { q: "When are submissions due?", a: "January 1, 2027." },
+  { q: "When do results come out?", a: "January 15, 2027." },
 ]
 
 export default function CadathonPage() {
@@ -92,7 +93,7 @@ export default function CadathonPage() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <span className="inline-flex flex-col rounded-2xl border-2 border-paper/30 px-4 py-2 text-sm font-semibold text-paper/85">
               Game releases Saturday, November 14 at 5:30 PM Central
-              <span className="text-xs font-normal text-paper/60">Results come out January 15</span>
+              <span className="text-xs font-normal text-paper/60">Submissions due January 1 · Results come out January 15</span>
             </span>
             <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="btn-pill bg-arcade-bumper text-paper">
               Register

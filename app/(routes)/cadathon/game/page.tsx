@@ -2,25 +2,11 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Reveal } from "@/components/reveal"
 import { BlobEdge, band } from "@/components/blob-edge"
-import { Countdown } from "@/components/countdown"
-import { RefreshAtRelease } from "@/components/after-release"
-import { CADATHON_START, gameIsLive } from "@/lib/cadathon"
 
-// Rendered on every request, so the game appears at the release instant
-// without a new deploy. Before then the server sends only the locked view.
-export const dynamic = "force-dynamic"
-
-export function generateMetadata(): Metadata {
-  return gameIsLive()
-    ? {
-        title: "MISSION: ORION RESCUE | Singularity CADathon 2026",
-        description:
-          "The Singularity CADathon 2026 game. Submissions due Friday, January 1, 2027 at 11:59 PM CT. Winners announced by Friday, January 15, 2027.",
-      }
-    : {
-        title: "The Game | Singularity CADathon 2026",
-        description: "The Singularity CADathon 2026 game is released Saturday, November 14 at 5:30 PM Central.",
-      }
+export const metadata: Metadata = {
+  title: "MISSION: ORION RESCUE | Singularity CADathon 2026",
+  description:
+    "The Singularity CADathon 2026 game. Submissions due Friday, January 1, 2027 at 11:59 PM CT. Winners announced by Friday, January 15, 2027.",
 }
 
 // Text from the final challenge brief (01 Projects/Singularity CADathon —
@@ -125,28 +111,7 @@ function Card({ title, note, intro, items }: { title: string; note?: string; int
   )
 }
 
-function Locked() {
-  return (
-    <div className="mx-auto max-w-3xl px-4 pb-24 pt-16 text-center sm:px-6 sm:pt-24">
-      <Link href="/cadathon" className="text-sm font-semibold text-arcade-fuel hover:underline">
-        ← Singularity CADathon 2026
-      </Link>
-      <h1 className="mt-3 font-display text-4xl leading-[1.05] sm:text-6xl">The game</h1>
-      <Countdown to={CADATHON_START} />
-      <p className="mt-6 text-lg text-paper/80">
-        The full game is released at 5:30 PM Central on November 14. No participant sees it early.
-      </p>
-      <p className="mt-2 text-sm text-paper/60">This page opens by itself when the clock hits zero.</p>
-      <RefreshAtRelease at={CADATHON_START} />
-    </div>
-  )
-}
-
-export default async function GamePage({ searchParams }: { searchParams: Promise<{ preview?: string }> }) {
-  // ?preview=live works in local dev only, to look at the page before release.
-  const preview = process.env.NODE_ENV !== "production" && (await searchParams).preview === "live"
-  if (!gameIsLive() && !preview) return <Locked />
-
+export default function GamePage() {
   return (
     <div>
       {/* Hero */}

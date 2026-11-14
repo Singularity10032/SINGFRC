@@ -4,7 +4,6 @@ import { BlobEdge, band } from "@/components/blob-edge"
 import { CadathonAwards, type Division } from "@/components/cadathon-awards"
 import { SHOW_JC_SPONSORS, JC_LOGOS } from "@/lib/flags"
 import { Countdown } from "@/components/countdown"
-import { AfterRelease } from "@/components/after-release"
 import { CADATHON_START, CADATHON_FORM_URL } from "@/lib/cadathon"
 
 export const metadata: Metadata = {
@@ -15,9 +14,9 @@ export const metadata: Metadata = {
 
 const FORM_URL = CADATHON_FORM_URL
 
-// The game is released Nov 14 at 5:30 PM Central; submissions are due Jan 1 and
-// results come out Jan 15 (Mohan, 2026-11-14). Judges and supporters are still placeholders. The theme
-// gets a short teaser; the full game is revealed only at release.
+// The game came out Nov 14 and lives on /cadathon/game; submissions are due
+// Jan 1 and results come out Jan 15 (Mohan, 2026-11-14). Judges and supporters
+// are still placeholders.
 
 // Two divisions, open to anyone, split by age on November 14. You can play up
 // (a 12-year-old may enter Senior), never down. Content scales up from Junior
@@ -77,8 +76,8 @@ const faq = [
   { q: "Which division should I pick?", a: "Go by your age on November 14. If you're 13 or under, enter Junior, or play up into Senior if you want a harder challenge. If you're 14 or older, enter Senior. You can always play up, but never down." },
   { q: "Can I join without a robotics team?", a: "Yes. The CADathon is open to anyone. Enter solo or team up with friends." },
   { q: "Can my robotics team enter more than one CADathon team?", a: "Yes. Split up however you like, and mix with students from other teams." },
-  { q: "What's the theme?", a: "A mission in orbit. The full game is released at 5:30 PM Central on November 14, so everyone starts from zero at the same time." },
-  { q: "When is it?", a: "The game is released Saturday, November 14, 2026 at 5:30 PM Central." },
+  { q: "What's the theme?", a: "A mission in orbit. The game is MISSION: ORION RESCUE, and the full text is at singularity-frc.com/cadathon/game." },
+  { q: "When is it?", a: "The game came out Saturday, November 14, 2026." },
   { q: "When are submissions due?", a: "January 1, 2027." },
   { q: "When do results come out?", a: "January 15, 2027." },
 ]
@@ -93,17 +92,15 @@ export default function CadathonPage() {
           <Countdown to={CADATHON_START} />
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <span className="inline-flex flex-col rounded-2xl border-2 border-paper/30 px-4 py-2 text-sm font-semibold text-paper/85">
-              Game releases Saturday, November 14 at 5:30 PM Central
+              The game is out
               <span className="text-xs font-normal text-paper/60">Submissions due January 1 · Results come out January 15</span>
             </span>
             <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="btn-pill bg-arcade-bumper text-paper">
               Register
             </a>
-            <AfterRelease at={CADATHON_START}>
-              <a href="/cadathon/game" className="btn-pill bg-arcade-fuel text-ink">
-                Read the game
-              </a>
-            </AfterRelease>
+            <a href="/cadathon/game" className="btn-pill bg-arcade-fuel text-ink">
+              Read the game
+            </a>
           </div>
           <p className="mt-3 text-xs text-paper/60">
             Opens the registration form in a new tab. By registering you agree to the{" "}
@@ -127,12 +124,7 @@ export default function CadathonPage() {
                 one shot to design it. Every division gets the same mission, with a different job to do.
               </p>
               <p className="mt-3 text-sm text-paper/60">
-                <AfterRelease
-                  at={CADATHON_START}
-                  before="The full game is released at 5:30 PM Central on November 14. No participant sees it early."
-                >
-                  The game is out. <a href="/cadathon/game" className="underline">Read the full game</a>.
-                </AfterRelease>
+                The game is out. <a href="/cadathon/game" className="underline">Read the full game</a>.
               </p>
             </div>
           </Reveal>

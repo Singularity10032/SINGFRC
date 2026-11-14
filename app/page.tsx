@@ -7,7 +7,6 @@ import { photos } from "@/lib/photos"
 import { teamAwards } from "@/lib/team-awards"
 import { Countdown } from "@/components/countdown"
 import { CADATHON_START, CADATHON_FORM_URL } from "@/lib/cadathon"
-import { AfterRelease } from "@/components/after-release"
 
 const whatWeDo = [
   {
@@ -62,7 +61,7 @@ export default function Home() {
       <section className="border-b-2 border-ink bg-arcade-fuel text-ink">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 py-3 text-center text-sm sm:px-6">
           <span className="font-display text-base font-extrabold">Singularity CADathon 2026</span>
-          <span>Free online CAD competition · Game releases Sat, Nov 14, 5:30 PM CT</span>
+          <span>Free online CAD competition · The game is out</span>
           <span className="rounded-full border-2 border-ink bg-paper px-3 py-0.5">
             <Countdown to={CADATHON_START} compact />
           </span>
@@ -75,18 +74,9 @@ export default function Home() {
             >
               Register
             </a>
-            <AfterRelease
-              at={CADATHON_START}
-              before={
-                <Link href="/cadathon" className="rounded-full border-2 border-ink bg-paper px-4 py-1 font-semibold">
-                  Learn more
-                </Link>
-              }
-            >
-              <Link href="/cadathon/game" className="rounded-full border-2 border-ink bg-paper px-4 py-1 font-semibold">
-                Read the game
-              </Link>
-            </AfterRelease>
+            <Link href="/cadathon/game" className="rounded-full border-2 border-ink bg-paper px-4 py-1 font-semibold">
+              Read the game
+            </Link>
           </span>
         </div>
       </section>

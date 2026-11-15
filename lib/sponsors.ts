@@ -11,6 +11,9 @@
 // boeing.com's own boeing-logo-blue.png (#0033a1). BAE Systems: Wikimedia
 // Commons BAE_Systems_logo.svg (baesystems.com blocks automated downloads).
 // Zippy added right after Bioworld (dad, 2026-10-08); logo from the file dad downloaded.
+// RMFG added last (2026-11-15) for their sponsor listing; logo and link are the ones
+// RMFG supplied (rmfg.com/RMFG-V2-Wordmark-Green-On-Black.png). The logo has its own
+// black background, so it sits on a black tile.
 
 export type Sponsor = { name: string; src: string; width: number; height: number; tile: "white" | "black"; url?: string }
 
@@ -31,4 +34,5 @@ export const sponsors: Sponsor[] = [
   { name: "Techie Factory", src: "/images/sponsors/techie-factory.png", width: 800, height: 781, tile: "white", url: "https://techiefactory.com/frisco/" },
   { name: "Texas Workforce Commission", src: "/images/sponsors/texas-workforce-commission.png", width: 1200, height: 1200, tile: "white", url: "https://www.twc.texas.gov/" },
   { name: "LitterLoot", src: "/images/sponsors/litterloot.png", width: 936, height: 910, tile: "white", url: "https://www.litterloot.co/" },
+  { name: "RMFG", src: "/images/sponsors/rmfg.png", width: 1337, height: 467, tile: "black", url: "https://www.rmfg.com" },
 ]

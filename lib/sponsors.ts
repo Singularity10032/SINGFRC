@@ -14,6 +14,8 @@
 // RMFG added last (2026-11-15) for their sponsor listing; logo and link are the ones
 // RMFG supplied (rmfg.com/RMFG-V2-Wordmark-Green-On-Black.png), on a white tile
 // like the rest (captain's call, 2026-11-15).
+// DDub Tech added last (2026-11-18, Mohan: "add ddubtech.com on our sponsors page"); logo is the
+// round badge Mohan supplied, corners cut clear so it sits on a white tile like the rest.
 
 export type Sponsor = { name: string; src: string; width: number; height: number; tile: "white" | "black"; url?: string }
 
@@ -35,4 +37,5 @@ export const sponsors: Sponsor[] = [
   { name: "Texas Workforce Commission", src: "/images/sponsors/texas-workforce-commission.png", width: 1200, height: 1200, tile: "white", url: "https://www.twc.texas.gov/" },
   { name: "LitterLoot", src: "/images/sponsors/litterloot.png", width: 936, height: 910, tile: "white", url: "https://www.litterloot.co/" },
   { name: "RMFG", src: "/images/sponsors/rmfg.png", width: 1337, height: 467, tile: "white", url: "https://www.rmfg.com" },
+  { name: "DDub Tech", src: "/images/sponsors/ddub-tech.png", width: 452, height: 452, tile: "white", url: "https://ddubtech.com/" },
 ]

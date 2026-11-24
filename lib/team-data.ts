@@ -10,10 +10,9 @@ export type LeadershipMember = {
   roleKinds?: RoleKind[]
 }
 
-// 26'-27' comes from the sign-in portal, which has no grades, so year is optional.
 export type TeamMember = {
   name: string
-  year?: string
+  year: string
 }
 
 export type Season = {
@@ -46,6 +45,7 @@ export const seasons: Season[] = [
     // team's roster doc gives a longer one (Mohan: "use full names"); one
     // active portal member is left out on Mohan's word. Titles from the team's
     // roster doc, and Mohan's own portal edits for the two Mech + Electrical leads.
+    // Grades from Mohan, 2026-11-24 (the portal has none).
     id: "2026-2027",
     label: "26'-27' Season",
     title: "2026-2027 Team",
@@ -69,25 +69,25 @@ export const seasons: Season[] = [
       { name: "Shaurya Singh", position: "Media Lead", roleKind: "business" },
     ],
     members: [
-      { name: "Rikhil Alluri" },
-      { name: "Amit Chunduri" },
-      { name: "Arvin Divvala" },
-      { name: "Shriya Jegannathan" },
-      { name: "Aryan Khurana" },
-      { name: "Arnav Magdum" },
-      { name: "Nived Menon" },
-      { name: "Debyash Mohanty" },
-      { name: "Shreyasvi Nambi" },
-      { name: "Ishan Pachnanda" },
-      { name: "Shreyansh Panigrahi" },
-      { name: "Rohan Pawar" },
-      { name: "Prithika Ravi" },
-      { name: "Shreya Samba" },
-      { name: "Sahejdeep Singh" },
-      { name: "Pratham Srivastava" },
-      { name: "Tanvi Sunkara" },
-      { name: "Aarya Vilvaray" },
-      { name: "Hasini Yalavarthi" },
+      { name: "Shriya Jegannathan", year: "Senior" },
+      { name: "Aryan Khurana", year: "Senior" },
+      { name: "Shreyasvi Nambi", year: "Senior" },
+      { name: "Ishan Pachnanda", year: "Senior" },
+      { name: "Shreyansh Panigrahi", year: "Senior" },
+      { name: "Rohan Pawar", year: "Senior" },
+      { name: "Shreya Samba", year: "Senior" },
+      { name: "Sahejdeep Singh", year: "Senior" },
+      { name: "Pratham Srivastava", year: "Senior" },
+      { name: "Tanvi Sunkara", year: "Senior" },
+      { name: "Debyash Mohanty", year: "Junior" },
+      { name: "Hasini Yalavarthi", year: "Junior" },
+      { name: "Amit Chunduri", year: "Sophomore" },
+      { name: "Arvin Divvala", year: "Sophomore" },
+      { name: "Arnav Magdum", year: "Sophomore" },
+      { name: "Rikhil Alluri", year: "Freshman" },
+      { name: "Nived Menon", year: "Freshman" },
+      { name: "Prithika Ravi", year: "Freshman" },
+      { name: "Aarya Vilvaray", year: "Freshman" },
     ],
   },
   {

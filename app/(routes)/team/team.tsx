@@ -90,19 +90,17 @@ function MemberChips({ members }: { members: TeamMember[] }) {
   const grouped = useMemo(() => {
     const map = new Map<string, TeamMember[]>()
     for (const m of members) {
-      const year = m.year ?? ""
-      if (!map.has(year)) map.set(year, [])
-      map.get(year)!.push(m)
+      if (!map.has(m.year)) map.set(m.year, [])
+      map.get(m.year)!.push(m)
     }
-    // A season with no grades on file (26'-27') shows one row with no heading.
-    return [...gradeOrder, ["", ""]].filter(([g]) => map.has(g)).map(([g, label]) => [label, map.get(g)!] as const)
+    return gradeOrder.filter(([g]) => map.has(g)).map(([g, label]) => [label, map.get(g)!] as const)
   }, [members])
 
   return (
     <div className="space-y-6">
       {grouped.map(([label, list]) => (
         <div key={label}>
-          {label && <p className="text-sm font-semibold text-paper/60">{label}</p>}
+          <p className="text-sm font-semibold text-paper/60">{label}</p>
           <div className="mt-2 flex flex-wrap gap-2">
             {list.map((m) => (
               <motion.span

@@ -60,7 +60,8 @@ export function isCaptain(member: LeadershipMember) {
 
 export const seasons: Season[] = [
   {
-    // From the sign-in portal's roster, 2026-11-24, names as spelled there; one
+    // From the sign-in portal's roster, 2026-11-24, with full names where the
+    // team's roster doc gives a longer one (Mohan: "use full names"); one
     // active portal member is left out on Mohan's word. Titles from the team's
     // roster doc, and Mohan's own portal edits for the two Mech + Electrical leads.
     id: "2026-2027",
@@ -80,7 +81,7 @@ export const seasons: Season[] = [
         roleKinds: ["mechanical", "programming", "business"],
       },
       { name: "Daniel Brown", position: "Mech + Electrical Lead", roleKind: "mechanical" },
-      { name: "Alex Wick", position: "Mech + Electrical Lead", roleKind: "mechanical" },
+      { name: "Alexander Wick", position: "Mech + Electrical Lead", roleKind: "mechanical" },
       { name: "Avin Agrawal", position: "Business Lead", roleKind: "business" },
       { name: "Ishaan Thakur", position: "Business Lead", roleKind: "business" },
       { name: "Shaurya Singh", position: "Media Lead", roleKind: "business" },
@@ -96,11 +97,11 @@ export const seasons: Season[] = [
       { name: "Debyash Mohanty", subteams: ["Assembly", "CAD", "Programming"] },
       { name: "Shreyasvi Nambi", subteams: ["Media", "Outreach"] },
       { name: "Ishan Pachnanda", subteams: ["Assembly"] },
-      { name: "Shrey Panigrahi", subteams: ["Assembly", "CAD", "Programming", "Scouting/Strategy"] },
+      { name: "Shreyansh Panigrahi", subteams: ["Assembly", "CAD", "Programming", "Scouting/Strategy"] },
       { name: "Rohan Pawar", subteams: ["Assembly", "Outreach", "Sponsorships"] },
       { name: "Prithika Ravi", subteams: ["Assembly", "Scouting/Strategy"] },
       { name: "Shreya Samba", subteams: [] },
-      { name: "Sahej Singh", subteams: ["Media", "Outreach", "Programming", "Sponsorships"] },
+      { name: "Sahejdeep Singh", subteams: ["Media", "Outreach", "Programming", "Sponsorships"] },
       { name: "Pratham Srivastava", subteams: ["Media", "Outreach"] },
       { name: "Tanvi Sunkara", subteams: ["Media", "Outreach"] },
       { name: "Aarya Vilvaray", subteams: ["Scouting/Strategy"] },

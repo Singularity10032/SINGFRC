@@ -7,12 +7,15 @@ export type LeadershipMember = {
   name: string
   position: string
   roleKind: RoleKind
-  roleKinds?: [RoleKind, RoleKind]
+  roleKinds?: RoleKind[]
 }
 
+// Seasons up to 25'-26' list members by grade. From 26'-27' the roster comes from
+// the sign-in portal, which keeps each member's subteams and no grade.
 export type TeamMember = {
   name: string
-  year: string
+  year?: string
+  subteams?: string[]
 }
 
 export type Season = {
@@ -35,11 +38,75 @@ export function getMemberRoles(member: LeadershipMember) {
   return member.roleKinds ?? [member.roleKind]
 }
 
+// The portal's subteams, under the three groups the team split into.
+const subteamRole: Record<string, RoleKind> = {
+  Assembly: "mechanical",
+  CAD: "mechanical",
+  "Scouting/Strategy": "mechanical",
+  Programming: "programming",
+  Media: "business",
+  Outreach: "business",
+  Sponsorships: "business",
+}
+
+export function getSubteamRoles(member: TeamMember) {
+  const kinds = new Set((member.subteams ?? []).map((s) => subteamRole[s]))
+  return roleOrder.filter((r) => kinds.has(r))
+}
+
 export function isCaptain(member: LeadershipMember) {
   return member.position.toLowerCase().includes("captain")
 }
 
 export const seasons: Season[] = [
+  {
+    // From the sign-in portal's roster, 2026-11-24, names as spelled there; one
+    // active portal member is left out on Mohan's word. Titles from the team's
+    // roster doc, and Mohan's own portal edits for the two Mech + Electrical leads.
+    id: "2026-2027",
+    label: "26'-27' Season",
+    title: "2026-2027 Team",
+    leadership: [
+      {
+        name: "Mohan Chillara",
+        position: "Overall Captain",
+        roleKind: "business",
+        roleKinds: ["mechanical", "programming", "business"],
+      },
+      {
+        name: "Aahan Kumbham",
+        position: "Overall Captain",
+        roleKind: "mechanical",
+        roleKinds: ["mechanical", "programming", "business"],
+      },
+      { name: "Daniel Brown", position: "Mech + Electrical Lead", roleKind: "mechanical" },
+      { name: "Alex Wick", position: "Mech + Electrical Lead", roleKind: "mechanical" },
+      { name: "Avin Agrawal", position: "Business Lead", roleKind: "business" },
+      { name: "Ishaan Thakur", position: "Business Lead", roleKind: "business" },
+      { name: "Shaurya Singh", position: "Media Lead", roleKind: "business" },
+    ],
+    members: [
+      { name: "Rikhil Alluri", subteams: ["Assembly", "Programming", "Scouting/Strategy"] },
+      { name: "Amit Chunduri", subteams: ["Assembly", "Media"] },
+      { name: "Arvin Divvala", subteams: ["Assembly", "Programming", "Scouting/Strategy"] },
+      { name: "Shriya Jegannathan", subteams: ["Media", "Outreach", "Sponsorships"] },
+      { name: "Aryan Khurana", subteams: ["Media", "Outreach", "Sponsorships"] },
+      { name: "Arnav Magdum", subteams: ["Media", "Outreach", "Sponsorships"] },
+      { name: "Nived Menon", subteams: ["Assembly", "CAD"] },
+      { name: "Debyash Mohanty", subteams: ["Assembly", "CAD", "Programming"] },
+      { name: "Shreyasvi Nambi", subteams: ["Media", "Outreach"] },
+      { name: "Ishan Pachnanda", subteams: ["Assembly"] },
+      { name: "Shrey Panigrahi", subteams: ["Assembly", "CAD", "Programming", "Scouting/Strategy"] },
+      { name: "Rohan Pawar", subteams: ["Assembly", "Outreach", "Sponsorships"] },
+      { name: "Prithika Ravi", subteams: ["Assembly", "Scouting/Strategy"] },
+      { name: "Shreya Samba", subteams: [] },
+      { name: "Sahej Singh", subteams: ["Media", "Outreach", "Programming", "Sponsorships"] },
+      { name: "Pratham Srivastava", subteams: ["Media", "Outreach"] },
+      { name: "Tanvi Sunkara", subteams: ["Media", "Outreach"] },
+      { name: "Aarya Vilvaray", subteams: ["Scouting/Strategy"] },
+      { name: "Hasini Yalavarthi", subteams: ["Assembly", "CAD", "Outreach"] },
+    ],
+  },
   {
     id: "2025-2026",
     label: "25'-26' Season",

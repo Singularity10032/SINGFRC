@@ -10,12 +10,10 @@ export type LeadershipMember = {
   roleKinds?: RoleKind[]
 }
 
-// Seasons up to 25'-26' list members by grade. From 26'-27' the roster comes from
-// the sign-in portal, which keeps each member's subteams and no grade.
+// 26'-27' comes from the sign-in portal, which has no grades, so year is optional.
 export type TeamMember = {
   name: string
   year?: string
-  subteams?: string[]
 }
 
 export type Season = {
@@ -36,22 +34,6 @@ export const roleOrder: RoleKind[] = ["mechanical", "programming", "business"]
 
 export function getMemberRoles(member: LeadershipMember) {
   return member.roleKinds ?? [member.roleKind]
-}
-
-// The portal's subteams, under the three groups the team split into.
-const subteamRole: Record<string, RoleKind> = {
-  Assembly: "mechanical",
-  CAD: "mechanical",
-  "Scouting/Strategy": "mechanical",
-  Programming: "programming",
-  Media: "business",
-  Outreach: "business",
-  Sponsorships: "business",
-}
-
-export function getSubteamRoles(member: TeamMember) {
-  const kinds = new Set((member.subteams ?? []).map((s) => subteamRole[s]))
-  return roleOrder.filter((r) => kinds.has(r))
 }
 
 export function isCaptain(member: LeadershipMember) {
@@ -87,25 +69,25 @@ export const seasons: Season[] = [
       { name: "Shaurya Singh", position: "Media Lead", roleKind: "business" },
     ],
     members: [
-      { name: "Rikhil Alluri", subteams: ["Assembly", "Programming", "Scouting/Strategy"] },
-      { name: "Amit Chunduri", subteams: ["Assembly", "Media"] },
-      { name: "Arvin Divvala", subteams: ["Assembly", "Programming", "Scouting/Strategy"] },
-      { name: "Shriya Jegannathan", subteams: ["Media", "Outreach", "Sponsorships"] },
-      { name: "Aryan Khurana", subteams: ["Media", "Outreach", "Sponsorships"] },
-      { name: "Arnav Magdum", subteams: ["Media", "Outreach", "Sponsorships"] },
-      { name: "Nived Menon", subteams: ["Assembly", "CAD"] },
-      { name: "Debyash Mohanty", subteams: ["Assembly", "CAD", "Programming"] },
-      { name: "Shreyasvi Nambi", subteams: ["Media", "Outreach"] },
-      { name: "Ishan Pachnanda", subteams: ["Assembly"] },
-      { name: "Shreyansh Panigrahi", subteams: ["Assembly", "CAD", "Programming", "Scouting/Strategy"] },
-      { name: "Rohan Pawar", subteams: ["Assembly", "Outreach", "Sponsorships"] },
-      { name: "Prithika Ravi", subteams: ["Assembly", "Scouting/Strategy"] },
-      { name: "Shreya Samba", subteams: [] },
-      { name: "Sahejdeep Singh", subteams: ["Media", "Outreach", "Programming", "Sponsorships"] },
-      { name: "Pratham Srivastava", subteams: ["Media", "Outreach"] },
-      { name: "Tanvi Sunkara", subteams: ["Media", "Outreach"] },
-      { name: "Aarya Vilvaray", subteams: ["Scouting/Strategy"] },
-      { name: "Hasini Yalavarthi", subteams: ["Assembly", "CAD", "Outreach"] },
+      { name: "Rikhil Alluri" },
+      { name: "Amit Chunduri" },
+      { name: "Arvin Divvala" },
+      { name: "Shriya Jegannathan" },
+      { name: "Aryan Khurana" },
+      { name: "Arnav Magdum" },
+      { name: "Nived Menon" },
+      { name: "Debyash Mohanty" },
+      { name: "Shreyasvi Nambi" },
+      { name: "Ishan Pachnanda" },
+      { name: "Shreyansh Panigrahi" },
+      { name: "Rohan Pawar" },
+      { name: "Prithika Ravi" },
+      { name: "Shreya Samba" },
+      { name: "Sahejdeep Singh" },
+      { name: "Pratham Srivastava" },
+      { name: "Tanvi Sunkara" },
+      { name: "Aarya Vilvaray" },
+      { name: "Hasini Yalavarthi" },
     ],
   },
   {

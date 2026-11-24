@@ -8,7 +8,6 @@ import { BlobEdge, band } from "@/components/blob-edge"
 import {
   seasons,
   getMemberRoles,
-  getSubteamRoles,
   isCaptain,
   roleLabels,
   type LeadershipMember,
@@ -49,7 +48,8 @@ const colleges = [
 
 const spring = { type: "spring", stiffness: 300, damping: 20 } as const
 
-function RoleDots({ roles }: { roles: RoleKind[] }) {
+function RoleDots({ member }: { member: LeadershipMember }) {
+  const roles = getMemberRoles(member)
   return (
     <span className="flex items-center gap-1" aria-label={roles.map((r) => roleLabels[r]).join(" and ")}>
       {roles.map((r) => (
@@ -73,7 +73,7 @@ function LeaderCard({ member, index }: { member: LeadershipMember; index: number
       transition={spring}
     >
       <div className="flex items-start justify-between">
-        <RoleDots roles={getMemberRoles(member)} />
+        <RoleDots member={member} />
         {captain && (
           <span className="rounded-full border-2 border-ink bg-arcade-fuel px-2 py-0.5 text-[11px] font-semibold">
             Captain
@@ -86,25 +86,6 @@ function LeaderCard({ member, index }: { member: LeadershipMember; index: number
   )
 }
 
-// Same card as leadership, with the member's subteams in place of a title
-// (Mohan, 2026-11-24: "add them to all their roles similar to the leadership").
-function MemberCard({ member, index }: { member: TeamMember; index: number }) {
-  const tilt = (index % 2 === 0 ? -1 : 1) * 0.6
-  return (
-    <motion.div
-      className="h-full rounded-xl border-2 border-ink bg-paper p-4 text-ink shadow-hard"
-      style={{ rotate: tilt }}
-      whileHover={{ rotate: 0, y: -4, boxShadow: "6px 6px 0 0 #fff8ee" }}
-      whileTap={{ y: 0 }}
-      transition={spring}
-    >
-      <RoleDots roles={getSubteamRoles(member)} />
-      <p className="mt-3 font-display text-lg leading-tight">{member.name}</p>
-      <p className="mt-0.5 text-sm text-ink/70">{member.subteams?.join(", ")}</p>
-    </motion.div>
-  )
-}
-
 function MemberChips({ members }: { members: TeamMember[] }) {
   const grouped = useMemo(() => {
     const map = new Map<string, TeamMember[]>()
@@ -113,14 +94,15 @@ function MemberChips({ members }: { members: TeamMember[] }) {
       if (!map.has(year)) map.set(year, [])
       map.get(year)!.push(m)
     }
-    return gradeOrder.filter(([g]) => map.has(g)).map(([g, label]) => [label, map.get(g)!] as const)
+    // A season with no grades on file (26'-27') shows one row with no heading.
+    return [...gradeOrder, ["", ""]].filter(([g]) => map.has(g)).map(([g, label]) => [label, map.get(g)!] as const)
   }, [members])
 
   return (
     <div className="space-y-6">
       {grouped.map(([label, list]) => (
         <div key={label}>
-          <p className="text-sm font-semibold text-paper/60">{label}</p>
+          {label && <p className="text-sm font-semibold text-paper/60">{label}</p>}
           <div className="mt-2 flex flex-wrap gap-2">
             {list.map((m) => (
               <motion.span
@@ -163,7 +145,6 @@ export default function Team() {
   const season = seasons.find((s) => s.id === activeId) ?? seasons[0]
   // Captains first, everyone else in the data's order (dad, 2026-09-16). Stable sort.
   const leadership = [...season.leadership].sort((a, b) => Number(isCaptain(b)) - Number(isCaptain(a)))
-  const byGrade = season.members.every((m) => m.year)
   const reduced = useReducedMotion()
 
   return (
@@ -214,19 +195,9 @@ export default function Team() {
 
         <div className="mt-12">
           <h2 className="font-display text-2xl">Members</h2>
-          {byGrade ? (
-            <div className="mt-5">
-              <MemberChips members={season.members} />
-            </div>
-          ) : (
-            <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-              {season.members.map((member, i) => (
-                <Reveal key={`${season.id}-${member.name}`} delay={i * 40}>
-                  <MemberCard member={member} index={i} />
-                </Reveal>
-              ))}
-            </div>
-          )}
+          <div className="mt-5">
+            <MemberChips members={season.members} />
+          </div>
         </div>
 
       </div>

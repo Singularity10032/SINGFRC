@@ -66,7 +66,7 @@ export const seasons: Season[] = [
       { name: "Alexander Wick", position: "Mech + Electrical Lead", roleKind: "mechanical" },
       { name: "Avin Agrawal", position: "Business Lead", roleKind: "business" },
       { name: "Ishaan Thakur", position: "Business Lead", roleKind: "business" },
-      { name: "Shaurya Singh", position: "Media Lead", roleKind: "business" },
+      { name: "Shaurya Singh", position: "Senior Business Lead", roleKind: "business" },
     ],
     members: [
       { name: "Shriya Jegannathan", year: "Senior" },
